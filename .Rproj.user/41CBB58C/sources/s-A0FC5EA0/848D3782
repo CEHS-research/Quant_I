@@ -7,11 +7,13 @@
     "folds" : "",
     "hash" : "2189310448",
     "id" : "848D3782",
-    "lastKnownWriteTime" : 1515529469,
-    "last_content_update" : 1515529469,
+    "lastKnownWriteTime" : 1515529966,
+    "last_content_update" : 1515529966844,
     "path" : "C:/Users/A00315273/Dropbox/USU_teaching/Quant_I/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
+        "cursorPosition" : "11,0",
+        "scrollLine" : "0"
     },
     "relative_order" : 4,
     "source_on_save" : false,
