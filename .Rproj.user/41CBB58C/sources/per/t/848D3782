@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2189310448",
+    "hash" : "2147836980",
     "id" : "848D3782",
-    "lastKnownWriteTime" : 1515529966,
-    "last_content_update" : 1515529966844,
+    "lastKnownWriteTime" : 1515530767,
+    "last_content_update" : 1515530767868,
     "path" : "C:/Users/A00315273/Dropbox/USU_teaching/Quant_I/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
-        "cursorPosition" : "11,0",
-        "scrollLine" : "0"
+        "cursorPosition" : "12,18",
+        "scrollLine" : "5"
     },
     "relative_order" : 4,
     "source_on_save" : false,
