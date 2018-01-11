@@ -1,5 +1,10 @@
 
+
 # Getting Your Computer Ready {-}
+
+![](img/headers/R_studio_LaTeX_header.png)
+
+
 
 -------------------------------
 
@@ -95,7 +100,7 @@ Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 * The defaults are good...don't change them...just keep clicking *'Next'*
 
 
-![](img/latex-project-logo.svg)
+![](img/latex.png)
 
 ### 3. `LaTeX` depends on your operating system
 
