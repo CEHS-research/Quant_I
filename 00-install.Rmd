@@ -82,7 +82,7 @@ Check out [Rpubs](http://rpubs.com/). This website shares lots of documents writ
 
 ![](img/Rlogo_200.png)
 
-### 1. `R` from [www.r-project.org](www.r-project.org)
+### 1. `R` from [www.r-project.org](http://www.r-project.org)
 
 Get the latest released version of FREE **Base** R from CRAN 
 
@@ -93,7 +93,7 @@ Get the latest released version of FREE **Base** R from CRAN
 
 ![](img/rstudiosticker.png)
 
-### 2 `R Studio` from [www.rstudio.com](www.rstudio.com)
+### 2 `R Studio` from [www.rstudio.com](http://www.rstudio.com)
 
 Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 
