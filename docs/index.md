@@ -6,9 +6,6 @@ date: "January 16 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"
-output:
-  bookdown::html_book:
-    theme: cosmo
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -58,5 +55,9 @@ All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsng
 
 
 
+## Course Schedule {-}
+
+
+![](img/Sched_1-16-18.PNG)
 
 
