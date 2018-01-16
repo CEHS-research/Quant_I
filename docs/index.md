@@ -2,7 +2,7 @@
 title: "Research Design and Analysis I"
 subtitle: "Psy 6600 and Educ 6600: Quantitative Methods I"
 author: "Sarah Schwartz and Tyson Barrett"
-date: "Spring 2018"
+date: "January 16 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"
