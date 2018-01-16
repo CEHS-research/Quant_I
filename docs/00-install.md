@@ -150,7 +150,7 @@ In **R Stuido**:
 
 
 
-### Load Packages (using syntax) {-}
+### Load Packages (via code) {-}
 
 > You will need to load packages in EVERY SESSION you want to use them in.
 
