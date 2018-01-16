@@ -22,7 +22,7 @@ According to [R Studio](www.rstudio.com):
 
 From [Penn State Statistics](https://onlinecourses.science.psu.edu/statprogram/markdown): 
 
-### The **traditional way** to write a report
+### The **traditional way** to write a report {-}
 
 1. Run your analysis in software, like SPSS or R and manually save our output
     * *i.e. saving the ANOVA table or using pdf() to save the graphs*  
@@ -37,7 +37,7 @@ Therefore, in this way **dynamic also means reproducible**, in the sense that pe
 
 
 
-### How does R Markdown work out to be a .pdf or .html file? 
+### How does R Markdown work out to be a .pdf or .html file?  {-}
 
 `R Markdown` is a file with the file extension **.Rmd**, the `knitr` package will then transform the file into a **Markdown** file with the extension **.md.** Then Rstudio can:
 
@@ -49,7 +49,7 @@ Therefore, in this way **dynamic also means reproducible**, in the sense that pe
 
 
 
-### Is this a **popular** method for creating reports? 
+### Is this a **popular** method for creating reports?  {-}
 
 Check out [Rpubs](http://rpubs.com/). This website shares lots of documents written in the way we will introduce below.
 
@@ -84,7 +84,7 @@ You will need to download and install THREE programs to create dynamic reports i
 
 ![](img/Rlogo_200.png)
 
-### 1. `R` from [www.r-project.org](http://www.r-project.org)
+### 1. `R` from [www.r-project.org](http://www.r-project.org) {-}
 
 Get the latest released version of FREE **Base** R from CRAN 
 
@@ -95,7 +95,7 @@ Get the latest released version of FREE **Base** R from CRAN
 
 ![](img/rstudiosticker.png)
 
-### 2 `R Studio` from [www.rstudio.com](http://www.rstudio.com)
+### 2 `R Studio` from [www.rstudio.com](http://www.rstudio.com) {-}
 
 Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 
@@ -104,7 +104,7 @@ Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 
 ![](img/latex.png)
 
-### 3. `LaTeX` depends on your operating system
+### 3. `LaTeX` depends on your operating system {-}
 
 
 > **Mac:** `MacTeX` from [http://tug.org/mactex/](http://tug.org/mactex/) 
@@ -134,7 +134,7 @@ Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 More information may be found here:  https://www.datacamp.com/community/tutorials/r-packages-guide 
 
 
-### Installing Packages (via the user interface)
+### Installing Packages (via the user interface) {-}
 
 > You only need to install packages ONCE per computer.
 
@@ -150,7 +150,7 @@ In **R Stuido**:
 
 
 
-### Load Packages (using syntax)
+### Load Packages (via code) {-}
 
 > You will need to load packages in EVERY SESSION you want to use them in.
 
@@ -172,9 +172,13 @@ More 'cheat sheets' are available under the "Help" menu option in **R Studio**
 
 ## Kniting Notebooks {-}
 
+### Storing all associated files  {-}
+
 If you are using any files, such as *datasets* or *images*, they need to be stored in the same folder location as the R Notebook (`.Rmd` file).
 
 This folder location must be the **Working Directory** for the R Studio session.  If you opened your `.Rmd` notebook file by double-clicking on its name, then this should be the case.  
+
+### Setting the working directory  {-}
 
 To ensure that R Studio knows where to find the files, you can manually set the **Working Directory** through the menu:
 
