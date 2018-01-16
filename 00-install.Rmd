@@ -10,7 +10,7 @@
 
 ## What is R Markdown?
 
-According to [R Studio](www.rstudio.com)
+According to [R Studio](www.rstudio.com):
 
 > "R Markdown is a format that enables easy authoring of reproducible web reports from R. It combines the core syntax of Markdown (an easy-to-write **plain text** format for web content) with embedded **R code chunks** that are run so their output can be included in the final document".
 
@@ -20,7 +20,7 @@ According to [R Studio](www.rstudio.com)
 
 ## Dynamic Reporting
 
-From [Penn State Statistics](https://onlinecourses.science.psu.edu/statprogram/markdown) 
+From [Penn State Statistics](https://onlinecourses.science.psu.edu/statprogram/markdown): 
 
 ### The **traditional way** to write a report
 
@@ -78,7 +78,9 @@ Check out [Rpubs](http://rpubs.com/). This website shares lots of documents writ
 -------------------------------
 
 
-## Three Downloads to Install
+## Software Programs
+
+You will need to download and install THREE programs to create dynamic reports in R.
 
 ![](img/Rlogo_200.png)
 
@@ -121,6 +123,47 @@ Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 * Windows may ask you if you want to *“allow this app from an unknown publisher to make changes to your PC”*. If it does, make sure to click **Yes!**
 * This is the slowest part...
 
+
+-------------------------------
+
     
-    
-    
+## R Packages 
+
+> **R packages** are collections of functions and data sets developed by the community. They increase the power of **R** by improving existing base **R** functionalities, or by adding new ones.
+
+More information may be found here:  https://www.datacamp.com/community/tutorials/r-packages-guide 
+
+
+### Installing Packages (via the user interface)
+
+> You only need to install packages ONCE per computer.
+
+In **R Stuido**:
+
+1. Click on the **Packages** tab the panel with the most tabs
+2. Click on the word **Instsall** just under and to the left of the tab
+2. In the **Packages** box, type in the name of the packages you would like to download.  You can do several at once, just seperate them with multiple spaces or a comma.
+
+*Note: Leave the installation library path as the default.  Also, make sure the box for 'Installing dependencies' is checked.*
+
+![](img/Install_Package_Screenshot.png)
+
+
+
+### Load Packages (using syntax)
+
+> You will need to load packages in EVERY SESSION you want to use them in.
+
+```{r, eval=FALSE}
+library(tidyverse)
+```
+
+Please don’t get confused: `library()` is the command used to **load a package**, and it refers to the **place** where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.
+
+Maybe it can help a quote from **Hadley Wickham**, Chief data scientist at RStudio, and instructor of the *“Writing functions in R”* DataCamp course (December 8, 2014):
+
+> "a package is a like a book, a library is like a library; you use `library()` to check a package out of the library"
+
+Here is link to an AWSOME ['cheat sheet' for begginers working with the `tidyverse` package](http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c).  I highly suggest checking it out.
+
+More 'cheat sheets' are available under the "Help" menu option in **R Studio**
