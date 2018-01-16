@@ -154,7 +154,8 @@ In **R Stuido**:
 
 > You will need to load packages in EVERY SESSION you want to use them in.
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)
 ```
 
