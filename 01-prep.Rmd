@@ -1,8 +1,5 @@
 # Preparing Datasets 
 
-
-## Load Needed Packages
-
 ```{r global_options, include=FALSE}
 # set global chunk options...  
 #  this changes the defaults so you don't have to repeat yourself
@@ -12,111 +9,287 @@ knitr::opts_chunk$set(comment     = NA,
                       message     = FALSE)
 ```
 
+---------------------------------------
+
+## ENVIRONMENT PREPARATION
+
+### The `library()` Function: Load a Package
+
 
 You will need TWO packages:
 
-* `tidyverse` Easily Install and Load the 'Tidyverse'
+* `tidyverse` Easily Install and Load the 'Tidy universe' of packages
 * `readxl` Read Excel Files
+* `furniture` Nice Tables and Row-wise functions (by Tyson)
+
+> Make sure the packages are **installed** *(Package tab)*
+
+The function `library()` checks the package out, or makes it active.
 
 ```{r, comment=NA}
 library(tidyverse)
 library(readxl)
+library(furniture)
 ```
 
-## Read in the Data from Excel and store the data as `data`
+-------------------------------------------
 
+## DATA IMPORTING
+
+### The `readxl::read_excel()` Function: Read in Excel Data Files
+
+> Make sure the **dataset** is saved in the same *folder* as this file
+
+> Make sure the that *folder* is the **working directory**
+
+* Now we are ready to open the data with the `read_excel()` function from the `readxl` package
+    + `readxl::read_excel()` the double collon specifies the `package::function()`
+    + the only thing required inside the `()` is the quoted name of the Excel file 
+      - Make sure it is stored in the .Rmd's folder
+      - Make sure to include the file's extension *(.xls)*
+      
+> NOTE: a `tibble` is basically just a "table" of data, the way the tidy-verse represents data sets.
+      
+```{r}
+read_excel("Ihno_dataset.xls")
+```
+
+
+------------------------------------
+
+## OPPERATORS and HELPFUL FUNCTIONS
+
+### The `<-` Assignment Opperator: Save as a Name
+
+* the `<-` combination of symbols makes **assignments**
+   + tells **R** to store the dataset as the name it points to
+   + this lets us use the dataset later on in another step
+
+> NOTE: no output is produced when you make an assignment.
 
 ```{r}
-data <- read_excel("Ihno_dataset.xls")
+data <- read_excel("Ihno_dataset.xls") 
 ```
 
 
-Print out the dataset
+* Print out the dataset by just typing and running the name you assined it
 
-```{r, eval=FALSE}
+```{r}
 data
-```
-
-
-```{r, eval=FALSE}
-#data
 ```
 
 > NOTE: The pound or hashtag symbol at the front of a line within an R code chunk designates what follows as a comment and does not try to run the code.
 
+```{r}
+#data
+```
 
-List out the variable names
+
+### The Pipe `%>%` Opperator: Link Steps Togehter
+
+This special set of symbols *(no spaces included)* signals R to feed what preceeds it **into** what follows it.  Its a simple idea that makes code writting in R much easier. 
 
 ```{r}
-# variables names
+data <- read_excel("Ihno_dataset.xls") %>% 
+  dplyr::rename_all(tolower)              # convert variable names to lower case
+
+data
+```
+
+
+
+### The `head()` Function: Print the First Few Rows
+
+See the first few rows of a dataset by using the `head()` function.  Since it is part for **base R**, I never include the package, but if we did, it would be `utils::head()`.  The default is to print the first SIX rows.
+
+```{r}
+head(data)
+```
+
+
+Inside the `head()` function, you can change the default of `n = 6` rows.  You can learn about this and other options in the **Help** tab *search for 'head'*.
+
+```{r}
+utils::head(data, n = 3)
+```
+
+```{r}
+head(data, n = 11)
+```
+
+
+### The `names()` Function: List the Variable Names
+
+Another helpful function is `names()` which lists out the names of the **variables**.  This is nice to use to copy-paste later on, since...in R code chunks:
+
+* Spelling matters
+* Capitalization matters
+* Spacing does NOT matter: one space is the same as 100 spaces
+* Line enters are ignored
+
+```{r}
 names(data)
 ```
 
-How many row (participants) and columns (variables)
+
+
+### The `dim()` Function: List the Dimentions
+
+See how many rows *(observation)* and columns *(variables)*
 
 ```{r}
-# data frame's dimentions
 dim(data)
 ```
 
 
+### The `tibble::glimpse()` Function: Gives an Overview of Variables
+
+This is a handy function that gives:
+
+* Dimentions (observations and variables)
+* Names of variables
+* Each variables type, which could be...
+  + `dbl` = numeric: double precision floating point numbers
+  + `fct` = factor: categorical, either nominal or ordinal
+  + `chr` = character: text
+* Lists the first few entries
+
+```{r}
+tibble::glimpse(data)
+```
 
 
-## Setting variables to factors and labeling values
 
+### The `dplyr::select()` Function: Specify VARIABLES to include/keep
+
+This function chooses which **variables** to include, excluding all others not given between the `()`.
+
+```{r}
+data %>% 
+  dplyr::select(sub_num, gender, major, reason, exp_cond, coffee)
+```
+
+
+
+### The `dplyr::filter()` Function: Specify OBSERVATIONS to include/keep
+
+This function chooses which **observations** to include, excluding all others not given between the `()`.
+
+```{r}
+data %>% 
+  dplyr::filter(gender == 1)
+```
+
+You can combine steps to multiple things.  The steps are completed in the order we read: top to bottom, left to right.
+
+```{r}
+data %>% 
+  dplyr::select(sub_num, gender, major, reason, exp_cond, coffee) %>% 
+  dplyr::filter(gender == 1)
+```
+
+
+-----------------------------------------
+
+## DATA WRANGLING
+
+
+### The `dplyr::mutate()` Function: Create a New Variable
+
+Just like ratiation may cause a fish to grow an additional eye (a mutation), the `mutate()` function grows a new variable.
+
+```{r}
+data %>% 
+  dplyr::mutate(test = 1) %>% 
+  dplyr::select(sub_num, gender, mathquiz, statquiz, test) %>% 
+  head()
+```
+
+
+
+
+### The `factor()` Function: Define Categorical Variables
+
+We will be providing this funciton with three pieces of information:
+
+(@) The name of an existing variable
+(@) A *concatinated* set of numerical `levels`
+(@) A *concatinated* set of textual `labels`
+
+> You must include the SAME number of levels and labels.  The ORDER in the sets designates how the labels will be applied to the levels.
+
+Here is how it looks to create ONE new factor.  Notice I added the letter `F` to designate that this new variable is a factor.  
+
+```{r}
+data %>% 
+  dplyr::mutate(genderF = factor(gender,
+                                 levels = c(1, 2),
+                                 labels = c("Female", "Male"))) 
+```
+
+Notice that the dataset the is printed includes our new variable at the **END**.
+
+You can use the `pipe` to chain several mutate steps together.  I have also assigned the resulting dataset with the five new factor variables at the end to a new name, `dataF`.  Since this code chunk includes a single assingment, there is no output created.
+
+> Remember to include a PIPE between all your steps, but not at the end!
 
 ```{r}
 dataF <- data %>% 
-  dplyr::mutate(GenderF = Gender %>% 
-                  factor(levels = c(1, 2),
-                         labels = c("Female", "Male"))) %>% 
-  dplyr::mutate(MajorF = Major %>% 
-                  factor(levels = c(1, 2, 3, 4,5),
-                         labels = c("Psychology",
-                                    "Premed",
-                                    "Biology",
-                                    "Sociology",
-                                    "Economics"))) %>% 
-  dplyr::mutate(ReasonF = Reason %>% 
-                  factor(levels = c(1, 2, 3),
-                         labels = c("Program requirement",
-                                    "Personal interest",
-                                    "Advisor recommendation"))) %>% 
-  dplyr::mutate(Exp_condF = Exp_cond %>% 
-                  factor(levels = c(1, 2, 3, 4),
-                         labels = c("Easy",
-                                    "Moderate",
-                                    "Difficult",
-                                    "Impossible"))) %>% 
-  dplyr::mutate(CoffeeF = Coffee %>% 
-                  factor(levels = c(0, 1),
-                         labels = c("Not a regular coffee drinker",
-                                    "Regularly drinks coffee"))) 
+  dplyr::mutate(genderF = factor(gender, 
+                                 levels = c(1, 2),
+                                 labels = c("Female", 
+                                            "Male"))) %>% 
+  dplyr::mutate(majorF = factor(major, 
+                                levels = c(1, 2, 3, 4,5),
+                                labels = c("Psychology",
+                                           "Premed",
+                                           "Biology",
+                                           "Sociology",
+                                           "Economics"))) %>% 
+  dplyr::mutate(reasonF = factor(reason,
+                                 levels = c(1, 2, 3),
+                                 labels = c("Program requirement",
+                                            "Personal interest",
+                                            "Advisor recommendation"))) %>% 
+  dplyr::mutate(exp_condF = factor(exp_cond,
+                                   levels = c(1, 2, 3, 4),
+                                   labels = c("Easy",
+                                              "Moderate",
+                                              "Difficult",
+                                              "Impossible"))) %>% 
+  dplyr::mutate(coffeeF = factor(coffee,
+                                 levels = c(0, 1),
+                                 labels = c("Not a regular coffee drinker",
+                                            "Regularly drinks coffee"))) 
 ```
+
+See how the new variables are added at the end.
 
 ```{r}
 glimpse(data)
-```
-
-```{r}
 glimpse(dataF)
 ```
 
-## Creating new variables
+
+
+
+--------------------------------
+
+
+## CREATING NEW VARIABLES: Assignment 0
 
 ### Question 2: Create a new variable = `mathquiz` + 50
 
 
 ```{r}
 data2 <- dataF %>% 
-  dplyr::mutate(Mathquiz_p50 = Mathquiz + 50) 
+  dplyr::mutate(mathquiz_p50 = mathquiz + 50) 
 ```
 
 
 ```{r}
 data2 %>% 
-  dplyr::select(Sub_num, Mathquiz, Mathquiz_p50) %>% 
-  head()
+  dplyr::select(sub_num, mathquiz, mathquiz_p50)
 ```
 
 
@@ -125,14 +298,13 @@ data2 %>%
 
 ```{r}
 data3 <- data2 %>% 
-  dplyr::mutate(Hr_base_bpm = Hr_base / 60) 
+  dplyr::mutate(hr_base_bps = hr_base / 60) 
 ```
 
 
 ```{r}
 data3 %>% 
-  dplyr::select(Sub_num, Hr_base, Hr_base_bpm) %>% 
-  head(n = 10)
+  dplyr::select(sub_num, hr_base, hr_base_bps) 
 ```
 
 
@@ -141,7 +313,7 @@ data3 %>%
 
 ```{r}
 data4a <- data3 %>% 
-  dplyr::mutate(Statquiz_4a = (Statquiz + 2) * 10 )
+  dplyr::mutate(statquiz_4a = (statquiz + 2) * 10 )
 ```
 
 
@@ -149,37 +321,34 @@ data4a <- data3 %>%
 
 ```{r}
 data4b <- data4a %>% 
-  dplyr::mutate(Statquiz_4b = (Statquiz * 10) + 2 )
+  dplyr::mutate(statquiz_4b = (statquiz * 10) + 2 )
 ```
 
 ```{r}
 data4b %>% 
-  dplyr::select(Sub_num, Statquiz, Statquiz_4a, Statquiz_4b) %>% 
-  head()
+  dplyr::select(sub_num, statquiz, statquiz_4a, statquiz_4b) 
 ```
 
 
 
 ### Question 5a: Create a new variable = `sum` of the 3 anxiety measures 
 
+Here are three ways you may try to find the sum.  The middle way does not perform the action we want.  The first way works fine, unless there is some missing data.
 
 ```{r}
 data5a <- data4b %>% 
-  dplyr::mutate(Anx_plus = Anx_base + Anx_pre + Anx_post) %>%
-  dplyr::mutate(Anx_sum1 = sum(Anx_base, Anx_pre, Anx_post)) %>%
-  dplyr::rowwise() %>% 
-  dplyr::mutate(Anx_sum = sum(c(Anx_base, Anx_pre, Anx_post))) %>% 
-  dplyr::ungroup()
+  dplyr::mutate(anx_plus    =         anx_base + anx_pre + anx_post)  %>%  # works, missing??
+  dplyr::mutate(anx_sum     =     sum(anx_base,  anx_pre,  anx_post)) %>%  # does NOT work
+  dplyr::mutate(anx_rowsums = rowsums(anx_base,  anx_pre,  anx_post))      # best way
 ```
 
 
 
 ```{r}
 data5a %>% 
-  dplyr::select(Sub_num, 
-                Anx_base, Anx_pre, Anx_post, 
-                Anx_plus, Anx_sum1, Anx_sum) %>% 
-  head()
+  dplyr::select(sub_num, 
+                anx_base, anx_pre, anx_post, 
+                anx_plus, anx_sum, anx_rowsums) 
 ```
 
 \clearpage
@@ -189,20 +358,16 @@ data5a %>%
 
 ```{r}
 data5b <- data5a %>% 
-  dplyr::mutate(Hr_avg = (Hr_base + Hr_pre + Hr_post)/3) %>%
-  # dplyr::mutate(Hr_mean1 = mean(Hr_base, Hr_pre, Hr_post, na.rm = TRUE)) %>%
-  dplyr::rowwise() %>% 
-  dplyr::mutate(Hr_mean = mean(c(Hr_base, Hr_pre, Hr_post))) %>% 
-  dplyr::ungroup()
+  dplyr::mutate(hr_avg      =         (hr_base + hr_pre + hr_post)/3) %>%  # works,no missings
+  dplyr::mutate(hr_rowmeans = rowmeans(hr_base,  hr_pre,  hr_post)) # always works
 ```
 
 
 ```{r}
 data5b %>% 
-  dplyr::select(Sub_num, 
-                Hr_base, Hr_pre, Hr_post, 
-                Hr_avg,  Hr_mean) %>% 
-  head()
+  dplyr::select(sub_num, 
+                hr_base, hr_pre, hr_post, 
+                hr_avg,  hr_rowmeans) 
 ```
 
 \clearpage
@@ -211,56 +376,57 @@ data5b %>%
 
 ```{r}
 data6 <- data5b %>% 
-  dplyr::mutate(StatDiff = Statquiz - Exp_sqz)
+  dplyr::mutate(statDiff = statquiz - exp_sqz)
 ```
 
 ```{r}
 data6 %>% 
-  dplyr::select(Sub_num, Exp_cond, Exp_cond,
-                Statquiz, Exp_sqz, StatDiff) %>% 
-  head()
+  dplyr::select(sub_num, exp_cond, exp_condF,
+                statquiz, exp_sqz, statDiff) 
 ```
 
 \clearpage
 
-## Putting it all together
+### Putting it all together
 
 ```{r}
 data_clean <- read_excel("Ihno_dataset.xls") %>% 
-  dplyr::mutate(GenderF = Gender %>% 
-                  factor(levels = c(1, 2),
-                         labels = c("Female", "Male"))) %>% 
-  dplyr::mutate(MajorF = Major %>% 
-                  factor(levels = c(1, 2, 3, 4,5),
-                         labels = c("Psychology",
-                                    "Premed",
-                                    "Biology",
-                                    "Sociology",
-                                    "Economics"))) %>% 
-  dplyr::mutate(ReasonF = Reason %>% 
-                  factor(levels = c(1, 2, 3),
-                         labels = c("Program requirement",
-                                    "Personal interest",
-                                    "Advisor recommendation"))) %>% 
-  dplyr::mutate(Exp_condF = Exp_cond %>% 
-                  factor(levels = c(1, 2, 3, 4),
-                         labels = c("Easy",
-                                    "Moderate",
-                                    "Difficult",
-                                    "Impossible"))) %>% 
-  dplyr::mutate(CoffeeF = Coffee %>% 
-                  factor(levels = c(0, 1),
-                         labels = c("Not a regular coffee drinker",
-                                    "Regularly drinks coffee")))  %>% 
-  dplyr::mutate(Mathquiz_p50 = Mathquiz + 50) %>% 
-  dplyr::mutate(Hr_base_bpm = Hr_base / 60) %>% 
-  dplyr::mutate(Statquiz_4a = (Statquiz +  2) * 10 ) %>% 
-  dplyr::mutate(Statquiz_4b = (Statquiz * 10) + 2 ) %>%
-  dplyr::rowwise() %>% 
-  dplyr::mutate(Anx_sum = sum(c(Anx_base, Anx_pre, Anx_post), na.rm = TRUE)) %>% 
-  dplyr::mutate(Hr_mean = mean(c(Hr_base, Hr_pre, Hr_post), na.rm = TRUE)) %>%  
-  dplyr::ungroup() %>% 
-  dplyr::mutate(StatDiff = Statquiz - Exp_sqz)
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(genderF = factor(gender, 
+                                 levels = c(1, 2),
+                                 labels = c("Female", 
+                                            "Male"))) %>% 
+  dplyr::mutate(majorF = factor(major, 
+                                levels = c(1, 2, 3, 4,5),
+                                labels = c("Psychology",
+                                           "Premed",
+                                           "Biology",
+                                           "Sociology",
+                                           "Economics"))) %>% 
+  dplyr::mutate(reasonF = factor(reason,
+                                 levels = c(1, 2, 3),
+                                 labels = c("Program requirement",
+                                            "Personal interest",
+                                            "Advisor recommendation"))) %>% 
+  dplyr::mutate(exp_condF = factor(exp_cond,
+                                   levels = c(1, 2, 3, 4),
+                                   labels = c("Easy",
+                                              "Moderate",
+                                              "Difficult",
+                                              "Impossible"))) %>% 
+  dplyr::mutate(coffeeF = factor(coffee,
+                                 levels = c(0, 1),
+                                 labels = c("Not a regular coffee drinker",
+                                            "Regularly drinks coffee")))  %>% 
+  dplyr::mutate(mathquiz_p50 = mathquiz + 50) %>% 
+  dplyr::mutate(hr_base_bps  = hr_base / 60) %>% 
+  dplyr::mutate(statquiz_4a  = (statquiz + 2) * 10 ) %>% 
+  dplyr::mutate(statquiz_4b  = (statquiz * 10) + 2 ) %>% 
+  dplyr::mutate(anx_sum     = rowsums(anx_base, anx_pre, anx_post)) %>% 
+  dplyr::mutate(hr_mean       = rowmeans(hr_base + hr_pre + hr_post)) %>% 
+  dplyr::mutate(statDiff     = statquiz - exp_sqz)
+
+glimpse(data_clean)
 ```
 
 

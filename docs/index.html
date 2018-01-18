@@ -48,43 +48,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -131,19 +94,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="preparing-datasets.html"><a href="preparing-datasets.html"><i class="fa fa-check"></i><b>1</b> Preparing Datasets</a><ul>
-<li class="chapter" data-level="1.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#load-needed-packages"><i class="fa fa-check"></i><b>1.1</b> Load Needed Packages</a></li>
-<li class="chapter" data-level="1.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#read-in-the-data-from-excel-and-store-the-data-as-data"><i class="fa fa-check"></i><b>1.2</b> Read in the Data from Excel and store the data as <code>data</code></a></li>
-<li class="chapter" data-level="1.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#setting-variables-to-factors-and-labeling-values"><i class="fa fa-check"></i><b>1.3</b> Setting variables to factors and labeling values</a></li>
-<li class="chapter" data-level="1.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#creating-new-variables"><i class="fa fa-check"></i><b>1.4</b> Creating new variables</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-2-create-a-new-variable-mathquiz-50"><i class="fa fa-check"></i><b>1.4.1</b> Question 2: Create a new variable = <code>mathquiz</code> + 50</a></li>
-<li class="chapter" data-level="1.4.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-3-create-a-new-variable-hr_base-60"><i class="fa fa-check"></i><b>1.4.2</b> Question 3: Create a new variable = <code>Hr_base</code> / 60</a></li>
-<li class="chapter" data-level="1.4.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4a-create-a-new-variable-statquiz-2-then-10"><i class="fa fa-check"></i><b>1.4.3</b> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</a></li>
-<li class="chapter" data-level="1.4.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4b-create-a-new-variable-statquiz-10-then-2"><i class="fa fa-check"></i><b>1.4.4</b> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</a></li>
-<li class="chapter" data-level="1.4.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5a-create-a-new-variable-sum-of-the-3-anxiety-measures"><i class="fa fa-check"></i><b>1.4.5</b> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</a></li>
-<li class="chapter" data-level="1.4.6" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5b-create-a-new-variable-average-of-the-3-heart-rates"><i class="fa fa-check"></i><b>1.4.6</b> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</a></li>
-<li class="chapter" data-level="1.4.7" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-6-create-a-new-variable-statquiz-minus-exp_sqz"><i class="fa fa-check"></i><b>1.4.7</b> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></a></li>
+<li class="chapter" data-level="1.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#environment-preparation"><i class="fa fa-check"></i><b>1.1</b> ENVIRONMENT PREPARATION</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-library-function-load-a-package"><i class="fa fa-check"></i><b>1.1.1</b> The <code>library()</code> Function: Load a Package</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#putting-it-all-together"><i class="fa fa-check"></i><b>1.5</b> Putting it all together</a></li>
+<li class="chapter" data-level="1.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#data-importing"><i class="fa fa-check"></i><b>1.2</b> DATA IMPORTING</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-readxlread_excel-function-read-in-excel-data-files"><i class="fa fa-check"></i><b>1.2.1</b> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#opperators-and-helpful-functions"><i class="fa fa-check"></i><b>1.3</b> OPPERATORS and HELPFUL FUNCTIONS</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the---assignment-opperator-save-as-a-name"><i class="fa fa-check"></i><b>1.3.1</b> The <code>&lt;-</code> Assignment Opperator: Save as a Name</a></li>
+<li class="chapter" data-level="1.3.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-pipe-opperator-link-steps-togehter"><i class="fa fa-check"></i><b>1.3.2</b> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</a></li>
+<li class="chapter" data-level="1.3.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-head-function-print-the-first-few-rows"><i class="fa fa-check"></i><b>1.3.3</b> The <code>head()</code> Function: Print the First Few Rows</a></li>
+<li class="chapter" data-level="1.3.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-names-function-list-the-variable-names"><i class="fa fa-check"></i><b>1.3.4</b> The <code>names()</code> Function: List the Variable Names</a></li>
+<li class="chapter" data-level="1.3.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dim-function-list-the-dimentions"><i class="fa fa-check"></i><b>1.3.5</b> The <code>dim()</code> Function: List the Dimentions</a></li>
+<li class="chapter" data-level="1.3.6" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-tibbleglimpse-function-gives-an-overview-of-variables"><i class="fa fa-check"></i><b>1.3.6</b> The <code>tibble::glimpse()</code> Function: Gives an Overview of Variables</a></li>
+<li class="chapter" data-level="1.3.7" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dplyrselect-function-specify-variables-to-includekeep"><i class="fa fa-check"></i><b>1.3.7</b> The <code>dplyr::select()</code> Function: Specify VARIABLES to include/keep</a></li>
+<li class="chapter" data-level="1.3.8" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dplyrfilter-function-specify-observations-to-includekeep"><i class="fa fa-check"></i><b>1.3.8</b> The <code>dplyr::filter()</code> Function: Specify OBSERVATIONS to include/keep</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#data-wrangling"><i class="fa fa-check"></i><b>1.4</b> DATA WRANGLING</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dplyrmutate-function-create-a-new-variable"><i class="fa fa-check"></i><b>1.4.1</b> The <code>dplyr::mutate()</code> Function: Create a New Variable</a></li>
+<li class="chapter" data-level="1.4.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-factor-function-define-categorical-variables"><i class="fa fa-check"></i><b>1.4.2</b> The <code>factor()</code> Function: Define Categorical Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#creating-new-variables-assignment-0"><i class="fa fa-check"></i><b>1.5</b> CREATING NEW VARIABLES: Assignment 0</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-2-create-a-new-variable-mathquiz-50"><i class="fa fa-check"></i><b>1.5.1</b> Question 2: Create a new variable = <code>mathquiz</code> + 50</a></li>
+<li class="chapter" data-level="1.5.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-3-create-a-new-variable-hr_base-60"><i class="fa fa-check"></i><b>1.5.2</b> Question 3: Create a new variable = <code>Hr_base</code> / 60</a></li>
+<li class="chapter" data-level="1.5.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4a-create-a-new-variable-statquiz-2-then-10"><i class="fa fa-check"></i><b>1.5.3</b> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</a></li>
+<li class="chapter" data-level="1.5.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4b-create-a-new-variable-statquiz-10-then-2"><i class="fa fa-check"></i><b>1.5.4</b> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</a></li>
+<li class="chapter" data-level="1.5.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5a-create-a-new-variable-sum-of-the-3-anxiety-measures"><i class="fa fa-check"></i><b>1.5.5</b> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</a></li>
+<li class="chapter" data-level="1.5.6" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5b-create-a-new-variable-average-of-the-3-heart-rates"><i class="fa fa-check"></i><b>1.5.6</b> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</a></li>
+<li class="chapter" data-level="1.5.7" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-6-create-a-new-variable-statquiz-minus-exp_sqz"><i class="fa fa-check"></i><b>1.5.7</b> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></a></li>
+<li class="chapter" data-level="1.5.8" data-path="preparing-datasets.html"><a href="preparing-datasets.html#putting-it-all-together"><i class="fa fa-check"></i><b>1.5.8</b> Putting it all together</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="distributional-plots.html"><a href="distributional-plots.html"><i class="fa fa-check"></i><b>2</b> Distributional Plots</a></li>
 <li class="chapter" data-level="3" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>3</b> Summary Statistics</a></li>
@@ -171,7 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">Research Design and Analysis I</h1>
 <h3 class="subtitle"><em>Psy 6600 and Educ 6600: Quantitative Methods I</em></h3>
 <h4 class="author"><em>Sarah Schwartz and Tyson Barrett</em></h4>
-<h4 class="date"><em>January 16 2018</em></h4>
+<h4 class="date"><em>January 18 2018</em></h4>
 </div>
 <div id="psy-6600-or-educ-6600" class="section level1 unnumbered">
 <h1>Psy 6600 or Educ 6600</h1>

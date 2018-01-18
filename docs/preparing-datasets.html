@@ -131,19 +131,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="preparing-datasets.html"><a href="preparing-datasets.html"><i class="fa fa-check"></i><b>1</b> Preparing Datasets</a><ul>
-<li class="chapter" data-level="1.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#load-needed-packages"><i class="fa fa-check"></i><b>1.1</b> Load Needed Packages</a></li>
-<li class="chapter" data-level="1.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#read-in-the-data-from-excel-and-store-the-data-as-data"><i class="fa fa-check"></i><b>1.2</b> Read in the Data from Excel and store the data as <code>data</code></a></li>
-<li class="chapter" data-level="1.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#setting-variables-to-factors-and-labeling-values"><i class="fa fa-check"></i><b>1.3</b> Setting variables to factors and labeling values</a></li>
-<li class="chapter" data-level="1.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#creating-new-variables"><i class="fa fa-check"></i><b>1.4</b> Creating new variables</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-2-create-a-new-variable-mathquiz-50"><i class="fa fa-check"></i><b>1.4.1</b> Question 2: Create a new variable = <code>mathquiz</code> + 50</a></li>
-<li class="chapter" data-level="1.4.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-3-create-a-new-variable-hr_base-60"><i class="fa fa-check"></i><b>1.4.2</b> Question 3: Create a new variable = <code>Hr_base</code> / 60</a></li>
-<li class="chapter" data-level="1.4.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4a-create-a-new-variable-statquiz-2-then-10"><i class="fa fa-check"></i><b>1.4.3</b> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</a></li>
-<li class="chapter" data-level="1.4.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4b-create-a-new-variable-statquiz-10-then-2"><i class="fa fa-check"></i><b>1.4.4</b> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</a></li>
-<li class="chapter" data-level="1.4.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5a-create-a-new-variable-sum-of-the-3-anxiety-measures"><i class="fa fa-check"></i><b>1.4.5</b> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</a></li>
-<li class="chapter" data-level="1.4.6" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5b-create-a-new-variable-average-of-the-3-heart-rates"><i class="fa fa-check"></i><b>1.4.6</b> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</a></li>
-<li class="chapter" data-level="1.4.7" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-6-create-a-new-variable-statquiz-minus-exp_sqz"><i class="fa fa-check"></i><b>1.4.7</b> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></a></li>
+<li class="chapter" data-level="1.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#environment-preparation"><i class="fa fa-check"></i><b>1.1</b> ENVIRONMENT PREPARATION</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-library-function-load-a-package"><i class="fa fa-check"></i><b>1.1.1</b> The <code>library()</code> Function: Load a Package</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#putting-it-all-together"><i class="fa fa-check"></i><b>1.5</b> Putting it all together</a></li>
+<li class="chapter" data-level="1.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#data-importing"><i class="fa fa-check"></i><b>1.2</b> DATA IMPORTING</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-readxlread_excel-function-read-in-excel-data-files"><i class="fa fa-check"></i><b>1.2.1</b> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#opperators-and-helpful-functions"><i class="fa fa-check"></i><b>1.3</b> OPPERATORS and HELPFUL FUNCTIONS</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the---assignment-opperator-save-as-a-name"><i class="fa fa-check"></i><b>1.3.1</b> The <code>&lt;-</code> Assignment Opperator: Save as a Name</a></li>
+<li class="chapter" data-level="1.3.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-pipe-opperator-link-steps-togehter"><i class="fa fa-check"></i><b>1.3.2</b> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</a></li>
+<li class="chapter" data-level="1.3.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-head-function-print-the-first-few-rows"><i class="fa fa-check"></i><b>1.3.3</b> The <code>head()</code> Function: Print the First Few Rows</a></li>
+<li class="chapter" data-level="1.3.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-names-function-list-the-variable-names"><i class="fa fa-check"></i><b>1.3.4</b> The <code>names()</code> Function: List the Variable Names</a></li>
+<li class="chapter" data-level="1.3.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dim-function-list-the-dimentions"><i class="fa fa-check"></i><b>1.3.5</b> The <code>dim()</code> Function: List the Dimentions</a></li>
+<li class="chapter" data-level="1.3.6" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-tibbleglimpse-function-gives-an-overview-of-variables"><i class="fa fa-check"></i><b>1.3.6</b> The <code>tibble::glimpse()</code> Function: Gives an Overview of Variables</a></li>
+<li class="chapter" data-level="1.3.7" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dplyrselect-function-specify-variables-to-includekeep"><i class="fa fa-check"></i><b>1.3.7</b> The <code>dplyr::select()</code> Function: Specify VARIABLES to include/keep</a></li>
+<li class="chapter" data-level="1.3.8" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dplyrfilter-function-specify-observations-to-includekeep"><i class="fa fa-check"></i><b>1.3.8</b> The <code>dplyr::filter()</code> Function: Specify OBSERVATIONS to include/keep</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#data-wrangling"><i class="fa fa-check"></i><b>1.4</b> DATA WRANGLING</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-dplyrmutate-function-create-a-new-variable"><i class="fa fa-check"></i><b>1.4.1</b> The <code>dplyr::mutate()</code> Function: Create a New Variable</a></li>
+<li class="chapter" data-level="1.4.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#the-factor-function-define-categorical-variables"><i class="fa fa-check"></i><b>1.4.2</b> The <code>factor()</code> Function: Define Categorical Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#creating-new-variables-assignment-0"><i class="fa fa-check"></i><b>1.5</b> CREATING NEW VARIABLES: Assignment 0</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-2-create-a-new-variable-mathquiz-50"><i class="fa fa-check"></i><b>1.5.1</b> Question 2: Create a new variable = <code>mathquiz</code> + 50</a></li>
+<li class="chapter" data-level="1.5.2" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-3-create-a-new-variable-hr_base-60"><i class="fa fa-check"></i><b>1.5.2</b> Question 3: Create a new variable = <code>Hr_base</code> / 60</a></li>
+<li class="chapter" data-level="1.5.3" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4a-create-a-new-variable-statquiz-2-then-10"><i class="fa fa-check"></i><b>1.5.3</b> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</a></li>
+<li class="chapter" data-level="1.5.4" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-4b-create-a-new-variable-statquiz-10-then-2"><i class="fa fa-check"></i><b>1.5.4</b> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</a></li>
+<li class="chapter" data-level="1.5.5" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5a-create-a-new-variable-sum-of-the-3-anxiety-measures"><i class="fa fa-check"></i><b>1.5.5</b> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</a></li>
+<li class="chapter" data-level="1.5.6" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-5b-create-a-new-variable-average-of-the-3-heart-rates"><i class="fa fa-check"></i><b>1.5.6</b> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</a></li>
+<li class="chapter" data-level="1.5.7" data-path="preparing-datasets.html"><a href="preparing-datasets.html#question-6-create-a-new-variable-statquiz-minus-exp_sqz"><i class="fa fa-check"></i><b>1.5.7</b> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></a></li>
+<li class="chapter" data-level="1.5.8" data-path="preparing-datasets.html"><a href="preparing-datasets.html#putting-it-all-together"><i class="fa fa-check"></i><b>1.5.8</b> Putting it all together</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="distributional-plots.html"><a href="distributional-plots.html"><i class="fa fa-check"></i><b>2</b> Distributional Plots</a></li>
 <li class="chapter" data-level="3" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>3</b> Summary Statistics</a></li>
@@ -169,140 +186,458 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="preparing-datasets" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Preparing Datasets</h1>
-<div id="load-needed-packages" class="section level2">
-<h2><span class="header-section-number">1.1</span> Load Needed Packages</h2>
+<hr />
+<div id="environment-preparation" class="section level2">
+<h2><span class="header-section-number">1.1</span> ENVIRONMENT PREPARATION</h2>
+<div id="the-library-function-load-a-package" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> The <code>library()</code> Function: Load a Package</h3>
 <p>You will need TWO packages:</p>
 <ul>
-<li><code>tidyverse</code> Easily Install and Load the ‘Tidyverse’</li>
+<li><code>tidyverse</code> Easily Install and Load the ‘Tidy universe’ of packages</li>
 <li><code>readxl</code> Read Excel Files</li>
+<li><code>furniture</code> Nice Tables and Row-wise functions (by Tyson)</li>
 </ul>
+<blockquote>
+<p>Make sure the packages are <strong>installed</strong> <em>(Package tab)</em></p>
+</blockquote>
+<p>The function <code>library()</code> checks the package out, or makes it active.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-<span class="kw">library</span>(readxl)</code></pre></div>
+<span class="kw">library</span>(readxl)
+<span class="kw">library</span>(furniture)</code></pre></div>
+<hr />
 </div>
-<div id="read-in-the-data-from-excel-and-store-the-data-as-data" class="section level2">
-<h2><span class="header-section-number">1.2</span> Read in the Data from Excel and store the data as <code>data</code></h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>)</code></pre></div>
-<p>Print out the dataset</p>
+</div>
+<div id="data-importing" class="section level2">
+<h2><span class="header-section-number">1.2</span> DATA IMPORTING</h2>
+<div id="the-readxlread_excel-function-read-in-excel-data-files" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</h3>
+<blockquote>
+<p>Make sure the <strong>dataset</strong> is saved in the same <em>folder</em> as this file</p>
+</blockquote>
+<blockquote>
+<p>Make sure the that <em>folder</em> is the <strong>working directory</strong></p>
+</blockquote>
+<ul>
+<li>Now we are ready to open the data with the <code>read_excel()</code> function from the <code>readxl</code> package
+<ul>
+<li><code>readxl::read_excel()</code> the double collon specifies the <code>package::function()</code></li>
+<li>the only thing required inside the <code>()</code> is the quoted name of the Excel file</li>
+<li>Make sure it is stored in the .Rmd’s folder</li>
+<li>Make sure to include the file’s extension <em>(.xls)</em></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>NOTE: a <code>tibble</code> is basically just a “table” of data, the way the tidy-verse represents data sets.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>)</code></pre></div>
+<pre><code># A tibble: 100 x 18
+   Sub_num Gender Major Reason Exp_cond Coffee Num_cups Phobia Prevmath
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+ 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+ 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+ 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+ 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+ 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
+ 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
+10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
+# ... with 90 more rows, and 9 more variables: Mathquiz &lt;dbl&gt;, Statquiz
+#   &lt;dbl&gt;, Exp_sqz &lt;dbl&gt;, Hr_base &lt;dbl&gt;, Hr_pre &lt;dbl&gt;, Hr_post &lt;dbl&gt;,
+#   Anx_base &lt;dbl&gt;, Anx_pre &lt;dbl&gt;, Anx_post &lt;dbl&gt;</code></pre>
+<hr />
+</div>
+</div>
+<div id="opperators-and-helpful-functions" class="section level2">
+<h2><span class="header-section-number">1.3</span> OPPERATORS and HELPFUL FUNCTIONS</h2>
+<div id="the---assignment-opperator-save-as-a-name" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> The <code>&lt;-</code> Assignment Opperator: Save as a Name</h3>
+<ul>
+<li>the <code>&lt;-</code> combination of symbols makes <strong>assignments</strong></li>
+<li>tells <strong>R</strong> to store the dataset as the name it points to</li>
+<li>this lets us use the dataset later on in another step</li>
+</ul>
+<blockquote>
+<p>NOTE: no output is produced when you make an assignment.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>) </code></pre></div>
+<ul>
+<li>Print out the dataset by just typing and running the name you assined it</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data</span></code></pre></div>
+<pre><code># A tibble: 100 x 18
+   Sub_num Gender Major Reason Exp_cond Coffee Num_cups Phobia Prevmath
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+ 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+ 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+ 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+ 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+ 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
+ 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
+10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
+# ... with 90 more rows, and 9 more variables: Mathquiz &lt;dbl&gt;, Statquiz
+#   &lt;dbl&gt;, Exp_sqz &lt;dbl&gt;, Hr_base &lt;dbl&gt;, Hr_pre &lt;dbl&gt;, Hr_post &lt;dbl&gt;,
+#   Anx_base &lt;dbl&gt;, Anx_pre &lt;dbl&gt;, Anx_post &lt;dbl&gt;</code></pre>
 <blockquote>
 <p>NOTE: The pound or hashtag symbol at the front of a line within an R code chunk designates what follows as a comment and does not try to run the code.</p>
 </blockquote>
-<p>List out the variable names</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># variables names</span>
-<span class="kw">names</span>(data)</code></pre></div>
-<pre><code> [1] &quot;Sub_num&quot;  &quot;Gender&quot;   &quot;Major&quot;    &quot;Reason&quot;   &quot;Exp_cond&quot; &quot;Coffee&quot;  
- [7] &quot;Num_cups&quot; &quot;Phobia&quot;   &quot;Prevmath&quot; &quot;Mathquiz&quot; &quot;Statquiz&quot; &quot;Exp_sqz&quot; 
-[13] &quot;Hr_base&quot;  &quot;Hr_pre&quot;   &quot;Hr_post&quot;  &quot;Anx_base&quot; &quot;Anx_pre&quot;  &quot;Anx_post&quot;</code></pre>
-<p>How many row (participants) and columns (variables)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># data frame&#39;s dimentions</span>
-<span class="kw">dim</span>(data)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data</span></code></pre></div>
+</div>
+<div id="the-pipe-opperator-link-steps-togehter" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</h3>
+<p>This special set of symbols <em>(no spaces included)</em> signals R to feed what preceeds it <strong>into</strong> what follows it. Its a simple idea that makes code writting in R much easier.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename_all</span>(tolower)              <span class="co"># convert variable names to lower case</span>
+
+data</code></pre></div>
+<pre><code># A tibble: 100 x 18
+   sub_num gender major reason exp_cond coffee num_cups phobia prevmath
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+ 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+ 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+ 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+ 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+ 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
+ 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
+10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
+# ... with 90 more rows, and 9 more variables: mathquiz &lt;dbl&gt;, statquiz
+#   &lt;dbl&gt;, exp_sqz &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;,
+#   anx_base &lt;dbl&gt;, anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;</code></pre>
+</div>
+<div id="the-head-function-print-the-first-few-rows" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> The <code>head()</code> Function: Print the First Few Rows</h3>
+<p>See the first few rows of a dataset by using the <code>head()</code> function. Since it is part for <strong>base R</strong>, I never include the package, but if we did, it would be <code>utils::head()</code>. The default is to print the first SIX rows.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(data)</code></pre></div>
+<pre><code># A tibble: 6 x 18
+  sub_num gender major reason exp_cond coffee num_cups phobia prevmath
+    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+# ... with 9 more variables: mathquiz &lt;dbl&gt;, statquiz &lt;dbl&gt;, exp_sqz
+#   &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;, anx_base &lt;dbl&gt;,
+#   anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;</code></pre>
+<p>Inside the <code>head()</code> function, you can change the default of <code>n = 6</code> rows. You can learn about this and other options in the <strong>Help</strong> tab <em>search for ‘head’</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">utils<span class="op">::</span><span class="kw">head</span>(data, <span class="dt">n =</span> <span class="dv">3</span>)</code></pre></div>
+<pre><code># A tibble: 3 x 18
+  sub_num gender major reason exp_cond coffee num_cups phobia prevmath
+    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+1    1.00   1.00  1.00   3.00     1.00   1.00        0   1.00     3.00
+2    2.00   1.00  1.00   2.00     1.00   0           0   1.00     4.00
+3    3.00   1.00  1.00   1.00     1.00   0           0   4.00     1.00
+# ... with 9 more variables: mathquiz &lt;dbl&gt;, statquiz &lt;dbl&gt;, exp_sqz
+#   &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;, anx_base &lt;dbl&gt;,
+#   anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(data, <span class="dt">n =</span> <span class="dv">11</span>)</code></pre></div>
+<pre><code># A tibble: 11 x 18
+   sub_num gender major reason exp_cond coffee num_cups phobia prevmath
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+ 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+ 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+ 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+ 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+ 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
+ 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
+10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
+11   11.0    1.00  1.00   1.00     2.00   0        1.00   5.00     1.00
+# ... with 9 more variables: mathquiz &lt;dbl&gt;, statquiz &lt;dbl&gt;, exp_sqz
+#   &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;, anx_base &lt;dbl&gt;,
+#   anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;</code></pre>
+</div>
+<div id="the-names-function-list-the-variable-names" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> The <code>names()</code> Function: List the Variable Names</h3>
+<p>Another helpful function is <code>names()</code> which lists out the names of the <strong>variables</strong>. This is nice to use to copy-paste later on, since…in R code chunks:</p>
+<ul>
+<li>Spelling matters</li>
+<li>Capitalization matters</li>
+<li>Spacing does NOT matter: one space is the same as 100 spaces</li>
+<li>Line enters are ignored</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(data)</code></pre></div>
+<pre><code> [1] &quot;sub_num&quot;  &quot;gender&quot;   &quot;major&quot;    &quot;reason&quot;   &quot;exp_cond&quot; &quot;coffee&quot;  
+ [7] &quot;num_cups&quot; &quot;phobia&quot;   &quot;prevmath&quot; &quot;mathquiz&quot; &quot;statquiz&quot; &quot;exp_sqz&quot; 
+[13] &quot;hr_base&quot;  &quot;hr_pre&quot;   &quot;hr_post&quot;  &quot;anx_base&quot; &quot;anx_pre&quot;  &quot;anx_post&quot;</code></pre>
+</div>
+<div id="the-dim-function-list-the-dimentions" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> The <code>dim()</code> Function: List the Dimentions</h3>
+<p>See how many rows <em>(observation)</em> and columns <em>(variables)</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(data)</code></pre></div>
 <pre><code>[1] 100  18</code></pre>
 </div>
-<div id="setting-variables-to-factors-and-labeling-values" class="section level2">
-<h2><span class="header-section-number">1.3</span> Setting variables to factors and labeling values</h2>
+<div id="the-tibbleglimpse-function-gives-an-overview-of-variables" class="section level3">
+<h3><span class="header-section-number">1.3.6</span> The <code>tibble::glimpse()</code> Function: Gives an Overview of Variables</h3>
+<p>This is a handy function that gives:</p>
+<ul>
+<li>Dimentions (observations and variables)</li>
+<li>Names of variables</li>
+<li>Each variables type, which could be…</li>
+<li><code>dbl</code> = numeric: double precision floating point numbers</li>
+<li><code>fct</code> = factor: categorical, either nominal or ordinal</li>
+<li><code>chr</code> = character: text</li>
+<li>Lists the first few entries</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tibble<span class="op">::</span><span class="kw">glimpse</span>(data)</code></pre></div>
+<pre><code>Observations: 100
+Variables: 18
+$ sub_num  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
+$ gender   &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ major    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ reason   &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1,...
+$ exp_cond &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 4,...
+$ coffee   &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1,...
+$ num_cups &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0, 3,...
+$ phobia   &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, 4, 5...
+$ prevmath &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1,...
+$ mathquiz &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 18, N...
+$ statquiz &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8, 7,...
+$ exp_sqz  &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1, 7, ...
+$ hr_base  &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 73, 7...
+$ hr_pre   &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 76, 8...
+$ hr_post  &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78, 7...
+$ anx_base &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19, 1...
+$ anx_pre  &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23, 2...
+$ anx_post &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, 2...</code></pre>
+</div>
+<div id="the-dplyrselect-function-specify-variables-to-includekeep" class="section level3">
+<h3><span class="header-section-number">1.3.7</span> The <code>dplyr::select()</code> Function: Specify VARIABLES to include/keep</h3>
+<p>This function chooses which <strong>variables</strong> to include, excluding all others not given between the <code>()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, gender, major, reason, exp_cond, coffee)</code></pre></div>
+<pre><code># A tibble: 100 x 6
+   sub_num gender major reason exp_cond coffee
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00
+ 2    2.00   1.00  1.00   2.00     1.00   0   
+ 3    3.00   1.00  1.00   1.00     1.00   0   
+ 4    4.00   1.00  1.00   1.00     1.00   0   
+ 5    5.00   1.00  1.00   1.00     1.00   0   
+ 6    6.00   1.00  1.00   1.00     2.00   1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0   
+ 8    8.00   1.00  1.00   3.00     2.00   1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0   
+10   10.0    1.00  1.00   1.00     2.00   1.00
+# ... with 90 more rows</code></pre>
+</div>
+<div id="the-dplyrfilter-function-specify-observations-to-includekeep" class="section level3">
+<h3><span class="header-section-number">1.3.8</span> The <code>dplyr::filter()</code> Function: Specify OBSERVATIONS to include/keep</h3>
+<p>This function chooses which <strong>observations</strong> to include, excluding all others not given between the <code>()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code># A tibble: 57 x 18
+   sub_num gender major reason exp_cond coffee num_cups phobia prevmath
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+ 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+ 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+ 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+ 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+ 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
+ 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
+10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
+# ... with 47 more rows, and 9 more variables: mathquiz &lt;dbl&gt;, statquiz
+#   &lt;dbl&gt;, exp_sqz &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;,
+#   anx_base &lt;dbl&gt;, anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;</code></pre>
+<p>You can combine steps to multiple things. The steps are completed in the order we read: top to bottom, left to right.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, gender, major, reason, exp_cond, coffee) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code># A tibble: 57 x 6
+   sub_num gender major reason exp_cond coffee
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00
+ 2    2.00   1.00  1.00   2.00     1.00   0   
+ 3    3.00   1.00  1.00   1.00     1.00   0   
+ 4    4.00   1.00  1.00   1.00     1.00   0   
+ 5    5.00   1.00  1.00   1.00     1.00   0   
+ 6    6.00   1.00  1.00   1.00     2.00   1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0   
+ 8    8.00   1.00  1.00   3.00     2.00   1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0   
+10   10.0    1.00  1.00   1.00     2.00   1.00
+# ... with 47 more rows</code></pre>
+<hr />
+</div>
+</div>
+<div id="data-wrangling" class="section level2">
+<h2><span class="header-section-number">1.4</span> DATA WRANGLING</h2>
+<div id="the-dplyrmutate-function-create-a-new-variable" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> The <code>dplyr::mutate()</code> Function: Create a New Variable</h3>
+<p>Just like ratiation may cause a fish to grow an additional eye (a mutation), the <code>mutate()</code> function grows a new variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">test =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, gender, mathquiz, statquiz, test) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">head</span>()</code></pre></div>
+<pre><code># A tibble: 6 x 5
+  sub_num gender mathquiz statquiz  test
+    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+1    1.00   1.00     43.0     6.00  1.00
+2    2.00   1.00     49.0     9.00  1.00
+3    3.00   1.00     26.0     8.00  1.00
+4    4.00   1.00     29.0     7.00  1.00
+5    5.00   1.00     31.0     6.00  1.00
+6    6.00   1.00     20.0     7.00  1.00</code></pre>
+</div>
+<div id="the-factor-function-define-categorical-variables" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> The <code>factor()</code> Function: Define Categorical Variables</h3>
+<p>We will be providing this funciton with three pieces of information:</p>
+<ol class="example" style="list-style-type: decimal">
+<li>The name of an existing variable</li>
+<li>A <em>concatinated</em> set of numerical <code>levels</code></li>
+<li>A <em>concatinated</em> set of textual <code>labels</code></li>
+</ol>
+<blockquote>
+<p>You must include the SAME number of levels and labels. The ORDER in the sets designates how the labels will be applied to the levels.</p>
+</blockquote>
+<p>Here is how it looks to create ONE new factor. Notice I added the letter <code>F</code> to designate that this new variable is a factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">genderF =</span> <span class="kw">factor</span>(gender,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))) </code></pre></div>
+<pre><code># A tibble: 100 x 19
+   sub_num gender major reason exp_cond coffee num_cups phobia prevmath
+     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
+ 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
+ 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
+ 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
+ 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
+ 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
+ 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
+ 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
+ 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
+10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
+# ... with 90 more rows, and 10 more variables: mathquiz &lt;dbl&gt;, statquiz
+#   &lt;dbl&gt;, exp_sqz &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;,
+#   anx_base &lt;dbl&gt;, anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;, genderF &lt;fct&gt;</code></pre>
+<p>Notice that the dataset the is printed includes our new variable at the <strong>END</strong>.</p>
+<p>You can use the <code>pipe</code> to chain several mutate steps together. I have also assigned the resulting dataset with the five new factor variables at the end to a new name, <code>dataF</code>. Since this code chunk includes a single assingment, there is no output created.</p>
+<blockquote>
+<p>Remember to include a PIPE between all your steps, but not at the end!</p>
+</blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataF &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">GenderF =</span> Gender <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">MajorF =</span> Major <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,<span class="dv">5</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Psychology&quot;</span>,
-                                    <span class="st">&quot;Premed&quot;</span>,
-                                    <span class="st">&quot;Biology&quot;</span>,
-                                    <span class="st">&quot;Sociology&quot;</span>,
-                                    <span class="st">&quot;Economics&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">ReasonF =</span> Reason <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Program requirement&quot;</span>,
-                                    <span class="st">&quot;Personal interest&quot;</span>,
-                                    <span class="st">&quot;Advisor recommendation&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Exp_condF =</span> Exp_cond <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Easy&quot;</span>,
-                                    <span class="st">&quot;Moderate&quot;</span>,
-                                    <span class="st">&quot;Difficult&quot;</span>,
-                                    <span class="st">&quot;Impossible&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">CoffeeF =</span> Coffee <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not a regular coffee drinker&quot;</span>,
-                                    <span class="st">&quot;Regularly drinks coffee&quot;</span>))) </code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">genderF =</span> <span class="kw">factor</span>(gender, 
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, 
+                                            <span class="st">&quot;Male&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">majorF =</span> <span class="kw">factor</span>(major, 
+                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,<span class="dv">5</span>),
+                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Psychology&quot;</span>,
+                                           <span class="st">&quot;Premed&quot;</span>,
+                                           <span class="st">&quot;Biology&quot;</span>,
+                                           <span class="st">&quot;Sociology&quot;</span>,
+                                           <span class="st">&quot;Economics&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">reasonF =</span> <span class="kw">factor</span>(reason,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Program requirement&quot;</span>,
+                                            <span class="st">&quot;Personal interest&quot;</span>,
+                                            <span class="st">&quot;Advisor recommendation&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">exp_condF =</span> <span class="kw">factor</span>(exp_cond,
+                                   <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),
+                                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Easy&quot;</span>,
+                                              <span class="st">&quot;Moderate&quot;</span>,
+                                              <span class="st">&quot;Difficult&quot;</span>,
+                                              <span class="st">&quot;Impossible&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">coffeeF =</span> <span class="kw">factor</span>(coffee,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not a regular coffee drinker&quot;</span>,
+                                            <span class="st">&quot;Regularly drinks coffee&quot;</span>))) </code></pre></div>
+<p>See how the new variables are added at the end.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(data)</code></pre></div>
 <pre><code>Observations: 100
 Variables: 18
-$ Sub_num  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
-$ Gender   &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-$ Major    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-$ Reason   &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1,...
-$ Exp_cond &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 4,...
-$ Coffee   &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1,...
-$ Num_cups &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0, 3,...
-$ Phobia   &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, 4, 5...
-$ Prevmath &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1,...
-$ Mathquiz &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 18, N...
-$ Statquiz &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8, 7,...
-$ Exp_sqz  &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1, 7, ...
-$ Hr_base  &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 73, 7...
-$ Hr_pre   &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 76, 8...
-$ Hr_post  &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78, 7...
-$ Anx_base &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19, 1...
-$ Anx_pre  &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23, 2...
-$ Anx_post &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, 2...</code></pre>
+$ sub_num  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
+$ gender   &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ major    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ reason   &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1,...
+$ exp_cond &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 4,...
+$ coffee   &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1,...
+$ num_cups &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0, 3,...
+$ phobia   &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, 4, 5...
+$ prevmath &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1,...
+$ mathquiz &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 18, N...
+$ statquiz &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8, 7,...
+$ exp_sqz  &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1, 7, ...
+$ hr_base  &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 73, 7...
+$ hr_pre   &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 76, 8...
+$ hr_post  &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78, 7...
+$ anx_base &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19, 1...
+$ anx_pre  &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23, 2...
+$ anx_post &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, 2...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(dataF)</code></pre></div>
 <pre><code>Observations: 100
 Variables: 23
-$ Sub_num   &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1...
-$ Gender    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-$ Major     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-$ Reason    &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1...
-$ Exp_cond  &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 4...
-$ Coffee    &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1...
-$ Num_cups  &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0, 3...
-$ Phobia    &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, 4, ...
-$ Prevmath  &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1...
-$ Mathquiz  &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 18, ...
-$ Statquiz  &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8, 7...
-$ Exp_sqz   &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1, 7,...
-$ Hr_base   &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 73, ...
-$ Hr_pre    &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 76, ...
-$ Hr_post   &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78, ...
-$ Anx_base  &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19, ...
-$ Anx_pre   &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23, ...
-$ Anx_post  &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, ...
-$ GenderF   &lt;fctr&gt; Female, Female, Female, Female, Female, Female, Fem...
-$ MajorF    &lt;fctr&gt; Psychology, Psychology, Psychology, Psychology, Psy...
-$ ReasonF   &lt;fctr&gt; Advisor recommendation, Personal interest, Program ...
-$ Exp_condF &lt;fctr&gt; Easy, Easy, Easy, Easy, Easy, Moderate, Moderate, M...
-$ CoffeeF   &lt;fctr&gt; Regularly drinks coffee, Not a regular coffee drink...</code></pre>
+$ sub_num   &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1...
+$ gender    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
+$ major     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
+$ reason    &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1...
+$ exp_cond  &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4, 4...
+$ coffee    &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1...
+$ num_cups  &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0, 3...
+$ phobia    &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, 4, ...
+$ prevmath  &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1...
+$ mathquiz  &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 18, ...
+$ statquiz  &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8, 7...
+$ exp_sqz   &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1, 7,...
+$ hr_base   &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 73, ...
+$ hr_pre    &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 76, ...
+$ hr_post   &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78, ...
+$ anx_base  &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19, ...
+$ anx_pre   &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23, ...
+$ anx_post  &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, ...
+$ genderF   &lt;fct&gt; Female, Female, Female, Female, Female, Female, Fema...
+$ majorF    &lt;fct&gt; Psychology, Psychology, Psychology, Psychology, Psyc...
+$ reasonF   &lt;fct&gt; Advisor recommendation, Personal interest, Program r...
+$ exp_condF &lt;fct&gt; Easy, Easy, Easy, Easy, Easy, Moderate, Moderate, Mo...
+$ coffeeF   &lt;fct&gt; Regularly drinks coffee, Not a regular coffee drinke...</code></pre>
+<hr />
 </div>
-<div id="creating-new-variables" class="section level2">
-<h2><span class="header-section-number">1.4</span> Creating new variables</h2>
+</div>
+<div id="creating-new-variables-assignment-0" class="section level2">
+<h2><span class="header-section-number">1.5</span> CREATING NEW VARIABLES: Assignment 0</h2>
 <div id="question-2-create-a-new-variable-mathquiz-50" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> Question 2: Create a new variable = <code>mathquiz</code> + 50</h3>
+<h3><span class="header-section-number">1.5.1</span> Question 2: Create a new variable = <code>mathquiz</code> + 50</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data2 &lt;-<span class="st"> </span>dataF <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Mathquiz_p50 =</span> Mathquiz <span class="op">+</span><span class="st"> </span><span class="dv">50</span>) </code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">mathquiz_p50 =</span> mathquiz <span class="op">+</span><span class="st"> </span><span class="dv">50</span>) </code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data2 <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sub_num, Mathquiz, Mathquiz_p50) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>()</code></pre></div>
-<pre><code># A tibble: 6 x 3
-  Sub_num Mathquiz Mathquiz_p50
-    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
-1    1.00     43.0         93.0
-2    2.00     49.0         99.0
-3    3.00     26.0         76.0
-4    4.00     29.0         79.0
-5    5.00     31.0         81.0
-6    6.00     20.0         70.0</code></pre>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, mathquiz, mathquiz_p50)</code></pre></div>
+<pre><code># A tibble: 100 x 3
+   sub_num mathquiz mathquiz_p50
+     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
+ 1    1.00     43.0         93.0
+ 2    2.00     49.0         99.0
+ 3    3.00     26.0         76.0
+ 4    4.00     29.0         79.0
+ 5    5.00     31.0         81.0
+ 6    6.00     20.0         70.0
+ 7    7.00     13.0         63.0
+ 8    8.00     23.0         73.0
+ 9    9.00     38.0         88.0
+10   10.0      NA           NA  
+# ... with 90 more rows</code></pre>
 </div>
 <div id="question-3-create-a-new-variable-hr_base-60" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> Question 3: Create a new variable = <code>Hr_base</code> / 60</h3>
+<h3><span class="header-section-number">1.5.2</span> Question 3: Create a new variable = <code>Hr_base</code> / 60</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data3 &lt;-<span class="st"> </span>data2 <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Hr_base_bpm =</span> Hr_base <span class="op">/</span><span class="st"> </span><span class="dv">60</span>) </code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_base_bps =</span> hr_base <span class="op">/</span><span class="st"> </span><span class="dv">60</span>) </code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data3 <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sub_num, Hr_base, Hr_base_bpm) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>(<span class="dt">n =</span> <span class="dv">10</span>)</code></pre></div>
-<pre><code># A tibble: 10 x 3
-   Sub_num Hr_base Hr_base_bpm
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, hr_base, hr_base_bps) </code></pre></div>
+<pre><code># A tibble: 100 x 3
+   sub_num hr_base hr_base_bps
      &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
  1    1.00    71.0        1.18
  2    2.00    73.0        1.22
@@ -313,136 +648,183 @@ $ CoffeeF   &lt;fctr&gt; Regularly drinks coffee, Not a regular coffee drink...<
  7    7.00    71.0        1.18
  8    8.00    77.0        1.28
  9    9.00    73.0        1.22
-10   10.0     78.0        1.30</code></pre>
+10   10.0     78.0        1.30
+# ... with 90 more rows</code></pre>
 </div>
 <div id="question-4a-create-a-new-variable-statquiz-2-then-10" class="section level3">
-<h3><span class="header-section-number">1.4.3</span> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</h3>
+<h3><span class="header-section-number">1.5.3</span> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data4a &lt;-<span class="st"> </span>data3 <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Statquiz_4a =</span> (Statquiz <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span> )</code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statquiz_4a =</span> (statquiz <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span> )</code></pre></div>
 </div>
 <div id="question-4b-create-a-new-variable-statquiz-10-then-2" class="section level3">
-<h3><span class="header-section-number">1.4.4</span> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</h3>
+<h3><span class="header-section-number">1.5.4</span> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data4b &lt;-<span class="st"> </span>data4a <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Statquiz_4b =</span> (Statquiz <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> )</code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statquiz_4b =</span> (statquiz <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> )</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data4b <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sub_num, Statquiz, Statquiz_4a, Statquiz_4b) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>()</code></pre></div>
-<pre><code># A tibble: 6 x 4
-  Sub_num Statquiz Statquiz_4a Statquiz_4b
-    &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-1    1.00     6.00        80.0        62.0
-2    2.00     9.00       110          92.0
-3    3.00     8.00       100          82.0
-4    4.00     7.00        90.0        72.0
-5    5.00     6.00        80.0        62.0
-6    6.00     7.00        90.0        72.0</code></pre>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, statquiz, statquiz_4a, statquiz_4b) </code></pre></div>
+<pre><code># A tibble: 100 x 4
+   sub_num statquiz statquiz_4a statquiz_4b
+     &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+ 1    1.00     6.00        80.0        62.0
+ 2    2.00     9.00       110          92.0
+ 3    3.00     8.00       100          82.0
+ 4    4.00     7.00        90.0        72.0
+ 5    5.00     6.00        80.0        62.0
+ 6    6.00     7.00        90.0        72.0
+ 7    7.00     3.00        50.0        32.0
+ 8    8.00     7.00        90.0        72.0
+ 9    9.00     8.00       100          82.0
+10   10.0      7.00        90.0        72.0
+# ... with 90 more rows</code></pre>
 </div>
 <div id="question-5a-create-a-new-variable-sum-of-the-3-anxiety-measures" class="section level3">
-<h3><span class="header-section-number">1.4.5</span> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</h3>
+<h3><span class="header-section-number">1.5.5</span> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</h3>
+<p>Here are three ways you may try to find the sum. The middle way does not perform the action we want. The first way works fine, unless there is some missing data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data5a &lt;-<span class="st"> </span>data4b <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Anx_plus =</span> Anx_base <span class="op">+</span><span class="st"> </span>Anx_pre <span class="op">+</span><span class="st"> </span>Anx_post) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Anx_sum1 =</span> <span class="kw">sum</span>(Anx_base, Anx_pre, Anx_post)) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rowwise</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Anx_sum =</span> <span class="kw">sum</span>(<span class="kw">c</span>(Anx_base, Anx_pre, Anx_post))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">ungroup</span>()</code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_plus    =</span>         anx_base <span class="op">+</span><span class="st"> </span>anx_pre <span class="op">+</span><span class="st"> </span>anx_post)  <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># works, missing??</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_sum     =</span>     <span class="kw">sum</span>(anx_base,  anx_pre,  anx_post)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># does NOT work</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_rowsums =</span> <span class="kw">rowsums</span>(anx_base,  anx_pre,  anx_post))      <span class="co"># best way</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data5a <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sub_num, 
-                Anx_base, Anx_pre, Anx_post, 
-                Anx_plus, Anx_sum1, Anx_sum) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>()</code></pre></div>
-<pre><code># A tibble: 6 x 7
-  Sub_num Anx_base Anx_pre Anx_post Anx_plus Anx_sum1 Anx_sum
-    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
-1    1.00     17.0    22.0     20.0     59.0     5741    59.0
-2    2.00     17.0    19.0     16.0     52.0     5741    52.0
-3    3.00     19.0    14.0     15.0     48.0     5741    48.0
-4    4.00     19.0    13.0     16.0     48.0     5741    48.0
-5    5.00     26.0    30.0     25.0     81.0     5741    81.0
-6    6.00     12.0    15.0     19.0     46.0     5741    46.0</code></pre>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, 
+                anx_base, anx_pre, anx_post, 
+                anx_plus, anx_sum, anx_rowsums) </code></pre></div>
+<pre><code># A tibble: 100 x 7
+   sub_num anx_base anx_pre anx_post anx_plus anx_sum anx_rowsums
+     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
+ 1    1.00     17.0    22.0     20.0     59.0    5741        59.0
+ 2    2.00     17.0    19.0     16.0     52.0    5741        52.0
+ 3    3.00     19.0    14.0     15.0     48.0    5741        48.0
+ 4    4.00     19.0    13.0     16.0     48.0    5741        48.0
+ 5    5.00     26.0    30.0     25.0     81.0    5741        81.0
+ 6    6.00     12.0    15.0     19.0     46.0    5741        46.0
+ 7    7.00     12.0    16.0     17.0     45.0    5741        45.0
+ 8    8.00     17.0    19.0     22.0     58.0    5741        58.0
+ 9    9.00     20.0    14.0     17.0     51.0    5741        51.0
+10   10.0      20.0    24.0     19.0     63.0    5741        63.0
+# ... with 90 more rows</code></pre>
 
 </div>
 <div id="question-5b-create-a-new-variable-average-of-the-3-heart-rates" class="section level3">
-<h3><span class="header-section-number">1.4.6</span> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</h3>
+<h3><span class="header-section-number">1.5.6</span> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data5b &lt;-<span class="st"> </span>data5a <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Hr_avg =</span> (Hr_base <span class="op">+</span><span class="st"> </span>Hr_pre <span class="op">+</span><span class="st"> </span>Hr_post)<span class="op">/</span><span class="dv">3</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="co"># dplyr::mutate(Hr_mean1 = mean(Hr_base, Hr_pre, Hr_post, na.rm = TRUE)) %&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rowwise</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Hr_mean =</span> <span class="kw">mean</span>(<span class="kw">c</span>(Hr_base, Hr_pre, Hr_post))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">ungroup</span>()</code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_avg      =</span>         (hr_base <span class="op">+</span><span class="st"> </span>hr_pre <span class="op">+</span><span class="st"> </span>hr_post)<span class="op">/</span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># works,no missings</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_rowmeans =</span> <span class="kw">rowmeans</span>(hr_base,  hr_pre,  hr_post)) <span class="co"># always works</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data5b <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sub_num, 
-                Hr_base, Hr_pre, Hr_post, 
-                Hr_avg,  Hr_mean) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>()</code></pre></div>
-<pre><code># A tibble: 6 x 6
-  Sub_num Hr_base Hr_pre Hr_post Hr_avg Hr_mean
-    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-1    1.00    71.0   68.0    65.0   68.0    68.0
-2    2.00    73.0   75.0    68.0   72.0    72.0
-3    3.00    69.0   76.0    72.0   72.3    72.3
-4    4.00    72.0   73.0    78.0   74.3    74.3
-5    5.00    71.0   83.0    74.0   76.0    76.0
-6    6.00    70.0   71.0    76.0   72.3    72.3</code></pre>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, 
+                hr_base, hr_pre, hr_post, 
+                hr_avg,  hr_rowmeans) </code></pre></div>
+<pre><code># A tibble: 100 x 6
+   sub_num hr_base hr_pre hr_post hr_avg hr_rowmeans
+     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+ 1    1.00    71.0   68.0    65.0   68.0        68.0
+ 2    2.00    73.0   75.0    68.0   72.0        72.0
+ 3    3.00    69.0   76.0    72.0   72.3        72.3
+ 4    4.00    72.0   73.0    78.0   74.3        74.3
+ 5    5.00    71.0   83.0    74.0   76.0        76.0
+ 6    6.00    70.0   71.0    76.0   72.3        72.3
+ 7    7.00    71.0   70.0    66.0   69.0        69.0
+ 8    8.00    77.0   87.0    84.0   82.7        82.7
+ 9    9.00    73.0   72.0    67.0   70.7        70.7
+10   10.0     78.0   76.0    74.0   76.0        76.0
+# ... with 90 more rows</code></pre>
 
 </div>
 <div id="question-6-create-a-new-variable-statquiz-minus-exp_sqz" class="section level3">
-<h3><span class="header-section-number">1.4.7</span> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></h3>
+<h3><span class="header-section-number">1.5.7</span> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data6 &lt;-<span class="st"> </span>data5b <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">StatDiff =</span> Statquiz <span class="op">-</span><span class="st"> </span>Exp_sqz)</code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statDiff =</span> statquiz <span class="op">-</span><span class="st"> </span>exp_sqz)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data6 <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Sub_num, Exp_cond, Exp_cond,
-                Statquiz, Exp_sqz, StatDiff) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>()</code></pre></div>
-<pre><code># A tibble: 6 x 5
-  Sub_num Exp_cond Statquiz Exp_sqz StatDiff
-    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-1    1.00     1.00     6.00    7.00    -1.00
-2    2.00     1.00     9.00   11.0     -2.00
-3    3.00     1.00     8.00    8.00     0   
-4    4.00     1.00     7.00    8.00    -1.00
-5    5.00     1.00     6.00    6.00     0   
-6    6.00     2.00     7.00    6.00     1.00</code></pre>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(sub_num, exp_cond, exp_condF,
+                statquiz, exp_sqz, statDiff) </code></pre></div>
+<pre><code># A tibble: 100 x 6
+   sub_num exp_cond exp_condF statquiz exp_sqz statDiff
+     &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+ 1    1.00     1.00 Easy          6.00    7.00    -1.00
+ 2    2.00     1.00 Easy          9.00   11.0     -2.00
+ 3    3.00     1.00 Easy          8.00    8.00     0   
+ 4    4.00     1.00 Easy          7.00    8.00    -1.00
+ 5    5.00     1.00 Easy          6.00    6.00     0   
+ 6    6.00     2.00 Moderate      7.00    6.00     1.00
+ 7    7.00     2.00 Moderate      3.00    4.00    -1.00
+ 8    8.00     2.00 Moderate      7.00    7.00     0   
+ 9    9.00     2.00 Moderate      8.00    7.00     1.00
+10   10.0      2.00 Moderate      7.00    6.00     1.00
+# ... with 90 more rows</code></pre>
 
 </div>
-</div>
-<div id="putting-it-all-together" class="section level2">
-<h2><span class="header-section-number">1.5</span> Putting it all together</h2>
+<div id="putting-it-all-together" class="section level3">
+<h3><span class="header-section-number">1.5.8</span> Putting it all together</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">GenderF =</span> Gender <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">MajorF =</span> Major <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,<span class="dv">5</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Psychology&quot;</span>,
-                                    <span class="st">&quot;Premed&quot;</span>,
-                                    <span class="st">&quot;Biology&quot;</span>,
-                                    <span class="st">&quot;Sociology&quot;</span>,
-                                    <span class="st">&quot;Economics&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">ReasonF =</span> Reason <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Program requirement&quot;</span>,
-                                    <span class="st">&quot;Personal interest&quot;</span>,
-                                    <span class="st">&quot;Advisor recommendation&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Exp_condF =</span> Exp_cond <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Easy&quot;</span>,
-                                    <span class="st">&quot;Moderate&quot;</span>,
-                                    <span class="st">&quot;Difficult&quot;</span>,
-                                    <span class="st">&quot;Impossible&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">CoffeeF =</span> Coffee <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                  </span><span class="kw">factor</span>(<span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),
-                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not a regular coffee drinker&quot;</span>,
-                                    <span class="st">&quot;Regularly drinks coffee&quot;</span>)))  <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Mathquiz_p50 =</span> Mathquiz <span class="op">+</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Hr_base_bpm =</span> Hr_base <span class="op">/</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Statquiz_4a =</span> (Statquiz <span class="op">+</span><span class="st">  </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Statquiz_4b =</span> (Statquiz <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> ) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rowwise</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Anx_sum =</span> <span class="kw">sum</span>(<span class="kw">c</span>(Anx_base, Anx_pre, Anx_post), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Hr_mean =</span> <span class="kw">mean</span>(<span class="kw">c</span>(Hr_base, Hr_pre, Hr_post), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st">  </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">StatDiff =</span> Statquiz <span class="op">-</span><span class="st"> </span>Exp_sqz)</code></pre></div>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename_all</span>(tolower) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">genderF =</span> <span class="kw">factor</span>(gender, 
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, 
+                                            <span class="st">&quot;Male&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">majorF =</span> <span class="kw">factor</span>(major, 
+                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,<span class="dv">5</span>),
+                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Psychology&quot;</span>,
+                                           <span class="st">&quot;Premed&quot;</span>,
+                                           <span class="st">&quot;Biology&quot;</span>,
+                                           <span class="st">&quot;Sociology&quot;</span>,
+                                           <span class="st">&quot;Economics&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">reasonF =</span> <span class="kw">factor</span>(reason,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Program requirement&quot;</span>,
+                                            <span class="st">&quot;Personal interest&quot;</span>,
+                                            <span class="st">&quot;Advisor recommendation&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">exp_condF =</span> <span class="kw">factor</span>(exp_cond,
+                                   <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),
+                                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Easy&quot;</span>,
+                                              <span class="st">&quot;Moderate&quot;</span>,
+                                              <span class="st">&quot;Difficult&quot;</span>,
+                                              <span class="st">&quot;Impossible&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">coffeeF =</span> <span class="kw">factor</span>(coffee,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not a regular coffee drinker&quot;</span>,
+                                            <span class="st">&quot;Regularly drinks coffee&quot;</span>)))  <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">mathquiz_p50 =</span> mathquiz <span class="op">+</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_base_bps  =</span> hr_base <span class="op">/</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statquiz_4a  =</span> (statquiz <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statquiz_4b  =</span> (statquiz <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_sum     =</span> <span class="kw">rowsums</span>(anx_base, anx_pre, anx_post)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_mean       =</span> <span class="kw">rowmeans</span>(hr_base <span class="op">+</span><span class="st"> </span>hr_pre <span class="op">+</span><span class="st"> </span>hr_post)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statDiff     =</span> statquiz <span class="op">-</span><span class="st"> </span>exp_sqz)
 
+<span class="kw">glimpse</span>(data_clean)</code></pre></div>
+<pre><code>Observations: 100
+Variables: 30
+$ sub_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15...
+$ gender       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
+$ major        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
+$ reason       &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1...
+$ exp_cond     &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4...
+$ coffee       &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0...
+$ num_cups     &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0...
+$ phobia       &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, ...
+$ prevmath     &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1...
+$ mathquiz     &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 1...
+$ statquiz     &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8...
+$ exp_sqz      &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1,...
+$ hr_base      &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 7...
+$ hr_pre       &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 7...
+$ hr_post      &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 7...
+$ anx_base     &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 1...
+$ anx_pre      &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 2...
+$ anx_post     &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 2...
+$ genderF      &lt;fct&gt; Female, Female, Female, Female, Female, Female, F...
+$ majorF       &lt;fct&gt; Psychology, Psychology, Psychology, Psychology, P...
+$ reasonF      &lt;fct&gt; Advisor recommendation, Personal interest, Progra...
+$ exp_condF    &lt;fct&gt; Easy, Easy, Easy, Easy, Easy, Moderate, Moderate,...
+$ coffeeF      &lt;fct&gt; Regularly drinks coffee, Not a regular coffee dri...
+$ mathquiz_p50 &lt;dbl&gt; 93, 99, 76, 79, 81, 70, 63, 73, 88, NA, 79, 82, 6...
+$ hr_base_bps  &lt;dbl&gt; 1.183333, 1.216667, 1.150000, 1.200000, 1.183333,...
+$ statquiz_4a  &lt;dbl&gt; 80, 110, 100, 90, 80, 90, 50, 90, 100, 90, 100, 1...
+$ statquiz_4b  &lt;dbl&gt; 62, 92, 82, 72, 62, 72, 32, 72, 82, 72, 82, 82, 1...
+$ anx_sum      &lt;dbl&gt; 59, 52, 48, 48, 81, 46, 45, 58, 51, 63, 68, 100, ...
+$ hr_mean      &lt;dbl&gt; 204, 216, 217, 223, 228, 217, 207, 248, 212, 228,...
+$ statDiff     &lt;dbl&gt; -1, -2, 0, -1, 0, 1, -1, 0, 1, 1, -2, 1, -2, 1, 2...</code></pre>
+
+</div>
 </div>
 </div>
             </section>
