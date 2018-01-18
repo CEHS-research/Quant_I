@@ -1,1 +1,185 @@
 # Distributional Plots
+
+```{r global_options, include=FALSE}
+# set global chunk options...  
+#  this changes the defaults so you don't have to repeat yourself
+knitr::opts_chunk$set(comment     = NA,
+                      echo        = TRUE, 
+                      warning     = FALSE, 
+                      message     = FALSE)
+```
+
+```{r load_libraries, comment=NA}
+library(tidyverse)
+library(readxl)
+library(furniture)
+```
+
+```{r preap_data, include=FALSE}
+data_clean <- read_excel("Ihno_dataset.xls") %>% 
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(genderF = factor(gender, 
+                                 levels = c(1, 2),
+                                 labels = c("Female", 
+                                            "Male"))) %>% 
+  dplyr::mutate(majorF = factor(major, 
+                                levels = c(1, 2, 3, 4,5),
+                                labels = c("Psychology",
+                                           "Premed",
+                                           "Biology",
+                                           "Sociology",
+                                           "Economics"))) %>% 
+  dplyr::mutate(reasonF = factor(reason,
+                                 levels = c(1, 2, 3),
+                                 labels = c("Program requirement",
+                                            "Personal interest",
+                                            "Advisor recommendation"))) %>% 
+  dplyr::mutate(exp_condF = factor(exp_cond,
+                                   levels = c(1, 2, 3, 4),
+                                   labels = c("Easy",
+                                              "Moderate",
+                                              "Difficult",
+                                              "Impossible"))) %>% 
+  dplyr::mutate(coffeeF = factor(coffee,
+                                 levels = c(0, 1),
+                                 labels = c("Not a regular coffee drinker",
+                                            "Regularly drinks coffee")))  %>% 
+  dplyr::mutate(mathquiz_p50 = mathquiz + 50) %>% 
+  dplyr::mutate(hr_base_bps  = hr_base / 60) %>% 
+  dplyr::mutate(statquiz_4a  = (statquiz + 2) * 10 ) %>% 
+  dplyr::mutate(statquiz_4b  = (statquiz * 10) + 2 ) %>% 
+  dplyr::mutate(anx_sum     = rowsums(anx_base, anx_pre, anx_post)) %>% 
+  dplyr::mutate(hr_mean       = rowmeans(hr_base + hr_pre + hr_post)) %>% 
+  dplyr::mutate(statDiff     = statquiz - exp_sqz)
+```
+
+---------------------------------------
+
+## Frequency Distrubutions
+
+
+```{r}
+data_clean %>%                 
+  furniture::tableF(major)
+```
+
+
+
+```{r}
+data_clean %>% 
+  furniture::tableF(phobia)
+```
+
+---------------------------------------
+
+## Bar Charts
+
+```{r}
+data_clean %>% 
+  ggplot(aes(major)) +
+  geom_bar()
+```
+
+```{r}
+data_clean %>% 
+  ggplot(aes(coffee)) +
+  geom_bar()
+```
+
+
+
+--------------------------------
+
+## Histograms
+
+```{r}
+data_clean %>% 
+  ggplot(aes(phobia)) +
+  geom_histogram()
+```
+
+
+### Change the Number of Bins
+
+```{r}
+data_clean %>% 
+  ggplot(aes(phobia)) +
+  geom_histogram(bins = 8)
+```
+
+
+### Change the Bin Width
+
+```{r}
+data_clean %>% 
+  ggplot(aes(phobia)) +
+  geom_histogram(binwidth = 5)
+```
+
+
+### Make Seperate Panels -by- a Factor
+
+```{r}
+data_clean %>% 
+  ggplot(aes(mathquiz)) +
+  geom_histogram(binwidth = 4) +
+  facet_grid(. ~ coffeeF)
+```
+
+```{r}
+data_clean %>% 
+  ggplot(aes(mathquiz)) +
+  geom_histogram(binwidth = 4) +
+  facet_grid(coffeeF ~ .)
+```
+
+
+------------------------------
+
+## Percentiles
+
+
+### Deciles (break into 10% chunks)
+
+```{r}
+data_clean %>% 
+  dplyr::pull(statquiz) %>% 
+  quantile(probs = c(.10, .20, .30, .40, .50, .60, .70, .80, .90))
+```
+
+
+### With Missing Values: throws an error
+
+```{r, eval = FALSE}
+data_clean %>% 
+  dplyr::pull(mathquiz) %>% 
+  quantile(probs = c(.10, .20, .30, .40, .50, .60, .70, .80, .90))
+```
+
+`Error in quantile.default(., probs = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, : missing values and NaN's not allowed if 'na.rm' is FALSE`
+
+### Option to Ignore Missing Values: `na.rm = TRUE`
+
+```{r}
+data_clean %>% 
+  dplyr::pull(mathquiz) %>% 
+  quantile(probs = c(.10, .20, .30, .40, .50, .60, .70, .80, .90),
+           na.rm =TRUE)
+```
+
+### Quartiles (break into 4 chunks)
+
+```{r}
+data_clean %>% 
+  dplyr::pull(statquiz) %>% 
+  quantile(probs = c(0, .25, .50, .75, 1))
+```
+
+
+### Other Percentiles 
+
+```{r}
+data_clean %>% 
+  dplyr::pull(statquiz) %>% 
+  quantile(probs = c(.01, .05, .173, .90))
+```

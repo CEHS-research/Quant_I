@@ -6,6 +6,9 @@
 
 ## ENVIRONMENT PREPARATION
 
+![](img/headers/library.png)
+
+
 ### The `library()` Function: Load a Package
 
 
@@ -26,9 +29,7 @@ library(readxl)
 library(furniture)
 ```
 
--------------------------------------------
 
-## DATA IMPORTING
 
 ### The `readxl::read_excel()` Function: Read in Excel Data Files
 
@@ -37,7 +38,7 @@ library(furniture)
 > Make sure the that *folder* is the **working directory**
 
 * Now we are ready to open the data with the `read_excel()` function from the `readxl` package
-    + `readxl::read_excel()` the double collon specifies the `package::function()`
+    + `readxl::read_excel()` the double colon specifies the `package::function()`
     + the only thing required inside the `()` is the quoted name of the Excel file 
       - Make sure it is stored in the .Rmd's folder
       - Make sure to include the file's extension *(.xls)*
@@ -87,7 +88,7 @@ data <- read_excel("Ihno_dataset.xls")
 ```
 
 
-* Print out the dataset by just typing and running the name you assined it
+* Print out the dataset by just typing and running the name you assigned it
 
 
 ```r
@@ -123,7 +124,7 @@ data
 
 ### The Pipe `%>%` Opperator: Link Steps Togehter
 
-This special set of symbols *(no spaces included)* signals R to feed what preceeds it **into** what follows it.  Its a simple idea that makes code writting in R much easier. 
+This special set of symbols *(no spaces included)* signals R to feed what precedes it **into** what follows it.  Its a simple idea that makes code writing in R much easier. 
 
 
 ```r
@@ -264,7 +265,7 @@ dim(data)
 
 This is a handy function that gives:
 
-* Dimentions (observations and variables)
+* Dimensions (observations and variables)
 * Names of variables
 * Each variables type, which could be...
   + `dbl` = numeric: double precision floating point numbers
@@ -394,7 +395,7 @@ data %>%
 
 ### The `dplyr::mutate()` Function: Create a New Variable
 
-Just like ratiation may cause a fish to grow an additional eye (a mutation), the `mutate()` function grows a new variable.
+Just like radiation may cause a fish to grow an additional eye (a mutation), the `mutate()` function grows a new variable.
 
 
 ```r
@@ -421,7 +422,7 @@ data %>%
 
 ### The `factor()` Function: Define Categorical Variables
 
-We will be providing this funciton with three pieces of information:
+We will be providing this function with three pieces of information:
 
 (@) The name of an existing variable
 (@) A *concatinated* set of numerical `levels`
@@ -460,7 +461,7 @@ data %>%
 
 Notice that the dataset the is printed includes our new variable at the **END**.
 
-You can use the `pipe` to chain several mutate steps together.  I have also assigned the resulting dataset with the five new factor variables at the end to a new name, `dataF`.  Since this code chunk includes a single assingment, there is no output created.
+You can use the `pipe` to chain several mutate steps together.  I have also assigned the resulting dataset with the five new factor variables at the end to a new name, `dataF`.  Since this code chunk includes a single assignment, there is no output created.
 
 > Remember to include a PIPE between all your steps, but not at the end!
 
