@@ -1,8 +1,8 @@
 --- 
-title: "Research Design and Analysis I"
-subtitle: "Psy 6600 and Educ 6600: Quantitative Methods I"
+title: "Explaining Psychological Statistcs: A Compantion in R"
+subtitle: "Psy 6600 and Educ 6600: Research Design and Analysis I"
 author: "Sarah Schwartz and Tyson Barrett"
-date: "January 18 2018"
+date: "January 23 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"
@@ -14,14 +14,15 @@ description: "This book covers R code."
 ---
 
 
-# Psy 6600 or Educ 6600 {-}
+# USU: PSY 6600 -or- EDUC 6600 {-}
+
+Utah State University
 
 ![](img/headers/RDA1_logo.png)
 
 
 
-
-The text book:
+This book is a compantion for the course text book:
 
 ![](img/Cohen_4ed.jpg)
 

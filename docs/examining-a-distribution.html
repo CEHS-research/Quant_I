@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="getting-your-computer-ready.html">
+<link rel="prev" href="prepartion.html">
+<link rel="next" href="summary-statistics.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,6 +48,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -149,10 +186,10 @@
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="summary-statistics.html"><a href="summary-statistics.html#boxplots"><i class="fa fa-check"></i><b>3.2</b> Boxplots</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#single"><i class="fa fa-check"></i><b>3.2.1</b> Single</a></li>
-<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple--by--a-factor"><i class="fa fa-check"></i><b>3.2.2</b> Multiple -by- a Factor</a></li>
-<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#simple--for--a-subset"><i class="fa fa-check"></i><b>3.2.3</b> Simple -for- a Subset</a></li>
-<li class="chapter" data-level="3.2.4" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple--by--a-factor-and--for--a-subset"><i class="fa fa-check"></i><b>3.2.4</b> Multiple -by- a Factor AND -for- a Subset</a></li>
+<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#by--a-factor"><i class="fa fa-check"></i><b>3.2.2</b> -by- a Factor</a></li>
+<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#for--a-subset"><i class="fa fa-check"></i><b>3.2.3</b> -for- a Subset</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="summary-statistics.html"><a href="summary-statistics.html#by--a-factor-and--for--a-subset"><i class="fa fa-check"></i><b>3.3</b> -by- a Factor AND -for- a Subset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -174,66 +211,161 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Explaining Psychological Statistcs: A Compantion in R</h1>
-<h3 class="subtitle"><em>Psy 6600 and Educ 6600: Research Design and Analysis I</em></h3>
-<h4 class="author"><em>Sarah Schwartz and Tyson Barrett</em></h4>
-<h4 class="date"><em>January 23 2018</em></h4>
+<div id="examining-a-distribution" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> EXAMINING A DISTRIBUTION</h1>
+<p>LINK TO: <a href="http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1">Slide Show - Chapter 2</a></p>
+<div id="packages-needed" class="section level2 unnumbered">
+<h2>Packages Needed</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(readxl)
+<span class="kw">library</span>(furniture)</code></pre></div>
+<hr />
 </div>
-<div id="usu-psy-6600--or--educ-6600" class="section level1 unnumbered">
-<h1>USU: PSY 6600 -or- EDUC 6600</h1>
-<p>Utah State University</p>
-<div class="figure">
-<img src="img/headers/RDA1_logo.png" />
+<div id="frequency-distrubutions" class="section level2">
+<h2><span class="header-section-number">2.1</span> Frequency Distrubutions</h2>
+<blockquote>
+<p>These tables are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable. They help pick out the mode(s) and identify unusual or impossible values.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st">                 </span>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">tableF</span>(major)</code></pre></div>
+<pre><code>
+------------------------------------
+ major Freq CumFreq Percent CumPerc
+ 1     29   29      29.00%  29.00% 
+ 2     25   54      25.00%  54.00% 
+ 3     21   75      21.00%  75.00% 
+ 4     15   90      15.00%  90.00% 
+ 5     10   100     10.00%  100.00%
+------------------------------------</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">tableF</span>(phobia)</code></pre></div>
+<pre><code>
+-------------------------------------
+ phobia Freq CumFreq Percent CumPerc
+ 0      12   12      12.00%  12.00% 
+ 1      15   27      15.00%  27.00% 
+ 2      12   39      12.00%  39.00% 
+ 3      16   55      16.00%  55.00% 
+ 4      21   76      21.00%  76.00% 
+ 5      11   87      11.00%  87.00% 
+ 6      1    88      1.00%   88.00% 
+ 7      4    92      4.00%   92.00% 
+ 8      4    96      4.00%   96.00% 
+ 9      1    97      1.00%   97.00% 
+ 10     3    100     3.00%   100.00%
+-------------------------------------</code></pre>
+<hr />
+</div>
+<div id="bar-charts" class="section level2">
+<h2><span class="header-section-number">2.2</span> Bar Charts</h2>
+<blockquote>
+<p>These plots are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable. They help pick out the mode(s) and identify unusual or impossible values.</p>
+</blockquote>
+<p><strong>There must be SPACE between the bars!</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(major)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(coffee)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="histograms" class="section level2">
+<h2><span class="header-section-number">2.3</span> Histograms</h2>
+<blockquote>
+<p>These plots are best for showing the distribution of a single CONTINUOUS variable. They help visually determine the shape, center <em>[mean, median, mode(s)]</em>, spread <em>[stadard deviation, range]</em>, and identify extreme or impossible values.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><strong>There must NOT be SPACE between the bars!</strong></p>
+<p>Notice how the bars do not touch. This is because the default includes too many bars, many of which are not included in the dataset.</p>
+<p>There are TWO ways specify somthing other than the default:</p>
+<ol class="example" style="list-style-type: decimal">
+<li>Change the NUMBER of bins: <code>bins = #</code></li>
+<li>Change the WIDTH of the bins: <code>binwidth = #</code></li>
+</ol>
+<blockquote>
+<p>If you try to do BOTH, only the first option will be used and the second will be ignored.</p>
+</blockquote>
+<div id="change-the-number-of-bins" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Change the Number of Bins</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>)</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="change-the-bin-width" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Change the Bin Width</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">5</span>)</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="make-seperate-panels--by--a-factor" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Make Seperate Panels -by- a Factor</h3>
+<blockquote>
+<p>To make seperate plots based on another variable, A FACTOR, we need to add a layer to the plot.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mathquiz)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span>coffeeF)</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mathquiz)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(coffeeF <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="quartiles-deciles-and-percentiles" class="section level2">
+<h2><span class="header-section-number">2.4</span> Quartiles, Deciles, and Percentiles</h2>
+<div id="deciles-break-into-10-chunks" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Deciles (break into 10% chunks)</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(statquiz) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>))</code></pre></div>
+<pre><code>10% 20% 30% 40% 50% 60% 70% 80% 90% 
+4.0 6.0 6.0 7.0 7.0 8.0 8.0 8.0 8.1 </code></pre>
+</div>
+<div id="with-missing-values-throws-an-error" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> With Missing Values: throws an error</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(mathquiz) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>))</code></pre></div>
+<p><code>Error in quantile.default(., probs = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, : missing values and NaN's not allowed if 'na.rm' is FALSE</code></p>
+</div>
+<div id="option-to-ignore-missing-values-na.rm-true" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Option to Ignore Missing Values: <code>na.rm = TRUE</code></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(mathquiz) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>),
+           <span class="dt">na.rm =</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre><code> 10%  20%  30%  40%  50%  60%  70%  80%  90% 
+15.0 21.0 25.2 28.0 30.0 32.0 33.8 37.2 41.0 </code></pre>
+</div>
+<div id="quartiles-break-into-4-chunks" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Quartiles (break into 4 chunks)</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(statquiz) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">25</span>, .<span class="dv">50</span>, .<span class="dv">75</span>, <span class="dv">1</span>))</code></pre></div>
+<pre><code>  0%  25%  50%  75% 100% 
+   1    6    7    8   10 </code></pre>
+</div>
+<div id="other-percentiles" class="section level3">
+<h3><span class="header-section-number">2.4.5</span> Other Percentiles</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(statquiz) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">01</span>, .<span class="dv">05</span>, .<span class="dv">173</span>, .<span class="dv">90</span>))</code></pre></div>
+<pre><code>   1%    5% 17.3%   90% 
+ 2.98  3.00  5.00  8.10 </code></pre>
 
 </div>
-<p>This book is a compantion for the course text book:</p>
-<div class="figure">
-<img src="img/Cohen_4ed.jpg" />
-
-</div>
-<div id="cohen-textbook" class="section level2 unnumbered">
-<h2>Cohen Textbook</h2>
-<p>The textbook is available through the USU library</p>
-<ul>
-<li><a href="http://site.ebrary.com/lib/usulibraries/reader.action?docID=10809658">View and read it online for free</a>
-<ul>
-<li>You must be either on campus or on the VPN</li>
-</ul></li>
-<li><a href="https://ebookcentral-proquest-com.dist.lib.usu.edu/lib/USU/detail.action?docID=1563061">Download the entire book for free</a>
-<ul>
-<li>requires you to
-<ul>
-<li>create an account</li>
-<li>download/install some software</li>
-</ul></li>
-<li>only can be ‘checked out’ for 14 days</li>
-</ul></li>
-</ul>
-</div>
-<div id="course-files" class="section level2 unnumbered">
-<h2>Course Files</h2>
-<p>All files may be downloaded from the <a href="https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y">BOX folder</a></p>
-<ul>
-<li>Icons and image files</li>
-<li>Datasets (excel or SPSS format)</li>
-<li>Assignments</li>
-</ul>
-</div>
-<div id="instructor-websites" class="section level2 unnumbered">
-<h2>Instructor Websites</h2>
-<ul>
-<li><p>Sarah’s website: <a href="http://www.sarahschwartzstats.com/">www.sarahschwartzstats.com</a></p></li>
-<li><p>Tyson’s website: <a href="http://tysonbarrett.com/teaching/">www.tysonbarrett.com/teaching/</a></p></li>
-</ul>
-</div>
-<div id="course-schedule" class="section level2 unnumbered">
-<h2>Course Schedule</h2>
-<div class="figure">
-<img src="img/Sched_1-16-18.PNG" />
-
-</div>
-
 </div>
 </div>
             </section>
@@ -241,8 +373,8 @@
           </div>
         </div>
       </div>
-
-<a href="getting-your-computer-ready.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prepartion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summary-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

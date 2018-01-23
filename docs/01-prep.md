@@ -1,10 +1,15 @@
-# Preparing Datasets 
+# PREPARTION
+
+LINK TO: [Slide Show - Chapter 1](http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1)
+
 
 
 
 ---------------------------------------
 
-## ENVIRONMENT PREPARATION
+## Preparing the Environment
+
+
 
 ![](img/headers/library.png)
 
@@ -72,7 +77,7 @@ read_excel("Ihno_dataset.xls")
 
 ------------------------------------
 
-## OPPERATORS and HELPFUL FUNCTIONS
+## Opperators and Helpful Functions
 
 ### The `<-` Assignment Opperator: Save as a Name
 
@@ -390,7 +395,7 @@ data %>%
 
 -----------------------------------------
 
-## DATA WRANGLING
+## Data Wrangling
 
 
 ### The `dplyr::mutate()` Function: Create a New Variable
@@ -564,7 +569,9 @@ $ coffeeF   <fct> Regularly drinks coffee, Not a regular coffee drinke...
 --------------------------------
 
 
-## CREATING NEW VARIABLES: Assignment 0
+## Creating New Variables
+
+The following portion works through the assignment for Unit 0
 
 ### Question 2: Create a new variable = `mathquiz` + 50
 

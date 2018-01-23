@@ -1,6 +1,6 @@
 
 
-# Getting Your Computer Ready {-}
+# GETTING YOUR COMPUTER READY {-}
 
 ![](img/headers/R_studio_LaTeX_header.png)
 

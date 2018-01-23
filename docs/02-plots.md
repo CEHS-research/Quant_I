@@ -1,6 +1,10 @@
-# Distributional Plots
+# EXAMINING A DISTRIBUTION
+
+LINK TO: [Slide Show - Chapter 2](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1)
 
 
+
+## Packages Needed {-}
 
 
 ```r
@@ -15,6 +19,7 @@ library(furniture)
 
 ## Frequency Distrubutions
 
+> These tables are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable.  They help pick out the mode(s) and identify unusual or impossible values.
 
 
 ```r
@@ -33,7 +38,6 @@ data_clean %>%
  5     10   100     10.00%  100.00%
 ------------------------------------
 ```
-
 
 
 
@@ -64,6 +68,10 @@ data_clean %>%
 
 ## Bar Charts
 
+> These plots are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable.  They help pick out the mode(s) and identify unusual or impossible values.
+
+**There must be SPACE between the bars!**
+
 
 ```r
 data_clean %>% 
@@ -88,6 +96,8 @@ data_clean %>%
 
 ## Histograms
 
+> These plots are best for showing the distribution of a single CONTINUOUS variable.  They help visually determine the shape, center *[mean, median, mode(s)]*, spread *[stadard deviation, range]*, and identify extreme or impossible values.
+
 
 ```r
 data_clean %>% 
@@ -97,6 +107,16 @@ data_clean %>%
 
 <img src="02-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
+**There must NOT be SPACE between the bars!**
+
+Notice how the bars do not touch.  This is because the default includes too many bars, many of which are not included in the dataset.  
+
+There are TWO ways specify somthing other than the default:
+
+(@) Change the NUMBER of bins: `bins = #`
+(@) Change the WIDTH of the bins: `binwidth = #`
+
+> If you try to do BOTH, only the first option will be used and the second will be ignored.
 
 ### Change the Number of Bins
 
@@ -122,7 +142,11 @@ data_clean %>%
 <img src="02-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
+
 ### Make Seperate Panels -by- a Factor
+
+> To make seperate plots based on another variable, A FACTOR, we need to add a layer to the plot.
+
 
 
 ```r
@@ -147,7 +171,7 @@ data_clean %>%
 
 ------------------------------
 
-## Percentiles
+## Quartiles, Deciles, and Percentiles
 
 
 ### Deciles (break into 10% chunks)

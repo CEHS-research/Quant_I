@@ -1,1 +1,57 @@
-# Summary Statistics
+# SUMMARY STATISTICS
+
+LINK TO: [Slide Show - Chapter 3](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch3_CenterSpread.html#1)
+
+```{r global_options, include=FALSE}
+# set global chunk options...  
+#  this changes the defaults so you don't have to repeat yourself
+knitr::opts_chunk$set(comment     = NA,
+                      echo        = TRUE, 
+                      warning     = FALSE, 
+                      message     = FALSE)
+```
+
+## Packages Needed {-}
+
+```{r load_libraries}
+library(tidyverse)
+library(haven)
+library(furniture)
+library(psych)
+```
+
+
+---------------------------------------
+
+## Descriptive Statistics 
+
+
+### Full
+
+
+
+
+### Simple
+
+
+
+
+
+### Simple, -by- a Factor
+
+
+
+
+---------------------------------------
+
+## Boxplots
+
+### Single
+
+### Multiple -by- a Factor
+
+### Simple -for- a Subset
+
+### Multiple -by- a Factor AND -for- a Subset
+
+
