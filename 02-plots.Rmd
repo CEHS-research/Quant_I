@@ -1,25 +1,47 @@
 # EXAMINING A DISTRIBUTION
 
-LINK TO: [Slide Show - Chapter 2](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1)
+
+## Chapter Links {-}
+
+* [Chapter 2 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1)
+
+* [Unit 1 Assignment - Write Up Skeleton](https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu)
+
+* [Unit 1 Assignment - Rmd Skeleton](https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x)
+
+* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
+
+
 
 ```{r global_options, include=FALSE}
 # set global chunk options...  
 #  this changes the defaults so you don't have to repeat yourself
 knitr::opts_chunk$set(comment     = NA,
+                      cache       = TRUE,
                       echo        = TRUE, 
                       warning     = FALSE, 
                       message     = FALSE)
 ```
 
-## Packages Needed {-}
+## Example: Ihno's Experiment {-}
+
+This is the same dataset used in the previous chapter and in most of the textbook's section C questions.
+
+### Required Packages {-}
 
 ```{r load_libraries}
-library(tidyverse)
-library(readxl)
-library(furniture)
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(readxl)        # Read in Excel datasets
+library(furniture)    # Nice tables (by our own Tyson Barrett)
+library(psych)        # Lots of nice tid-bits
 ```
 
-```{r preap_data, include=FALSE}
+
+### Data Import and Wrangling {-}
+
+The previous chapter build the following code to read in the dataset and prepare it for analysis.
+
+```{r, eval=FALSE}
 data_clean <- read_excel("Ihno_dataset.xls") %>% 
   dplyr::rename_all(tolower) %>% 
   dplyr::mutate(genderF = factor(gender, 
@@ -48,59 +70,113 @@ data_clean <- read_excel("Ihno_dataset.xls") %>%
                                  levels = c(0, 1),
                                  labels = c("Not a regular coffee drinker",
                                             "Regularly drinks coffee")))  %>% 
-  dplyr::mutate(mathquiz_p50 = mathquiz + 50) %>% 
   dplyr::mutate(hr_base_bps  = hr_base / 60) %>% 
-  dplyr::mutate(statquiz_4a  = (statquiz + 2) * 10 ) %>% 
-  dplyr::mutate(statquiz_4b  = (statquiz * 10) + 2 ) %>% 
-  dplyr::mutate(anx_sum     = rowsums(anx_base, anx_pre, anx_post)) %>% 
-  dplyr::mutate(hr_mean       = rowmeans(hr_base + hr_pre + hr_post)) %>% 
+  dplyr::mutate(anx_sum      = rowsums(anx_base, anx_pre, anx_post)) %>% 
+  dplyr::mutate(hr_mean      = rowmeans(hr_base + hr_pre + hr_post)) %>% 
   dplyr::mutate(statDiff     = statquiz - exp_sqz)
+```
+
+```{r, include=FALSE}
+data_clean <- read_excel("data/Ihno_dataset.xls") %>% 
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(genderF = factor(gender, 
+                                 levels = c(1, 2),
+                                 labels = c("Female", 
+                                            "Male"))) %>% 
+  dplyr::mutate(majorF = factor(major, 
+                                levels = c(1, 2, 3, 4,5),
+                                labels = c("Psychology",
+                                           "Premed",
+                                           "Biology",
+                                           "Sociology",
+                                           "Economics"))) %>% 
+  dplyr::mutate(reasonF = factor(reason,
+                                 levels = c(1, 2, 3),
+                                 labels = c("Program requirement",
+                                            "Personal interest",
+                                            "Advisor recommendation"))) %>% 
+  dplyr::mutate(exp_condF = factor(exp_cond,
+                                   levels = c(1, 2, 3, 4),
+                                   labels = c("Easy",
+                                              "Moderate",
+                                              "Difficult",
+                                              "Impossible"))) %>% 
+  dplyr::mutate(coffeeF = factor(coffee,
+                                 levels = c(0, 1),
+                                 labels = c("Not a regular coffee drinker",
+                                            "Regularly drinks coffee")))  %>% 
+  dplyr::mutate(hr_base_bps  = hr_base / 60) %>% 
+  dplyr::mutate(anx_sum      = rowsums(anx_base, anx_pre, anx_post)) %>% 
+  dplyr::mutate(hr_mean      = rowmeans(hr_base + hr_pre + hr_post)) %>% 
+  dplyr::mutate(statDiff     = statquiz - exp_sqz)
+```
+
+
+```{r}
+tibble::glimpse(data_clean)
 ```
 
 ---------------------------------------
 
-## Frequency Distrubutions
+## Frequency Tables
 
-> These tables are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable.  They help pick out the mode(s) and identify unusual or impossible values.
+These tables are best for showing the breakdown of a sample across the levels of a **single CATEGORICAL** variable *(factor)*.  They help pick out the mode(s) and identify unusual or impossible values [@R-furniture].
 
 ```{r}
 data_clean %>%                 
-  furniture::tableF(major)
+  furniture::tableF(majorF)
 ```
 
+Phobia is one variable that is in between being categorical and continuous.
 
 ```{r}
 data_clean %>% 
   furniture::tableF(phobia)
 ```
 
+If a variable has many possible values (i.e. it is more continuous than categorical), you can add an option to tell how many values `n = #` you want displayed in the table, cutting out all the middle values.
+
+```{r}
+data_clean %>% 
+  furniture::tableF(hr_post, n = 10)
+```
+
+
 ---------------------------------------
 
 ## Bar Charts
 
-> These plots are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable.  They help pick out the mode(s) and identify unusual or impossible values.
+These plots are best for showing the breakdown of a sample across the levels of a **single CATEGORICAL** variable.  They help pick out the mode(s) and identify unusual or impossible values [@R-ggplot2].
 
-**There must be SPACE between the bars!**
-
-```{r}
-data_clean %>% 
-  ggplot(aes(major)) +
-  geom_bar()
-```
+> There must be SPACE between the bars!
 
 ```{r}
 data_clean %>% 
-  ggplot(aes(coffee)) +
+  ggplot(aes(majorF)) +
   geom_bar()
 ```
 
+Here is an example of a two-level variable
 
+```{r}
+data_clean %>% 
+  ggplot(aes(coffeeF)) +
+  geom_bar()
+```
+
+Here is an example of an 11-level variable
+
+```{r}
+data_clean %>% 
+  ggplot(aes(phobia)) +
+  geom_bar()
+```
 
 --------------------------------
 
 ## Histograms
 
-> These plots are best for showing the distribution of a single CONTINUOUS variable.  They help visually determine the shape, center *[mean, median, mode(s)]*, spread *[stadard deviation, range]*, and identify extreme or impossible values.
+These plots are best for showing the distribution of a **single CONTINUOUS** variable.  They help visually determine the shape, center *[mean, median, mode(s)]*, spread *[stadard deviation, range]*, and identify extreme or impossible values [@R-ggplot2].
 
 ```{r}
 data_clean %>% 
@@ -108,11 +184,11 @@ data_clean %>%
   geom_histogram()
 ```
 
-**There must NOT be SPACE between the bars!**
+> There must NOT be SPACE between the bars!
 
 Notice how the bars do not touch.  This is because the default includes too many bars, many of which are not included in the dataset.  
 
-There are TWO ways specify somthing other than the default:
+There are TWO ways specify something other than the default:
 
 (@) Change the NUMBER of bins: `bins = #`
 (@) Change the WIDTH of the bins: `binwidth = #`
@@ -140,7 +216,9 @@ data_clean %>%
 
 ### Make Seperate Panels -by- a Factor
 
-> To make seperate plots based on another variable, A FACTOR, we need to add a layer to the plot.
+To make separate plots based on another categorical variable, a **FACTOR**, we need to add a layer to the plot.
+
+> Reminder: Steps before the `ggplot()` are combined with pipes `%>%`, whereas layers of the plot are combined with the addition symbol `+`.
 
 
 ```{r}
@@ -160,38 +238,61 @@ data_clean %>%
 
 ------------------------------
 
-## Quartiles, Deciles, and Percentiles
+## Percentiles
+
+The `quantile(probs = c(#, #, ..., #))` function in the base download of R may be used to request the deciles, quartiles, or other percentiles for a `vector` for numbers [@R-base].
+
+To use this function, we have to first **pull** out one variable of interest from our dataset *(data.frame)* and make it into a vector.  This is done with a `dplyr::pull(varname)` step [@R-dplyr].
 
 
-### Deciles (break into 10% chunks)
+### Deciles 
+
+Deciles break the variable's values into 10% chunks.
 
 ```{r}
 data_clean %>% 
   dplyr::pull(statquiz) %>% 
-  quantile(probs = c(.10, .20, .30, .40, .50, .60, .70, .80, .90))
+  quantile(probs = c(0, .10, .20, .30, .40, .50, .60, .70, .80, .90, 1))
 ```
 
 
-### With Missing Values: throws an error
+#### With Missing Values {-}
+
+If the variable have any missing values, an error message with be outputted instead of what you expect.
 
 ```{r, eval = FALSE}
 data_clean %>% 
   dplyr::pull(mathquiz) %>% 
-  quantile(probs = c(.10, .20, .30, .40, .50, .60, .70, .80, .90))
+  quantile(probs = c(0, .10, .20, .30, .40, .50, .60, .70, .80, .90, 1))
 ```
 
 `Error in quantile.default(., probs = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, : missing values and NaN's not allowed if 'na.rm' is FALSE`
 
-### Option to Ignore Missing Values: `na.rm = TRUE`
+#### Option to Ignore Missing Values {-}
+
+To avoid getting this message and ignore the missing values, use the `na.rm = TRUE` option.
 
 ```{r}
 data_clean %>% 
   dplyr::pull(mathquiz) %>% 
-  quantile(probs = c(.10, .20, .30, .40, .50, .60, .70, .80, .90),
+  quantile(probs = c(0, .10, .20, .30, .40, .50, .60, .70, .80, .90, 1),
            na.rm =TRUE)
 ```
 
-### Quartiles (break into 4 chunks)
+
+
+
+### Quartiles 
+
+Quartiles break variable's values into 4 chunks.  If you include 0 *(minimum)* and 1 *(maximum)* you will get the **Five Number Summary**, which is:
+
+* min, the minimum
+* Q1, the 25th percentile
+* Q2, the 50th percentile or the Median
+* Q3, the 75th percentile
+* max, the maximum
+
+These values are used to create boxplots in the next chapter.
 
 ```{r}
 data_clean %>% 
@@ -200,7 +301,11 @@ data_clean %>%
 ```
 
 
-### Other Percentiles 
+
+
+### Other Percentiles
+
+You may also include any other percentile between 0 and 1.
 
 ```{r}
 data_clean %>% 

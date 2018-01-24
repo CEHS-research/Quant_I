@@ -1,6 +1,16 @@
 # PREPARTION
 
-LINK TO: [Slide Show - Chapter 1](http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1)
+
+## Chapter Links {-}
+
+* [Chapter 1 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1)
+
+* [Unit 0 Assingment - Write Up Skeleton](https://usu.box.com/s/dmj8d2u28q2ynx15v53l9f8nr1rudu8y)
+
+* [Unit 0 Assingment - Rmd Skeleton](https://usu.box.com/s/di5zsmcpalactd2h08nx7p8nnm45en62)
+
+* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
+
 
 
 
@@ -19,9 +29,9 @@ LINK TO: [Slide Show - Chapter 1](http://tysonbarrett.com/EDUC-6600/Slides/00_Ch
 
 You will need TWO packages:
 
-* `tidyverse` Easily Install and Load the 'Tidy universe' of packages
-* `readxl` Read Excel Files
-* `furniture` Nice Tables and Row-wise functions (by Tyson)
+* `tidyverse` Easily Install and Load the 'Tidy universe' of packages [@R-tidyverse]
+* `readxl` Read Excel Files [@R-readxl]
+* `furniture` Nice Tables and Row-wise functions (by Tyson) [@R-furniture]
 
 > Make sure the packages are **installed** *(Package tab)*
 
@@ -29,9 +39,9 @@ The function `library()` checks the package out, or makes it active.
 
 
 ```r
-library(tidyverse)
-library(readxl)
-library(furniture)
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(readxl)       # Read in Excel datasets
+library(furniture)    # Nice tables (by our own Tyson Barrett)
 ```
 
 
@@ -49,37 +59,21 @@ library(furniture)
       - Make sure to include the file's extension *(.xls)*
       
 > NOTE: a `tibble` is basically just a "table" of data, the way the tidy-verse represents data sets.
-      
+   
 
 ```r
 read_excel("Ihno_dataset.xls")
 ```
 
-```
-# A tibble: 100 x 18
-   Sub_num Gender Major Reason Exp_cond Coffee Num_cups Phobia Prevmath
-     <dbl>  <dbl> <dbl>  <dbl>    <dbl>  <dbl>    <dbl>  <dbl>    <dbl>
- 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
- 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
- 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
- 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
- 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
- 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
- 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
- 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
- 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
-10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
-# ... with 90 more rows, and 9 more variables: Mathquiz <dbl>, Statquiz
-#   <dbl>, Exp_sqz <dbl>, Hr_base <dbl>, Hr_pre <dbl>, Hr_post <dbl>,
-#   Anx_base <dbl>, Anx_pre <dbl>, Anx_post <dbl>
-```
+
+
 
 
 ------------------------------------
 
 ## Opperators and Helpful Functions
 
-### The `<-` Assignment Opperator: Save as a Name
+### The Assignment Opperator `<-`: Save things to a name
 
 * the `<-` combination of symbols makes **assignments**
    + tells **R** to store the dataset as the name it points to
@@ -91,6 +85,8 @@ read_excel("Ihno_dataset.xls")
 ```r
 data <- read_excel("Ihno_dataset.xls") 
 ```
+
+
 
 
 * Print out the dataset by just typing and running the name you assigned it
@@ -129,7 +125,7 @@ data
 
 ### The Pipe `%>%` Opperator: Link Steps Togehter
 
-This special set of symbols *(no spaces included)* signals R to feed what precedes it **into** what follows it.  Its a simple idea that makes code writing in R much easier. 
+This special set of symbols *(no spaces included)* signals R to feed what precedes it **into** what follows it.  Its a simple idea that makes code writing in R much easier [@R-dplyr]. 
 
 
 ```r
@@ -139,24 +135,7 @@ data <- read_excel("Ihno_dataset.xls") %>%
 data
 ```
 
-```
-# A tibble: 100 x 18
-   sub_num gender major reason exp_cond coffee num_cups phobia prevmath
-     <dbl>  <dbl> <dbl>  <dbl>    <dbl>  <dbl>    <dbl>  <dbl>    <dbl>
- 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
- 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
- 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
- 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
- 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
- 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
- 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
- 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
- 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
-10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
-# ... with 90 more rows, and 9 more variables: mathquiz <dbl>, statquiz
-#   <dbl>, exp_sqz <dbl>, hr_base <dbl>, hr_pre <dbl>, hr_post <dbl>,
-#   anx_base <dbl>, anx_pre <dbl>, anx_post <dbl>
-```
+
 
 
 
@@ -268,7 +247,7 @@ dim(data)
 
 ### The `tibble::glimpse()` Function: Gives an Overview of Variables
 
-This is a handy function that gives:
+This is a handy function that gives [@R-tibble]:
 
 * Dimensions (observations and variables)
 * Names of variables
@@ -505,7 +484,7 @@ See how the new variables are added at the end.
 
 
 ```r
-glimpse(data)
+tibble::glimpse(data)
 ```
 
 ```
@@ -532,7 +511,7 @@ $ anx_post <dbl> 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, 2...
 ```
 
 ```r
-glimpse(dataF)
+tibble::glimpse(dataF)
 ```
 
 ```
@@ -833,46 +812,11 @@ data_clean <- read_excel("Ihno_dataset.xls") %>%
   dplyr::mutate(hr_base_bps  = hr_base / 60) %>% 
   dplyr::mutate(statquiz_4a  = (statquiz + 2) * 10 ) %>% 
   dplyr::mutate(statquiz_4b  = (statquiz * 10) + 2 ) %>% 
-  dplyr::mutate(anx_sum     = rowsums(anx_base, anx_pre, anx_post)) %>% 
-  dplyr::mutate(hr_mean       = rowmeans(hr_base + hr_pre + hr_post)) %>% 
+  dplyr::mutate(anx_sum      = rowsums(anx_base, anx_pre, anx_post)) %>% 
+  dplyr::mutate(hr_mean      = rowmeans(hr_base + hr_pre + hr_post)) %>% 
   dplyr::mutate(statDiff     = statquiz - exp_sqz)
 
-glimpse(data_clean)
-```
-
-```
-Observations: 100
-Variables: 30
-$ sub_num      <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15...
-$ gender       <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-$ major        <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-$ reason       <dbl> 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1...
-$ exp_cond     <dbl> 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4...
-$ coffee       <dbl> 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0...
-$ num_cups     <dbl> 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0...
-$ phobia       <dbl> 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, ...
-$ prevmath     <dbl> 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1...
-$ mathquiz     <dbl> 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 1...
-$ statquiz     <dbl> 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8...
-$ exp_sqz      <dbl> 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1,...
-$ hr_base      <dbl> 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 7...
-$ hr_pre       <dbl> 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 7...
-$ hr_post      <dbl> 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 7...
-$ anx_base     <dbl> 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 1...
-$ anx_pre      <dbl> 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 2...
-$ anx_post     <dbl> 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 2...
-$ genderF      <fct> Female, Female, Female, Female, Female, Female, F...
-$ majorF       <fct> Psychology, Psychology, Psychology, Psychology, P...
-$ reasonF      <fct> Advisor recommendation, Personal interest, Progra...
-$ exp_condF    <fct> Easy, Easy, Easy, Easy, Easy, Moderate, Moderate,...
-$ coffeeF      <fct> Regularly drinks coffee, Not a regular coffee dri...
-$ mathquiz_p50 <dbl> 93, 99, 76, 79, 81, 70, 63, 73, 88, NA, 79, 82, 6...
-$ hr_base_bps  <dbl> 1.183333, 1.216667, 1.150000, 1.200000, 1.183333,...
-$ statquiz_4a  <dbl> 80, 110, 100, 90, 80, 90, 50, 90, 100, 90, 100, 1...
-$ statquiz_4b  <dbl> 62, 92, 82, 72, 62, 72, 32, 72, 82, 72, 82, 82, 1...
-$ anx_sum      <dbl> 59, 52, 48, 48, 81, 46, 45, 58, 51, 63, 68, 100, ...
-$ hr_mean      <dbl> 204, 216, 217, 223, 228, 217, 207, 248, 212, 228,...
-$ statDiff     <dbl> -1, -2, 0, -1, 0, 1, -1, 0, 1, 1, -2, 1, -2, 1, 2...
+tibble::glimpse(data_clean)
 ```
 
 

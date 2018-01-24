@@ -6,20 +6,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Explaining Psychological Statistcs: A Compantion in R</title>
-  <meta name="description" content="This book covers R code.">
+  <meta name="description" content="This book covers R code for the Cohen Textbook">
   <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Explaining Psychological Statistcs: A Compantion in R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="img/Cohen_4ed.jpg" />
-  <meta property="og:description" content="This book covers R code." />
+  <meta property="og:description" content="This book covers R code for the Cohen Textbook" />
   <meta name="github-repo" content="SarBearSchwartz/Quant_I" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Explaining Psychological Statistcs: A Compantion in R" />
   
-  <meta name="twitter:description" content="This book covers R code." />
+  <meta name="twitter:description" content="This book covers R code for the Cohen Textbook" />
   <meta name="twitter:image" content="img/Cohen_4ed.jpg" />
 
 <meta name="author" content="Sarah Schwartz and Tyson Barrett">
@@ -109,6 +109,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html"><i class="fa fa-check"></i>GETTING YOUR COMPUTER READY</a><ul>
+<li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html#what-is-r"><i class="fa fa-check"></i>What is R?</a></li>
 <li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html#what-is-r-markdown"><i class="fa fa-check"></i>What is R Markdown?</a></li>
 <li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html#dynamic-reporting"><i class="fa fa-check"></i>Dynamic Reporting</a><ul>
 <li><a href="getting-your-computer-ready.html#the-traditional-way-to-write-a-report">The <strong>traditional way</strong> to write a report</a></li>
@@ -131,12 +132,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="prepartion.html"><a href="prepartion.html"><i class="fa fa-check"></i><b>1</b> PREPARTION</a><ul>
+<li class="chapter" data-level="" data-path="prepartion.html"><a href="prepartion.html#chapter-links"><i class="fa fa-check"></i>Chapter Links</a></li>
 <li class="chapter" data-level="1.1" data-path="prepartion.html"><a href="prepartion.html#preparing-the-environment"><i class="fa fa-check"></i><b>1.1</b> Preparing the Environment</a><ul>
 <li class="chapter" data-level="1.1.1" data-path="prepartion.html"><a href="prepartion.html#the-library-function-load-a-package"><i class="fa fa-check"></i><b>1.1.1</b> The <code>library()</code> Function: Load a Package</a></li>
 <li class="chapter" data-level="1.1.2" data-path="prepartion.html"><a href="prepartion.html#the-readxlread_excel-function-read-in-excel-data-files"><i class="fa fa-check"></i><b>1.1.2</b> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="prepartion.html"><a href="prepartion.html#opperators-and-helpful-functions"><i class="fa fa-check"></i><b>1.2</b> Opperators and Helpful Functions</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="prepartion.html"><a href="prepartion.html#the---assignment-opperator-save-as-a-name"><i class="fa fa-check"></i><b>1.2.1</b> The <code>&lt;-</code> Assignment Opperator: Save as a Name</a></li>
+<li class="chapter" data-level="1.2.1" data-path="prepartion.html"><a href="prepartion.html#the-assignment-opperator---save-things-to-a-name"><i class="fa fa-check"></i><b>1.2.1</b> The Assignment Opperator <code>&lt;-</code>: Save things to a name</a></li>
 <li class="chapter" data-level="1.2.2" data-path="prepartion.html"><a href="prepartion.html#the-pipe-opperator-link-steps-togehter"><i class="fa fa-check"></i><b>1.2.2</b> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</a></li>
 <li class="chapter" data-level="1.2.3" data-path="prepartion.html"><a href="prepartion.html#the-head-function-print-the-first-few-rows"><i class="fa fa-check"></i><b>1.2.3</b> The <code>head()</code> Function: Print the First Few Rows</a></li>
 <li class="chapter" data-level="1.2.4" data-path="prepartion.html"><a href="prepartion.html#the-names-function-list-the-variable-names"><i class="fa fa-check"></i><b>1.2.4</b> The <code>names()</code> Function: List the Variable Names</a></li>
@@ -161,37 +163,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html"><i class="fa fa-check"></i><b>2</b> EXAMINING A DISTRIBUTION</a><ul>
-<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#packages-needed"><i class="fa fa-check"></i>Packages Needed</a></li>
-<li class="chapter" data-level="2.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#frequency-distrubutions"><i class="fa fa-check"></i><b>2.1</b> Frequency Distrubutions</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#chapter-links-1"><i class="fa fa-check"></i>Chapter Links</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#example-ihnos-experiment"><i class="fa fa-check"></i>Example: Ihno’s Experiment</a><ul>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#required-packages"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#data-import-and-wrangling"><i class="fa fa-check"></i>Data Import and Wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#frequency-tables"><i class="fa fa-check"></i><b>2.1</b> Frequency Tables</a></li>
 <li class="chapter" data-level="2.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#bar-charts"><i class="fa fa-check"></i><b>2.2</b> Bar Charts</a></li>
 <li class="chapter" data-level="2.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#histograms"><i class="fa fa-check"></i><b>2.3</b> Histograms</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#change-the-number-of-bins"><i class="fa fa-check"></i><b>2.3.1</b> Change the Number of Bins</a></li>
 <li class="chapter" data-level="2.3.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#change-the-bin-width"><i class="fa fa-check"></i><b>2.3.2</b> Change the Bin Width</a></li>
 <li class="chapter" data-level="2.3.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#make-seperate-panels--by--a-factor"><i class="fa fa-check"></i><b>2.3.3</b> Make Seperate Panels -by- a Factor</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles-deciles-and-percentiles"><i class="fa fa-check"></i><b>2.4</b> Quartiles, Deciles, and Percentiles</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#deciles-break-into-10-chunks"><i class="fa fa-check"></i><b>2.4.1</b> Deciles (break into 10% chunks)</a></li>
-<li class="chapter" data-level="2.4.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#with-missing-values-throws-an-error"><i class="fa fa-check"></i><b>2.4.2</b> With Missing Values: throws an error</a></li>
-<li class="chapter" data-level="2.4.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#option-to-ignore-missing-values-na.rm-true"><i class="fa fa-check"></i><b>2.4.3</b> Option to Ignore Missing Values: <code>na.rm = TRUE</code></a></li>
-<li class="chapter" data-level="2.4.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles-break-into-4-chunks"><i class="fa fa-check"></i><b>2.4.4</b> Quartiles (break into 4 chunks)</a></li>
-<li class="chapter" data-level="2.4.5" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#other-percentiles"><i class="fa fa-check"></i><b>2.4.5</b> Other Percentiles</a></li>
+<li class="chapter" data-level="2.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#percentiles"><i class="fa fa-check"></i><b>2.4</b> Percentiles</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#deciles"><i class="fa fa-check"></i><b>2.4.1</b> Deciles</a></li>
+<li class="chapter" data-level="2.4.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles"><i class="fa fa-check"></i><b>2.4.2</b> Quartiles</a></li>
+<li class="chapter" data-level="2.4.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#other-percentiles"><i class="fa fa-check"></i><b>2.4.3</b> Other Percentiles</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>3</b> SUMMARY STATISTICS</a><ul>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#chapter-links-2"><i class="fa fa-check"></i>Chapter Links</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#example-cancer-experiment"><i class="fa fa-check"></i>Example: Cancer Experiment</a><ul>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#required-packages-1"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#data-import"><i class="fa fa-check"></i>Data Import</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#data-wrangling-1"><i class="fa fa-check"></i>Data Wrangling</a></li>
+</ul></li>
 <li class="chapter" data-level="3.1" data-path="summary-statistics.html"><a href="summary-statistics.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.1</b> Descriptive Statistics</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="summary-statistics.html"><a href="summary-statistics.html#full"><i class="fa fa-check"></i><b>3.1.1</b> Full</a></li>
-<li class="chapter" data-level="3.1.2" data-path="summary-statistics.html"><a href="summary-statistics.html#simple"><i class="fa fa-check"></i><b>3.1.2</b> Simple</a></li>
-<li class="chapter" data-level="3.1.3" data-path="summary-statistics.html"><a href="summary-statistics.html#simple--by--a-factor"><i class="fa fa-check"></i><b>3.1.3</b> Simple, -by- a Factor</a></li>
+<li class="chapter" data-level="3.1.1" data-path="summary-statistics.html"><a href="summary-statistics.html#extensive-set"><i class="fa fa-check"></i><b>3.1.1</b> Extensive Set</a></li>
+<li class="chapter" data-level="3.1.2" data-path="summary-statistics.html"><a href="summary-statistics.html#simple-set"><i class="fa fa-check"></i><b>3.1.2</b> Simple Set</a></li>
+<li class="chapter" data-level="3.1.3" data-path="summary-statistics.html"><a href="summary-statistics.html#simple-set--by--a-factor"><i class="fa fa-check"></i><b>3.1.3</b> Simple Set, -by- a Factor</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="summary-statistics.html"><a href="summary-statistics.html#boxplots"><i class="fa fa-check"></i><b>3.2</b> Boxplots</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#single"><i class="fa fa-check"></i><b>3.2.1</b> Single</a></li>
-<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#by--a-factor"><i class="fa fa-check"></i><b>3.2.2</b> -by- a Factor</a></li>
-<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#for--a-subset"><i class="fa fa-check"></i><b>3.2.3</b> -for- a Subset</a></li>
+<li class="chapter" data-level="3.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#single-box"><i class="fa fa-check"></i><b>3.2.1</b> Single Box</a></li>
+<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#single-box--for--a-subset"><i class="fa fa-check"></i><b>3.2.2</b> Single Box -for- a Subset</a></li>
+<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--by--a-factor"><i class="fa fa-check"></i><b>3.2.3</b> Multiple Boxes -by- a Factor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--by--2-factors"><i class="fa fa-check"></i><b>3.2.4</b> Multiple Boxes -by- 2 Factors</a></li>
+<li class="chapter" data-level="3.2.5" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--for--a-subset-and--by--2-factors"><i class="fa fa-check"></i><b>3.2.5</b> Multiple Boxes -for- a Subset AND -by- 2 Factors</a></li>
+<li class="chapter" data-level="3.2.6" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--for--repeated-measurements"><i class="fa fa-check"></i><b>3.2.6</b> Multiple Boxes -for- Repeated Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="summary-statistics.html"><a href="summary-statistics.html#by--a-factor-and--for--a-subset"><i class="fa fa-check"></i><b>3.3</b> -by- a Factor AND -for- a Subset</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="standardizing-scores.html"><a href="standardizing-scores.html"><i class="fa fa-check"></i><b>4</b> STANDARDIZING SCORES</a><ul>
+<li class="chapter" data-level="" data-path="standardizing-scores.html"><a href="standardizing-scores.html#chapter-links-3"><i class="fa fa-check"></i>Chapter Links</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="./">Psy/Educ 6600</a></li>
 
 </ul>
 
@@ -212,8 +228,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="prepartion" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> PREPARTION</h1>
-<p>LINK TO: <a href="http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1">Slide Show - Chapter 1</a></p>
+<div id="chapter-links" class="section level2 unnumbered">
+<h2>Chapter Links</h2>
+<ul>
+<li><p><a href="http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1">Chapter 1 Slide Show</a></p></li>
+<li><p><a href="https://usu.box.com/s/dmj8d2u28q2ynx15v53l9f8nr1rudu8y">Unit 0 Assingment - Write Up Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/di5zsmcpalactd2h08nx7p8nnm45en62">Unit 0 Assingment - Rmd Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Inho’s Dataset - Excel format</a></p></li>
+</ul>
 <hr />
+</div>
 <div id="preparing-the-environment" class="section level2">
 <h2><span class="header-section-number">1.1</span> Preparing the Environment</h2>
 <div class="figure">
@@ -224,17 +248,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">1.1.1</span> The <code>library()</code> Function: Load a Package</h3>
 <p>You will need TWO packages:</p>
 <ul>
-<li><code>tidyverse</code> Easily Install and Load the ‘Tidy universe’ of packages</li>
-<li><code>readxl</code> Read Excel Files</li>
-<li><code>furniture</code> Nice Tables and Row-wise functions (by Tyson)</li>
+<li><code>tidyverse</code> Easily Install and Load the ‘Tidy universe’ of packages <span class="citation">(Wickham <a href="references.html#ref-R-tidyverse">2017</a>)</span></li>
+<li><code>readxl</code> Read Excel Files <span class="citation">(Wickham and Bryan <a href="references.html#ref-R-readxl">2017</a>)</span></li>
+<li><code>furniture</code> Nice Tables and Row-wise functions (by Tyson) <span class="citation">(Barrett, Brignone, and Laxman <a href="references.html#ref-R-furniture">2018</a>)</span></li>
 </ul>
 <blockquote>
 <p>Make sure the packages are <strong>installed</strong> <em>(Package tab)</em></p>
 </blockquote>
 <p>The function <code>library()</code> checks the package out, or makes it active.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-<span class="kw">library</span>(readxl)
-<span class="kw">library</span>(furniture)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
+<span class="kw">library</span>(readxl)       <span class="co"># Read in Excel datasets</span>
+<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span></code></pre></div>
 </div>
 <div id="the-readxlread_excel-function-read-in-excel-data-files" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</h3>
@@ -257,29 +281,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>NOTE: a <code>tibble</code> is basically just a “table” of data, the way the tidy-verse represents data sets.</p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>)</code></pre></div>
-<pre><code># A tibble: 100 x 18
-   Sub_num Gender Major Reason Exp_cond Coffee Num_cups Phobia Prevmath
-     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
- 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
- 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
- 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
- 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
- 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
- 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
- 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
- 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
- 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
-10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
-# ... with 90 more rows, and 9 more variables: Mathquiz &lt;dbl&gt;, Statquiz
-#   &lt;dbl&gt;, Exp_sqz &lt;dbl&gt;, Hr_base &lt;dbl&gt;, Hr_pre &lt;dbl&gt;, Hr_post &lt;dbl&gt;,
-#   Anx_base &lt;dbl&gt;, Anx_pre &lt;dbl&gt;, Anx_post &lt;dbl&gt;</code></pre>
 <hr />
 </div>
 </div>
 <div id="opperators-and-helpful-functions" class="section level2">
 <h2><span class="header-section-number">1.2</span> Opperators and Helpful Functions</h2>
-<div id="the---assignment-opperator-save-as-a-name" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> The <code>&lt;-</code> Assignment Opperator: Save as a Name</h3>
+<div id="the-assignment-opperator---save-things-to-a-name" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> The Assignment Opperator <code>&lt;-</code>: Save things to a name</h3>
 <ul>
 <li>the <code>&lt;-</code> combination of symbols makes <strong>assignments</strong></li>
 <li>tells <strong>R</strong> to store the dataset as the name it points to</li>
@@ -316,27 +324,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="the-pipe-opperator-link-steps-togehter" class="section level3">
 <h3><span class="header-section-number">1.2.2</span> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</h3>
-<p>This special set of symbols <em>(no spaces included)</em> signals R to feed what precedes it <strong>into</strong> what follows it. Its a simple idea that makes code writing in R much easier.</p>
+<p>This special set of symbols <em>(no spaces included)</em> signals R to feed what precedes it <strong>into</strong> what follows it. Its a simple idea that makes code writing in R much easier <span class="citation">(Wickham et al. <a href="references.html#ref-R-dplyr">2017</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename_all</span>(tolower)              <span class="co"># convert variable names to lower case</span>
 
 data</code></pre></div>
-<pre><code># A tibble: 100 x 18
-   sub_num gender major reason exp_cond coffee num_cups phobia prevmath
-     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
- 1    1.00   1.00  1.00   3.00     1.00   1.00     0      1.00     3.00
- 2    2.00   1.00  1.00   2.00     1.00   0        0      1.00     4.00
- 3    3.00   1.00  1.00   1.00     1.00   0        0      4.00     1.00
- 4    4.00   1.00  1.00   1.00     1.00   0        0      4.00     0   
- 5    5.00   1.00  1.00   1.00     1.00   0        1.00  10.0      1.00
- 6    6.00   1.00  1.00   1.00     2.00   1.00     1.00   4.00     1.00
- 7    7.00   1.00  1.00   1.00     2.00   0        0      4.00     2.00
- 8    8.00   1.00  1.00   3.00     2.00   1.00     2.00   4.00     1.00
- 9    9.00   1.00  1.00   1.00     2.00   0        0      4.00     1.00
-10   10.0    1.00  1.00   1.00     2.00   1.00     2.00   5.00     0   
-# ... with 90 more rows, and 9 more variables: mathquiz &lt;dbl&gt;, statquiz
-#   &lt;dbl&gt;, exp_sqz &lt;dbl&gt;, hr_base &lt;dbl&gt;, hr_pre &lt;dbl&gt;, hr_post &lt;dbl&gt;,
-#   anx_base &lt;dbl&gt;, anx_pre &lt;dbl&gt;, anx_post &lt;dbl&gt;</code></pre>
 </div>
 <div id="the-head-function-print-the-first-few-rows" class="section level3">
 <h3><span class="header-section-number">1.2.3</span> The <code>head()</code> Function: Print the First Few Rows</h3>
@@ -406,7 +398,7 @@ data</code></pre></div>
 </div>
 <div id="the-tibbleglimpse-function-gives-an-overview-of-variables" class="section level3">
 <h3><span class="header-section-number">1.2.6</span> The <code>tibble::glimpse()</code> Function: Gives an Overview of Variables</h3>
-<p>This is a handy function that gives:</p>
+<p>This is a handy function that gives <span class="citation">(Muller and Wickham <a href="references.html#ref-R-tibble">2017</a>)</span>:</p>
 <ul>
 <li>Dimensions (observations and variables)</li>
 <li>Names of variables</li>
@@ -584,7 +576,7 @@ $ anx_post &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, 2...<
                                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not a regular coffee drinker&quot;</span>,
                                             <span class="st">&quot;Regularly drinks coffee&quot;</span>))) </code></pre></div>
 <p>See how the new variables are added at the end.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(data)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tibble<span class="op">::</span><span class="kw">glimpse</span>(data)</code></pre></div>
 <pre><code>Observations: 100
 Variables: 18
 $ sub_num  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
@@ -605,7 +597,7 @@ $ hr_post  &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78, 7...
 $ anx_base &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19, 1...
 $ anx_pre  &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23, 2...
 $ anx_post &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20, 2...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(dataF)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tibble<span class="op">::</span><span class="kw">glimpse</span>(dataF)</code></pre></div>
 <pre><code>Observations: 100
 Variables: 23
 $ sub_num   &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1...
@@ -814,43 +806,11 @@ $ coffeeF   &lt;fct&gt; Regularly drinks coffee, Not a regular coffee drinke...<
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_base_bps  =</span> hr_base <span class="op">/</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statquiz_4a  =</span> (statquiz <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statquiz_4b  =</span> (statquiz <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_sum     =</span> <span class="kw">rowsums</span>(anx_base, anx_pre, anx_post)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_mean       =</span> <span class="kw">rowmeans</span>(hr_base <span class="op">+</span><span class="st"> </span>hr_pre <span class="op">+</span><span class="st"> </span>hr_post)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_sum      =</span> <span class="kw">rowsums</span>(anx_base, anx_pre, anx_post)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_mean      =</span> <span class="kw">rowmeans</span>(hr_base <span class="op">+</span><span class="st"> </span>hr_pre <span class="op">+</span><span class="st"> </span>hr_post)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statDiff     =</span> statquiz <span class="op">-</span><span class="st"> </span>exp_sqz)
 
-<span class="kw">glimpse</span>(data_clean)</code></pre></div>
-<pre><code>Observations: 100
-Variables: 30
-$ sub_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15...
-$ gender       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-$ major        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-$ reason       &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1...
-$ exp_cond     &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4...
-$ coffee       &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0...
-$ num_cups     &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0...
-$ phobia       &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, ...
-$ prevmath     &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1...
-$ mathquiz     &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 1...
-$ statquiz     &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8...
-$ exp_sqz      &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1,...
-$ hr_base      &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 7...
-$ hr_pre       &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 7...
-$ hr_post      &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 7...
-$ anx_base     &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 1...
-$ anx_pre      &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 2...
-$ anx_post     &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 2...
-$ genderF      &lt;fct&gt; Female, Female, Female, Female, Female, Female, F...
-$ majorF       &lt;fct&gt; Psychology, Psychology, Psychology, Psychology, P...
-$ reasonF      &lt;fct&gt; Advisor recommendation, Personal interest, Progra...
-$ exp_condF    &lt;fct&gt; Easy, Easy, Easy, Easy, Easy, Moderate, Moderate,...
-$ coffeeF      &lt;fct&gt; Regularly drinks coffee, Not a regular coffee dri...
-$ mathquiz_p50 &lt;dbl&gt; 93, 99, 76, 79, 81, 70, 63, 73, 88, NA, 79, 82, 6...
-$ hr_base_bps  &lt;dbl&gt; 1.183333, 1.216667, 1.150000, 1.200000, 1.183333,...
-$ statquiz_4a  &lt;dbl&gt; 80, 110, 100, 90, 80, 90, 50, 90, 100, 90, 100, 1...
-$ statquiz_4b  &lt;dbl&gt; 62, 92, 82, 72, 62, 72, 32, 72, 82, 72, 82, 82, 1...
-$ anx_sum      &lt;dbl&gt; 59, 52, 48, 48, 81, 46, 45, 58, 51, 63, 68, 100, ...
-$ hr_mean      &lt;dbl&gt; 204, 216, 217, 223, 228, 217, 207, 248, 212, 228,...
-$ statDiff     &lt;dbl&gt; -1, -2, 0, -1, 0, 1, -1, 0, 1, 1, -2, 1, -2, 1, 2...</code></pre>
+tibble<span class="op">::</span><span class="kw">glimpse</span>(data_clean)</code></pre></div>
 
 </div>
 </div>

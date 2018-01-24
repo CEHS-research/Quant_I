@@ -2,7 +2,7 @@
 title: "Explaining Psychological Statistcs: A Compantion in R"
 subtitle: "Psy 6600 and Educ 6600: Research Design and Analysis I"
 author: "Sarah Schwartz and Tyson Barrett"
-date: "January 23 2018"
+date: "January 24 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"
@@ -10,7 +10,9 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This book covers R code."
+description: "This book covers R code for the Cohen Textbook"
+no cite: |
+   @R-base @R-bookdown @R-knitr @R-rmarkdown @R-dplyr @R-tidyr @R-tibble @R-ggplot2 @R-readxl @R-haven @R-psych @R-furniture
 ---
 
 

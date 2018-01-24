@@ -10,7 +10,9 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This book covers R code."
+description: "This book covers R code for the Cohen Textbook"
+no cite: |
+   @R-base @R-bookdown @R-knitr @R-rmarkdown @R-dplyr @R-tidyr @R-tibble @R-ggplot2 @R-readxl @R-haven @R-psych @R-furniture
 ---
 
 

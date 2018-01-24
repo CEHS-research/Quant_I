@@ -1,23 +1,108 @@
 # SUMMARY STATISTICS
 
-LINK TO: [Slide Show - Chapter 3](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch3_CenterSpread.html#1)
+## Chapter Links {-}
+
+* [Chapter 3 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch3_CenterSpread.html#1)
+
+* [Unit 1 Assignment - Write Up Skeleton](https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu)
+
+* [Unit 1 Assignment - Rmd Skeleton](https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x)
+
+* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
+
+* [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
+
 
 ```{r global_options, include=FALSE}
 # set global chunk options...  
 #  this changes the defaults so you don't have to repeat yourself
 knitr::opts_chunk$set(comment     = NA,
+                      cache       = TRUE,
                       echo        = TRUE, 
                       warning     = FALSE, 
                       message     = FALSE)
 ```
 
-## Packages Needed {-}
+
+
+## Example: Cancer Experiment {-}
+
+#### Source of Data {-}
+
+Mid-Michigan Medical Center, Midland, Michigan, 1999: A  study of oral condition of cancer patients.
+
+#### Description of the Study {-}
+
+The data set contains part of the data for a study of oral condition of cancer patients conducted at the Mid-Michigan Medical Center.  The oral conditions of the patients were measured and recorded at the initial stage, at the end of the second week, at the end of the fourth week, and at the end of the sixth week.  The variables age, initial weight and initial cancer stage of the patients were recorded.  Patients were divided into two groups at random:  One group received a placebo and the other group received aloe juice treatment.
+
+Sample size n = 25 patients with neck cancer. The treatment is Aloe Juice. 
+
+#### Variables Included {-}
+
+* `ID` patient identification number
+
+* `trt` treatment group 
+    + `0` *placebo* 
+    + `1` *aloe juice*
+
+* `age` patient's age, *in years*
+
+* `weightin` patient's weight *(pounds)* at the initial stage
+
+* `stage`	initial cancer stage
+    + coded `1` through `4`
+
+* `totalcin` oral condition at the *initial stage*
+* `totalcw2` oral condition at the end of *week 2*
+* `totalcw4` oral condition at the end of *week 4*
+* `totalcw6` oral condition at the end of *week 6*
+
+
+### Required Packages {-}
 
 ```{r load_libraries}
-library(tidyverse)
-library(haven)
-library(furniture)
-library(psych)
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(haven)        # Read in SPSS datasets
+library(furniture)    # Nice tables (by our own Tyson Barrett)
+library(psych)        # Lots of nice tid-bits
+```
+
+
+
+### Data Import {-}
+
+The `Cancer` dataset is saved in SPSS format, which is evident from the `.sav` ending on the file name.
+
+The `haven` package is downloaded as part of the `tidyverse` set of packages, but is not automatically loaded.  It must have its own `library()` function call *(see above)*.  The `haven::read_spss()` function works very simarly to the `readxl::read_excel()` function we used last chapter [@R-haven].
+
+* Make sure the **dataset** is saved in the same *folder* as this file
+* Make sure the that *folder* is the **working directory**
+
+```{r, eval=FALSE}
+cancer_raw <- haven::read_spss("cancer.sav")
+```
+
+```{r, include=FALSE}
+cancer_raw <- haven::read_spss("data/cancer.sav")
+```
+
+```{r}
+tibble::glimpse(cancer_raw)
+```
+
+
+### Data Wrangling {-}
+
+```{r}
+cancer_clean <- cancer_raw %>% 
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(id = factor(id)) %>% 
+  dplyr::mutate(trt = factor(trt,
+                             labels = c("Placebo", 
+                                        "Aloe Juice"))) %>% 
+  dplyr::mutate(stage = factor(stage))
+
+tibble::glimpse(cancer_clean)
 ```
 
 
@@ -26,32 +111,312 @@ library(psych)
 ## Descriptive Statistics 
 
 
-### Full
+### Extensive Set
+
+The `describe()` function from the `psych` package returns an extensive listing of basic summary statistics for every variable in a dataset [@R-psych]. 
+
+* `vars` number order of the variables in this table
+* `n` how many non-missing values there are
+* `mean` the average or arithmetic mean
+* `sd` the standard deviation 
+* `median` the 50th percentile or Q2
+* `trimmed` the mean after removing the top and bottom 10% of values
+* `mad` median absolute deviation (from the median) DO NOT WORRY ABOUT!
+* `min` the minimum or lowest value
+* `max` the maximum or highest value
+* `range` full range of values, max - min
+* `skew` skewness (no SE for skewness given)
+* `kurtosis` kurtosis (no SE for kurtosis given)
+* `se` the standard error for the MEAN, not the skewness or kurtosis
+
+```{r}
+cancer_clean %>% 
+  psych::describe()
+```
+
+**NOTE** The names of categorical variables *(factors)* are followed by an astrics to indicate that summary statistics should not be evaluated since the variable is not continuous or on an interval scale.
+
+It is better to avoid calculating summary statistics for categorical variables in the first place by first restricting the dataset to only continuous variables using a `dplyr::select()` step.
+
+> Make sure to use a `dplyr::select(var1, var2, ..., var12)` step to select only the variables of interest.
+
+```{r}
+cancer_clean %>% 
+  dplyr::select(age, weighin, totalcin, totalcw2, totalcw4, totalcw6) %>%
+  psych::describe()
+```
+
+
+
+### Simple Set
+
+The `table1()` function in the `furniture` package returns a much smaller listing of summary statistics [@R-furniture].
+
+* Categorical Variables: count (percentage) within each category
+* Continuous Variables: mean (standard deviation)
+
+```{r}
+cancer_clean %>% 
+  furniture::table1()
+```
+
+The variables desired can also be listed inside the function *(selarate with commas)*.
+
+```{r}
+cancer_clean %>% 
+  furniture::table1(age, weighin, stage, totalcin)
+```
 
 
 
 
-### Simple
+### Simple Set, -by- a Factor
+
+You may use a `dplyr::group_by(grouping_var)` step before the `furniture::table1()` step to create summary statistics for different subgroups. 
+
+```{r}
+cancer_clean %>% 
+  dplyr::group_by(trt) %>% 
+  furniture::table1(age, weighin, stage, totalcin)
+```
 
 
-
-
-
-### Simple, -by- a Factor
-
-
-
+```{r}
+cancer_clean %>% 
+  dplyr::group_by(stage) %>% 
+  furniture::table1(age, weighin, totalcin, trt)
+```
 
 ---------------------------------------
 
 ## Boxplots
 
-### Single
+For boxplots, you must specify the variable of interest into the aesthetics as the `y` variable: `ggplot(aes(y = continuous_var))` before adding the `geom_boxplot()` layer [@R-ggplot2].
 
-### Multiple -by- a Factor
+> Reminder: Steps before the `ggplot()` are combined with pipes `%>%`, whereas layers of the plot are combined with the addition symbol `+`.
 
-### Simple -for- a Subset
+### Single Box
 
-### Multiple -by- a Factor AND -for- a Subset
+If you only want to produce a single boxplot, then the aesthetics must include some quoted text as the `x` variable.
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = "Full Data Set", 
+             y = weighin)) +
+  geom_boxplot()
+```
+
+
+### Single Box -for- a Subset
+
+#### One Requirement {-}
+
+Where as the `dplyr::select()` function specifies which VARIABLES to reduce down to, the `dplyr::filter()` function specifies which ROWS or PARTICIPANTS to reduce down to.
+
+> When using a `dplyr::filter()` step, make sure to change the `x = "text"`, too.
+
+```{r}
+cancer_clean %>%
+  dplyr::filter(weighin < 172) %>%
+  ggplot(aes(x = "Weigh At Baseline < 172", 
+             y = weighin)) +
+  geom_boxplot()
+```
+
+#### Two Requirements {-}
+
+When testing for a match to a value *(for equality)* use `==` instead of `=` in the `dplyr::filter()` step.
+
+Use the `&` symbol to require multiple conditions for the subset, but only include one quoted text phrase for `x`.
+
+```{r}
+cancer_clean %>%
+  dplyr::filter(weighin >= 150 & trt == "Placebo") %>%
+  ggplot(aes(x = "Placebo and at least 150 Pounds", 
+             y = weighin)) +
+  geom_boxplot()
+```
+
+
+#### A Requirement Specified with a List {-}
+
+A helpful symbol-set is `%in%`, which tests if the thing *before* it is **included in** the  list of elements that comes *after* it.
+
+```{r}
+cancer_clean %>%
+  dplyr::filter(trt == "Aloe Juice" & stage %in% c(2, 3, 4)) %>%
+  ggplot(aes(x = "On Aloe Juice and Stage 2-4", 
+             y = weighin)) +
+  geom_boxplot()
+```
+
+-------------------------------------
+
+### Multiple Boxes -by- a Factor
+
+There are **three** ways to included a categorical variable to break the sample into groups. You may specify the factor with:
+
+(@) `fill` the variable is denoted with different colors filling the boxes
+(@) `x` the horizontal axis is marked for all levels
+(@) `facet_grid()` a panel is create for each level
+
+
+#### Use `fill = var_name` {-}
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = "Full Sample",
+             y = weighin,
+             fill = trt)) +
+  geom_boxplot()
+```
+
+#### Use `x = var_name` {-}
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = trt, 
+             y = weighin)) +
+  geom_boxplot()
+```
+
+
+#### Use `facet_grid(. ~ var_name)` {-}
+
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = "Full Sample",
+             y = weighin)) +
+  geom_boxplot() +
+  facet_grid(. ~ trt)
+```
+
+### Multiple Boxes -by- 2 Factors
+
+You may combine any of the three previous specification, one per categorical (`factor`) variable.
+
+#### Use `fill = var_name_1` and `x = var_name_2`{-}
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = stage,
+             y = weighin,
+             fill = trt)) +
+  geom_boxplot()
+```
+
+
+#### Use `x = var_name_1` and `facet_grid(. ~ var_name_2)`{-}
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = trt,
+             y = weighin)) +
+  geom_boxplot() + 
+  facet_grid(. ~ stage)
+```
+
+#### Use `fill = var_name_1` and `facet_grid(. ~ var_name_2)`{-}
+
+```{r}
+cancer_clean %>%
+  ggplot(aes(x = "Full Sample",
+             y = weighin,
+             fill = trt)) +
+  geom_boxplot() + 
+  facet_grid(. ~ stage)
+```
+
+
+
+
+### Multiple Boxes -for- a Subset AND -by- 2 Factors
+
+The layers maybe combined to create more complicated plots.
+
+Here is a plot for only participants who were in stage 1, 2, or 4 (n > 1 per stage), and compares the final oral condition for each stage between participants receiving the Aloe treatment vs. the placebo.
+
+
+```{r}
+cancer_clean %>%
+  dplyr::filter(stage %in% c("1", "2", "4")) %>% 
+  ggplot(aes(x = stage, 
+             y = totalcw6,
+             fill = trt)) +
+  geom_boxplot() 
+```
+
+------------------------------------------------
+
+### Multiple Boxes -for- Repeated Measurements
+
+The ordinal data is in what is called **"WIDE" format**, with the repeated measurements as separate variables, sitting side-by-side.  Each participant's data is contained in a single line *(25 lines here)*.
+
+> To sort a dataset, use the `dplyr::arrange()` function and include the variable or variables you wish to sort by in the parentheses.
+
+```{r}
+cancer_clean %>% 
+  dplyr::arrange(id) %>% 
+  dplyr::select(id, totalcin, totalcw2, totalcw4, totalcw6)
+```
+
+
+Some data manipulations is needed to "stack" the repeated measurement variables (baseline, week 2, week 4, week 6) into a single variable we will call `value`.  We also need another new variable that denotes the measurement time, which we will call `time`.  The resulting dataset is said to be in **"LONG" format**.  Now there will be one line for each observation time on each participant *(4 x 25 = 100 lines here)*.
+
+This is done with with the `tidyr::gather(key = "new_time_var", value = "new_value_var", old_var_1, old_var_2, ...)` function.
+
+> Ignore the message that says *"attributes are not identical across measure variables; they will be dropped"*.
+
+```{r}
+cancer_clean %>%
+  tidyr::gather(key = "time", 
+                value = "value", 
+                totalcin, totalcw2, totalcw4, totalcw6) %>% 
+  dplyr::arrange(id, time) %>% 
+  dplyr::select(id, time, value)
+```
+
+Once the data is in this format, you can create box plots for each time point.
+
+> Ignore the additional message that says *"Removed 2 rows containing non-finite values (stat_boxplot)"*.  This is just alerting you to the fact that two people are missing their week 6 oral condiditon values.
+
+```{r}
+cancer_clean %>%
+  tidyr::gather(key = "time", 
+                value = "value", 
+                totalcin, totalcw2, totalcw4, totalcw6) %>%
+  ggplot(aes(x = time, 
+             y = value)) +
+  geom_boxplot()
+```
+
+
+#### Multiple Boxes -for- Repeated Measurements AND -by- a Factor {-}
+
+```{r}
+cancer_clean %>%
+  tidyr::gather(key = "time", 
+                value = "value", 
+                totalcin, totalcw2, totalcw4, totalcw6) %>%
+  ggplot(aes(x = time, 
+             y = value,
+             fill = trt)) +
+  geom_boxplot()
+```
+
+
+```{r}
+cancer_clean %>%
+  tidyr::gather(key = "time", 
+                value = "value", 
+                totalcin, totalcw2, totalcw4, totalcw6) %>%
+  ggplot(aes(x = time, 
+             y = value)) +
+  geom_boxplot() +
+  facet_grid(. ~ trt)
+```
+
+
 
 

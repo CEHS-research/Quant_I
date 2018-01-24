@@ -4,6 +4,14 @@
 
 ![](img/headers/R_studio_LaTeX_header.png)
 
+## What is R? {-}
+
+R is a language and environment for statistical computing and graphics. [@R-base]
+
+R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, ...) and graphical techniques, and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.
+
+One of R’s strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
+
 
 
 -------------------------------
@@ -67,20 +75,20 @@ Check out [Rpubs](http://rpubs.com/). This website shares lots of documents writ
 ![](img/hex/rmarkdown-200x232.png)
 
  
-> `R Markdown` documents are fully reproducible. Use a productive **notebook** interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL.
+> `R Markdown` documents are fully reproducible. Use a productive **notebook** interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL [@R-rmarkdown].
 
 
 ![](img/hex/knitr-200x232.png)
 
 
-> `knitr` is an engine for dynamic report generation with R. It is a package in the statistical programming language R that enables integration of **R code** into LaTeX, LyX, HTML, Markdown, AsciiDoc, and **text** documents.
+> `knitr` is an engine for dynamic report generation with R. It is a package in the statistical programming language R that enables integration of **R code** into LaTeX, LyX, HTML, Markdown, AsciiDoc, and **text** documents [@R-knitr].
 
 -------------------------------
 
 
 ## Software Programs {-}
 
-You will need to download and install THREE programs to create dynamic reports in R.
+You will need to download and install THREE programs to create dynamic reports in.
 
 ![](img/Rlogo_200.png)
 

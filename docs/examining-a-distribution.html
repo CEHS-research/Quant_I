@@ -6,20 +6,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Explaining Psychological Statistcs: A Compantion in R</title>
-  <meta name="description" content="This book covers R code.">
+  <meta name="description" content="This book covers R code for the Cohen Textbook">
   <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Explaining Psychological Statistcs: A Compantion in R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="img/Cohen_4ed.jpg" />
-  <meta property="og:description" content="This book covers R code." />
+  <meta property="og:description" content="This book covers R code for the Cohen Textbook" />
   <meta name="github-repo" content="SarBearSchwartz/Quant_I" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Explaining Psychological Statistcs: A Compantion in R" />
   
-  <meta name="twitter:description" content="This book covers R code." />
+  <meta name="twitter:description" content="This book covers R code for the Cohen Textbook" />
   <meta name="twitter:image" content="img/Cohen_4ed.jpg" />
 
 <meta name="author" content="Sarah Schwartz and Tyson Barrett">
@@ -109,6 +109,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html"><i class="fa fa-check"></i>GETTING YOUR COMPUTER READY</a><ul>
+<li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html#what-is-r"><i class="fa fa-check"></i>What is R?</a></li>
 <li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html#what-is-r-markdown"><i class="fa fa-check"></i>What is R Markdown?</a></li>
 <li class="chapter" data-level="" data-path="getting-your-computer-ready.html"><a href="getting-your-computer-ready.html#dynamic-reporting"><i class="fa fa-check"></i>Dynamic Reporting</a><ul>
 <li><a href="getting-your-computer-ready.html#the-traditional-way-to-write-a-report">The <strong>traditional way</strong> to write a report</a></li>
@@ -131,12 +132,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="prepartion.html"><a href="prepartion.html"><i class="fa fa-check"></i><b>1</b> PREPARTION</a><ul>
+<li class="chapter" data-level="" data-path="prepartion.html"><a href="prepartion.html#chapter-links"><i class="fa fa-check"></i>Chapter Links</a></li>
 <li class="chapter" data-level="1.1" data-path="prepartion.html"><a href="prepartion.html#preparing-the-environment"><i class="fa fa-check"></i><b>1.1</b> Preparing the Environment</a><ul>
 <li class="chapter" data-level="1.1.1" data-path="prepartion.html"><a href="prepartion.html#the-library-function-load-a-package"><i class="fa fa-check"></i><b>1.1.1</b> The <code>library()</code> Function: Load a Package</a></li>
 <li class="chapter" data-level="1.1.2" data-path="prepartion.html"><a href="prepartion.html#the-readxlread_excel-function-read-in-excel-data-files"><i class="fa fa-check"></i><b>1.1.2</b> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="prepartion.html"><a href="prepartion.html#opperators-and-helpful-functions"><i class="fa fa-check"></i><b>1.2</b> Opperators and Helpful Functions</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="prepartion.html"><a href="prepartion.html#the---assignment-opperator-save-as-a-name"><i class="fa fa-check"></i><b>1.2.1</b> The <code>&lt;-</code> Assignment Opperator: Save as a Name</a></li>
+<li class="chapter" data-level="1.2.1" data-path="prepartion.html"><a href="prepartion.html#the-assignment-opperator---save-things-to-a-name"><i class="fa fa-check"></i><b>1.2.1</b> The Assignment Opperator <code>&lt;-</code>: Save things to a name</a></li>
 <li class="chapter" data-level="1.2.2" data-path="prepartion.html"><a href="prepartion.html#the-pipe-opperator-link-steps-togehter"><i class="fa fa-check"></i><b>1.2.2</b> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</a></li>
 <li class="chapter" data-level="1.2.3" data-path="prepartion.html"><a href="prepartion.html#the-head-function-print-the-first-few-rows"><i class="fa fa-check"></i><b>1.2.3</b> The <code>head()</code> Function: Print the First Few Rows</a></li>
 <li class="chapter" data-level="1.2.4" data-path="prepartion.html"><a href="prepartion.html#the-names-function-list-the-variable-names"><i class="fa fa-check"></i><b>1.2.4</b> The <code>names()</code> Function: List the Variable Names</a></li>
@@ -161,38 +163,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html"><i class="fa fa-check"></i><b>2</b> EXAMINING A DISTRIBUTION</a><ul>
-<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#packages-needed"><i class="fa fa-check"></i>Packages Needed</a></li>
-<li class="chapter" data-level="2.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#frequency-distrubutions"><i class="fa fa-check"></i><b>2.1</b> Frequency Distrubutions</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#chapter-links-1"><i class="fa fa-check"></i>Chapter Links</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#example-ihnos-experiment"><i class="fa fa-check"></i>Example: Ihno’s Experiment</a><ul>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#required-packages"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#data-import-and-wrangling"><i class="fa fa-check"></i>Data Import and Wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#frequency-tables"><i class="fa fa-check"></i><b>2.1</b> Frequency Tables</a></li>
 <li class="chapter" data-level="2.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#bar-charts"><i class="fa fa-check"></i><b>2.2</b> Bar Charts</a></li>
 <li class="chapter" data-level="2.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#histograms"><i class="fa fa-check"></i><b>2.3</b> Histograms</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#change-the-number-of-bins"><i class="fa fa-check"></i><b>2.3.1</b> Change the Number of Bins</a></li>
 <li class="chapter" data-level="2.3.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#change-the-bin-width"><i class="fa fa-check"></i><b>2.3.2</b> Change the Bin Width</a></li>
 <li class="chapter" data-level="2.3.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#make-seperate-panels--by--a-factor"><i class="fa fa-check"></i><b>2.3.3</b> Make Seperate Panels -by- a Factor</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles-deciles-and-percentiles"><i class="fa fa-check"></i><b>2.4</b> Quartiles, Deciles, and Percentiles</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#deciles-break-into-10-chunks"><i class="fa fa-check"></i><b>2.4.1</b> Deciles (break into 10% chunks)</a></li>
-<li class="chapter" data-level="2.4.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#with-missing-values-throws-an-error"><i class="fa fa-check"></i><b>2.4.2</b> With Missing Values: throws an error</a></li>
-<li class="chapter" data-level="2.4.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#option-to-ignore-missing-values-na.rm-true"><i class="fa fa-check"></i><b>2.4.3</b> Option to Ignore Missing Values: <code>na.rm = TRUE</code></a></li>
-<li class="chapter" data-level="2.4.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles-break-into-4-chunks"><i class="fa fa-check"></i><b>2.4.4</b> Quartiles (break into 4 chunks)</a></li>
-<li class="chapter" data-level="2.4.5" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#other-percentiles"><i class="fa fa-check"></i><b>2.4.5</b> Other Percentiles</a></li>
+<li class="chapter" data-level="2.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#percentiles"><i class="fa fa-check"></i><b>2.4</b> Percentiles</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#deciles"><i class="fa fa-check"></i><b>2.4.1</b> Deciles</a></li>
+<li class="chapter" data-level="2.4.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles"><i class="fa fa-check"></i><b>2.4.2</b> Quartiles</a></li>
+<li class="chapter" data-level="2.4.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#other-percentiles"><i class="fa fa-check"></i><b>2.4.3</b> Other Percentiles</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>3</b> SUMMARY STATISTICS</a><ul>
-<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#packages-needed-1"><i class="fa fa-check"></i>Packages Needed</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#chapter-links-2"><i class="fa fa-check"></i>Chapter Links</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#example-cancer-experiment"><i class="fa fa-check"></i>Example: Cancer Experiment</a><ul>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#required-packages-1"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#data-import"><i class="fa fa-check"></i>Data Import</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#data-wrangling-1"><i class="fa fa-check"></i>Data Wrangling</a></li>
+</ul></li>
 <li class="chapter" data-level="3.1" data-path="summary-statistics.html"><a href="summary-statistics.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.1</b> Descriptive Statistics</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="summary-statistics.html"><a href="summary-statistics.html#full"><i class="fa fa-check"></i><b>3.1.1</b> Full</a></li>
-<li class="chapter" data-level="3.1.2" data-path="summary-statistics.html"><a href="summary-statistics.html#simple"><i class="fa fa-check"></i><b>3.1.2</b> Simple</a></li>
-<li class="chapter" data-level="3.1.3" data-path="summary-statistics.html"><a href="summary-statistics.html#simple--by--a-factor"><i class="fa fa-check"></i><b>3.1.3</b> Simple, -by- a Factor</a></li>
+<li class="chapter" data-level="3.1.1" data-path="summary-statistics.html"><a href="summary-statistics.html#extensive-set"><i class="fa fa-check"></i><b>3.1.1</b> Extensive Set</a></li>
+<li class="chapter" data-level="3.1.2" data-path="summary-statistics.html"><a href="summary-statistics.html#simple-set"><i class="fa fa-check"></i><b>3.1.2</b> Simple Set</a></li>
+<li class="chapter" data-level="3.1.3" data-path="summary-statistics.html"><a href="summary-statistics.html#simple-set--by--a-factor"><i class="fa fa-check"></i><b>3.1.3</b> Simple Set, -by- a Factor</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="summary-statistics.html"><a href="summary-statistics.html#boxplots"><i class="fa fa-check"></i><b>3.2</b> Boxplots</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#single"><i class="fa fa-check"></i><b>3.2.1</b> Single</a></li>
-<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#by--a-factor"><i class="fa fa-check"></i><b>3.2.2</b> -by- a Factor</a></li>
-<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#for--a-subset"><i class="fa fa-check"></i><b>3.2.3</b> -for- a Subset</a></li>
+<li class="chapter" data-level="3.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#single-box"><i class="fa fa-check"></i><b>3.2.1</b> Single Box</a></li>
+<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#single-box--for--a-subset"><i class="fa fa-check"></i><b>3.2.2</b> Single Box -for- a Subset</a></li>
+<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--by--a-factor"><i class="fa fa-check"></i><b>3.2.3</b> Multiple Boxes -by- a Factor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--by--2-factors"><i class="fa fa-check"></i><b>3.2.4</b> Multiple Boxes -by- 2 Factors</a></li>
+<li class="chapter" data-level="3.2.5" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--for--a-subset-and--by--2-factors"><i class="fa fa-check"></i><b>3.2.5</b> Multiple Boxes -for- a Subset AND -by- 2 Factors</a></li>
+<li class="chapter" data-level="3.2.6" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--for--repeated-measurements"><i class="fa fa-check"></i><b>3.2.6</b> Multiple Boxes -for- Repeated Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="summary-statistics.html"><a href="summary-statistics.html#by--a-factor-and--for--a-subset"><i class="fa fa-check"></i><b>3.3</b> -by- a Factor AND -for- a Subset</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="standardizing-scores.html"><a href="standardizing-scores.html"><i class="fa fa-check"></i><b>4</b> STANDARDIZING SCORES</a><ul>
+<li class="chapter" data-level="" data-path="standardizing-scores.html"><a href="standardizing-scores.html#chapter-links-3"><i class="fa fa-check"></i>Chapter Links</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="./">Psy/Educ 6600</a></li>
 
 </ul>
 
@@ -213,30 +228,108 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="examining-a-distribution" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> EXAMINING A DISTRIBUTION</h1>
-<p>LINK TO: <a href="http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1">Slide Show - Chapter 2</a></p>
-<div id="packages-needed" class="section level2 unnumbered">
-<h2>Packages Needed</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-<span class="kw">library</span>(readxl)
-<span class="kw">library</span>(furniture)</code></pre></div>
+<div id="chapter-links-1" class="section level2 unnumbered">
+<h2>Chapter Links</h2>
+<ul>
+<li><p><a href="http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1">Chapter 2 Slide Show</a></p></li>
+<li><p><a href="https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu">Unit 1 Assignment - Write Up Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x">Unit 1 Assignment - Rmd Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Inho’s Dataset - Excel format</a></p></li>
+</ul>
+</div>
+<div id="example-ihnos-experiment" class="section level2 unnumbered">
+<h2>Example: Ihno’s Experiment</h2>
+<p>This is the same dataset used in the previous chapter and in most of the textbook’s section C questions.</p>
+<div id="required-packages" class="section level3 unnumbered">
+<h3>Required Packages</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
+<span class="kw">library</span>(readxl)        <span class="co"># Read in Excel datasets</span>
+<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span>
+<span class="kw">library</span>(psych)        <span class="co"># Lots of nice tid-bits</span></code></pre></div>
+</div>
+<div id="data-import-and-wrangling" class="section level3 unnumbered">
+<h3>Data Import and Wrangling</h3>
+<p>The previous chapter build the following code to read in the dataset and prepare it for analysis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Ihno_dataset.xls&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename_all</span>(tolower) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">genderF =</span> <span class="kw">factor</span>(gender, 
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, 
+                                            <span class="st">&quot;Male&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">majorF =</span> <span class="kw">factor</span>(major, 
+                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,<span class="dv">5</span>),
+                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Psychology&quot;</span>,
+                                           <span class="st">&quot;Premed&quot;</span>,
+                                           <span class="st">&quot;Biology&quot;</span>,
+                                           <span class="st">&quot;Sociology&quot;</span>,
+                                           <span class="st">&quot;Economics&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">reasonF =</span> <span class="kw">factor</span>(reason,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Program requirement&quot;</span>,
+                                            <span class="st">&quot;Personal interest&quot;</span>,
+                                            <span class="st">&quot;Advisor recommendation&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">exp_condF =</span> <span class="kw">factor</span>(exp_cond,
+                                   <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),
+                                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Easy&quot;</span>,
+                                              <span class="st">&quot;Moderate&quot;</span>,
+                                              <span class="st">&quot;Difficult&quot;</span>,
+                                              <span class="st">&quot;Impossible&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">coffeeF =</span> <span class="kw">factor</span>(coffee,
+                                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),
+                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not a regular coffee drinker&quot;</span>,
+                                            <span class="st">&quot;Regularly drinks coffee&quot;</span>)))  <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_base_bps  =</span> hr_base <span class="op">/</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">anx_sum      =</span> <span class="kw">rowsums</span>(anx_base, anx_pre, anx_post)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">hr_mean      =</span> <span class="kw">rowmeans</span>(hr_base <span class="op">+</span><span class="st"> </span>hr_pre <span class="op">+</span><span class="st"> </span>hr_post)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">statDiff     =</span> statquiz <span class="op">-</span><span class="st"> </span>exp_sqz)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tibble<span class="op">::</span><span class="kw">glimpse</span>(data_clean)</code></pre></div>
+<pre><code>Observations: 100
+Variables: 27
+$ sub_num     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,...
+$ gender      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ major       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ reason      &lt;dbl&gt; 3, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1,...
+$ exp_cond    &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 4, 4,...
+$ coffee      &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0,...
+$ num_cups    &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 2, 0, 2, 1, 0, 1, 2, 3, 0, 0,...
+$ phobia      &lt;dbl&gt; 1, 1, 4, 4, 10, 4, 4, 4, 4, 5, 5, 4, 7, 4, 3, 8, 4...
+$ prevmath    &lt;dbl&gt; 3, 4, 1, 0, 1, 1, 2, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1,...
+$ mathquiz    &lt;dbl&gt; 43, 49, 26, 29, 31, 20, 13, 23, 38, NA, 29, 32, 18...
+$ statquiz    &lt;dbl&gt; 6, 9, 8, 7, 6, 7, 3, 7, 8, 7, 8, 8, 1, 5, 8, 3, 8,...
+$ exp_sqz     &lt;dbl&gt; 7, 11, 8, 8, 6, 6, 4, 7, 7, 6, 10, 7, 3, 4, 6, 1, ...
+$ hr_base     &lt;dbl&gt; 71, 73, 69, 72, 71, 70, 71, 77, 73, 78, 74, 73, 73...
+$ hr_pre      &lt;dbl&gt; 68, 75, 76, 73, 83, 71, 70, 87, 72, 76, 72, 74, 76...
+$ hr_post     &lt;dbl&gt; 65, 68, 72, 78, 74, 76, 66, 84, 67, 74, 73, 74, 78...
+$ anx_base    &lt;dbl&gt; 17, 17, 19, 19, 26, 12, 12, 17, 20, 20, 21, 32, 19...
+$ anx_pre     &lt;dbl&gt; 22, 19, 14, 13, 30, 15, 16, 19, 14, 24, 25, 35, 23...
+$ anx_post    &lt;dbl&gt; 20, 16, 15, 16, 25, 19, 17, 22, 17, 19, 22, 33, 20...
+$ genderF     &lt;fct&gt; Female, Female, Female, Female, Female, Female, Fe...
+$ majorF      &lt;fct&gt; Psychology, Psychology, Psychology, Psychology, Ps...
+$ reasonF     &lt;fct&gt; Advisor recommendation, Personal interest, Program...
+$ exp_condF   &lt;fct&gt; Easy, Easy, Easy, Easy, Easy, Moderate, Moderate, ...
+$ coffeeF     &lt;fct&gt; Regularly drinks coffee, Not a regular coffee drin...
+$ hr_base_bps &lt;dbl&gt; 1.183333, 1.216667, 1.150000, 1.200000, 1.183333, ...
+$ anx_sum     &lt;dbl&gt; 59, 52, 48, 48, 81, 46, 45, 58, 51, 63, 68, 100, 6...
+$ hr_mean     &lt;dbl&gt; 204, 216, 217, 223, 228, 217, 207, 248, 212, 228, ...
+$ statDiff    &lt;dbl&gt; -1, -2, 0, -1, 0, 1, -1, 0, 1, 1, -2, 1, -2, 1, 2,...</code></pre>
 <hr />
 </div>
-<div id="frequency-distrubutions" class="section level2">
-<h2><span class="header-section-number">2.1</span> Frequency Distrubutions</h2>
-<blockquote>
-<p>These tables are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable. They help pick out the mode(s) and identify unusual or impossible values.</p>
-</blockquote>
+</div>
+<div id="frequency-tables" class="section level2">
+<h2><span class="header-section-number">2.1</span> Frequency Tables</h2>
+<p>These tables are best for showing the breakdown of a sample across the levels of a <strong>single CATEGORICAL</strong> variable <em>(factor)</em>. They help pick out the mode(s) and identify unusual or impossible values <span class="citation">(Barrett, Brignone, and Laxman <a href="references.html#ref-R-furniture">2018</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st">                 </span>
-<span class="st">  </span>furniture<span class="op">::</span><span class="kw">tableF</span>(major)</code></pre></div>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">tableF</span>(majorF)</code></pre></div>
 <pre><code>
-------------------------------------
- major Freq CumFreq Percent CumPerc
- 1     29   29      29.00%  29.00% 
- 2     25   54      25.00%  54.00% 
- 3     21   75      21.00%  75.00% 
- 4     15   90      15.00%  90.00% 
- 5     10   100     10.00%  100.00%
-------------------------------------</code></pre>
+-----------------------------------------
+ majorF     Freq CumFreq Percent CumPerc
+ Psychology 29   29      29.00%  29.00% 
+ Premed     25   54      25.00%  54.00% 
+ Biology    21   75      21.00%  75.00% 
+ Sociology  15   90      15.00%  90.00% 
+ Economics  10   100     10.00%  100.00%
+-----------------------------------------</code></pre>
+<p>Phobia is one variable that is in between being categorical and continuous.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>furniture<span class="op">::</span><span class="kw">tableF</span>(phobia)</code></pre></div>
 <pre><code>
@@ -254,36 +347,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
  9      1    97      1.00%   97.00% 
  10     3    100     3.00%   100.00%
 -------------------------------------</code></pre>
+<p>If a variable has many possible values (i.e. it is more continuous than categorical), you can add an option to tell how many values <code>n = #</code> you want displayed in the table, cutting out all the middle values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">tableF</span>(hr_post, <span class="dt">n =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>
+--------------------------------------
+ hr_post Freq CumFreq Percent CumPerc
+ 64      4    4       4.00%   4.00%  
+ 65      3    7       3.00%   7.00%  
+ 66      3    10      3.00%   10.00% 
+ 67      5    15      5.00%   15.00% 
+ 68      5    20      5.00%   20.00% 
+ ...     ...  ...     ...     ...    
+ 79      5    94      5.00%   94.00% 
+ 80      1    95      1.00%   95.00% 
+ 81      1    96      1.00%   96.00% 
+ 82      1    97      1.00%   97.00% 
+ 84      2    99      2.00%   99.00% 
+ 86      1    100     1.00%   100.00%
+--------------------------------------</code></pre>
 <hr />
 </div>
 <div id="bar-charts" class="section level2">
 <h2><span class="header-section-number">2.2</span> Bar Charts</h2>
+<p>These plots are best for showing the breakdown of a sample across the levels of a <strong>single CATEGORICAL</strong> variable. They help pick out the mode(s) and identify unusual or impossible values <span class="citation">(Wickham <a href="references.html#ref-R-ggplot2">2009</a>)</span>.</p>
 <blockquote>
-<p>These plots are best for showing the breakdown of a sample across the levels of a single CATEGORICAL variable. They help pick out the mode(s) and identify unusual or impossible values.</p>
+<p>There must be SPACE between the bars!</p>
 </blockquote>
-<p><strong>There must be SPACE between the bars!</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(major)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(majorF)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Here is an example of a two-level variable</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(coffee)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(coffeeF)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Here is an example of an 11-level variable</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <hr />
 </div>
 <div id="histograms" class="section level2">
 <h2><span class="header-section-number">2.3</span> Histograms</h2>
-<blockquote>
-<p>These plots are best for showing the distribution of a single CONTINUOUS variable. They help visually determine the shape, center <em>[mean, median, mode(s)]</em>, spread <em>[stadard deviation, range]</em>, and identify extreme or impossible values.</p>
-</blockquote>
+<p>These plots are best for showing the distribution of a <strong>single CONTINUOUS</strong> variable. They help visually determine the shape, center <em>[mean, median, mode(s)]</em>, spread <em>[stadard deviation, range]</em>, and identify extreme or impossible values <span class="citation">(Wickham <a href="references.html#ref-R-ggplot2">2009</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p><strong>There must NOT be SPACE between the bars!</strong></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<blockquote>
+<p>There must NOT be SPACE between the bars!</p>
+</blockquote>
 <p>Notice how the bars do not touch. This is because the default includes too many bars, many of which are not included in the dataset.</p>
-<p>There are TWO ways specify somthing other than the default:</p>
+<p>There are TWO ways specify something other than the default:</p>
 <ol class="example" style="list-style-type: decimal">
 <li>Change the NUMBER of bins: <code>bins = #</code></li>
 <li>Change the WIDTH of the bins: <code>binwidth = #</code></li>
@@ -296,61 +414,76 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>)</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="change-the-bin-width" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Change the Bin Width</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(phobia)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">5</span>)</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="make-seperate-panels--by--a-factor" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Make Seperate Panels -by- a Factor</h3>
+<p>To make separate plots based on another categorical variable, a <strong>FACTOR</strong>, we need to add a layer to the plot.</p>
 <blockquote>
-<p>To make seperate plots based on another variable, A FACTOR, we need to add a layer to the plot.</p>
+<p>Reminder: Steps before the <code>ggplot()</code> are combined with pipes <code>%&gt;%</code>, whereas layers of the plot are combined with the addition symbol <code>+</code>.</p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mathquiz)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span>coffeeF)</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mathquiz)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>(coffeeF <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
-<p><img src="02-plots_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="02-plots_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <hr />
 </div>
 </div>
-<div id="quartiles-deciles-and-percentiles" class="section level2">
-<h2><span class="header-section-number">2.4</span> Quartiles, Deciles, and Percentiles</h2>
-<div id="deciles-break-into-10-chunks" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Deciles (break into 10% chunks)</h3>
+<div id="percentiles" class="section level2">
+<h2><span class="header-section-number">2.4</span> Percentiles</h2>
+<p>The <code>quantile(probs = c(#, #, ..., #))</code> function in the base download of R may be used to request the deciles, quartiles, or other percentiles for a <code>vector</code> for numbers <span class="citation">(R Core Team <a href="references.html#ref-R-base">2017</a>)</span>.</p>
+<p>To use this function, we have to first <strong>pull</strong> out one variable of interest from our dataset <em>(data.frame)</em> and make it into a vector. This is done with a <code>dplyr::pull(varname)</code> step <span class="citation">(Wickham et al. <a href="references.html#ref-R-dplyr">2017</a>)</span>.</p>
+<div id="deciles" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Deciles</h3>
+<p>Deciles break the variable’s values into 10% chunks.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(statquiz) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>))</code></pre></div>
-<pre><code>10% 20% 30% 40% 50% 60% 70% 80% 90% 
-4.0 6.0 6.0 7.0 7.0 8.0 8.0 8.0 8.1 </code></pre>
-</div>
-<div id="with-missing-values-throws-an-error" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> With Missing Values: throws an error</h3>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>, <span class="dv">1</span>))</code></pre></div>
+<pre><code>  0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
+ 1.0  4.0  6.0  6.0  7.0  7.0  8.0  8.0  8.0  8.1 10.0 </code></pre>
+<div id="with-missing-values" class="section level4 unnumbered">
+<h4>With Missing Values</h4>
+<p>If the variable have any missing values, an error message with be outputted instead of what you expect.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(mathquiz) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>))</code></pre></div>
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>, <span class="dv">1</span>))</code></pre></div>
 <p><code>Error in quantile.default(., probs = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, : missing values and NaN's not allowed if 'na.rm' is FALSE</code></p>
 </div>
-<div id="option-to-ignore-missing-values-na.rm-true" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> Option to Ignore Missing Values: <code>na.rm = TRUE</code></h3>
+<div id="option-to-ignore-missing-values" class="section level4 unnumbered">
+<h4>Option to Ignore Missing Values</h4>
+<p>To avoid getting this message and ignore the missing values, use the <code>na.rm = TRUE</code> option.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(mathquiz) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>),
+<span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">10</span>, .<span class="dv">20</span>, .<span class="dv">30</span>, .<span class="dv">40</span>, .<span class="dv">50</span>, .<span class="dv">60</span>, .<span class="dv">70</span>, .<span class="dv">80</span>, .<span class="dv">90</span>, <span class="dv">1</span>),
            <span class="dt">na.rm =</span><span class="ot">TRUE</span>)</code></pre></div>
-<pre><code> 10%  20%  30%  40%  50%  60%  70%  80%  90% 
-15.0 21.0 25.2 28.0 30.0 32.0 33.8 37.2 41.0 </code></pre>
+<pre><code>  0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
+ 9.0 15.0 21.0 25.2 28.0 30.0 32.0 33.8 37.2 41.0 49.0 </code></pre>
 </div>
-<div id="quartiles-break-into-4-chunks" class="section level3">
-<h3><span class="header-section-number">2.4.4</span> Quartiles (break into 4 chunks)</h3>
+</div>
+<div id="quartiles" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Quartiles</h3>
+<p>Quartiles break variable’s values into 4 chunks. If you include 0 <em>(minimum)</em> and 1 <em>(maximum)</em> you will get the <strong>Five Number Summary</strong>, which is:</p>
+<ul>
+<li>min, the minimum</li>
+<li>Q1, the 25th percentile</li>
+<li>Q2, the 50th percentile or the Median</li>
+<li>Q3, the 75th percentile</li>
+<li>max, the maximum</li>
+</ul>
+<p>These values are used to create boxplots in the next chapter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(statquiz) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">25</span>, .<span class="dv">50</span>, .<span class="dv">75</span>, <span class="dv">1</span>))</code></pre></div>
@@ -358,7 +491,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
    1    6    7    8   10 </code></pre>
 </div>
 <div id="other-percentiles" class="section level3">
-<h3><span class="header-section-number">2.4.5</span> Other Percentiles</h3>
+<h3><span class="header-section-number">2.4.3</span> Other Percentiles</h3>
+<p>You may also include any other percentile between 0 and 1.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(statquiz) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">quantile</span>(<span class="dt">probs =</span> <span class="kw">c</span>(.<span class="dv">01</span>, .<span class="dv">05</span>, .<span class="dv">173</span>, .<span class="dv">90</span>))</code></pre></div>
