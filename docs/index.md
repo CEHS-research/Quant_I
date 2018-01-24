@@ -1,8 +1,8 @@
 --- 
-title: "Explaining Psychological Statistcs: A Compantion in R"
-subtitle: "Psy 6600 and Educ 6600: Research Design and Analysis I"
+title: "Explaining Psychological Statistcs"
+subtitle: "A Compantion in R"
 author: "Sarah Schwartz and Tyson Barrett"
-date: "January 24 2018"
+date: "Updated Last: January 24 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"

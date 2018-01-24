@@ -3,7 +3,6 @@
 # COMPUTER PREPARATION {-}
 
 ![](img/headers/R_studio_LaTeX_header.png)
-## Background Information {-}
 
 **What is R?**
 
