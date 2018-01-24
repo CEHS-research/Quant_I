@@ -1,6 +1,6 @@
 # SUMMARY STATISTICS
 
-## Chapter Links {-}
+**Chapter Links**
 
 * [Chapter 3 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch3_CenterSpread.html#1)
 

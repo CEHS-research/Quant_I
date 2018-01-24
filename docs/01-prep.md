@@ -1,7 +1,7 @@
-# PREPARTION
+# DATA PREPARTION
 
 
-## Chapter Links {-}
+**Chapter Links**
 
 * [Chapter 1 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1)
 
@@ -547,8 +547,6 @@ $ coffeeF   <fct> Regularly drinks coffee, Not a regular coffee drinke...
 
 --------------------------------
 
-
-## Creating New Variables
 
 The following portion works through the assignment for Unit 0
 

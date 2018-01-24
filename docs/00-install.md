@@ -1,10 +1,11 @@
 
 
-# GETTING YOUR COMPUTER READY {-}
+# COMPUTER PREPARATION {-}
 
 ![](img/headers/R_studio_LaTeX_header.png)
+## Background Information {-}
 
-## What is R? {-}
+**What is R?**
 
 R is a language and environment for statistical computing and graphics. [@R-base]
 
@@ -14,9 +15,7 @@ One of R’s strengths is the ease with which well-designed publication-quality 
 
 
 
--------------------------------
-
-## What is R Markdown? {-}
+**What is R Markdown?**
 
 According to [R Studio](www.rstudio.com):
 
@@ -26,11 +25,11 @@ According to [R Studio](www.rstudio.com):
 
 -------------------------------
 
-## Dynamic Reporting {-}
+**Dynamic Reporting**
 
 From [Penn State Statistics](https://onlinecourses.science.psu.edu/statprogram/markdown): 
 
-### The **traditional way** to write a report {-}
+**The **traditional way** to write a report**
 
 1. Run your analysis in software, like SPSS or R and manually save our output
     * *i.e. saving the ANOVA table or using pdf() to save the graphs*  
@@ -45,7 +44,7 @@ Therefore, in this way **dynamic also means reproducible**, in the sense that pe
 
 
 
-### How does R Markdown work out to be a .pdf or .html file?  {-}
+**How does R Markdown work out to be a .pdf or .html file?**
 
 `R Markdown` is a file with the file extension **.Rmd**, the `knitr` package will then transform the file into a **Markdown** file with the extension **.md.** Then Rstudio can:
 
@@ -57,7 +56,7 @@ Therefore, in this way **dynamic also means reproducible**, in the sense that pe
 
 
 
-### Is this a **popular** method for creating reports?  {-}
+**Is this a **popular** method for creating reports?**
 
 Check out [Rpubs](http://rpubs.com/). This website shares lots of documents written in the way we will introduce below.
 
@@ -68,7 +67,7 @@ Check out [Rpubs](http://rpubs.com/). This website shares lots of documents writ
 
 -------------------------------
 
-## Background Information {-}
+
 
 
 
@@ -140,6 +139,23 @@ Get the latest version of the FREE Open Source **Desktop** Edition of R Studio
 > **R packages** are collections of functions and data sets developed by the community. They increase the power of **R** by improving existing base **R** functionalities, or by adding new ones.
 
 More information may be found here:  https://www.datacamp.com/community/tutorials/r-packages-guide 
+
+
+### Packages You Need!
+
+The followin packages are used in this course and throught this document:
+
+* tidyverse [@R-tidyverse]
+    + dplyr [@R-dplyr]
+    + tibble [@R-tibble]
+    + tidyr [@R-tidyr]
+    + readxl [@R-readxl]
+    + haven [@R-haven]
+    + ggplot2 [@R-ggplot2]
+* furniture [@R-furniture]
+* psych [@R-psych]
+
+
 
 
 ### Installing Packages (via the user interface) {-}

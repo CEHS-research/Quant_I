@@ -28,7 +28,7 @@ This book is a compantion for the course text book:
 
 ![](img/Cohen_4ed.jpg)
 
-## Cohen Textbook {-}
+**Cohen Textbook**
 
 The textbook is available through the USU library
 
@@ -42,7 +42,7 @@ The textbook is available through the USU library
     + only can be 'checked out' for 14 days
 
 
-## Course Files {-}
+**Course Files**
 
 All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y)
 
@@ -50,7 +50,7 @@ All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsng
 * Datasets (excel or SPSS format)
 * Assignments
 
-## Instructor Websites {-}
+**Instructor Websites**
 
 * Sarah's website: [www.sarahschwartzstats.com](http://www.sarahschwartzstats.com/)
 
@@ -58,7 +58,7 @@ All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsng
 
 
 
-## Course Schedule {-}
+**Course Schedule**
 
 
 ![](img/Sched_1-16-18.PNG)

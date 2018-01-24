@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="computer-preparation.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="data-prepartion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -207,67 +207,213 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Explaining Psychological Statistcs: A Compantion in R</h1>
-<h3 class="subtitle"><em>Psy 6600 and Educ 6600: Research Design and Analysis I</em></h3>
-<h4 class="author"><em>Sarah Schwartz and Tyson Barrett</em></h4>
-<h4 class="date"><em>January 24 2018</em></h4>
-</div>
-<div id="usu-psy-6600--or--educ-6600" class="section level1 unnumbered">
-<h1>USU: PSY 6600 -or- EDUC 6600</h1>
-<p>Utah State University</p>
-<div class="figure">
-<img src="img/headers/RDA1_logo.png" />
-
-</div>
-<p>This book is a compantion for the course text book:</p>
-<div class="figure">
-<img src="img/Cohen_4ed.jpg" />
-
-</div>
-<p><strong>Cohen Textbook</strong></p>
-<p>The textbook is available through the USU library</p>
+<div id="computer-preparation" class="section level1 unnumbered">
+<h1>COMPUTER PREPARATION</h1>
+<p><img src="img/headers/R_studio_LaTeX_header.png" /> ## Background Information {-}</p>
+<p><strong>What is R?</strong></p>
+<p>R is a language and environment for statistical computing and graphics. <span class="citation">(R Core Team <a href="references.html#ref-R-base">2017</a>)</span></p>
+<p>R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.</p>
+<p>One of R’s strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.</p>
+<p><strong>What is R Markdown?</strong></p>
+<p>According to <a href="www.rstudio.com">R Studio</a>:</p>
+<blockquote>
+<p>“R Markdown is a format that enables easy authoring of reproducible web reports from R. It combines the core syntax of Markdown (an easy-to-write <strong>plain text</strong> format for web content) with embedded <strong>R code chunks</strong> that are run so their output can be included in the final document”.</p>
+</blockquote>
+<hr />
+<p><strong>Dynamic Reporting</strong></p>
+<p>From <a href="https://onlinecourses.science.psu.edu/statprogram/markdown">Penn State Statistics</a>:</p>
+<p><strong>The </strong>traditional way** to write a report**</p>
+<ol style="list-style-type: decimal">
+<li>Run your analysis in software, like SPSS or R and manually save our output
 <ul>
-<li><a href="http://site.ebrary.com/lib/usulibraries/reader.action?docID=10809658">View and read it online for free</a>
-<ul>
-<li>You must be either on campus or on the VPN</li>
+<li><em>i.e. saving the ANOVA table or using pdf() to save the graphs</em></li>
 </ul></li>
-<li><a href="https://ebookcentral-proquest-com.dist.lib.usu.edu/lib/USU/detail.action?docID=1563061">Download the entire book for free</a>
+<li>Type your your description and interpretation in a text editor like <em>Word</em>
 <ul>
-<li>requires you to
-<ul>
-<li>create an account</li>
-<li>download/install some software</li>
+<li><em>either drag/drop tables and figures, or worse copy-paste and retype all the numbers</em></li>
 </ul></li>
-<li>only can be ‘checked out’ for 14 days</li>
-</ul></li>
-</ul>
-<p><strong>Course Files</strong></p>
-<p>All files may be downloaded from the <a href="https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y">BOX folder</a></p>
+</ol>
+<p>A report written in this way can be problematic. For instance, imagine your <em>Mentor/collaborator/journal reviewer</em> telling you that they want to use a sub-sample instead of the entire sample. Or to include a nother variable. You would have to redo all of your work!!</p>
+<p>Therefore, in this way <strong>dynamic also means reproducible</strong>, in the sense that people who get the file from you can reproduce the entire work in the report.</p>
+<p><strong>How does R Markdown work out to be a .pdf or .html file?</strong></p>
+<p><code>R Markdown</code> is a file with the file extension <strong>.Rmd</strong>, the <code>knitr</code> package will then transform the file into a <strong>Markdown</strong> file with the extension <strong>.md.</strong> Then Rstudio can:</p>
 <ul>
-<li>Icons and image files</li>
-<li>Datasets (excel or SPSS format)</li>
-<li>Assignments</li>
+<li><p>Use <code>LaTeX</code> to transform the file into a <strong>.pdf</strong></p></li>
+<li><p>Load another package called <code>markdown</code> to transform the file into <strong>.html</strong></p></li>
+<li><p>Use Pandoc to even convert to file to a <strong>Word</strong> document (ugly)</p></li>
 </ul>
-<p><strong>Instructor Websites</strong></p>
-<ul>
-<li><p>Sarah’s website: <a href="http://www.sarahschwartzstats.com/">www.sarahschwartzstats.com</a></p></li>
-<li><p>Tyson’s website: <a href="http://tysonbarrett.com/teaching/">www.tysonbarrett.com/teaching/</a></p></li>
-</ul>
-<p><strong>Course Schedule</strong></p>
+<p><strong>Is this a </strong>popular** method for creating reports?**</p>
+<p>Check out <a href="http://rpubs.com/">Rpubs</a>. This website shares lots of documents written in the way we will introduce below.</p>
 <div class="figure">
-<img src="img/Sched_1-16-18.PNG" />
+<img src="img/processRStudio.png" />
+
+</div>
+<hr />
+<div class="figure">
+<img src="img/hex/rmarkdown-200x232.png" />
+
+</div>
+<blockquote>
+<p><code>R Markdown</code> documents are fully reproducible. Use a productive <strong>notebook</strong> interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL <span class="citation">(Allaire et al. <a href="references.html#ref-R-rmarkdown">2017</a>)</span>.</p>
+</blockquote>
+<div class="figure">
+<img src="img/hex/knitr-200x232.png" />
+
+</div>
+<blockquote>
+<p><code>knitr</code> is an engine for dynamic report generation with R. It is a package in the statistical programming language R that enables integration of <strong>R code</strong> into LaTeX, LyX, HTML, Markdown, AsciiDoc, and <strong>text</strong> documents <span class="citation">(Xie <a href="references.html#ref-R-knitr">2017</a><a href="references.html#ref-R-knitr">b</a>)</span>.</p>
+</blockquote>
+<hr />
+<div id="software-programs" class="section level2 unnumbered">
+<h2>Software Programs</h2>
+<p>You will need to download and install THREE programs to create dynamic reports in.</p>
+<div class="figure">
+<img src="img/Rlogo_200.png" />
+
+</div>
+<div id="r-from-www.r-project.org" class="section level3 unnumbered">
+<h3>1. <code>R</code> from <a href="http://www.r-project.org">www.r-project.org</a></h3>
+<p>Get the latest released version of FREE <strong>Base</strong> R from CRAN</p>
+<ul>
+<li>Choose a mirror close to your location</li>
+<li>Select <strong>base</strong> R for your computer <em>(Windows, Mac, ect.)</em></li>
+<li>The defaults are good…don’t change them…just keep clicking <em>‘Next’</em></li>
+</ul>
+<div class="figure">
+<img src="img/rstudiosticker.png" />
+
+</div>
+</div>
+<div id="r-studio-from-www.rstudio.com" class="section level3 unnumbered">
+<h3>2 <code>R Studio</code> from <a href="http://www.rstudio.com">www.rstudio.com</a></h3>
+<p>Get the latest version of the FREE Open Source <strong>Desktop</strong> Edition of R Studio</p>
+<ul>
+<li>The defaults are good…don’t change them…just keep clicking <em>‘Next’</em></li>
+</ul>
+<div class="figure">
+<img src="img/latex.png" />
+
+</div>
+</div>
+<div id="latex-depends-on-your-operating-system" class="section level3 unnumbered">
+<h3>3. <code>LaTeX</code> depends on your operating system</h3>
+<blockquote>
+<p><strong>Mac:</strong> <code>MacTeX</code> from <a href="http://tug.org/mactex/" class="uri">http://tug.org/mactex/</a></p>
+</blockquote>
+<ul>
+<li>Download (5+ min) to a folder and them double click on the <strong>PKG file</strong></li>
+<li>Follow the installation instructions.</li>
+<li>You don’t need to open anything after MacTeX is finished installing.</li>
+</ul>
+<blockquote>
+<p><strong>Windows:</strong> <code>MikTeX</code> <a href="http://miktex.org/download" class="uri">http://miktex.org/download</a></p>
+</blockquote>
+<ul>
+<li>Pick the latest version of the <strong>Net Installer</strong>, not the Basic!</li>
+<li>You need the full version 64-bit is better, if you have a 64-bit machine</li>
+<li>When your download is complete, run the downloaded installer.</li>
+<li>Windows may ask you if you want to <em>“allow this app from an unknown publisher to make changes to your PC”</em>. If it does, make sure to click <strong>Yes!</strong></li>
+<li>This is the slowest part…</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="r-packages" class="section level2 unnumbered">
+<h2>R Packages</h2>
+<blockquote>
+<p><strong>R packages</strong> are collections of functions and data sets developed by the community. They increase the power of <strong>R</strong> by improving existing base <strong>R</strong> functionalities, or by adding new ones.</p>
+</blockquote>
+<p>More information may be found here: <a href="https://www.datacamp.com/community/tutorials/r-packages-guide" class="uri">https://www.datacamp.com/community/tutorials/r-packages-guide</a></p>
+<div id="packages-you-need" class="section level3">
+<h3><span class="header-section-number">0.0.1</span> Packages You Need!</h3>
+<p>The followin packages are used in this course and throught this document:</p>
+<ul>
+<li>tidyverse <span class="citation">(Wickham <a href="references.html#ref-R-tidyverse">2017</a>)</span>
+<ul>
+<li>dplyr <span class="citation">(Wickham et al. <a href="references.html#ref-R-dplyr">2017</a>)</span></li>
+<li>tibble <span class="citation">(Muller and Wickham <a href="references.html#ref-R-tibble">2017</a>)</span></li>
+<li>tidyr <span class="citation">(Wickham and Henry <a href="references.html#ref-R-tidyr">2017</a>)</span></li>
+<li>readxl <span class="citation">(Wickham and Bryan <a href="references.html#ref-R-readxl">2017</a>)</span></li>
+<li>haven <span class="citation">(Wickham and Miller <a href="references.html#ref-R-haven">2017</a>)</span></li>
+<li>ggplot2 <span class="citation">(Wickham <a href="references.html#ref-R-ggplot2">2009</a>)</span></li>
+</ul></li>
+<li>furniture <span class="citation">(Barrett, Brignone, and Laxman <a href="references.html#ref-R-furniture">2018</a>)</span></li>
+<li>psych <span class="citation">(Revelle <a href="references.html#ref-R-psych">2017</a>)</span></li>
+</ul>
+</div>
+<div id="installing-packages-via-the-user-interface" class="section level3 unnumbered">
+<h3>Installing Packages (via the user interface)</h3>
+<blockquote>
+<p>You only need to install packages ONCE per computer.</p>
+</blockquote>
+<p>In <strong>R Stuido</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Click on the <strong>Packages</strong> tab the panel with the most tabs</li>
+<li>Click on the word <strong>Instsall</strong> just under and to the left of the tab</li>
+<li>In the <strong>Packages</strong> box, type in the name of the packages you would like to download. You can do several at once, just seperate them with multiple spaces or a comma.</li>
+</ol>
+<p><em>Note: Leave the installation library path as the default. Also, make sure the box for ‘Installing dependencies’ is checked.</em></p>
+<div class="figure">
+<img src="img/Install_Package_Screenshot.png" />
+
+</div>
+</div>
+<div id="load-packages-via-code" class="section level3 unnumbered">
+<h3>Load Packages (via code)</h3>
+<blockquote>
+<p>You will need to load packages in EVERY SESSION you want to use them in.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Please don’t get confused: <code>library()</code> is the command used to <strong>load a package</strong>, and it refers to the <strong>place</strong> where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.</p>
+<p>Maybe it can help a quote from <strong>Hadley Wickham</strong>, Chief data scientist at RStudio, and instructor of the <em>“Writing functions in R”</em> DataCamp course (December 8, 2014):</p>
+<blockquote>
+<p>“a package is a like a book, a library is like a library; you use <code>library()</code> to check a package out of the library”</p>
+</blockquote>
+<p>Here is link to an AWSOME <a href="http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c">‘cheat sheet’ for begginers working with the <code>tidyverse</code> package</a>. I highly suggest checking it out.</p>
+<p>More ‘cheat sheets’ are available under the “Help” menu option in <strong>R Studio</strong></p>
+</div>
+</div>
+<div id="kniting-notebooks" class="section level2 unnumbered">
+<h2>Kniting Notebooks</h2>
+<div id="storing-all-associated-files" class="section level3 unnumbered">
+<h3>Storing all associated files</h3>
+<p>If you are using any files, such as <em>datasets</em> or <em>images</em>, they need to be stored in the same folder location as the R Notebook (<code>.Rmd</code> file).</p>
+<p>This folder location must be the <strong>Working Directory</strong> for the R Studio session. If you opened your <code>.Rmd</code> notebook file by double-clicking on its name, then this should be the case.</p>
+</div>
+<div id="setting-the-working-directory" class="section level3 unnumbered">
+<h3>Setting the working directory</h3>
+<p>To ensure that R Studio knows where to find the files, you can manually set the <strong>Working Directory</strong> through the menu:</p>
+<ul>
+<li>Click <code>Session</code></li>
+<li>Select <code>Set Working Directory</code> by hovering your mouse over it</li>
+<li>Click on <code>To Source File Location</code></li>
+</ul>
+<div class="figure">
+<img src="img/Set_wd_source.png" />
+
+</div>
+<p>You can double check that you were successful by</p>
+<ul>
+<li>Click on the <code>Files</code> tab in the many-tab panel</li>
+<li>Click on the button with the gear that says <code>More</code></li>
+<li>Click <code>Go To Working Directory</code></li>
+</ul>
+<p>At this point you should see all the files that reside in the folder location where the open <code>.Rmd</code> files is also saved.</p>
+<div class="figure">
+<img src="img/files_goto_wd.png" />
 
 </div>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="computer-preparation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-prepartion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

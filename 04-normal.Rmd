@@ -1,6 +1,6 @@
 # STANDARDIZING SCORES
 
-## Chapter Links {-}
+**Chapter Links**
 
 * Chapter 4 Slide Show
 
