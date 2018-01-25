@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="summary-statistics.html">
-<link rel="next" href="references.html">
+
+<link rel="next" href="data-prepartion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -214,163 +214,291 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="standardizing-scores" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> STANDARDIZING SCORES</h1>
-<p><strong>Chapter Links</strong></p>
-<ul>
-<li><p><a href="http://tysonbarrett.com/EDUC-6600/Slides/01_Ch4_Zscores.html#1">Chapter 4 Slide Show</a></p></li>
-<li><p><a href="https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6">Cancer Dataset - SPSS format</a></p></li>
-</ul>
-<p><strong>Assignment Links</strong></p>
-<ul>
-<li><p><a href="https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu">Unit 1 Assignment - Write Up Skeleton</a></p></li>
-<li><p><a href="https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x">Unit 1 Assignment - Rmd Skeleton</a></p></li>
-<li><p><a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Inho’s Dataset - Excel format</a></p></li>
-</ul>
-<div id="example-cancer-experiment-1" class="section level2 unnumbered">
-<h2>Example: Cancer Experiment</h2>
-<p>see chapter 3</p>
-<div id="required-packages-2" class="section level3 unnumbered">
-<h3>Required Packages</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
-<span class="kw">library</span>(haven)        <span class="co"># Read in SPSS datasets</span>
-<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span>
-<span class="kw">library</span>(psych)        <span class="co"># Lots of nice tid-bits</span></code></pre></div>
+<div id="header">
+<h1 class="title">Explaining Psychological Statistcs</h1>
+<h3 class="subtitle"><em>A Compantion in R</em></h3>
+<h4 class="author"><em>Dr. Sarah Schwartz and Tyson Barrett</em></h4>
+<h4 class="date"><em>Updated Last: January 25 2018</em></h4>
 </div>
-<div id="data-import-1" class="section level3 unnumbered">
-<h3>Data Import</h3>
-<p>The <code>Cancer</code> dataset is saved in SPSS format, which is evident from the <code>.sav</code> ending on the file name.</p>
-<p>The <code>haven</code> package is downloaded as part of the <code>tidyverse</code> set of packages, but is not automatically loaded. It must have its own <code>library()</code> function call <em>(see above)</em>. The <code>haven::read_spss()</code> function works very simarly to the <code>readxl::read_excel()</code> function we used last chapter <span class="citation">(Wickham and Miller <a href="references.html#ref-R-haven">2017</a>)</span>.</p>
-<ul>
-<li>Make sure the <strong>dataset</strong> is saved in the same <em>folder</em> as this file</li>
-<li>Make sure the that <em>folder</em> is the <strong>working directory</strong></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_raw &lt;-<span class="st"> </span>haven<span class="op">::</span><span class="kw">read_spss</span>(<span class="st">&quot;cancer.sav&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tibble<span class="op">::</span><span class="kw">glimpse</span>(cancer_raw)</code></pre></div>
-<pre><code>Observations: 25
-Variables: 9
-$ ID       &lt;dbl&gt; 1, 5, 6, 9, 11, 15, 21, 26, 31, 35, 39, 41, 45, 2, 12...
-$ TRT      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,...
-$ AGE      &lt;dbl&gt; 52, 77, 60, 61, 59, 69, 67, 56, 61, 51, 46, 65, 67, 4...
-$ WEIGHIN  &lt;dbl&gt; 124.0, 160.0, 136.5, 179.6, 175.8, 167.6, 186.0, 158....
-$ STAGE    &lt;dbl&gt; 2, 1, 4, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 2, 4, 1, 2, 1,...
-$ TOTALCIN &lt;dbl&gt; 6, 9, 7, 6, 6, 6, 6, 6, 6, 6, 7, 6, 8, 7, 6, 4, 6, 6,...
-$ TOTALCW2 &lt;dbl&gt; 6, 6, 9, 7, 7, 6, 11, 11, 9, 4, 8, 6, 8, 16, 10, 6, 1...
-$ TOTALCW4 &lt;dbl&gt; 6, 10, 17, 9, 16, 6, 11, 15, 6, 8, 11, 9, 9, 9, 11, 8...
-$ TOTALCW6 &lt;dbl&gt; 7, 9, 19, 3, 13, 11, 10, 15, 8, 7, 11, 6, 10, 10, 9, ...</code></pre>
-</div>
-<div id="data-wrangling-2" class="section level3 unnumbered">
-<h3>Data Wrangling</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean &lt;-<span class="st"> </span>cancer_raw <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename_all</span>(tolower) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">factor</span>(id)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">trt =</span> <span class="kw">factor</span>(trt,
-                             <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Placebo&quot;</span>, 
-                                        <span class="st">&quot;Aloe Juice&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">stage =</span> <span class="kw">factor</span>(stage))
+<div id="usu-psy-6600--or--educ-6600" class="section level1 unnumbered">
+<h1>USU: PSY 6600 -or- EDUC 6600</h1>
+<p>Utah State University Emma Eccles Jones College of Education and Human Services</p>
+<div class="figure">
+<img src="img/headers/RDA1_logo.png" />
 
-tibble<span class="op">::</span><span class="kw">glimpse</span>(cancer_clean)</code></pre></div>
-<pre><code>Observations: 25
-Variables: 9
-$ id       &lt;fct&gt; 1, 5, 6, 9, 11, 15, 21, 26, 31, 35, 39, 41, 45, 2, 12...
-$ trt      &lt;fct&gt; Placebo, Placebo, Placebo, Placebo, Placebo, Placebo,...
-$ age      &lt;dbl&gt; 52, 77, 60, 61, 59, 69, 67, 56, 61, 51, 46, 65, 67, 4...
-$ weighin  &lt;dbl&gt; 124.0, 160.0, 136.5, 179.6, 175.8, 167.6, 186.0, 158....
-$ stage    &lt;fct&gt; 2, 1, 4, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 2, 4, 1, 2, 1,...
-$ totalcin &lt;dbl&gt; 6, 9, 7, 6, 6, 6, 6, 6, 6, 6, 7, 6, 8, 7, 6, 4, 6, 6,...
-$ totalcw2 &lt;dbl&gt; 6, 6, 9, 7, 7, 6, 11, 11, 9, 4, 8, 6, 8, 16, 10, 6, 1...
-$ totalcw4 &lt;dbl&gt; 6, 10, 17, 9, 16, 6, 11, 15, 6, 8, 11, 9, 9, 9, 11, 8...
-$ totalcw6 &lt;dbl&gt; 7, 9, 19, 3, 13, 11, 10, 15, 8, 7, 11, 6, 10, 10, 9, ...</code></pre>
+</div>
+<p>This book is a compantion for the course text book:</p>
+<div class="figure">
+<img src="img/Cohen_4ed.jpg" />
+
+</div>
+<p><strong>Cohen Textbook</strong></p>
+<p>The textbook is available through the USU library</p>
+<ul>
+<li><a href="http://site.ebrary.com/lib/usulibraries/reader.action?docID=10809658">View and read it online for free</a>
+<ul>
+<li>You must be either on campus or on the VPN</li>
+</ul></li>
+<li><a href="https://ebookcentral-proquest-com.dist.lib.usu.edu/lib/USU/detail.action?docID=1563061">Download the entire book for free</a>
+<ul>
+<li>requires you to
+<ul>
+<li>create an account</li>
+<li>download/install some software</li>
+</ul></li>
+<li>only can be ‘checked out’ for 14 days</li>
+</ul></li>
+</ul>
+<table style="width:39%;">
+<colgroup>
+<col width="38%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Course Files</strong></td>
+</tr>
+<tr class="even">
+<td align="left">All files may be downloaded from the <a href="https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y">BOX folder</a></td>
+</tr>
+<tr class="odd">
+<td align="left">* Icons and image files <em>(png or jpg)</em> * Datasets <em>(excel or SPSS format)</em> * Assignments <em>(pdf and Rmd)</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instructor Websites</strong></p>
+<ul>
+<li><p>Sarah’s website: <a href="http://www.sarahschwartzstats.com/">www.sarahschwartzstats.com</a></p></li>
+<li><p>Tyson’s website: <a href="http://tysonbarrett.com/teaching/">www.tysonbarrett.com/teaching/</a></p></li>
+</ul>
+<table style="width:39%;">
+<colgroup>
+<col width="38%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Course Schedule</strong></td>
+</tr>
+<tr class="even">
+<td align="left">For Spring Semester 2018</td>
+</tr>
+<tr class="odd">
+<td align="left"><img src="img/Sched_1-16-18.PNG" /></td>
+</tr>
+<tr class="even">
+<td align="left"><!--chapter:end:index.Rmd--></td>
+</tr>
+<tr class="odd">
+<td align="left"># COMPUTER PREPARATION {-}</td>
+</tr>
+<tr class="even">
+<td align="left"><img src="img/headers/R_studio_LaTeX_header.png" /></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>What is R?</strong></td>
+</tr>
+<tr class="even">
+<td align="left">R is a language and environment for statistical computing and graphics. <span class="citation">(R Core Team <a href="references.html#ref-R-base">2017</a>)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.</td>
+</tr>
+<tr class="even">
+<td align="left">One of R’s strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>What is R Markdown?</strong></td>
+</tr>
+<tr class="even">
+<td align="left">According to <a href="www.rstudio.com">R Studio</a>:</td>
+</tr>
+<tr class="odd">
+<td align="left">&gt; “R Markdown is a format that enables easy authoring of reproducible web reports from R. It combines the core syntax of Markdown (an easy-to-write <strong>plain text</strong> format for web content) with embedded <strong>R code chunks</strong> that are run so their output can be included in the final document”.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dynamic Reporting</strong></p>
+<p>From <a href="https://onlinecourses.science.psu.edu/statprogram/markdown">Penn State Statistics</a>:</p>
+<p><strong>The </strong>traditional way** to write a report**</p>
+<ol style="list-style-type: decimal">
+<li>Run your analysis in software, like SPSS or R and manually save our output
+<ul>
+<li><em>i.e. saving the ANOVA table or using pdf() to save the graphs</em></li>
+</ul></li>
+<li>Type your your description and interpretation in a text editor like <em>Word</em>
+<ul>
+<li><em>either drag/drop tables and figures, or worse copy-paste and retype all the numbers</em></li>
+</ul></li>
+</ol>
+<p>A report written in this way can be problematic. For instance, imagine your <em>Mentor/collaborator/journal reviewer</em> telling you that they want to use a sub-sample instead of the entire sample. Or to include a nother variable. You would have to redo all of your work!!</p>
+<p>Therefore, in this way <strong>dynamic also means reproducible</strong>, in the sense that people who get the file from you can reproduce the entire work in the report.</p>
+<p><strong>How does R Markdown work out to be a .pdf or .html file?</strong></p>
+<p><code>R Markdown</code> is a file with the file extension <strong>.Rmd</strong>, the <code>knitr</code> package will then transform the file into a <strong>Markdown</strong> file with the extension <strong>.md.</strong> Then Rstudio can <span class="citation">(Xie <a href="references.html#ref-xie2015">2015</a>)</span>:</p>
+<ul>
+<li><p>Use <code>LaTeX</code> to transform the file into a <strong>.pdf</strong></p></li>
+<li><p>Load another package called <code>markdown</code> to transform the file into <strong>.html</strong></p></li>
+<li><p>Use Pandoc to even convert to file to a <strong>Word</strong> document (ugly)</p></li>
+</ul>
+<p><strong>Is this a </strong>popular** method for creating reports?**</p>
+<p>Check out <a href="http://rpubs.com/">Rpubs</a>. This website shares lots of documents written in the way we will introduce below.</p>
+<div class="figure">
+<img src="img/processRStudio.png" />
+
+</div>
+<hr />
+<div class="figure">
+<img src="img/hex/rmarkdown-200x232.png" />
+
+</div>
+<blockquote>
+<p><code>R Markdown</code> documents are fully reproducible. Use a productive <strong>notebook</strong> interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL <span class="citation">(Allaire et al. <a href="references.html#ref-R-rmarkdown">2017</a>)</span>.</p>
+</blockquote>
+<div class="figure">
+<img src="img/hex/knitr-200x232.png" />
+
+</div>
+<blockquote>
+<p><code>knitr</code> is an engine for dynamic report generation with R. It is a package in the statistical programming language R that enables integration of <strong>R code</strong> into LaTeX, LyX, HTML, Markdown, AsciiDoc, and <strong>text</strong> documents <span class="citation">(Xie <a href="references.html#ref-R-knitr">2017</a><a href="references.html#ref-R-knitr">b</a>)</span>.</p>
+</blockquote>
+<hr />
+<div id="software-programs" class="section level2 unnumbered">
+<h2>Software Programs</h2>
+<p>You will need to download and install THREE programs to create dynamic reports in.</p>
+<div class="figure">
+<img src="img/Rlogo_200.png" />
+
+</div>
+<div id="r-from-www.r-project.org" class="section level3 unnumbered">
+<h3>1. <code>R</code> from <a href="http://www.r-project.org">www.r-project.org</a></h3>
+<p>Get the latest released version of FREE <strong>Base</strong> R from CRAN</p>
+<ul>
+<li>Choose a mirror close to your location</li>
+<li>Select <strong>base</strong> R for your computer <em>(Windows, Mac, ect.)</em></li>
+<li>The defaults are good…don’t change them…just keep clicking <em>‘Next’</em></li>
+</ul>
+<div class="figure">
+<img src="img/rstudiosticker.png" />
+
+</div>
+</div>
+<div id="r-studio-from-www.rstudio.com" class="section level3 unnumbered">
+<h3>2 <code>R Studio</code> from <a href="http://www.rstudio.com">www.rstudio.com</a></h3>
+<p>Get the latest version of the FREE Open Source <strong>Desktop</strong> Edition of R Studio</p>
+<ul>
+<li>The defaults are good…don’t change them…just keep clicking <em>‘Next’</em></li>
+</ul>
+<div class="figure">
+<img src="img/latex.png" />
+
+</div>
+</div>
+<div id="latex-depends-on-your-operating-system" class="section level3 unnumbered">
+<h3>3. <code>LaTeX</code> depends on your operating system</h3>
+<blockquote>
+<p><strong>Mac:</strong> <code>MacTeX</code> from <a href="http://tug.org/mactex/" class="uri">http://tug.org/mactex/</a></p>
+</blockquote>
+<ul>
+<li>Download (5+ min) to a folder and them double click on the <strong>PKG file</strong></li>
+<li>Follow the installation instructions.</li>
+<li>You don’t need to open anything after MacTeX is finished installing.</li>
+</ul>
+<blockquote>
+<p><strong>Windows:</strong> <code>MikTeX</code> <a href="http://miktex.org/download" class="uri">http://miktex.org/download</a></p>
+</blockquote>
+<ul>
+<li>Pick the latest version of the <strong>Net Installer</strong>, not the Basic!</li>
+<li>You need the full version 64-bit is better, if you have a 64-bit machine</li>
+<li>When your download is complete, run the downloaded installer.</li>
+<li>Windows may ask you if you want to <em>“allow this app from an unknown publisher to make changes to your PC”</em>. If it does, make sure to click <strong>Yes!</strong></li>
+<li>This is the slowest part…</li>
+</ul>
 <hr />
 </div>
-<div id="standardize-variables---manually" class="section level3">
-<h3><span class="header-section-number">4.0.1</span> Standardize Variables - Manually</h3>
-<p>You can manually create a stadradized version of the <code>age</code> variable.</p>
-<p>First, you must find the <strong>mean</strong> and <strong>standard deviation</strong> of the <code>age</code> variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span>
-<span class="st">  </span>furniture<span class="op">::</span><span class="kw">table1</span>(age)</code></pre></div>
-<pre><code>
------------------------
-     Mean/Count (SD/%)
-     n = 25           
- age                  
-     59.6 (12.9)      
------------------------</code></pre>
-<p>Second, write an equation to do the calculation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">agez =</span> (age <span class="op">-</span><span class="st"> </span><span class="fl">59.6</span>) <span class="op">/</span><span class="st"> </span><span class="fl">12.9</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(id, trt, age, agez)</code></pre></div>
-<pre><code># A tibble: 25 x 4
-   id    trt       age    agez
-   &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 1     Placebo  52.0 -0.589 
- 2 5     Placebo  77.0  1.35  
- 3 6     Placebo  60.0  0.0310
- 4 9     Placebo  61.0  0.109 
- 5 11    Placebo  59.0 -0.0465
- 6 15    Placebo  69.0  0.729 
- 7 21    Placebo  67.0  0.574 
- 8 26    Placebo  56.0 -0.279 
- 9 31    Placebo  61.0  0.109 
-10 35    Placebo  51.0 -0.667 
-# ... with 15 more rows</code></pre>
 </div>
-<div id="standardize-variables---with-the-scale-funciton" class="section level3">
-<h3><span class="header-section-number">4.0.2</span> Standardize Variables - with the <code>scale()</code> funciton</h3>
-<p>A quicker way is to use a funciton. Notice the differences due to rounding.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_new &lt;-<span class="st"> </span>cancer_clean <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">agez =</span> (age <span class="op">-</span><span class="st"> </span><span class="fl">59.6</span>) <span class="op">/</span><span class="st"> </span><span class="fl">12.9</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">ageZ =</span> <span class="kw">scale</span>(age))<span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(id, trt, age, agez, ageZ)
+<div id="r-packages" class="section level2 unnumbered">
+<h2>R Packages</h2>
+<blockquote>
+<p><strong>R packages</strong> are collections of functions and data sets developed by the community. They increase the power of <strong>R</strong> by improving existing base <strong>R</strong> functionalities, or by adding new ones.</p>
+</blockquote>
+<p>More information may be found here: <a href="https://www.datacamp.com/community/tutorials/r-packages-guide" class="uri">https://www.datacamp.com/community/tutorials/r-packages-guide</a></p>
+<div id="packages-you-need" class="section level3">
+<h3><span class="header-section-number">0.0.1</span> Packages You Need!</h3>
+<p>The followin packages are used in this course and throught this document:</p>
+<ul>
+<li>tidyverse <span class="citation">(Wickham <a href="references.html#ref-R-tidyverse">2017</a>)</span>
+<ul>
+<li>dplyr <span class="citation">(Wickham et al. <a href="references.html#ref-R-dplyr">2017</a>)</span></li>
+<li>tibble <span class="citation">(Muller and Wickham <a href="references.html#ref-R-tibble">2017</a>)</span></li>
+<li>tidyr <span class="citation">(Wickham and Henry <a href="references.html#ref-R-tidyr">2017</a>)</span></li>
+<li>readxl <span class="citation">(Wickham and Bryan <a href="references.html#ref-R-readxl">2017</a>)</span></li>
+<li>haven <span class="citation">(Wickham and Miller <a href="references.html#ref-R-haven">2017</a>)</span></li>
+<li>ggplot2 <span class="citation">(Wickham <a href="references.html#ref-R-ggplot2">2009</a>)</span></li>
+</ul></li>
+<li>furniture <span class="citation">(Barrett, Brignone, and Laxman <a href="references.html#ref-R-furniture">2018</a>)</span></li>
+<li>psych <span class="citation">(Revelle <a href="references.html#ref-R-psych">2017</a>)</span></li>
+</ul>
+</div>
+<div id="installing-packages-via-the-user-interface" class="section level3 unnumbered">
+<h3>Installing Packages (via the user interface)</h3>
+<blockquote>
+<p>You only need to install packages ONCE per computer.</p>
+</blockquote>
+<p>In <strong>R Stuido</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Click on the <strong>Packages</strong> tab the panel with the most tabs</li>
+<li>Click on the word <strong>Instsall</strong> just under and to the left of the tab</li>
+<li>In the <strong>Packages</strong> box, type in the name of the packages you would like to download. You can do several at once, just seperate them with multiple spaces or a comma.</li>
+</ol>
+<p><em>Note: Leave the installation library path as the default. Also, make sure the box for ‘Installing dependencies’ is checked.</em></p>
+<div class="figure">
+<img src="img/Install_Package_Screenshot.png" />
 
-cancer_new</code></pre></div>
-<pre><code># A tibble: 25 x 5
-   id    trt       age    agez    ageZ
-   &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 1     Placebo  52.0 -0.589  -0.591 
- 2 5     Placebo  77.0  1.35    1.34  
- 3 6     Placebo  60.0  0.0310  0.0278
- 4 9     Placebo  61.0  0.109   0.105 
- 5 11    Placebo  59.0 -0.0465 -0.0495
- 6 15    Placebo  69.0  0.729   0.724 
- 7 21    Placebo  67.0  0.574   0.569 
- 8 26    Placebo  56.0 -0.279  -0.281 
- 9 31    Placebo  61.0  0.109   0.105 
-10 35    Placebo  51.0 -0.667  -0.668 
-# ... with 15 more rows</code></pre>
-<p>You can check that the new variable does in deed have mean of zero and spread of one.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_new <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>furniture<span class="op">::</span><span class="kw">table1</span>(age, agez, ageZ,
-                    <span class="dt">digits =</span> <span class="dv">8</span>)</code></pre></div>
-<pre><code>
---------------------------------
-      Mean/Count (SD/%)        
-      n = 25                   
- age                           
-      59.64000000 (12.93213053)
- agez                          
-      0.00310078 (1.00249074)  
- ageZ                          
-      -0.00000000 (1.00000000) 
---------------------------------</code></pre>
-<p>Both the mean and the standard deviation are different.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_new <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;variable&quot;</span>,
-                <span class="dt">value =</span> <span class="st">&quot;value&quot;</span>,
-                age, ageZ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(value)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span>variable)</code></pre></div>
-<p><img src="04-normal_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p>However, if you let the scale of the x-axis change, you see the shape of the two variables is identical.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_new <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;variable&quot;</span>,
-                <span class="dt">value =</span> <span class="st">&quot;value&quot;</span>,
-                age, ageZ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(value)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span>variable, <span class="dt">scale =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="04-normal_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+<div id="load-packages-via-code" class="section level3 unnumbered">
+<h3>Load Packages (via code)</h3>
+<blockquote>
+<p>You will need to load packages in EVERY SESSION you want to use them in.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Please don’t get confused: <code>library()</code> is the command used to <strong>load a package</strong>, and it refers to the <strong>place</strong> where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.</p>
+<p>Maybe it can help a quote from <strong>Hadley Wickham</strong>, Chief data scientist at RStudio, and instructor of the <em>“Writing functions in R”</em> DataCamp course (December 8, 2014):</p>
+<blockquote>
+<p>“a package is a like a book, a library is like a library; you use <code>library()</code> to check a package out of the library”</p>
+</blockquote>
+<p>Here is link to an AWSOME <a href="http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c">‘cheat sheet’ for begginers working with the <code>tidyverse</code> package</a>. I highly suggest checking it out.</p>
+<p>More ‘cheat sheets’ are available under the “Help” menu option in <strong>R Studio</strong></p>
+</div>
+</div>
+<div id="kniting-notebooks" class="section level2 unnumbered">
+<h2>Kniting Notebooks</h2>
+<div id="storing-all-associated-files" class="section level3 unnumbered">
+<h3>Storing all associated files</h3>
+<p>If you are using any files, such as <em>datasets</em> or <em>images</em>, they need to be stored in the same folder location as the R Notebook (<code>.Rmd</code> file).</p>
+<p>This folder location must be the <strong>Working Directory</strong> for the R Studio session. If you opened your <code>.Rmd</code> notebook file by double-clicking on its name, then this should be the case.</p>
+</div>
+<div id="setting-the-working-directory" class="section level3 unnumbered">
+<h3>Setting the working directory</h3>
+<p>To ensure that R Studio knows where to find the files, you can manually set the <strong>Working Directory</strong> through the menu:</p>
+<ul>
+<li>Click <code>Session</code></li>
+<li>Select <code>Set Working Directory</code> by hovering your mouse over it</li>
+<li>Click on <code>To Source File Location</code></li>
+</ul>
+<div class="figure">
+<img src="img/Set_wd_source.png" />
+
+</div>
+<p>You can double check that you were successful by</p>
+<ul>
+<li>Click on the <code>Files</code> tab in the many-tab panel</li>
+<li>Click on the button with the gear that says <code>More</code></li>
+<li>Click <code>Go To Working Directory</code></li>
+</ul>
+<p>At this point you should see all the files that reside in the folder location where the open <code>.Rmd</code> files is also saved.</p>
+<div class="figure">
+<img src="img/files_goto_wd.png" />
+
+</div>
 
 </div>
 </div>
@@ -380,8 +508,8 @@ cancer_new</code></pre></div>
           </div>
         </div>
       </div>
-<a href="summary-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="data-prepartion.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

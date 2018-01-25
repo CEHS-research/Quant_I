@@ -24,3 +24,135 @@ knitr::opts_chunk$set(comment     = NA,
                       warning     = FALSE, 
                       message     = FALSE)
 ```
+
+
+
+
+
+## Example: Cancer Experiment {-}
+
+see chapter 3
+
+
+### Required Packages {-}
+
+```{r load_libraries}
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(haven)        # Read in SPSS datasets
+library(furniture)    # Nice tables (by our own Tyson Barrett)
+library(psych)        # Lots of nice tid-bits
+```
+
+### Data Import {-}
+
+The `Cancer` dataset is saved in SPSS format, which is evident from the `.sav` ending on the file name.
+
+The `haven` package is downloaded as part of the `tidyverse` set of packages, but is not automatically loaded.  It must have its own `library()` function call *(see above)*.  The `haven::read_spss()` function works very simarly to the `readxl::read_excel()` function we used last chapter [@R-haven].
+
+* Make sure the **dataset** is saved in the same *folder* as this file
+* Make sure the that *folder* is the **working directory**
+
+```{r, eval=FALSE}
+cancer_raw <- haven::read_spss("cancer.sav")
+```
+
+
+```{r, include=FALSE}
+cancer_raw <- haven::read_spss("data/cancer.sav")
+```
+
+```{r}
+tibble::glimpse(cancer_raw)
+```
+
+
+### Data Wrangling {-}
+
+```{r}
+cancer_clean <- cancer_raw %>% 
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(id = factor(id)) %>% 
+  dplyr::mutate(trt = factor(trt,
+                             labels = c("Placebo", 
+                                        "Aloe Juice"))) %>% 
+  dplyr::mutate(stage = factor(stage))
+
+tibble::glimpse(cancer_clean)
+```
+
+
+---------------------------------------
+
+
+
+
+### Standardize Variables - Manually
+
+You can manually create a stadradized version of the `age` variable.
+
+
+First, you must find the **mean** and **standard deviation** of the `age` variable.
+
+```{r}
+cancer_clean %>%
+  furniture::table1(age)
+```
+
+
+Second, write an equation to do the calculation.
+
+```{r}
+cancer_clean %>%
+  dplyr::mutate(agez = (age - 59.6) / 12.9) %>% 
+  dplyr::select(id, trt, age, agez)
+```
+
+
+### Standardize Variables - with the `scale()` funciton
+
+A quicker way is to use a funciton.  Notice the differences due to rounding.
+
+```{r}
+cancer_new <- cancer_clean %>%
+  dplyr::mutate(agez = (age - 59.6) / 12.9) %>% 
+  dplyr::mutate(ageZ = scale(age))%>%
+  dplyr::select(id, trt, age, agez, ageZ)
+
+cancer_new
+```
+
+You can check that the new variable does in deed have mean of zero and spread of one.
+
+```{r}
+cancer_new %>% 
+  furniture::table1(age, agez, ageZ,
+                    digits = 8)
+```
+
+
+Both the mean and the standard deviation are different.
+
+```{r}
+cancer_new %>% 
+  tidyr::gather(key = "variable",
+                value = "value",
+                age, ageZ) %>% 
+  ggplot(aes(value)) +
+  geom_histogram(bins = 8) +
+  facet_grid(. ~ variable)
+```
+
+However, if you let the scale of the x-axis change, you see the shape of the two variables is identical.
+
+```{r}
+cancer_new %>% 
+  tidyr::gather(key = "variable",
+                value = "value",
+                age, ageZ) %>% 
+  ggplot(aes(value)) +
+  geom_histogram(bins = 8) +
+  facet_grid(. ~ variable, scale = "free_x")
+```
+
+
+
