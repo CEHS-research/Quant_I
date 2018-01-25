@@ -5,6 +5,8 @@
 
 * [Chapter 2 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1)
 
+**Assingment Links**
+
 * [Unit 1 Assignment - Write Up Skeleton](https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu)
 
 * [Unit 1 Assignment - Rmd Skeleton](https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x)

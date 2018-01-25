@@ -2,15 +2,17 @@
 
 **Chapter Links**
 
-* Chapter 4 Slide Show
+* [Chapter 4 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch4_Zscores.html#1)
+
+* [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
+
+**Assignment Links**
 
 * [Unit 1 Assignment - Write Up Skeleton](https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu)
 
 * [Unit 1 Assignment - Rmd Skeleton](https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x)
 
 * [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
-
-* [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 
 
 ```{r global_options, include=FALSE}

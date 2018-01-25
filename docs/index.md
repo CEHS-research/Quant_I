@@ -1,8 +1,8 @@
 --- 
 title: "Explaining Psychological Statistcs"
 subtitle: "A Compantion in R"
-author: "Sarah Schwartz and Tyson Barrett"
-date: "Updated Last: January 24 2018"
+author: "Dr. Sarah Schwartz and Tyson Barrett"
+date: "Updated Last: January 25 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"
@@ -19,6 +19,7 @@ no cite: |
 # USU: PSY 6600 -or- EDUC 6600 {-}
 
 Utah State University
+Emma Eccles Jones College of Education and Human Services
 
 ![](img/headers/RDA1_logo.png)
 
@@ -41,15 +42,16 @@ The textbook is available through the USU library
         - download/install some software
     + only can be 'checked out' for 14 days
 
-
+----------------------------
 **Course Files**
 
 All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y)
 
-* Icons and image files
-* Datasets (excel or SPSS format)
-* Assignments
+* Icons and image files *(png or jpg)*
+* Datasets *(excel or SPSS format)*
+* Assignments *(pdf and Rmd)*
 
+----------------------------
 **Instructor Websites**
 
 * Sarah's website: [www.sarahschwartzstats.com](http://www.sarahschwartzstats.com/)
@@ -57,9 +59,10 @@ All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsng
 * Tyson's website: [www.tysonbarrett.com/teaching/](http://tysonbarrett.com/teaching/)
 
 
-
+----------------------------
 **Course Schedule**
 
+For Spring Semester 2018
 
 ![](img/Sched_1-16-18.PNG)
 

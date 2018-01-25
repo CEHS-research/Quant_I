@@ -45,7 +45,7 @@ Therefore, in this way **dynamic also means reproducible**, in the sense that pe
 
 **How does R Markdown work out to be a .pdf or .html file?**
 
-`R Markdown` is a file with the file extension **.Rmd**, the `knitr` package will then transform the file into a **Markdown** file with the extension **.md.** Then Rstudio can:
+`R Markdown` is a file with the file extension **.Rmd**, the `knitr` package will then transform the file into a **Markdown** file with the extension **.md.** Then Rstudio can [@xie2015]:
 
   * Use `LaTeX` to transform the file into a **.pdf** 
     
