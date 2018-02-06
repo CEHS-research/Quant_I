@@ -4,6 +4,6 @@ language:
     chapter_name: "Chapter "
 repo: https://github.com/SarBearSchwartz/Quant_I
 output_dir: "docs"
-rmd_files: ["index.Rmd", "00-install.Rmd", "01-prep.Rmd", "02-plots.Rmd", "03-summary.Rmd", "04-normal.Rmd", "99-refs.Rmd"]
+rmd_files: ["index.Rmd", "00-install.Rmd", "01-prep.Rmd", "02-plots.Rmd", "03-summary.Rmd", "04-normal.Rmd", "05-assumptions.Rmd", "06-t_test.Rmd", "99-refs.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes

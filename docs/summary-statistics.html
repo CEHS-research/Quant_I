@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Explaining Psychological Statistcs</title>
   <meta name="description" content="This book covers R code for the Cohen Textbook">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Explaining Psychological Statistcs" />
   <meta property="og:type" content="book" />
@@ -191,6 +191,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="standardizing-scores.html"><a href="standardizing-scores.html#data-wrangling-2"><i class="fa fa-check"></i>Data Wrangling</a></li>
 <li class="chapter" data-level="4.0.1" data-path="standardizing-scores.html"><a href="standardizing-scores.html#standardize-variables---manually"><i class="fa fa-check"></i><b>4.0.1</b> Standardize Variables - Manually</a></li>
 <li class="chapter" data-level="4.0.2" data-path="standardizing-scores.html"><a href="standardizing-scores.html#standardize-variables---with-the-scale-funciton"><i class="fa fa-check"></i><b>4.0.2</b> Standardize Variables - with the <code>scale()</code> funciton</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="testing-normality.html"><a href="testing-normality.html"><i class="fa fa-check"></i><b>5</b> TESTING NORMALITY</a><ul>
+<li class="chapter" data-level="" data-path="testing-normality.html"><a href="testing-normality.html#example-cancer-experiment-2"><i class="fa fa-check"></i>Example: Cancer Experiment</a><ul>
+<li class="chapter" data-level="" data-path="testing-normality.html"><a href="testing-normality.html#required-packages-3"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="testing-normality.html"><a href="testing-normality.html#data-import-2"><i class="fa fa-check"></i>Data Import</a></li>
+<li class="chapter" data-level="" data-path="testing-normality.html"><a href="testing-normality.html#data-wrangling-3"><i class="fa fa-check"></i>Data Wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1" data-path="testing-normality.html"><a href="testing-normality.html#skewness-kurtosis"><i class="fa fa-check"></i><b>5.1</b> Skewness &amp; Kurtosis</a></li>
+<li class="chapter" data-level="5.2" data-path="testing-normality.html"><a href="testing-normality.html#shapiro-wilks-test"><i class="fa fa-check"></i><b>5.2</b> Shapiro-Wilk’s Test</a></li>
+<li class="chapter" data-level="5.3" data-path="testing-normality.html"><a href="testing-normality.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="testing-normality.html"><a href="testing-normality.html#q-q-plot"><i class="fa fa-check"></i><b>5.4</b> Q-Q Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html"><i class="fa fa-check"></i><b>6</b> 1 SAMPLE T TEST FOR THE MEAN</a><ul>
+<li class="chapter" data-level="" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#example-cancer-experiment-3"><i class="fa fa-check"></i>Example: Cancer Experiment</a><ul>
+<li class="chapter" data-level="" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#required-packages-4"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#data-import-3"><i class="fa fa-check"></i>Data Import</a></li>
+<li class="chapter" data-level="" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#data-wrangling-4"><i class="fa fa-check"></i>Data Wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#sample-t-test-for-the-mean-vs.historic-control"><i class="fa fa-check"></i><b>6.1</b> 1 Sample t-test for the mean vs. historic control</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#change-the-confidence-level"><i class="fa fa-check"></i><b>6.1.1</b> Change the Confidence Level</a></li>
+<li class="chapter" data-level="6.1.2" data-path="sample-t-test-for-the-mean.html"><a href="sample-t-test-for-the-mean.html#restrict-to-a-subsample"><i class="fa fa-check"></i><b>6.1.2</b> Restrict to a Subsample</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
@@ -780,6 +802,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

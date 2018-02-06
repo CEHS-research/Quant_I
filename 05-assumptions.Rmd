@@ -1,0 +1,162 @@
+# TESTING NORMALITY
+
+**Chapter Links**
+
+* [Chapter 5 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch5_HypoTest.html#1)
+
+* [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
+
+**Assignment Links**
+
+* [Unit 2 Assignment - Write Up Skeleton](https://usu.box.com/s/bn0m44cp5zrkev3ppjdilfsvic4bubvu)
+
+* [Unit 2 Assignment - Rmd Skeleton](https://usu.box.com/s/zjjwexn827ziifxlcoe6emr2brfifk0x)
+
+* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
+
+
+```{r global_options, include=FALSE}
+# set global chunk options...  
+#  this changes the defaults so you don't have to repeat yourself
+knitr::opts_chunk$set(comment     = NA,
+                      cache       = TRUE,
+                      echo        = TRUE, 
+                      warning     = FALSE, 
+                      message     = FALSE)
+```
+
+
+
+
+
+## Example: Cancer Experiment {-}
+
+see chapter 3
+
+
+### Required Packages {-}
+
+```{r load_libraries}
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(haven)        # Read in SPSS datasets
+library(furniture)    # Nice tables (by our own Tyson Barrett)
+library(psych)        # Lots of nice tid-bits
+```
+
+### Data Import {-}
+
+The `Cancer` dataset is saved in SPSS format, which is evident from the `.sav` ending on the file name.
+
+The `haven` package is downloaded as part of the `tidyverse` set of packages, but is not automatically loaded.  It must have its own `library()` function call *(see above)*.  The `haven::read_spss()` function works very simarly to the `readxl::read_excel()` function we used last chapter [@R-haven].
+
+* Make sure the **dataset** is saved in the same *folder* as this file
+* Make sure the that *folder* is the **working directory**
+
+```{r, eval=FALSE}
+cancer_raw <- haven::read_spss("cancer.sav")
+```
+
+
+```{r, include=FALSE}
+cancer_raw <- haven::read_spss("data/cancer.sav")
+```
+
+```{r}
+tibble::glimpse(cancer_raw)
+```
+
+
+### Data Wrangling {-}
+
+```{r}
+cancer_clean <- cancer_raw %>% 
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(id = factor(id)) %>% 
+  dplyr::mutate(trt = factor(trt,
+                             labels = c("Placebo", 
+                                        "Aloe Juice"))) %>% 
+  dplyr::mutate(stage = factor(stage))
+
+tibble::glimpse(cancer_clean)
+```
+
+
+---------------------------------------
+
+## Skewness & Kurtosis
+
+The `psych::describe()` function may be used to calculate skewness and kurtosis.
+
+```{r}
+cancer_clean %>% 
+  dplyr::select(age, totalcw4) %>% 
+  psych::describe()
+```
+
+
+## Shapiro-Wilk's Test
+
+The `shapiro.test()` function is used to test for normality in a small'ish sample.  This function is meant to be applied to a single variable in vector form, thus precede it with a `dplyr::pull()` step.
+
+> If $p-value \gt \alpha$, then the sample does **NOT** provide evidence the population is non-normally distributed.
+
+```{r}
+cancer_clean %>% 
+  dplyr::pull(age) %>% 
+  shapiro.test()
+```
+
+> If $p-value \lt \alpha$, then the sample **DOES** provide evidence the population is non-normally distributed.
+
+
+```{r}
+cancer_clean %>% 
+  dplyr::pull(totalcw4) %>% 
+  shapiro.test()
+```
+
+
+## Histogram
+
+Histograms provide a visual way to determine if a data are approximately normally distributed.  Look for a 'bell' shape.
+
+```{r, fig.height=3.75}
+cancer_clean %>% 
+  ggplot(aes(age)) +
+  geom_histogram(binwidth = 5)
+```
+
+```{r, fig.height=3.75}
+cancer_clean %>% 
+  ggplot(aes(totalcw4)) +
+  geom_histogram(binwidth = 1)
+```
+
+
+
+## Q-Q Plot
+
+Quantile-quantile plots also help visually determine if data are approximately normally distributed.  Look for the points to fall on a straight $45 \degree$ line.
+
+```{r, fig.height=3.75}
+cancer_clean %>% 
+  ggplot(aes(sample = age)) +
+  geom_qq()
+```
+
+
+```{r, fig.height=3.75}
+cancer_clean %>% 
+  ggplot(aes(sample = totalcw4)) +
+  geom_qq()
+```
+
+
+
+
+
+
+
+
+
+
