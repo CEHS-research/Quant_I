@@ -19,91 +19,28 @@
 
 
 
-
-
-## Example: Cancer Experiment {-}
-
-see chapter 3
-
-
-### Required Packages {-}
+Required Packages 
 
 
 ```r
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(haven)        # Read in SPSS datasets
-library(furniture)    # Nice tables (by our own Tyson Barrett)
 library(psych)        # Lots of nice tid-bits
 ```
 
-### Data Import {-}
-
-The `Cancer` dataset is saved in SPSS format, which is evident from the `.sav` ending on the file name.
-
-The `haven` package is downloaded as part of the `tidyverse` set of packages, but is not automatically loaded.  It must have its own `library()` function call *(see above)*.  The `haven::read_spss()` function works very simarly to the `readxl::read_excel()` function we used last chapter [@R-haven].
-
-* Make sure the **dataset** is saved in the same *folder* as this file
-* Make sure the that *folder* is the **working directory**
 
 
-```r
-cancer_raw <- haven::read_spss("cancer.sav")
-```
+
+Example: Cancer Experiment 
+
+The `Cancer` dataset was introduced in [chapter 3][Example: Cancer Experiment].
 
 
 
 
 
-```r
-tibble::glimpse(cancer_raw)
-```
-
-```
-Observations: 25
-Variables: 9
-$ ID       <dbl> 1, 5, 6, 9, 11, 15, 21, 26, 31, 35, 39, 41, 45, 2, 12...
-$ TRT      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,...
-$ AGE      <dbl> 52, 77, 60, 61, 59, 69, 67, 56, 61, 51, 46, 65, 67, 4...
-$ WEIGHIN  <dbl> 124.0, 160.0, 136.5, 179.6, 175.8, 167.6, 186.0, 158....
-$ STAGE    <dbl> 2, 1, 4, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 2, 4, 1, 2, 1,...
-$ TOTALCIN <dbl> 6, 9, 7, 6, 6, 6, 6, 6, 6, 6, 7, 6, 8, 7, 6, 4, 6, 6,...
-$ TOTALCW2 <dbl> 6, 6, 9, 7, 7, 6, 11, 11, 9, 4, 8, 6, 8, 16, 10, 6, 1...
-$ TOTALCW4 <dbl> 6, 10, 17, 9, 16, 6, 11, 15, 6, 8, 11, 9, 9, 9, 11, 8...
-$ TOTALCW6 <dbl> 7, 9, 19, 3, 13, 11, 10, 15, 8, 7, 11, 6, 10, 10, 9, ...
-```
 
 
-### Data Wrangling {-}
-
-
-```r
-cancer_clean <- cancer_raw %>% 
-  dplyr::rename_all(tolower) %>% 
-  dplyr::mutate(id = factor(id)) %>% 
-  dplyr::mutate(trt = factor(trt,
-                             labels = c("Placebo", 
-                                        "Aloe Juice"))) %>% 
-  dplyr::mutate(stage = factor(stage))
-
-tibble::glimpse(cancer_clean)
-```
-
-```
-Observations: 25
-Variables: 9
-$ id       <fct> 1, 5, 6, 9, 11, 15, 21, 26, 31, 35, 39, 41, 45, 2, 12...
-$ trt      <fct> Placebo, Placebo, Placebo, Placebo, Placebo, Placebo,...
-$ age      <dbl> 52, 77, 60, 61, 59, 69, 67, 56, 61, 51, 46, 65, 67, 4...
-$ weighin  <dbl> 124.0, 160.0, 136.5, 179.6, 175.8, 167.6, 186.0, 158....
-$ stage    <fct> 2, 1, 4, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 2, 4, 1, 2, 1,...
-$ totalcin <dbl> 6, 9, 7, 6, 6, 6, 6, 6, 6, 6, 7, 6, 8, 7, 6, 4, 6, 6,...
-$ totalcw2 <dbl> 6, 6, 9, 7, 7, 6, 11, 11, 9, 4, 8, 6, 8, 16, 10, 6, 1...
-$ totalcw4 <dbl> 6, 10, 17, 9, 16, 6, 11, 15, 6, 8, 11, 9, 9, 9, 11, 8...
-$ totalcw6 <dbl> 7, 9, 19, 3, 13, 11, 10, 15, 8, 7, 11, 6, 10, 10, 9, ...
-```
-
-
----------------------------------------
 
 ## Skewness & Kurtosis
 
@@ -177,7 +114,7 @@ cancer_clean %>%
   geom_histogram(binwidth = 5)
 ```
 
-<img src="05-assumptions_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="05-assumptions_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 ```r
@@ -186,7 +123,7 @@ cancer_clean %>%
   geom_histogram(binwidth = 1)
 ```
 
-<img src="05-assumptions_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="05-assumptions_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 
@@ -201,7 +138,7 @@ cancer_clean %>%
   geom_qq()
 ```
 
-<img src="05-assumptions_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="05-assumptions_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 
@@ -211,7 +148,7 @@ cancer_clean %>%
   geom_qq()
 ```
 
-<img src="05-assumptions_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="05-assumptions_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 
 

@@ -15,6 +15,7 @@
 * [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
 
 
+
 ```{r global_options, include=FALSE}
 # set global chunk options...  
 #  this changes the defaults so you don't have to repeat yourself
@@ -26,49 +27,25 @@ knitr::opts_chunk$set(comment     = NA,
 ```
 
 
-
-
-
-## Example: Cancer Experiment {-}
-
-see chapter 3
-
-
-### Required Packages {-}
+Required Packages 
 
 ```{r load_libraries}
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(haven)        # Read in SPSS datasets
-library(furniture)    # Nice tables (by our own Tyson Barrett)
 library(psych)        # Lots of nice tid-bits
 ```
 
-### Data Import {-}
 
-The `Cancer` dataset is saved in SPSS format, which is evident from the `.sav` ending on the file name.
 
-The `haven` package is downloaded as part of the `tidyverse` set of packages, but is not automatically loaded.  It must have its own `library()` function call *(see above)*.  The `haven::read_spss()` function works very simarly to the `readxl::read_excel()` function we used last chapter [@R-haven].
 
-* Make sure the **dataset** is saved in the same *folder* as this file
-* Make sure the that *folder* is the **working directory**
+Example: Cancer Experiment 
 
-```{r, eval=FALSE}
-cancer_raw <- haven::read_spss("cancer.sav")
-```
+The `Cancer` dataset was introduced in [chapter 3][Example: Cancer Experiment].
 
 
 ```{r, include=FALSE}
 cancer_raw <- haven::read_spss("data/cancer.sav")
-```
 
-```{r}
-tibble::glimpse(cancer_raw)
-```
-
-
-### Data Wrangling {-}
-
-```{r}
 cancer_clean <- cancer_raw %>% 
   dplyr::rename_all(tolower) %>% 
   dplyr::mutate(id = factor(id)) %>% 
@@ -76,12 +53,11 @@ cancer_clean <- cancer_raw %>%
                              labels = c("Placebo", 
                                         "Aloe Juice"))) %>% 
   dplyr::mutate(stage = factor(stage))
-
-tibble::glimpse(cancer_clean)
 ```
 
 
----------------------------------------
+
+
 
 ## Skewness & Kurtosis
 
