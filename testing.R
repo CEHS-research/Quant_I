@@ -4,3 +4,4 @@ bookdown::render_book(c("index.Rmd","00-install.Rmd",
                         "05-assumptions.Rmd",
                         "06-t_test.Rmd",
                         "99-refs.Rmd"))
+
