@@ -152,22 +152,19 @@ No violations of homogeneity were detected, $F(1, 23) = 0, p = .995$.
 
 Use the same `t.test()` funtion we have used in the prior chapters.  This time you need to speficy a few more options.
  
-**REQUIRED**    
+  
 
-- the formula:  `continuous_var ~ grouping_var` (replace with your variable names)
+* the formula:  `continuous_var ~ grouping_var` (replace with your variable names)
 
-- the dataset:  `data = .` to pipe it from above
+* the dataset:  `data = .` to pipe it from above
 
-- is homogeneity satified?: `var.equal = TRUE` (**NOT the default**)
+* is homogeneity satified?: `var.equal = TRUE` (**NOT the default**)
 
+* number of tails: `alternative = "two.sided"` 
 
-**OPTIONAL**: *may need to be changed*    
+* independent vs. paired:  `paired = FALSE` 
 
-- number of tails: `alternative = "two.sided"` 
-
-- independent vs. paired:  `paired = FALSE` 
-
-- confidence level: `conf.level = #` 
+* confidence level: `conf.level = #` 
 
 
 > Do the participants in the treatment group have a different average oral condition at BASELINE, compared to the control group?
