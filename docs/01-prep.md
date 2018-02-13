@@ -3,7 +3,7 @@
 
 **Chapter Links**
 
-* [Chapter 1 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/00_Ch1_Intro.html#1)
+* [Chapter 1 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u00_Ch1_Intro.html#1)
 
 * [Unit 0 Assingment - Write Up Skeleton](https://usu.box.com/s/dmj8d2u28q2ynx15v53l9f8nr1rudu8y)
 

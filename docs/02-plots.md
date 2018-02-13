@@ -3,7 +3,7 @@
 
 **Chapter Links**
 
-* [Chapter 2 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch2_DataViz.html#1)
+* [Chapter 2 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u01_Ch2_DataViz.html#1)
 
 **Assingment Links**
 

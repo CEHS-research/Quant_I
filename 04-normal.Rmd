@@ -2,7 +2,7 @@
 
 **Chapter Links**
 
-* [Chapter 4 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch4_Zscores.html#1)
+* [Chapter 4 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u01_Ch4_Zscores.html#1)
 
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 

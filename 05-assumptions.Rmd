@@ -2,7 +2,7 @@
 
 **Chapter Links**
 
-* [Chapter 5 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/01_Ch5_HypoTest.html#1)
+* [Chapter 5 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u02_Ch5_HypoTest.html#1)
 
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 
