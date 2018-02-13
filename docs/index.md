@@ -1,7 +1,7 @@
 --- 
 title: "Explaining Psychological Statistcs"
 subtitle: "A Compantion in R"
-author: "Dr. Sarah Schwartz and Tyson Barrett"
+author: "Dr. Sarah Schwartz and Dr. Tyson Barrett"
 date: "Updated Last: February 13 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
