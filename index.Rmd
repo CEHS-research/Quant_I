@@ -45,11 +45,14 @@ The textbook is available through the USU library
 ----------------------------
 **Course Files**
 
-All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y)
+All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsnga773p9o823shxr243z39brmlc35y)  
 
 * Icons and image files *(png or jpg)*
+
 * Datasets *(excel or SPSS format)*
+
 * Assignments *(pdf and Rmd)*
+
 
 ----------------------------
 **Instructor Websites**

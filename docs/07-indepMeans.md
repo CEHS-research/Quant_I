@@ -151,15 +151,22 @@ No violations of homogeneity were detected, $F(1, 23) = 0, p = .995$.
 ## 2 independent Sample Means
 
 Use the same `t.test()` funtion we have used in the prior chapters.  This time you need to speficy a few more options.
+ 
+**REQUIRED**    
 
-**REQUIRED**
 - the formula:  `continuous_var ~ grouping_var` (replace with your variable names)
+
 - the dataset:  `data = .` to pipe it from above
+
 - is homogeneity satified?: `var.equal = TRUE` (**NOT the default**)
 
-**OPTIONAL**: *may need to be changed*
+
+**OPTIONAL**: *may need to be changed*    
+
 - number of tails: `alternative = "two.sided"` 
+
 - independent vs. paired:  `paired = FALSE` 
+
 - confidence level: `conf.level = #` 
 
 
