@@ -7,6 +7,8 @@ bookdown::render_book(c("index.Rmd",
                         "05-assumptions.Rmd",
                         "06-t_test.Rmd",
                         "07-indepMeans.Rmd",
+                        "08-power.Rmd",
                         "99-refs.Rmd"))
+
 
 

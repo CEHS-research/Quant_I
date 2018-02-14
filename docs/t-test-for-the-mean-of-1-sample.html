@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="power-and-effect-size.html">
-
+<link rel="prev" href="testing-normality.html">
+<link rel="next" href="t-test-for-the-difference-in-2-means-independent-samples.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -228,55 +228,80 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>REFERENCES</h1>
+<div id="t-test-for-the-mean-of-1-sample" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> t TEST FOR THE MEAN OF 1 SAMPLE</h1>
+<p><strong>Chapter Links</strong></p>
+<ul>
+<li><p><a href="http://tysonbarrett.com/EDUC-6600/Slides/u02_Ch6_CI_tDist.html#1">Chapter 6 Slide Show</a></p></li>
+<li><p><a href="https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6">Cancer Dataset - SPSS format</a></p></li>
+</ul>
+<p><strong>Assignment Links</strong></p>
+<ul>
+<li><p><a href="https://usu.box.com/s/mr5ersj8oqu6mj3tyup697ljg2527p8h">Unit 2 Assignment - Write Up Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/85s7t82tih6f06v8bpvjo0qt275gafsr">Unit 2 Assignment - Rmd Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Inho’s Dataset - Excel format</a></p></li>
+</ul>
+<p>Required Packages</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
+<span class="kw">library</span>(haven)        <span class="co"># Read in SPSS datasets</span></code></pre></div>
+<p>Example: Cancer Experiment</p>
+<p>The <code>Cancer</code> dataset was introduced in <a href="summary-statistics.html#example-cancer-experiment">chapter 3</a>.</p>
+<div id="sample-mean-vs.historic-control" class="section level2">
+<h2><span class="header-section-number">6.1</span> 1 Sample Mean vs. historic control</h2>
+<p>example: Do the patients weigh more than 165 pounds at intake, on average?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(weighin) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">t.test</span>(<span class="dt">mu =</span> <span class="dv">165</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
 
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2017. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+data:  .
+t = 2.0765, df = 24, p-value = 0.04872
+alternative hypothesis: true mean is not equal to 165
+95 percent confidence interval:
+ 165.0807 191.4793
+sample estimates:
+mean of x 
+   178.28 </code></pre>
 </div>
-<div id="ref-R-furniture">
-<p>Barrett, Tyson S., Emily Brignone, and Daniel J. Laxman. 2018. <em>Furniture: Furniture for Quantitative Scientists</em>. <a href="https://CRAN.R-project.org/package=furniture" class="uri">https://CRAN.R-project.org/package=furniture</a>.</p>
+<div id="change-the-confidence-level" class="section level2">
+<h2><span class="header-section-number">6.2</span> Change the Confidence Level</h2>
+<p>Find a 99% confience level for the population mean weight.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(weighin) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">t.test</span>(<span class="dt">mu =</span> <span class="dv">165</span>,
+         <span class="dt">conf.level =</span> <span class="fl">0.99</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  .
+t = 2.0765, df = 24, p-value = 0.04872
+alternative hypothesis: true mean is not equal to 165
+99 percent confidence interval:
+ 160.3927 196.1673
+sample estimates:
+mean of x 
+   178.28 </code></pre>
 </div>
-<div id="ref-R-car">
-<p>Fox, John, and Sanford Weisberg. 2011. <em>An R Companion to Applied Regression</em>. Second. Thousand Oaks CA: Sage. <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a>.</p>
-</div>
-<div id="ref-R-tibble">
-<p>Muller, Kirill, and Hadley Wickham. 2017. <em>Tibble: Simple Data Frames</em>. <a href="https://CRAN.R-project.org/package=tibble" class="uri">https://CRAN.R-project.org/package=tibble</a>.</p>
-</div>
-<div id="ref-R-base">
-<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
-</div>
-<div id="ref-R-psych">
-<p>Revelle, William. 2017. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. Evanston, Illinois: Northwestern University. <a href="https://CRAN.R-project.org/package=psych" class="uri">https://CRAN.R-project.org/package=psych</a>.</p>
-</div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley. 2009. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
-</div>
-<div id="ref-R-tidyverse">
-<p>———. 2017. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse" class="uri">https://CRAN.R-project.org/package=tidyverse</a>.</p>
-</div>
-<div id="ref-R-readxl">
-<p>Wickham, Hadley, and Jennifer Bryan. 2017. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl" class="uri">https://CRAN.R-project.org/package=readxl</a>.</p>
-</div>
-<div id="ref-R-tidyr">
-<p>Wickham, Hadley, and Lionel Henry. 2017. <em>Tidyr: Easily Tidy Data with ’Spread()’ and ’Gather()’ Functions</em>. <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
-</div>
-<div id="ref-R-haven">
-<p>Wickham, Hadley, and Evan Miller. 2017. <em>Haven: Import and Export ’Spss’, ’Stata’ and ’Sas’ Files</em>. <a href="https://CRAN.R-project.org/package=haven" class="uri">https://CRAN.R-project.org/package=haven</a>.</p>
-</div>
-<div id="ref-R-dplyr">
-<p>Wickham, Hadley, Romain Francois, Lionel Henry, and Kirill Muller. 2017. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
-</div>
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>———. 2017a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
-<div id="ref-R-knitr">
-<p>———. 2017b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
+<div id="restrict-to-a-subsample" class="section level2">
+<h2><span class="header-section-number">6.3</span> Restrict to a Subsample</h2>
+<p>Do the patients with .dcoral[stage 3 &amp; 4] cancer weigh more than 165 pounds at intake, on average?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(stage <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(weighin) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">t.test</span>(<span class="dt">mu =</span> <span class="dv">165</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  .
+t = 0.82627, df = 5, p-value = 0.4463
+alternative hypothesis: true mean is not equal to 165
+95 percent confidence interval:
+ 137.0283 219.4717
+sample estimates:
+mean of x 
+   178.25 </code></pre>
+
 </div>
 </div>
             </section>
@@ -284,8 +309,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="power-and-effect-size.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="testing-normality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="t-test-for-the-difference-in-2-means-independent-samples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

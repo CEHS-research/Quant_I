@@ -1,4 +1,4 @@
-# 1 SAMPLE T TEST FOR THE MEAN
+# t TEST FOR THE MEAN OF 1 SAMPLE
 
 **Chapter Links**
 

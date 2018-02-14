@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="power-and-effect-size.html">
-
+<link rel="prev" href="t-test-for-the-mean-of-1-sample.html">
+<link rel="next" href="power-and-effect-size.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -228,55 +228,145 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>REFERENCES</h1>
+<div id="t-test-for-the-difference-in-2-means-independent-samples" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> t TEST FOR THE DIFFERENCE IN 2 MEANS, INDEPENDENT SAMPLES</h1>
+<p><strong>Chapter Links</strong></p>
+<ul>
+<li><p><a href="http://http://tysonbarrett.com/EDUC-6600/Slides/u02_Ch7_ttest.pdf">Chapter 7 Slide Show (pdf)</a></p></li>
+<li><p><a href="https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6">Cancer Dataset - SPSS format</a></p></li>
+</ul>
+<p><strong>Assignment Links</strong></p>
+<ul>
+<li><p><a href="https://usu.box.com/s/mr5ersj8oqu6mj3tyup697ljg2527p8h">Unit 2 Assignment - Write Up Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/85s7t82tih6f06v8bpvjo0qt275gafsr">Unit 2 Assignment - Rmd Skeleton</a></p></li>
+<li><p><a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Inho’s Dataset - Excel format</a></p></li>
+</ul>
+<p>Required Packages</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
+<span class="kw">library</span>(haven)        <span class="co"># Read in SPSS datasets</span>
+<span class="kw">library</span>(car)          <span class="co"># Companion for Applied Regression (and ANOVA)</span></code></pre></div>
+<p>Example: Cancer Experiment</p>
+<p>The <code>Cancer</code> dataset was introduced in <a href="summary-statistics.html#example-cancer-experiment">chapter 3</a>.</p>
+<p>Check Means and SD’s</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(trt) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">table1</span>(totalcin, totalcw4)</code></pre></div>
+<pre><code>
+--------------------------------
+                 trt 
+          Placebo    Aloe Juice
+          n = 14     n = 11    
+ totalcin                      
+          6.6 (0.9)  6.5 (2.1) 
+ totalcw4                      
+          10.1 (3.6) 10.6 (3.5)
+--------------------------------</code></pre>
+<hr />
+<div id="assumtion-check-eyeball-method" class="section level2">
+<h2><span class="header-section-number">7.1</span> Assumtion Check: Eyeball method</h2>
+<p>Do the two groups, treatment and control, have the same amount of spread (standard deviations) BUT different centers (means)?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> trt,
+             <span class="dt">y =</span> totalcin)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="07-indepMeans_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> trt,
+             <span class="dt">y =</span> totalcw4)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="07-indepMeans_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="assumtion-check-homogeneity-of-variance" class="section level2">
+<h2><span class="header-section-number">7.2</span> Assumtion Check: Homogeneity of Variance</h2>
+<p>Before performing the <span class="math inline">\(t\)</span> test, check to see if the assumption of homogeneity of variance is met using <strong>Levene’s Test</strong>. For a independent samples <code>t</code>-test for means, the groups need to have the same amount of spread (SD) in the measure of interest.</p>
+<p>Use the <code>car:leveneTest()</code> function to do this. Inside the funtion you need to specify at least three things (sepearated by commas):</p>
+<ul>
+<li>the formula: <code>continuous_var ~ grouping_var</code> (replace with your variable names)</li>
+<li>the dataset: <code>data = .</code> to pipe it from above</li>
+<li>the center: <code>center = &quot;mean&quot;</code> since we are comparing means</li>
+</ul>
+<blockquote>
+<p>Do the participants in the treatment and control groups have the same spread in oral condition at BASELINE?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>car<span class="op">::</span><span class="kw">leveneTest</span>(totalcin <span class="op">~</span><span class="st"> </span>trt,    <span class="co"># formula: continuous_var ~ grouping_var</span>
+                  <span class="dt">data =</span> .,          <span class="co"># pipe in the dataset</span>
+                  <span class="dt">center =</span> <span class="st">&quot;mean&quot;</span>)   <span class="co"># The default is &quot;median&quot;</span></code></pre></div>
+<pre><code>Levene&#39;s Test for Homogeneity of Variance (center = &quot;mean&quot;)
+      Df F value Pr(&gt;F)
+group  1  2.2103 0.1507
+      23               </code></pre>
+<p>No violations of homogeneity were detected, <span class="math inline">\(F(1, 23) = 2.210, p = .151\)</span>.</p>
+<blockquote>
+<p>Do the participants in the treatment and control groups have the same spread in oral condition at the FOURTH WEEK?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>car<span class="op">::</span><span class="kw">leveneTest</span>(totalcw4 <span class="op">~</span><span class="st"> </span>trt,    <span class="co"># formula: continuous_var ~ grouping_var</span>
+                  <span class="dt">data =</span> .,          <span class="co"># pipe in the dataset</span>
+                  <span class="dt">center =</span> <span class="st">&quot;mean&quot;</span>)   <span class="co"># The default is &quot;median&quot;</span></code></pre></div>
+<pre><code>Levene&#39;s Test for Homogeneity of Variance (center = &quot;mean&quot;)
+      Df F value Pr(&gt;F)
+group  1       0  0.995
+      23               </code></pre>
+<p>No violations of homogeneity were detected, <span class="math inline">\(F(1, 23) = 0, p = .995\)</span>.</p>
+<hr />
+</div>
+<div id="independent-sample-means" class="section level2">
+<h2><span class="header-section-number">7.3</span> 2 independent Sample Means</h2>
+<p>Use the same <code>t.test()</code> funtion we have used in the prior chapters. This time you need to speficy a few more options.</p>
+<ul>
+<li><p>the formula: <code>continuous_var ~ grouping_var</code> (replace with your variable names)</p></li>
+<li><p>the dataset: <code>data = .</code> to pipe it from above</p></li>
+<li><p>is homogeneity satified?: <code>var.equal = TRUE</code> (<strong>NOT the default</strong>)</p></li>
+<li><p>number of tails: <code>alternative = &quot;two.sided&quot;</code></p></li>
+<li><p>independent vs. paired: <code>paired = FALSE</code></p></li>
+<li><p>confidence level: <code>conf.level = #</code></p></li>
+</ul>
+<blockquote>
+<p>Do the participants in the treatment group have a different average oral condition at BASELINE, compared to the control group?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Minimal syntax</span>
+cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">t.test</span>(totalcin <span class="op">~</span><span class="st"> </span>trt,   <span class="co"># formula: continuous_var ~ grouping_var</span>
+         <span class="dt">data =</span> .,         <span class="co"># pipe in the dataset</span>
+         <span class="dt">var.equal =</span> <span class="ot">TRUE</span>) <span class="co"># HOV was violated (option = TRUE)</span></code></pre></div>
+<pre><code>
+    Two Sample t-test
 
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2017. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-R-furniture">
-<p>Barrett, Tyson S., Emily Brignone, and Daniel J. Laxman. 2018. <em>Furniture: Furniture for Quantitative Scientists</em>. <a href="https://CRAN.R-project.org/package=furniture" class="uri">https://CRAN.R-project.org/package=furniture</a>.</p>
-</div>
-<div id="ref-R-car">
-<p>Fox, John, and Sanford Weisberg. 2011. <em>An R Companion to Applied Regression</em>. Second. Thousand Oaks CA: Sage. <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a>.</p>
-</div>
-<div id="ref-R-tibble">
-<p>Muller, Kirill, and Hadley Wickham. 2017. <em>Tibble: Simple Data Frames</em>. <a href="https://CRAN.R-project.org/package=tibble" class="uri">https://CRAN.R-project.org/package=tibble</a>.</p>
-</div>
-<div id="ref-R-base">
-<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
-</div>
-<div id="ref-R-psych">
-<p>Revelle, William. 2017. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. Evanston, Illinois: Northwestern University. <a href="https://CRAN.R-project.org/package=psych" class="uri">https://CRAN.R-project.org/package=psych</a>.</p>
-</div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley. 2009. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
-</div>
-<div id="ref-R-tidyverse">
-<p>———. 2017. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse" class="uri">https://CRAN.R-project.org/package=tidyverse</a>.</p>
-</div>
-<div id="ref-R-readxl">
-<p>Wickham, Hadley, and Jennifer Bryan. 2017. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl" class="uri">https://CRAN.R-project.org/package=readxl</a>.</p>
-</div>
-<div id="ref-R-tidyr">
-<p>Wickham, Hadley, and Lionel Henry. 2017. <em>Tidyr: Easily Tidy Data with ’Spread()’ and ’Gather()’ Functions</em>. <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
-</div>
-<div id="ref-R-haven">
-<p>Wickham, Hadley, and Evan Miller. 2017. <em>Haven: Import and Export ’Spss’, ’Stata’ and ’Sas’ Files</em>. <a href="https://CRAN.R-project.org/package=haven" class="uri">https://CRAN.R-project.org/package=haven</a>.</p>
-</div>
-<div id="ref-R-dplyr">
-<p>Wickham, Hadley, Romain Francois, Lionel Henry, and Kirill Muller. 2017. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
-</div>
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>———. 2017a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
-<div id="ref-R-knitr">
-<p>———. 2017b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
+data:  totalcin by trt
+t = 0.18566, df = 23, p-value = 0.8543
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.185479  1.419245
+sample estimates:
+   mean in group Placebo mean in group Aloe Juice 
+                6.571429                 6.454545 </code></pre>
+<p>No evidence of a differnece in mean oral condition at baseline, <span class="math inline">\(t(23) = 0.186, p = .854\)</span>.</p>
+<blockquote>
+<p>Do the participants in the treatment group have a different average oral condition at the FOURTH WEEK, compared to the control group?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fully specified function</span>
+cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">t.test</span>(totalcw4 <span class="op">~</span><span class="st"> </span>trt,             <span class="co"># formula: continuous_var ~ grouping_var</span>
+         <span class="dt">data =</span> .,                   <span class="co"># pipe in the dataset</span>
+         <span class="dt">var.equal =</span> <span class="ot">TRUE</span>,           <span class="co"># default: HOV was violated (option = TRUE)</span>
+         <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co"># default: 2 sided (options = &quot;less&quot;, &quot;greater&quot;)</span>
+         <span class="dt">paired =</span> <span class="ot">FALSE</span>,             <span class="co"># default: independent (option = TRUE)</span>
+         <span class="dt">conf.level =</span> .<span class="dv">95</span>)           <span class="co"># default: 95% (option = .9, .90, ect.)</span></code></pre></div>
+<pre><code>
+    Two Sample t-test
+
+data:  totalcw4 by trt
+t = -0.34598, df = 23, p-value = 0.7325
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.444215  2.457202
+sample estimates:
+   mean in group Placebo mean in group Aloe Juice 
+                10.14286                 10.63636 </code></pre>
+<p>No evidence of a differnece in mean oral condition at the fourth week, <span class="math inline">\(t(23) = -0.350, p = .733\)</span>.</p>
+
 </div>
 </div>
             </section>
@@ -284,8 +374,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="power-and-effect-size.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="t-test-for-the-mean-of-1-sample.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="power-and-effect-size.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
