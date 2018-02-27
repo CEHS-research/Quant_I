@@ -4,7 +4,7 @@
 
 * [Chapter 8 Slide Show (pdf)](http://http://tysonbarrett.com/EDUC-6600/Slides/u02_Ch8_power.pdf)
 
-
+* [Interactive Online App](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_9_power.html)
 
 **Assignment Links**
 

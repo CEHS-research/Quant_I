@@ -4,6 +4,8 @@
 
 * [Chapter 3 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u01_Ch3_CenterSpread.html#1)
 
+* [Interactive Online App - Mean & Median](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_6_meanmed.html)
+
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 
 **Assignment Links**

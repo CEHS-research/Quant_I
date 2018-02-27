@@ -4,7 +4,11 @@
 
 * [Chapter 6 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u02_Ch6_CI_tDist.html#1)
 
+* [Interactive Online App - Confidence Intervals](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_4_ci.html)
+
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
+
+
 
 **Assignment Links**
 

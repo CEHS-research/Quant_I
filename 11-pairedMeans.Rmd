@@ -1,0 +1,78 @@
+# t TEST FOR THE DIFFERENCE IN 2 PAIRED MEANS
+
+**Chapter Links**
+
+* [Chapter 11 Slide Show (pdf)](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch11_paired.html#1)
+
+* [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
+
+
+
+**Assignment Links**
+
+* [Unit 3 Assignment - Write Up Skeleton .pdf](https://usu.box.com/s/vjcsotiqwu1mwnwgzbfyig6k451ymgow)
+
+* [Unit 3 Assignment - R Directions .pdf](https://usu.box.com/s/ectr9zx8qfbbm59h0qcexjreje5r9aio)
+
+* [Unit 3 Assignment - R Skeleton .Rmd](https://usu.box.com/s/k3vzw6nuq5tw66bxeptcyzth38pj69f9)
+
+* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
+
+
+
+
+```{r global_options, include=FALSE}
+# set global chunk options...  
+#  this changes the defaults so you don't have to repeat yourself
+knitr::opts_chunk$set(comment     = NA,
+                      cache       = TRUE,
+                      echo        = TRUE, 
+                      warning     = FALSE, 
+                      message     = FALSE)
+```
+
+
+
+Required Packages 
+
+```{r load_libraries}
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(haven)        # Read in SPSS datasets
+library(car)          # Companion for Applied Regression (and ANOVA)
+```
+
+
+
+
+Example: Cancer Experiment 
+
+The `Cancer` dataset was introduced in [chapter 3][Example: Cancer Experiment].
+
+
+```{r, include=FALSE}
+cancer_raw <- haven::read_spss("data/cancer.sav")
+
+cancer_clean <- cancer_raw %>% 
+  dplyr::rename_all(tolower) %>% 
+  dplyr::mutate(id = factor(id)) %>% 
+  dplyr::mutate(trt = factor(trt,
+                             labels = c("Placebo", 
+                                        "Aloe Juice"))) %>% 
+  dplyr::mutate(stage = factor(stage))
+```
+
+
+
+Check Means and SD’s
+
+```{r}
+cancer_clean %>% 
+  dplyr::group_by(trt) %>% 
+  furniture::table1(totalcin, totalcw4)
+```
+
+
+-------------------------------------------------------
+
+
+## Checking ASsumptions

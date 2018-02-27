@@ -4,6 +4,15 @@
 
 * [Chapter 4 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u01_Ch4_Zscores.html#1)
 
+* [Interactive Online App - Normal Curve](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_7_norm.html)
+
+* [Interactive Online App - p Values from a Normal Curve](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_12_pvalue.html)
+
+
+* [Interactive Online App - Statistical Significance](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_14_signif.html)
+
+
+
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 
 **Assignment Links**
