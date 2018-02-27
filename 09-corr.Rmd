@@ -2,7 +2,7 @@
 
 **Chapter Links**
 
-* [Chapter 9 Slide Show (pdf)](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch9_Cor.html#1)
+* [Chapter 9 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch9_Cor.html#1)
 
 * [Interactive Online App](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_5_correg.html)
 
