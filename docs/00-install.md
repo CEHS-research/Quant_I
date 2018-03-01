@@ -223,3 +223,8 @@ At this point you should see all the files that reside in the folder location wh
 ![](img/files_goto_wd.png)
 
 
+
+
+## Helpful Websites
+
+[Quick R: Basic Statistics](https://www.statmethods.net/stats/index.html)

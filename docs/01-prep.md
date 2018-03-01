@@ -5,9 +5,13 @@
 
 * [Chapter 1 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u00_Ch1_Intro.html#1)
 
+
+
+**Assignment Links**
+
 * [Unit 0 Assingment - Write Up Skeleton](https://usu.box.com/s/dmj8d2u28q2ynx15v53l9f8nr1rudu8y)
 
-* [Unit 0 Assingment - Rmd Skeleton](https://usu.box.com/s/di5zsmcpalactd2h08nx7p8nnm45en62)
+* [Unit 0 Assingment - R Skeleton .Rmd](https://usu.box.com/s/di5zsmcpalactd2h08nx7p8nnm45en62)
 
 * [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
 

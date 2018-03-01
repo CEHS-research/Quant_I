@@ -2,9 +2,9 @@
 
 **Chapter Links**
 
-* [Chapter Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch10_LinReg.html#1)
+* [Chapter 10 Slide Show](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch10_LinReg.html#1)
 
-* [Interactive Online App](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_5_correg.html)
+* [Interactive Online App - Correlation and Regression](http://digitalfirst.bfwpub.com/stats_applet/stats_applet_5_correg.html)
 
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 
@@ -77,4 +77,4 @@ cancer_clean %>%
 -------------------------------------------------------
 
 
-## Checking ASsumptions
+## 
