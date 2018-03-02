@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Explaining Psychological Statistcs</title>
   <meta name="description" content="This book covers R code for the Cohen Textbook">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Explaining Psychological Statistcs" />
   <meta property="og:type" content="book" />
@@ -226,9 +226,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.4" data-path="linear-correlation.html"><a href="linear-correlation.html#correlation-plots-corrolagrams"><i class="fa fa-check"></i><b>9.4</b> Correlation Plots: Corrolagrams</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>10</b> Linear Regression</a><ul>
-<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.1</b> Fitting a Simple Regression Model</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="linear-regression.html"><a href="linear-regression.html#minimal-example-1"><i class="fa fa-check"></i><b>10.1.1</b> Minimal Example</a></li>
-<li class="chapter" data-level="10.1.2" data-path="linear-regression.html"><a href="linear-regression.html#variable-designation-matters"><i class="fa fa-check"></i><b>10.1.2</b> Variable Designation Matters!</a></li>
+<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#visualize-the-raw-data"><i class="fa fa-check"></i><b>10.1</b> Visualize the Raw Data</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.2</b> Fitting a Simple Regression Model</a></li>
+<li class="chapter" data-level="10.3" data-path="linear-regression.html"><a href="linear-regression.html#extracting-information-from-the-model"><i class="fa fa-check"></i><b>10.3</b> Extracting Information From the Model</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="linear-regression.html"><a href="linear-regression.html#model-overview"><i class="fa fa-check"></i><b>10.3.1</b> Model Overview</a></li>
+<li class="chapter" data-level="10.3.2" data-path="linear-regression.html"><a href="linear-regression.html#model-fit-or-accuracy"><i class="fa fa-check"></i><b>10.3.2</b> Model Fit or Accuracy</a></li>
+<li class="chapter" data-level="10.3.3" data-path="linear-regression.html"><a href="linear-regression.html#beta-estimates"><i class="fa fa-check"></i><b>10.3.3</b> Beta Estimates</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="linear-regression.html"><a href="linear-regression.html#confidence-intervals"><i class="fa fa-check"></i><b>10.4</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="linear-regression.html"><a href="linear-regression.html#predictions-residuals-ect."><i class="fa fa-check"></i><b>10.4.1</b> Predictions, Residuals, ect.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="linear-regression.html"><a href="linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>10.5</b> Model Diagnostics</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="linear-regression.html"><a href="linear-regression.html#base-r-graphics"><i class="fa fa-check"></i><b>10.5.1</b> Base R Graphics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html"><i class="fa fa-check"></i><b>11</b> t TEST FOR THE DIFFERENCE IN 2 PAIRED MEANS</a><ul>
@@ -270,10 +279,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><a href="https://usu.box.com/s/k3vzw6nuq5tw66bxeptcyzth38pj69f9">Unit 3 Assignment - R Skeleton .Rmd</a></p></li>
 <li><p><a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Inho’s Dataset - Excel format</a></p></li>
 </ul>
+<p><strong>Related Readings</strong></p>
+<ul>
+<li><p><a href="https://uc-r.github.io/linear_regression">Linear Regression - Walkthrough in R</a></p></li>
+<li><p><a href="http://statisticsbyjim.com/regression/standard-error-regression-vs-r-squared/">Standard Error of the Regression vs. R-squared</a></p></li>
+</ul>
 <p>Required Packages</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
 <span class="kw">library</span>(haven)        <span class="co"># Read in SPSS datasets</span>
-<span class="kw">library</span>(car)          <span class="co"># Companion for Applied Regression (and ANOVA)</span></code></pre></div>
+<span class="kw">library</span>(car)          <span class="co"># Companion for Applied Regression (and ANOVA)</span>
+<span class="kw">library</span>(broom)        <span class="co"># Convert STatistical Analysis Objects into Tidy Dataframes</span>
+<span class="kw">library</span>(magrittr)     <span class="co"># A Forward-Pipe Operator for R</span></code></pre></div>
 <p>Example: Cancer Experiment</p>
 <p>The <code>Cancer</code> dataset was introduced in <a href="summary-statistics.html#example-cancer-experiment">chapter 3</a>.</p>
 <p>Check Means and SD’s</p>
@@ -291,17 +307,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           10.1 (3.6) 10.6 (3.5)
 --------------------------------</code></pre>
 <hr />
-<div id="fitting-a-simple-regression-model" class="section level2">
-<h2><span class="header-section-number">10.1</span> Fitting a Simple Regression Model</h2>
-<div id="minimal-example-1" class="section level3">
-<h3><span class="header-section-number">10.1.1</span> Minimal Example</h3>
+<div id="visualize-the-raw-data" class="section level2">
+<h2><span class="header-section-number">10.1</span> Visualize the Raw Data</h2>
 <p>Always plot your data first!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age,
              <span class="dt">y =</span> weighin)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>,    <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># straight line (linear model)</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)   <span class="co"># loess line (moving window)</span></code></pre></div>
 <p><img src="10-reg_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="fitting-a-simple-regression-model" class="section level2">
+<h2><span class="header-section-number">10.2</span> Fitting a Simple Regression Model</h2>
 <p>The <code>lm()</code> function needs at least TWO arguments:</p>
 <ul>
 <li><p><strong>formula</strong> - The name of the <em>outcome</em> or dependent variable (DV) goes on the left of the tilda symbol and the name of the <em>predictor</em> or independent variable (IV) comes after: <code>continuous_y ~ continuous_x</code></p></li>
@@ -317,9 +336,12 @@ lm(formula = weighin ~ age, data = .)
 Coefficients:
 (Intercept)          age  
    220.6899      -0.7111  </code></pre>
-<blockquote>
-<p><strong>NOTE:</strong> To view more complete information, add a <code>summary()</code> step using a pipe AFTER the <code>lm()</code> step</p>
-</blockquote>
+</div>
+<div id="extracting-information-from-the-model" class="section level2">
+<h2><span class="header-section-number">10.3</span> Extracting Information From the Model</h2>
+<div id="model-overview" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Model Overview</h3>
+<p>To view more complete information, add a <code>summary()</code> step using a pipe AFTER the <code>lm()</code> step</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    <span class="co"># formula: order DOES matter</span>
      <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span><span class="co"># data piped from above</span>
@@ -342,9 +364,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 31.28 on 23 degrees of freedom
 Multiple R-squared:  0.08271,   Adjusted R-squared:  0.04282 
 F-statistic: 2.074 on 1 and 23 DF,  p-value: 0.1633</code></pre>
-</div>
-<div id="variable-designation-matters" class="section level3">
-<h3><span class="header-section-number">10.1.2</span> Variable Designation Matters!</h3>
+<blockquote>
+<p><strong>NOTE - Variable Designation Matters!</strong></p>
+</blockquote>
 <p>In simple linear regression (with only one predictor DV), the slope estimate (<span class="math inline">\(\hat{\beta_1}\)</span>) is different depending on the designation of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> (two ordering), but the <span class="math inline">\(p-values\)</span> are the same.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">lm</span>(age <span class="op">~</span><span class="st"> </span>weighin,    <span class="co"># formula: order DOES matter</span>
@@ -368,6 +390,115 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 12.65 on 23 degrees of freedom
 Multiple R-squared:  0.08271,   Adjusted R-squared:  0.04282 
 F-statistic: 2.074 on 1 and 23 DF,  p-value: 0.1633</code></pre>
+</div>
+<div id="model-fit-or-accuracy" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> Model Fit or Accuracy</h3>
+<p>One line for the entire model</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span>
+<span class="st">  </span>broom<span class="op">::</span><span class="kw">glance</span>()</code></pre></div>
+<pre><code>   r.squared adj.r.squared    sigma statistic   p.value df    logLik
+1 0.08270615    0.04282381 31.28435  2.073754 0.1633263  2 -120.5091
+       AIC      BIC deviance df.residual
+1 247.0183 250.6749 22510.34          23</code></pre>
+<hr />
+</div>
+<div id="beta-estimates" class="section level3">
+<h3><span class="header-section-number">10.3.3</span> Beta Estimates</h3>
+<p>One line for each parameter, intercept and a slope for each predictor</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span>
+<span class="st">  </span>broom<span class="op">::</span><span class="kw">tidy</span>()</code></pre></div>
+<pre><code>         term    estimate  std.error statistic      p.value
+1 (Intercept) 220.6899336 30.1075690  7.330048 1.859355e-07
+2         age  -0.7110988  0.4938003 -1.440053 1.633263e-01</code></pre>
+</div>
+</div>
+<div id="confidence-intervals" class="section level2">
+<h2><span class="header-section-number">10.4</span> Confidence Intervals</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span>
+<span class="st">  </span><span class="kw">confint</span>()</code></pre></div>
+<pre><code>                 2.5 %     97.5 %
+(Intercept) 158.407682 282.972185
+age          -1.732603   0.310405</code></pre>
+<div id="predictions-residuals-ect." class="section level3">
+<h3><span class="header-section-number">10.4.1</span> Predictions, Residuals, ect.</h3>
+<p>One line for each subject in the original dataset</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span>
+<span class="st">  </span>broom<span class="op">::</span><span class="kw">augment</span>()</code></pre></div>
+<pre><code>   weighin age  .fitted   .se.fit     .resid       .hat   .sigma
+1    124.0  52 183.7128  7.306243 -59.712795 0.05454237 29.18516
+2    160.0  77 165.9353 10.612917  -5.935324 0.11508411 31.95915
+3    136.5  60 178.0240  6.259394 -41.524004 0.04003229 30.68475
+4    179.6  61 177.3129  6.292807   2.287094 0.04046081 31.98358
+5    175.8  59 178.7351  6.264845  -2.935103 0.04010205 31.98107
+6    167.6  69 171.6241  7.778883  -4.024115 0.06182731 31.97519
+7    186.0  67 173.0463  7.235818  12.953687 0.05349597 31.86124
+8    158.0  56 180.8684  6.509929 -22.868400 0.04330104 31.59668
+9    212.8  61 177.3129  6.292807  35.487094 0.04046081 31.04096
+10   189.0  51 184.4239  7.573036   4.576106 0.05859842 31.97164
+11   149.0  46 187.9794  9.193178 -38.979388 0.08635295 30.78321
+12   157.0  65 174.4685  6.793659 -17.468510 0.04715778 31.75910
+13   186.0  67 173.0463  7.235818  12.953687 0.05349597 31.86124
+14   163.8  46 187.9794  9.193178 -24.179388 0.08635295 31.52952
+15   227.2  56 180.8684  6.509929  46.331600 0.04330104 30.35140
+16   162.6  42 190.8238 10.724907 -28.223783 0.11752571 31.33954
+17   261.4  44 189.4016  9.939503  71.998414 0.10094276 27.58833
+18   225.4  27 201.4903 17.289500  23.909735 0.30542932 31.39722
+19   226.0  68 172.3352  7.496013  53.664786 0.05741250 29.73750
+20   164.0  77 165.9353 10.612917  -1.935324 0.11508411 31.98444
+21   140.0  86 159.5354 14.442288 -19.535435 0.21311688 31.64098
+22   181.5  73 168.7797  9.092365  12.720280 0.08446943 31.86163
+23   187.0  67 173.0463  7.235818  13.953687 0.05349597 31.84096
+24   164.0  60 178.0240  6.259394 -14.024004 0.04003229 31.84155
+25   172.8  54 182.2906  6.848710  -9.490597 0.04792514 31.92016
+        .cooksd  .std.resid
+1  0.1111477213 -1.96299546
+2  0.0026449421 -0.20168166
+3  0.0382658612 -1.35470223
+4  0.0001174338  0.07463210
+5  0.0001915486 -0.09575992
+6  0.0005811275 -0.13280118
+7  0.0051189260  0.42560342
+8  0.0126396540 -0.74734486
+9  0.0282726125  1.15800921
+10 0.0007073659  0.15075841
+11 0.0802982601 -1.30352305
+12 0.0080972760 -0.57202934
+13 0.0051189260  0.42560342
+14 0.0308977397 -0.80859119
+15 0.0518821825  1.51412796
+16 0.0614150890 -0.96036677
+17 0.3307213270  2.42718115
+18 0.1849026825  0.91704250
+19 0.0950731282  1.76685738
+20 0.0002812126 -0.06576211
+21 0.0671057022 -0.70394852
+22 0.0083303463  0.42494545
+23 0.0059397751  0.45845919
+24 0.0043647273 -0.45752692
+25 0.0024328993 -0.31090731</code></pre>
+<hr />
+</div>
+</div>
+<div id="model-diagnostics" class="section level2">
+<h2><span class="header-section-number">10.5</span> Model Diagnostics</h2>
+<div id="base-r-graphics" class="section level3">
+<h3><span class="header-section-number">10.5.1</span> Base R Graphics</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
+
+cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span>
+<span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
+<p><img src="10-reg_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
 
 </div>
 </div>
@@ -396,10 +527,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

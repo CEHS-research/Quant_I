@@ -174,7 +174,7 @@ cancer_clean %>%
 ```
 
 
-## Confidence Intervals
+### Confidence Intervals
 
 ```{r}
 cancer_clean %>% 

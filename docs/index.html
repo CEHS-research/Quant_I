@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Explaining Psychological Statistcs</title>
   <meta name="description" content="This book covers R code for the Cohen Textbook">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Explaining Psychological Statistcs" />
   <meta property="og:type" content="book" />
@@ -190,9 +190,17 @@
 <li class="chapter" data-level="9.4" data-path="linear-correlation.html"><a href="linear-correlation.html#correlation-plots-corrolagrams"><i class="fa fa-check"></i><b>9.4</b> Correlation Plots: Corrolagrams</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>10</b> Linear Regression</a><ul>
-<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.1</b> Fitting a Simple Regression Model</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="linear-regression.html"><a href="linear-regression.html#minimal-example-1"><i class="fa fa-check"></i><b>10.1.1</b> Minimal Example</a></li>
-<li class="chapter" data-level="10.1.2" data-path="linear-regression.html"><a href="linear-regression.html#variable-designation-matters"><i class="fa fa-check"></i><b>10.1.2</b> Variable Designation Matters!</a></li>
+<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#visualize-the-raw-data"><i class="fa fa-check"></i><b>10.1</b> Visualize the Raw Data</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.2</b> Fitting a Simple Regression Model</a></li>
+<li class="chapter" data-level="10.3" data-path="linear-regression.html"><a href="linear-regression.html#extracting-information-from-the-model"><i class="fa fa-check"></i><b>10.3</b> Extracting Information From the Model</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="linear-regression.html"><a href="linear-regression.html#model-overview"><i class="fa fa-check"></i><b>10.3.1</b> Model Overview</a></li>
+<li class="chapter" data-level="10.3.2" data-path="linear-regression.html"><a href="linear-regression.html#model-fit-or-accuracy"><i class="fa fa-check"></i><b>10.3.2</b> Model Fit or Accuracy</a></li>
+<li class="chapter" data-level="10.3.3" data-path="linear-regression.html"><a href="linear-regression.html#beta-estimates"><i class="fa fa-check"></i><b>10.3.3</b> Beta Estimates</a></li>
+<li class="chapter" data-level="10.3.4" data-path="linear-regression.html"><a href="linear-regression.html#confidence-intervals"><i class="fa fa-check"></i><b>10.3.4</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="10.3.5" data-path="linear-regression.html"><a href="linear-regression.html#predictions-residuals-ect."><i class="fa fa-check"></i><b>10.3.5</b> Predictions, Residuals, ect.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="linear-regression.html"><a href="linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>10.4</b> Model Diagnostics</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="linear-regression.html"><a href="linear-regression.html#base-r-graphics"><i class="fa fa-check"></i><b>10.4.1</b> Base R Graphics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html"><i class="fa fa-check"></i><b>11</b> t TEST FOR THE DIFFERENCE IN 2 PAIRED MEANS</a><ul>
@@ -223,7 +231,7 @@
 <h1 class="title">Explaining Psychological Statistcs</h1>
 <h3 class="subtitle"><em>A Compantion in R</em></h3>
 <h4 class="author"><em>Dr. Sarah Schwartz and Dr. Tyson Barrett</em></h4>
-<h4 class="date"><em>Updated Last: March 01 2018</em></h4>
+<h4 class="date"><em>Updated Last: March 02 2018</em></h4>
 </div>
 <div id="usu-psy-6600--or--educ-6600" class="section level1 unnumbered">
 <h1>USU: PSY 6600 -or- EDUC 6600</h1>
@@ -270,6 +278,11 @@
 <li><p>Tyson’s website: <a href="http://tysonbarrett.com/teaching/">www.tysonbarrett.com/teaching/</a></p></li>
 </ul>
 <hr />
+<p><strong>Other Websites</strong></p>
+<ul>
+<li><a href="https://dzchilds.github.io/stats-for-bio/">APS 240: Data Analysis and Statistics with R</a></li>
+</ul>
+<hr />
 <p><strong>Course Schedule</strong></p>
 <p>For Spring Semester 2018</p>
 <div class="figure">
@@ -302,10 +315,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

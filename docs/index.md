@@ -2,7 +2,7 @@
 title: "Explaining Psychological Statistcs"
 subtitle: "A Compantion in R"
 author: "Dr. Sarah Schwartz and Dr. Tyson Barrett"
-date: "Updated Last: March 01 2018"
+date: "Updated Last: March 02 2018"
 site: bookdown::bookdown_site
 github-repo: "SarBearSchwartz/Quant_I"
 cover-image: "img/Cohen_4ed.jpg"
@@ -63,6 +63,13 @@ All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsng
 * Sarah's website: [www.sarahschwartzstats.com](http://www.sarahschwartzstats.com/)
 
 * Tyson's website: [www.tysonbarrett.com/teaching/](http://tysonbarrett.com/teaching/)
+
+----------------------------
+
+**Other Websites**
+
+
+* [APS 240: Data Analysis and Statistics with R](https://dzchilds.github.io/stats-for-bio/)
 
 
 ----------------------------
