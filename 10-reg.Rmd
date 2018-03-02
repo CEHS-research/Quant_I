@@ -73,15 +73,7 @@ cancer_clean <- cancer_raw %>%
 
 
 
-Check Means and SD’s
-
-```{r}
-cancer_clean %>% 
-  dplyr::group_by(trt) %>% 
-  furniture::table1(totalcin, totalcw4)
-```
-
-
+-------------------------------------------------------
 -------------------------------------------------------
 
 
@@ -98,7 +90,7 @@ cancer_clean %>%
   geom_smooth(method = "loess", se = FALSE, color = "red")   # loess line (moving window)
 ```
 
-
+-------------------------------------------------------
 -------------------------------------------------------
 
 
@@ -120,7 +112,8 @@ cancer_clean %>%
      data = .)         # data piped from above
 ```
 
-
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Extracting Information From the Model
 
@@ -148,6 +141,8 @@ cancer_clean %>%
   summary()
 ```
 
+----------------------------
+
 ### Model Fit or Accuracy
 
 One line for the entire model
@@ -173,6 +168,7 @@ cancer_clean %>%
   broom::tidy()
 ```
 
+----------------------------
 
 ### Confidence Intervals
 
@@ -183,6 +179,8 @@ cancer_clean %>%
   confint()
 ```
 
+
+----------------------------
 
 ### Predictions, Residuals, ect.
 
@@ -199,7 +197,8 @@ cancer_clean %>%
 
 
 
-----------------------------------
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Model Diagnostics
 

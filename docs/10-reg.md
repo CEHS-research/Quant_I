@@ -56,29 +56,7 @@ The `Cancer` dataset was introduced in [chapter 3][Example: Cancer Experiment].
 
 
 
-Check Means and SD’s
-
-
-```r
-cancer_clean %>% 
-  dplyr::group_by(trt) %>% 
-  furniture::table1(totalcin, totalcw4)
-```
-
-```
-
---------------------------------
-                 trt 
-          Placebo    Aloe Juice
-          n = 14     n = 11    
- totalcin                      
-          6.6 (0.9)  6.5 (2.1) 
- totalcw4                      
-          10.1 (3.6) 10.6 (3.5)
---------------------------------
-```
-
-
+-------------------------------------------------------
 -------------------------------------------------------
 
 
@@ -96,9 +74,9 @@ cancer_clean %>%
   geom_smooth(method = "loess", se = FALSE, color = "red")   # loess line (moving window)
 ```
 
-<img src="10-reg_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="10-reg_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
-
+-------------------------------------------------------
 -------------------------------------------------------
 
 
@@ -131,7 +109,8 @@ Coefficients:
    220.6899      -0.7111  
 ```
 
-
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Extracting Information From the Model
 
@@ -203,6 +182,8 @@ Multiple R-squared:  0.08271,	Adjusted R-squared:  0.04282
 F-statistic: 2.074 on 1 and 23 DF,  p-value: 0.1633
 ```
 
+----------------------------
+
 ### Model Fit or Accuracy
 
 One line for the entire model
@@ -243,6 +224,7 @@ cancer_clean %>%
 2         age  -0.7110988  0.4938003 -1.440053 1.633263e-01
 ```
 
+----------------------------
 
 ### Confidence Intervals
 
@@ -260,6 +242,8 @@ cancer_clean %>%
 age          -1.732603   0.310405
 ```
 
+
+----------------------------
 
 ### Predictions, Residuals, ect.
 
@@ -332,7 +316,8 @@ cancer_clean %>%
 
 
 
-----------------------------------
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Model Diagnostics
 
@@ -349,7 +334,7 @@ cancer_clean %>%
   plot()
 ```
 
-<img src="10-reg_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="10-reg_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 ```r
 par(mfrow = c(1, 1))

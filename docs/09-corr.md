@@ -49,37 +49,11 @@ The `Cancer` dataset was introduced in [chapter 3][Example: Cancer Experiment].
 
 
 
-Check Means and SD’s
-
-
-```r
-cancer_clean %>% 
-  dplyr::group_by(trt) %>% 
-  furniture::table1(age, weighin, totalcin)
-```
-
-```
-
-------------------------------------
-                   trt 
-          Placebo      Aloe Juice  
-          n = 14       n = 11      
- age                               
-          59.8 (9.0)   59.5 (17.2) 
- weighin                           
-          167.5 (23.0) 192.0 (37.4)
- totalcin                          
-          6.6 (0.9)    6.5 (2.1)   
-------------------------------------
-```
-
-
+-------------------------------------------------------
 -------------------------------------------------------
 
 
-## Pearson's Correlation Coefficient
-
-### Minimal Example
+## Visualize the Raw Data
 
 Always plot your data first!
 
@@ -92,7 +66,16 @@ cancer_clean %>%
   geom_smooth(method = "lm")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+
+## Pearson's Correlation Coefficient
+
+
+
 
 The `cor.test()` function needs at least TWO arguments:
 
@@ -123,6 +106,8 @@ sample estimates:
 -0.2875868 
 ```
 
+
+-------------------------------------------------------
 
 ### Additional Arguments
 
@@ -162,7 +147,7 @@ sample estimates:
 ```
 
 
-
+-------------------------------------------------------
 
 
 ### Statistical Significance
@@ -180,7 +165,7 @@ cancer_clean %>%
   geom_smooth(method = "lm")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 ```r
@@ -221,7 +206,7 @@ cancer_clean %>%
   geom_smooth(method = "lm")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 
@@ -247,7 +232,8 @@ sample estimates:
 
 
 
---------------------------------
+-------------------------------------------------------
+-------------------------------------------------------
 
 
 ## Correlation Tables
@@ -276,7 +262,7 @@ cancer_clean %>%
 -----------------------------------------------
 ```
 
-
+-------------------------------------------------------
 
 ### Missing Values - Default
 
@@ -302,6 +288,8 @@ cancer_clean %>%
 -----------------------------------------------------
 ```
 
+
+-------------------------------------------------------
 
 ### Missing Values - Listwise Deletion
 
@@ -330,12 +318,15 @@ cancer_clean %>%
 
 
 
---------------------------------
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Pairs Plots
 
 * [Helpful Website](http://jamesmarquezportfolio.com/correlation_matrices_in_r.html)
 
+
+-------------------------------------------------------
 
 ### Base R
 
@@ -347,7 +338,11 @@ cancer_clean %>%
   pairs()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
+
+
+-------------------------------------------------------
 
 ### `psych` package
 
@@ -359,10 +354,10 @@ cancer_clean %>%
   psych::pairs.panels()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 
-
+-------------------------------------------------------
 
 ### `ggplot2` and `GGally` packages
 
@@ -376,7 +371,7 @@ cancer_clean %>%
   ggscatmat()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 
 
@@ -388,9 +383,12 @@ cancer_clean %>%
             color = "trt")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
---------------------------------
+
+
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Correlation Plots: Corrolagrams
 
@@ -433,7 +431,7 @@ cancer_clean %>%
   corrplot::corrplot()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 
 ```r
@@ -445,7 +443,7 @@ cancer_clean %>%
   corrplot::corrplot(method = "square")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 
@@ -459,7 +457,7 @@ cancer_clean %>%
                      type = "lower")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 
 
@@ -472,7 +470,7 @@ cancer_clean %>%
   corrplot::corrplot.mixed()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 
 
@@ -488,5 +486,5 @@ cancer_clean %>%
                            lower = "ellipse")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 

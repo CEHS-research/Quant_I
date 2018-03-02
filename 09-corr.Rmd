@@ -66,21 +66,11 @@ cancer_clean <- cancer_raw %>%
 
 
 
-Check Means and SD’s
-
-```{r}
-cancer_clean %>% 
-  dplyr::group_by(trt) %>% 
-  furniture::table1(age, weighin, totalcin)
-```
-
-
+-------------------------------------------------------
 -------------------------------------------------------
 
 
-## Pearson's Correlation Coefficient
-
-### Minimal Example
+## Visualize the Raw Data
 
 Always plot your data first!
 
@@ -91,6 +81,15 @@ cancer_clean %>%
   geom_point() +
   geom_smooth(method = "lm")
 ```
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+
+## Pearson's Correlation Coefficient
+
+
+
 
 The `cor.test()` function needs at least TWO arguments:
 
@@ -106,6 +105,8 @@ cancer_clean %>%
            data = .)         # data piped from above
 ```
 
+
+-------------------------------------------------------
 
 ### Additional Arguments
 
@@ -130,7 +131,7 @@ cancer_clean %>%
 ```
 
 
-
+-------------------------------------------------------
 
 
 ### Statistical Significance
@@ -179,7 +180,8 @@ cancer_clean %>%
 
 
 
---------------------------------
+-------------------------------------------------------
+-------------------------------------------------------
 
 
 ## Correlation Tables
@@ -197,7 +199,7 @@ cancer_clean %>%
   furniture::tableC(age, weighin, totalcin)
 ```
 
-
+-------------------------------------------------------
 
 ### Missing Values - Default
 
@@ -211,6 +213,8 @@ cancer_clean %>%
   furniture::tableC(totalcin, totalcw2, totalcw4, totalcw6)
 ```
 
+
+-------------------------------------------------------
 
 ### Missing Values - Listwise Deletion
 
@@ -227,12 +231,15 @@ cancer_clean %>%
 
 
 
---------------------------------
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Pairs Plots
 
 * [Helpful Website](http://jamesmarquezportfolio.com/correlation_matrices_in_r.html)
 
+
+-------------------------------------------------------
 
 ### Base R
 
@@ -242,6 +249,10 @@ cancer_clean %>%
                 totalcin, totalcw2, totalcw4, totalcw6) %>% 
   pairs()
 ```
+
+
+
+-------------------------------------------------------
 
 ### `psych` package
 
@@ -253,7 +264,7 @@ cancer_clean %>%
 ```
 
 
-
+-------------------------------------------------------
 
 ### `ggplot2` and `GGally` packages
 
@@ -275,7 +286,10 @@ cancer_clean %>%
             color = "trt")
 ```
 
---------------------------------
+
+
+-------------------------------------------------------
+-------------------------------------------------------
 
 ## Correlation Plots: Corrolagrams
 
