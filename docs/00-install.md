@@ -225,6 +225,6 @@ At this point you should see all the files that reside in the folder location wh
 
 
 
-## Helpful Websites
+## Helpful Websites {-}
 
 [Quick R: Basic Statistics](https://www.statmethods.net/stats/index.html)

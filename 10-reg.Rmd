@@ -77,4 +77,65 @@ cancer_clean %>%
 -------------------------------------------------------
 
 
-## 
+## Fitting a Simple Regression Model
+
+
+### Minimal Example
+
+Always plot your data first!
+
+```{r}
+cancer_clean %>% 
+  ggplot(aes(x = age,
+             y = weighin)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+The `lm()` function needs at least TWO arguments:
+
+* **formula** - The name of the *outcome* or dependent variable (DV) goes on the left of the tilda symbol and the name of the *predictor* or independent variable (IV) comes after: `continuous_y ~ continuous_x`
+
+* **data** - Since the datset is not the first argument in the function, you must use the period to signify that the datset is being piped from above `data = .` 
+
+
+
+
+```{r}
+cancer_clean %>% 
+  lm(weighin ~ age,    # formula: order DOES matter
+     data = .)         # data piped from above
+```
+
+
+> **NOTE:** To view more complete information, add a `summary()` step using a pipe AFTER the `lm()` step
+
+```{r}
+cancer_clean %>% 
+  lm(weighin ~ age,    # formula: order DOES matter
+     data = .) %>%     # data piped from above
+  summary()
+```
+
+### Variable Designation Matters!
+
+In simple linear regression (with only one predictor DV), the slope estimate ($\hat{\beta_1}$) is different depending on the designation of $x$ and $y$ (two ordering), but the $p-values$ are the same.
+
+
+```{r}
+cancer_clean %>% 
+  lm(age ~ weighin,    # formula: order DOES matter
+     data = .) %>%     # data piped from above
+  summary()
+```
+
+
+
+
+
+
+
+
+
+
+

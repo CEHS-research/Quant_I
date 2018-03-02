@@ -117,7 +117,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#storing-all-associated-files"><i class="fa fa-check"></i>Storing all associated files</a></li>
 <li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#setting-the-working-directory"><i class="fa fa-check"></i>Setting the working directory</a></li>
 </ul></li>
-<li class="chapter" data-level="0.1" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#helpful-websites"><i class="fa fa-check"></i><b>0.1</b> Helpful Websites</a></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#helpful-websites"><i class="fa fa-check"></i>Helpful Websites</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="data-prepartion.html"><a href="data-prepartion.html"><i class="fa fa-check"></i><b>1</b> DATA PREPARTION</a><ul>
 <li class="chapter" data-level="1.1" data-path="data-prepartion.html"><a href="data-prepartion.html#preparing-the-environment"><i class="fa fa-check"></i><b>1.1</b> Preparing the Environment</a><ul>
@@ -226,7 +226,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.4" data-path="linear-correlation.html"><a href="linear-correlation.html#correlation-plots-corrolagrams"><i class="fa fa-check"></i><b>9.4</b> Correlation Plots: Corrolagrams</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>10</b> Linear Regression</a><ul>
-<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#section"><i class="fa fa-check"></i><b>10.1</b> </a></li>
+<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.1</b> Fitting a Simple Regression Model</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="linear-regression.html"><a href="linear-regression.html#minimal-example-1"><i class="fa fa-check"></i><b>10.1.1</b> Minimal Example</a></li>
+<li class="chapter" data-level="10.1.2" data-path="linear-regression.html"><a href="linear-regression.html#variable-designation-matters"><i class="fa fa-check"></i><b>10.1.2</b> Variable Designation Matters!</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html"><i class="fa fa-check"></i><b>11</b> t TEST FOR THE DIFFERENCE IN 2 PAIRED MEANS</a><ul>
 <li class="chapter" data-level="11.1" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html#checking-assumptions"><i class="fa fa-check"></i><b>11.1</b> Checking ASsumptions</a></li>
@@ -475,10 +478,17 @@ sample estimates:
 <div id="ggplot2-and-ggally-packages" class="section level3">
 <h3><span class="header-section-number">9.3.3</span> <code>ggplot2</code> and <code>GGally</code> packages</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, weighin, 
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, weighin,
                 totalcin, totalcw2, totalcw4, totalcw6) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>GGally<span class="op">::</span><span class="kw">ggpairs</span>()</code></pre></div>
+<span class="st">  </span>data.frame <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggscatmat</span>()</code></pre></div>
 <p><img src="09-corr_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>data.frame <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggscatmat</span>(<span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;weighin&quot;</span>,
+                        <span class="st">&quot;totalcin&quot;</span>, <span class="st">&quot;totalcw2&quot;</span>, <span class="st">&quot;totalcw4&quot;</span>, <span class="st">&quot;totalcw6&quot;</span>),
+            <span class="dt">color =</span> <span class="st">&quot;trt&quot;</span>)</code></pre></div>
+<p><img src="09-corr_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <hr />
 </div>
 </div>
@@ -509,14 +519,14 @@ totalcw6  1.00000000</code></pre>
 <span class="st">  </span><span class="kw">cor</span>(<span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>,
       <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>corrplot<span class="op">::</span><span class="kw">corrplot</span>()</code></pre></div>
-<p><img src="09-corr_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="09-corr_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, weighin, 
                 totalcin, totalcw2, totalcw4, totalcw6) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">cor</span>(<span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>,
       <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>corrplot<span class="op">::</span><span class="kw">corrplot</span>(<span class="dt">method =</span> <span class="st">&quot;square&quot;</span>)</code></pre></div>
-<p><img src="09-corr_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="09-corr_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, weighin, 
                 totalcin, totalcw2, totalcw4, totalcw6) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -524,14 +534,14 @@ totalcw6  1.00000000</code></pre>
       <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>corrplot<span class="op">::</span><span class="kw">corrplot</span>(<span class="dt">method =</span> <span class="st">&quot;ellipse&quot;</span>,
                      <span class="dt">type =</span> <span class="st">&quot;lower&quot;</span>)</code></pre></div>
-<p><img src="09-corr_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="09-corr_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, weighin, 
                 totalcin, totalcw2, totalcw4, totalcw6) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">cor</span>(<span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>,
       <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>corrplot<span class="op">::</span><span class="kw">corrplot.mixed</span>()</code></pre></div>
-<p><img src="09-corr_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="09-corr_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, weighin, 
                 totalcin, totalcw2, totalcw4, totalcw6) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -539,7 +549,7 @@ totalcw6  1.00000000</code></pre>
       <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>corrplot<span class="op">::</span><span class="kw">corrplot.mixed</span>(<span class="dt">upper =</span> <span class="st">&quot;number&quot;</span>,
                            <span class="dt">lower =</span> <span class="st">&quot;ellipse&quot;</span>)</code></pre></div>
-<p><img src="09-corr_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="09-corr_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 
 </div>
 </div>

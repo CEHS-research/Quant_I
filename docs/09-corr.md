@@ -367,22 +367,28 @@ cancer_clean %>%
 ### `ggplot2` and `GGally` packages
 
 
+
 ```r
 cancer_clean %>% 
-  dplyr::select(age, weighin, 
+  dplyr::select(age, weighin,
                 totalcin, totalcw2, totalcw4, totalcw6) %>% 
-  GGally::ggpairs()
+  data.frame %>% 
+  ggscatmat()
 ```
 
 <img src="09-corr_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
 
+```r
+cancer_clean %>% 
+  data.frame %>% 
+  ggscatmat(columns = c("age", "weighin",
+                        "totalcin", "totalcw2", "totalcw4", "totalcw6"),
+            color = "trt")
+```
 
-
-
-
-
+<img src="09-corr_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 --------------------------------
 
@@ -427,7 +433,7 @@ cancer_clean %>%
   corrplot::corrplot()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 ```r
@@ -439,7 +445,7 @@ cancer_clean %>%
   corrplot::corrplot(method = "square")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 
 
@@ -453,7 +459,7 @@ cancer_clean %>%
                      type = "lower")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 
 
@@ -466,7 +472,7 @@ cancer_clean %>%
   corrplot::corrplot.mixed()
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 
 
@@ -482,5 +488,5 @@ cancer_clean %>%
                            lower = "ellipse")
 ```
 
-<img src="09-corr_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="09-corr_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 

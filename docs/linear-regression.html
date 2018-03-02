@@ -117,7 +117,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#storing-all-associated-files"><i class="fa fa-check"></i>Storing all associated files</a></li>
 <li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#setting-the-working-directory"><i class="fa fa-check"></i>Setting the working directory</a></li>
 </ul></li>
-<li class="chapter" data-level="0.1" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#helpful-websites"><i class="fa fa-check"></i><b>0.1</b> Helpful Websites</a></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#helpful-websites"><i class="fa fa-check"></i>Helpful Websites</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="data-prepartion.html"><a href="data-prepartion.html"><i class="fa fa-check"></i><b>1</b> DATA PREPARTION</a><ul>
 <li class="chapter" data-level="1.1" data-path="data-prepartion.html"><a href="data-prepartion.html#preparing-the-environment"><i class="fa fa-check"></i><b>1.1</b> Preparing the Environment</a><ul>
@@ -226,7 +226,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.4" data-path="linear-correlation.html"><a href="linear-correlation.html#correlation-plots-corrolagrams"><i class="fa fa-check"></i><b>9.4</b> Correlation Plots: Corrolagrams</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>10</b> Linear Regression</a><ul>
-<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#section"><i class="fa fa-check"></i><b>10.1</b> </a></li>
+<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.1</b> Fitting a Simple Regression Model</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="linear-regression.html"><a href="linear-regression.html#minimal-example-1"><i class="fa fa-check"></i><b>10.1.1</b> Minimal Example</a></li>
+<li class="chapter" data-level="10.1.2" data-path="linear-regression.html"><a href="linear-regression.html#variable-designation-matters"><i class="fa fa-check"></i><b>10.1.2</b> Variable Designation Matters!</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html"><i class="fa fa-check"></i><b>11</b> t TEST FOR THE DIFFERENCE IN 2 PAIRED MEANS</a><ul>
 <li class="chapter" data-level="11.1" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html#checking-assumptions"><i class="fa fa-check"></i><b>11.1</b> Checking ASsumptions</a></li>
@@ -288,9 +291,85 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           10.1 (3.6) 10.6 (3.5)
 --------------------------------</code></pre>
 <hr />
-<div id="section" class="section level2">
-<h2><span class="header-section-number">10.1</span> </h2>
+<div id="fitting-a-simple-regression-model" class="section level2">
+<h2><span class="header-section-number">10.1</span> Fitting a Simple Regression Model</h2>
+<div id="minimal-example-1" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Minimal Example</h3>
+<p>Always plot your data first!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age,
+             <span class="dt">y =</span> weighin)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
+<p><img src="10-reg_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The <code>lm()</code> function needs at least TWO arguments:</p>
+<ul>
+<li><p><strong>formula</strong> - The name of the <em>outcome</em> or dependent variable (DV) goes on the left of the tilda symbol and the name of the <em>predictor</em> or independent variable (IV) comes after: <code>continuous_y ~ continuous_x</code></p></li>
+<li><p><strong>data</strong> - Since the datset is not the first argument in the function, you must use the period to signify that the datset is being piped from above <code>data = .</code></p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    <span class="co"># formula: order DOES matter</span>
+     <span class="dt">data =</span> .)         <span class="co"># data piped from above</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = weighin ~ age, data = .)
 
+Coefficients:
+(Intercept)          age  
+   220.6899      -0.7111  </code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> To view more complete information, add a <code>summary()</code> step using a pipe AFTER the <code>lm()</code> step</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(weighin <span class="op">~</span><span class="st"> </span>age,    <span class="co"># formula: order DOES matter</span>
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span><span class="co"># data piped from above</span>
+<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>
+Call:
+lm(formula = weighin ~ age, data = .)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-59.713 -19.535  -2.935  12.954  71.998 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 220.6899    30.1076    7.33 1.86e-07 ***
+age          -0.7111     0.4938   -1.44    0.163    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 31.28 on 23 degrees of freedom
+Multiple R-squared:  0.08271,   Adjusted R-squared:  0.04282 
+F-statistic: 2.074 on 1 and 23 DF,  p-value: 0.1633</code></pre>
+</div>
+<div id="variable-designation-matters" class="section level3">
+<h3><span class="header-section-number">10.1.2</span> Variable Designation Matters!</h3>
+<p>In simple linear regression (with only one predictor DV), the slope estimate (<span class="math inline">\(\hat{\beta_1}\)</span>) is different depending on the designation of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> (two ordering), but the <span class="math inline">\(p-values\)</span> are the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cancer_clean <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">lm</span>(age <span class="op">~</span><span class="st"> </span>weighin,    <span class="co"># formula: order DOES matter</span>
+     <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st">     </span><span class="co"># data piped from above</span>
+<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>
+Call:
+lm(formula = age ~ weighin, data = .)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-27.160  -6.277   1.514   8.258  21.908 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 80.37531   14.61964   5.498 1.37e-05 ***
+weighin     -0.11631    0.08077  -1.440    0.163    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 12.65 on 23 degrees of freedom
+Multiple R-squared:  0.08271,   Adjusted R-squared:  0.04282 
+F-statistic: 2.074 on 1 and 23 DF,  p-value: 0.1633</code></pre>
+
+</div>
 </div>
 </div>
             </section>

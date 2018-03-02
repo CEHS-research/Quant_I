@@ -257,20 +257,23 @@ cancer_clean %>%
 
 ### `ggplot2` and `GGally` packages
 
-```{r, fig.asp=1}
+
+```{r, fig.asp = 1}
 cancer_clean %>% 
-  dplyr::select(age, weighin, 
+  dplyr::select(age, weighin,
                 totalcin, totalcw2, totalcw4, totalcw6) %>% 
-  GGally::ggpairs()
+  data.frame %>% 
+  ggscatmat()
 ```
 
 
-
-
-
-
-
-
+```{r, fig.asp = 1}
+cancer_clean %>% 
+  data.frame %>% 
+  ggscatmat(columns = c("age", "weighin",
+                        "totalcin", "totalcw2", "totalcw4", "totalcw6"),
+            color = "trt")
+```
 
 --------------------------------
 
