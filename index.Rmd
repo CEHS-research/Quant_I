@@ -64,6 +64,13 @@ All files may be downloaded from the [BOX folder](https://usu.app.box.com/s/nsng
 
 * Tyson's website: [www.tysonbarrett.com/teaching/](http://tysonbarrett.com/teaching/)
 
+----------------------------
+
+**Other Websites**
+
+
+* [APS 240: Data Analysis and Statistics with R](https://dzchilds.github.io/stats-for-bio/)
+
 
 ----------------------------
 **Course Schedule**
