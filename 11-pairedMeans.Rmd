@@ -2,22 +2,20 @@
 
 **Chapter Links**
 
-* [Chapter 11 Slide Show (pdf)](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch11_paired.html#1)
+* [Chapter 11 Slides (pdf)](http://tysonbarrett.com/EDUC-6600/Slides/u03_Ch11_paired.html#1)
 
 * [Cancer Dataset - SPSS format](https://usu.box.com/s/9c92zof5whb76bphmzxn3vqx5702qgq6)
 
 
+**Unit Assignment Links**
 
-**Assignment Links**
+* Unit 3 Writen Part: [Skeleton - pdf](https://usu.box.com/s/vjcsotiqwu1mwnwgzbfyig6k451ymgow)
 
-* [Unit 3 Assignment - Write Up Skeleton .pdf](https://usu.box.com/s/vjcsotiqwu1mwnwgzbfyig6k451ymgow)
+* Unit 3 R Part: [Directions - pdf](https://usu.box.com/s/ectr9zx8qfbbm59h0qcexjreje5r9aio) and [Skeleton - Rmd](https://usu.box.com/s/k3vzw6nuq5tw66bxeptcyzth38pj69f9)
 
-* [Unit 3 Assignment - R Directions .pdf](https://usu.box.com/s/ectr9zx8qfbbm59h0qcexjreje5r9aio)
+* Unit 3 Reading to Summarize: [Article - pdf](https://usu.box.com/s/qmo57s03tbq02ks75p7eb5gad0ap05kg)
 
-* [Unit 3 Assignment - R Skeleton .Rmd](https://usu.box.com/s/k3vzw6nuq5tw66bxeptcyzth38pj69f9)
-
-* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
-
+* Inho's Dataset: [Excel](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
 
 
 
@@ -63,17 +61,77 @@ cancer_clean <- cancer_raw %>%
 
 
 
-Check Means and SD’s
+
+-------------------------------------------------------
+
+
+
+## Restructure the Data and Run the Test
+
+Before a paired t-test is ran, the dataset must be restructured from WIDE form (variables sitting side-by-side) to LONG form (variable values stacked on-top-of each other).
+
+Notice for this dataset, there are $n = 23$ participants with complete data on the oral condition at weeks 2 and 6, since two out of the 25 do not have scores at the sixth week.
+
 
 ```{r}
+# This dataset is in WIDE format: paired variables side-by-side
 cancer_clean %>% 
-  dplyr::group_by(trt) %>% 
-  furniture::table1(totalcin, totalcw4)
+  dplyr::filter(complete.cases(totalcw2, totalcw6))
 ```
 
 
--------------------------------------------------------
--------------------------------------------------------
 
 
-## Checking ASsumptions
+The `tidyr::gather()` function requires the following FOUR options:
+
+* **key** - A new variable name that will store the original variable names:  `key = new_group_var`
+
+* **value** - A new variable name that will store the original variable values: `value = new_continuous_var`
+
+* **variable list** - List the original variable names:  `orig_continous_var1, orig_continuous_var2`
+
+* **na.rm** - Do not get ride of blank values (na.rm = remove the NA or blank values):  `na.rm = FALSE`
+
+
+```{r}
+# This dataset is in LONG format: total oral condiditon (at weeks 2 & 6) is stored in 1 variable, stacked
+cancer_clean %>% 
+  dplyr::filter(complete.cases(totalcw2, totalcw6)) %>% 
+  tidyr::gather(key = time,
+                value = totalc,
+                totalcw2, totalcw6)
+```
+
+
+The `t.test()` function, needs at least THREE arguments:
+
+* **formula** - The formula specifies the two variabels, where order matters.  The name of the dependent variable  (DV or outcome) is on the left side of the tilda symbol and the independent variable (IV or predictor) is on the right side: `dependent_y_var ~ predictor_x_var`
+
+* **data** - Since the datset is not the first argument in the function, you must use the period to signify that the datset is being piped from above: `data = .` 
+
+* **paired** - The default is independent groups, so include: `paired = TRUE` 
+
+
+```{r}
+cancer_clean %>% 
+  dplyr::filter(complete.cases(totalcw2, totalcw6)) %>% 
+  tidyr::gather(key = time,
+                value = totalc,
+                totalcw2, totalcw6,
+                na.rm = FALSE) %>% 
+  t.test(totalc ~ time,
+         data = .,
+         paired = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+

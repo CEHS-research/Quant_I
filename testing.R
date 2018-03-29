@@ -11,6 +11,9 @@ bookdown::render_book(c("index.Rmd",
                         "09-corr.Rmd",
                         "10-reg.Rmd",
                         "11-pairedMeans.Rmd",
+                        "12-1wayANOVA.Rmd",
+                        "13-multCompare.Rmd",
+                        "14-2wayANOVA.Rmd",
                         "99-refs.Rmd"))
 
 

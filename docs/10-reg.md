@@ -10,16 +10,15 @@
 
 
 
-**Assignment Links**
+**Unit Assignment Links**
 
-* [Unit 3 Assignment - Write Up Skeleton .pdf](https://usu.box.com/s/vjcsotiqwu1mwnwgzbfyig6k451ymgow)
+* Unit 3 Writen Part: [Skeleton - pdf](https://usu.box.com/s/vjcsotiqwu1mwnwgzbfyig6k451ymgow)
 
-* [Unit 3 Assignment - R Directions .pdf](https://usu.box.com/s/ectr9zx8qfbbm59h0qcexjreje5r9aio)
+* Unit 3 R Part: [Directions - pdf](https://usu.box.com/s/ectr9zx8qfbbm59h0qcexjreje5r9aio) and [Skeleton - Rmd](https://usu.box.com/s/k3vzw6nuq5tw66bxeptcyzth38pj69f9)
 
-* [Unit 3 Assignment - R Skeleton .Rmd](https://usu.box.com/s/k3vzw6nuq5tw66bxeptcyzth38pj69f9)
+* Unit 3 Reading to Summarize: [Article - pdf](https://usu.box.com/s/qmo57s03tbq02ks75p7eb5gad0ap05kg)
 
-* [Inho's Dataset - Excel format](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
-
+* Inho's Dataset: [Excel](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
 
 **Related Readings**
 
@@ -57,7 +56,7 @@ The `Cancer` dataset was introduced in [chapter 3][Example: Cancer Experiment].
 
 
 -------------------------------------------------------
--------------------------------------------------------
+
 
 
 ## Visualize the Raw Data
@@ -77,7 +76,7 @@ cancer_clean %>%
 <img src="10-reg_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 -------------------------------------------------------
--------------------------------------------------------
+
 
 
 ## Fitting a Simple Regression Model
@@ -110,7 +109,7 @@ Coefficients:
 ```
 
 -------------------------------------------------------
--------------------------------------------------------
+
 
 ## Extracting Information From the Model
 
@@ -317,7 +316,7 @@ cancer_clean %>%
 
 
 -------------------------------------------------------
--------------------------------------------------------
+
 
 ## Model Diagnostics
 
