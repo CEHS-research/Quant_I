@@ -14,6 +14,9 @@ bookdown::render_book(c("index.Rmd",
                         "12-1wayANOVA.Rmd",
                         "13-multCompare.Rmd",
                         "14-2wayANOVA.Rmd",
+                        "15-rmANOVA.Rmd",
+                        "16-mixedANOVA.Rmd",
+                        "20-chiSq.Rmd",
                         "99-refs.Rmd"))
 
 

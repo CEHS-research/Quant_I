@@ -2,7 +2,7 @@
 
 **Chapter Links**
 
-* Chapter 13 Slides: [pdf](http://tysonbarrett.com/EDUC-6600/Slides/u04_Ch14_factorial.pdf) or [power point](http://tysonbarrett.com/EDUC-6600/Slides/u04_Ch14_factorial.pptx)
+* Chapter 14 Slides: [pdf](http://tysonbarrett.com/EDUC-6600/Slides/u04_Ch14_factorial.pdf) or [power point](http://tysonbarrett.com/EDUC-6600/Slides/u04_Ch14_factorial.pptx)
 
 * 2-way ANOVA Example *(Sleep and Stimulant)*:[pdf](http://tysonbarrett.com/EDUC-6600/Slides/u04_Ch14_factorialExample.pdf) or [power point](http://tysonbarrett.com/EDUC-6600/Slides/u04_Ch14_factorialExample.pptx) 
 

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Explaining Psychological Statistcs</title>
   <meta name="description" content="This book covers R code for the Cohen Textbook">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Explaining Psychological Statistcs" />
   <meta property="og:type" content="book" />
@@ -248,10 +248,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.1.2" data-path="one-way-anova.html"><a href="one-way-anova.html#compute-summary-statistics"><i class="fa fa-check"></i><b>12.1.2</b> Compute Summary Statistics</a></li>
 <li class="chapter" data-level="12.1.3" data-path="one-way-anova.html"><a href="one-way-anova.html#plot-the-raw-data"><i class="fa fa-check"></i><b>12.1.3</b> Plot the Raw Data</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="one-way-anova.html"><a href="one-way-anova.html#fitting-one-way-anova-models-with-afexaov_4"><i class="fa fa-check"></i><b>12.2</b> Fitting One-way ANOVA Models with <code>afex::aov_4()</code></a></li>
+<li class="chapter" data-level="12.2" data-path="one-way-anova.html"><a href="one-way-anova.html#fitting-one-way-anova-model"><i class="fa fa-check"></i><b>12.2</b> Fitting One-way ANOVA Model</a></li>
+<li class="chapter" data-level="12.3" data-path="one-way-anova.html"><a href="one-way-anova.html#anova-output"><i class="fa fa-check"></i><b>12.3</b> ANOVA Output</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>13</b> Multiple Comparisons</a></li>
 <li class="chapter" data-level="14" data-path="two-way-anova.html"><a href="two-way-anova.html"><i class="fa fa-check"></i><b>14</b> Two Way ANOVA</a></li>
+<li class="chapter" data-level="15" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>15</b> Repeated Measures ANOVA</a><ul>
+<li class="chapter" data-level="15.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#words-recalled-data-example-chapter-15a"><i class="fa fa-check"></i><b>15.1</b> Words Recalled Data Example (Chapter 15a)</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#data-prep"><i class="fa fa-check"></i><b>15.1.1</b> Data Prep</a></li>
+<li class="chapter" data-level="15.1.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-independent-anova"><i class="fa fa-check"></i><b>15.1.2</b> One-Way Independent ANOVA</a></li>
+<li class="chapter" data-level="15.1.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-rm-anova"><i class="fa fa-check"></i><b>15.1.3</b> One-Way RM ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html"><i class="fa fa-check"></i><b>16</b> Repeated Measures ANOVA</a><ul>
+<li class="chapter" data-level="16.0.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#mixed-anova"><i class="fa fa-check"></i><b>16.0.1</b> Mixed ANOVA</a></li>
+<li class="chapter" data-level="16.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#conclusion"><i class="fa fa-check"></i><b>16.1</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="categorical-data-chi-squared-tests.html"><a href="categorical-data-chi-squared-tests.html"><i class="fa fa-check"></i><b>17</b> Categorical Data - Chi Squared Tests</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
 <li class="divider"></li>
 <li><a href="./">Psy/Educ 6600</a></li>
@@ -287,6 +300,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Unit 4 Reading to Summarize: <a href="https://usu.box.com/s/cz8geza9lt1eh77evt28m6u4oy877nbl">Article - pdf</a></p></li>
 <li><p>Inho’s Dataset: <a href="https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1">Excel</a></p></li>
 </ul>
+<p>Required Packages</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
+<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span>
+<span class="kw">library</span>(car)          <span class="co"># Companion for Applied Regression (and ANOVA)</span>
+<span class="kw">library</span>(afex)         <span class="co"># Analysis of Factorial Experiments</span>
+<span class="kw">library</span>(emmeans)      <span class="co"># Estimated marginal means (Least-squares means)</span>
+<span class="kw">library</span>(lsmeans)      <span class="co"># Least-Squares Means</span>
+<span class="kw">library</span>(multcomp)     <span class="co"># Simultaneous Inference in General Parametric Models </span></code></pre></div>
 <hr />
 <div id="prepare-for-modeling" class="section level2">
 <h2><span class="header-section-number">12.1</span> Prepare for Modeling</h2>
@@ -329,8 +350,8 @@ data_long <span class="op">%&gt;%</span><span class="st"> </span>
 <hr />
 </div>
 </div>
-<div id="fitting-one-way-anova-models-with-afexaov_4" class="section level2">
-<h2><span class="header-section-number">12.2</span> Fitting One-way ANOVA Models with <code>afex::aov_4()</code></h2>
+<div id="fitting-one-way-anova-model" class="section level2">
+<h2><span class="header-section-number">12.2</span> Fitting One-way ANOVA Model</h2>
 <p>The <code>aov_4()</code> function from the <code>afex</code> package fits ANOVA models <em>(oneway, two-way, repeated measures, and mixed design)</em>. It needs at least two arguments:</p>
 <ol style="list-style-type: decimal">
 <li><p>formula: <code>continuous_DV ~ group_IV + (1|id_var)</code> <em>one observation per subject and <code>id_var</code> is distinct for each subject</em></p></li>
@@ -344,7 +365,9 @@ data_long <span class="op">%&gt;%</span><span class="st"> </span>
 aov_name &lt;-<span class="st"> </span>data_long <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(continuous_DV <span class="op">~</span><span class="st"> </span>group_IV <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>id_var),
               <span class="dt">data =</span> .)</code></pre></div>
-<hr />
+</div>
+<div id="anova-output" class="section level2">
+<h2><span class="header-section-number">12.3</span> ANOVA Output</h2>
 <p>By running the name you saved you model under, you will get a brief set of output, including a measure of <strong>Effect Size</strong>.</p>
 <blockquote>
 <p><strong>NOTE:</strong> The <code>ges</code> is the <em>generalized eta squared</em>. In a one-way ANOVA, the eta-squared effect size is only one value, ie. generalized <span class="math inline">\(\eta_g\)</span> and partial <span class="math inline">\(\eta_p\)</span> are the same.</p>
@@ -385,10 +408,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

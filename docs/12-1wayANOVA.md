@@ -19,6 +19,27 @@
 * Inho's Dataset: [Excel](https://usu.box.com/s/hyky7eb24l6vvzj2xboedhcx1xolrpw1)
 
 
+
+
+
+
+
+
+
+Required Packages 
+
+
+```r
+library(tidyverse)    # Loads several very helpful 'tidy' packages
+library(furniture)    # Nice tables (by our own Tyson Barrett)
+library(car)          # Companion for Applied Regression (and ANOVA)
+library(afex)         # Analysis of Factorial Experiments
+library(emmeans)      # Estimated marginal means (Least-squares means)
+library(lsmeans)      # Least-Squares Means
+library(multcomp)     # Simultaneous Inference in General Parametric Models 
+```
+
+
 --------------------------------------
 
 ## Prepare for Modeling
@@ -89,7 +110,8 @@ data_long %>%
 
 --------------------------------------
 
-## Fitting One-way ANOVA Models with `afex::aov_4()`
+## Fitting One-way ANOVA Model
+
 
 The `aov_4()` function from the `afex` package fits ANOVA models *(oneway, two-way, repeated measures, and mixed design)*. It needs at least two arguments:
 
@@ -111,7 +133,7 @@ aov_name <- data_long %>%
 ```
 
 
-------------------------------
+## ANOVA Output
 
 By running the name you saved you model under, you will get a brief set of output, including a measure of **Effect Size**.
 
@@ -136,3 +158,8 @@ To fully fill out a standard ANOVA table and compute other effect sizes, you wil
 # Display fuller ANOVA results (includes sum of squares)
 aov_name$Anova 
 ```
+
+
+
+
+
