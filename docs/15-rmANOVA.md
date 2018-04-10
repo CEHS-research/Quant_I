@@ -30,6 +30,146 @@ library(afex)         # Analysis of Factorial Experiments
 ```
 
 
+------------------------------------
+
+
+## Tutorial - Fitting RM ANOVA Models with `afex::aov_4()`
+
+The `aov_4()` function from the `afex` package fits ANOVA models (oneway, two-way, repeated measures, and mixed design). It needs at least two arguments:
+
+1. formula:  `continuous_var ~ 1 + (RM_var|id_var)`  *one observation per subject for each level of the `RMvar`, so each `id_var` has multiple lines for each subject*
+
+2. dataset: `data = .` *we use the period to signify that the datset is being piped from above*
+
+
+Here is an outline of what your syntax should look like when you **fit and save a RM ANOVA**.  Of course you will replace the dataset name and the variable names, as well as the name you are saving it as.
+
+> **NOTE:** The `aov_4()` function works on data in LONG format only.  Each observation needs to be on its one line or row with seperate variables for the group membership (categorical factor or `fct`) and the continuous measurement (numberic or `dbl`).
+
+
+```r
+# RM ANOVA: fit and save
+aov_name <- data_name %>% 
+  afex::aov_4(continuous_var ~ 1 + (RM_var|id_var),
+              data = .)
+```
+
+
+------------------------------
+
+By running the name you saved you model under, you will get a brief set of output, including a measure of **Effect Size**.
+
+> **NOTE:** The `ges` is the *generalized eta squared*.  In a one-way ANOVA, the eta-squared effect size is the same value, ie. generalized $\eta_g$ and partial $\eta_p$ are the same.
+
+
+```r
+# Display basic ANOVA results (includes effect size)
+aov_name 
+```
+
+\clearpage
+
+
+To fully fill out a standard ANOVA table and compute other effect sizes, you will need a more complete set of output, including the **Sum of Squares** components, you will need to add `summary()` piped at the end of the model name before running it or after the model with a pipe.
+
+> **NOTE:** IGNORE the first line that starts with `(Intercept)`!  Also, the 'mean sum of squares' are not included in this table, nor is the **Total** line at the bottom of the standard ANOVA table.  You will need to manually compute these values and add them on the homework page.  Remember that `Sum of Squares (SS)` and `degrees of freedom (df)` add up, but `Mean Sum of Squreas (MS)` do not add up.  Also: `MS = SS/df` for each term.
+
+This also runs and displays the results of Mauchly Tests for Sphericity, as well as the Greenhouse-Geisser (GG) and Huynh-Feldt (HF) Corrections to the p-value.  
+
+> **NOTE:** If the Mauchly's p-value is bigger than .05, do not use the corrections. If Mauchly's p-value is less than .05, then apply the epsilon (`eps` or $\epsilon$) to multiply the degree's of freedom.  Yes, the df will be decimal numbers. 
+
+
+
+```r
+# Display fuller ANOVA results (sphericity tests)
+summary(aov_name)
+```
+
+------------------------------
+
+
+To see all the Sumes-of-Squared residuals for ALL of the model comoponents, you add `$aov` at the end of the model name.  
+
+
+
+```r
+# Display all the sum of squares
+aov_name$aov
+```
+
+
+
+---------------------------------
+
+Repeated Measures MANOVA Tests (Pillai test statistic) is computed is you add `$Anova` at the end of the model name.  This is a so called 'Multivariate Test'.  **This is NOT what you want to do!**
+
+
+
+```r
+# Display fuller ANOVA results (includes sum of squares)
+aov_name$Anova
+```
+
+
+\clearpage
+
+If you only need to obtain the omnibus (overall) F-test without a correction for violation of sphericity, you can add an option for `correction = "none"`.  You can also request both the generalized and partial $\eta^2$ effect sizes with `es = c("ges", "pes")`.
+
+
+```r
+# RM ANOVA: no correction, both effect sizes
+data_name %>% 
+  afex::aov_4(continuous_var ~ 1 + (RM_var|id_var),
+              data = .,
+              anova_table = list(correction = "none",
+                                 es = c("ges", "pes")))
+```
+
+
+
+----------------------------
+
+Post Hoc tests may be ran the same way as the 1 and 2-way ANOVAs from the last unit.
+
+> **NOTE:** Use Fisher's LSD (`adjust = "none"`) if the omnibus F-test is significant AND there are THREE measurements per subject or block.  Tukey's HSD (`adjust = "tukey"`) may be used even if the F-test is not significant or if there are four or more repeated measures. 
+
+
+```r
+# RM ANOVA: post hoc all pairwise tests with Fisher's LSD correction
+aov_name %>% 
+  emmeans::emmeans(~ RM_var) %>% 
+  pairs(adjust = "none")
+```
+
+
+
+```r
+# RM ANOVA: post hoc all pairwise tests with Tukey's HSD correction
+aov_name %>% 
+  emmeans::emmeans(~ RM_var) %>% 
+  pairs(adjust = "tukey")
+```
+
+
+
+-----------------------
+
+A means plot (model based), can help you write up your results.  
+
+> **NOTE:** This zooms in on just the means and will make all differences seem significant, so make sure to interpret it in conjunction with the ANOVA and post hoc tests.
+
+
+
+```r
+# RM ANOVA: means plot
+aov_name %>% 
+  emmeans::emmip(~ RM_var)
+```
+
+
+
+
+
 
 --------------------------------------
 
@@ -65,6 +205,7 @@ d <- tibble::tribble(
   mutate(word_type = factor(word_type,
                             labels = c("Neutral", "Positive", "Negative"))) %>%
   mutate(fake_id = row_number())
+
 d
 ```
 
@@ -91,6 +232,9 @@ d
 17  5.00 Negative           13.0       17
 18  6.00 Negative           10.0       18
 ```
+
+
+
 
 ### One-Way Independent ANOVA
 
@@ -119,6 +263,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 If we ignored that the `word_type` groups are not independent, we get an F-statistic = 0.272 and p = 0.765. 
 
 What do you think will happen if we account for the repeated measures? Will the F-statistic increase or decrease?
+
 
 
 ### One-Way RM ANOVA
