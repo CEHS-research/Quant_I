@@ -34,28 +34,20 @@ Required Packages
 ```{r load_libraries}
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
-library(car)          # Companion for Applied Regression (and ANOVA)
 library(afex)         # Analysis of Factorial Experiments
-library(emmeans)      # Estimated marginal means (Least-squares means)
-library(lsmeans)      # Least-Squares Means
-library(multcomp)     # Simultaneous Inference in General Parametric Models 
 ```
 
 
 
 ---------------------------------------------------
-## Words Recalled Data Example (Chapter 16a)
+
+
+
+## Words Recalled Data Example (Chapter 16, section A)
+
 
 ### Data Prep
 
-Let's start with an example of a situation where a mixed ANOVA helps us see patterns that we otherwise miss. To do so, let's start our `R` code the same way we usually do, with loading our libraries.
-
-```{r, message=FALSE, warning=FALSE}
-library(tidyverse)
-library(furniture)
-library(haven)
-library(afex)
-```
 
 I input the data as a `tribble` which saves it as a `data.frame` and then cleaned up a few of the important variables.
 ```{r, warning=FALSE, message=FALSE}

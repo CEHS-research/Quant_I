@@ -254,15 +254,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>13</b> Multiple Comparisons</a></li>
 <li class="chapter" data-level="14" data-path="two-way-anova.html"><a href="two-way-anova.html"><i class="fa fa-check"></i><b>14</b> Two Way ANOVA</a></li>
 <li class="chapter" data-level="15" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>15</b> Repeated Measures ANOVA</a><ul>
-<li class="chapter" data-level="15.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#words-recalled-data-example-chapter-15a"><i class="fa fa-check"></i><b>15.1</b> Words Recalled Data Example (Chapter 15a)</a><ul>
+<li class="chapter" data-level="15.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#words-recalled-data-example-chapter-15-section-a"><i class="fa fa-check"></i><b>15.1</b> Words Recalled Data Example (Chapter 15, section A)</a><ul>
 <li class="chapter" data-level="15.1.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#data-prep"><i class="fa fa-check"></i><b>15.1.1</b> Data Prep</a></li>
 <li class="chapter" data-level="15.1.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-independent-anova"><i class="fa fa-check"></i><b>15.1.2</b> One-Way Independent ANOVA</a></li>
 <li class="chapter" data-level="15.1.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-rm-anova"><i class="fa fa-check"></i><b>15.1.3</b> One-Way RM ANOVA</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html"><i class="fa fa-check"></i><b>16</b> Repeated Measures ANOVA</a><ul>
-<li class="chapter" data-level="16.0.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#mixed-anova"><i class="fa fa-check"></i><b>16.0.1</b> Mixed ANOVA</a></li>
-<li class="chapter" data-level="16.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#conclusion"><i class="fa fa-check"></i><b>16.1</b> Conclusion</a></li>
+<li class="chapter" data-level="16.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#words-recalled-data-example-chapter-16-section-a"><i class="fa fa-check"></i><b>16.1</b> Words Recalled Data Example (Chapter 16, section A)</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#data-prep-1"><i class="fa fa-check"></i><b>16.1.1</b> Data Prep</a></li>
+<li class="chapter" data-level="16.1.2" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#one-way-rm-anova-1"><i class="fa fa-check"></i><b>16.1.2</b> One-Way RM ANOVA</a></li>
+<li class="chapter" data-level="16.1.3" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#mixed-anova"><i class="fa fa-check"></i><b>16.1.3</b> Mixed ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#conclusion"><i class="fa fa-check"></i><b>16.2</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="categorical-data-chi-squared-tests.html"><a href="categorical-data-chi-squared-tests.html"><i class="fa fa-check"></i><b>17</b> Categorical Data - Chi Squared Tests</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
@@ -302,73 +306,99 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Required Packages</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
 <span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span>
-<span class="kw">library</span>(car)          <span class="co"># Companion for Applied Regression (and ANOVA)</span>
-<span class="kw">library</span>(afex)         <span class="co"># Analysis of Factorial Experiments</span>
-<span class="kw">library</span>(emmeans)      <span class="co"># Estimated marginal means (Least-squares means)</span>
-<span class="kw">library</span>(lsmeans)      <span class="co"># Least-Squares Means</span>
-<span class="kw">library</span>(multcomp)     <span class="co"># Simultaneous Inference in General Parametric Models </span></code></pre></div>
-<table style="width:71%;">
-<colgroup>
-<col width="70%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left">## Words Recalled Data Example (Chapter 16a)</td>
-</tr>
-<tr class="even">
-<td align="left">### Data Prep</td>
-</tr>
-<tr class="odd">
-<td align="left">Let’s start with an example of a situation where a mixed ANOVA helps us see patterns that we otherwise miss. To do so, let’s start our <code>R</code> code the same way we usually do, with loading our libraries.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>r library(tidyverse) library(furniture) library(haven) library(afex)</code></td>
-</tr>
-<tr class="odd">
-<td align="left">I input the data as a <code>tribble</code> which saves it as a <code>data.frame</code> and then cleaned up a few of the important variables.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>r d &lt;- tibble::tribble( ~ID, ~depression, ~word_type, ~words_recalled, 1,           0,          1,              20, 2,           0,          1,              16, 3,           0,          1,               8, 4,           1,          1,              17, 5,           1,          1,              15, 6,           1,          1,              10, 1,           0,          2,              21, 2,           0,          2,              18, 3,           0,          2,               7, 4,           1,          2,              15, 5,           1,          2,              10, 6,           1,          2,               4, 1,           0,          3,              17, 2,           0,          3,              11, 3,           0,          3,               4, 4,           1,          3,              18, 5,           1,          3,              13, 6,           1,          3,              10) %&gt;% mutate(depression = factor(depression, labels = c(&quot;Not Depressed&quot;, &quot;Depressed&quot;))) %&gt;% mutate(word_type = factor(word_type, labels = c(&quot;Neutral&quot;, &quot;Positive&quot;, &quot;Negative&quot;))) d</code></td>
-</tr>
-<tr class="odd">
-<td align="left"><code># A tibble: 18 x 4 ID depression    word_type words_recalled &lt;dbl&gt; &lt;fct&gt;         &lt;fct&gt;              &lt;dbl&gt; 1  1.00 Not Depressed Neutral            20.0 2  2.00 Not Depressed Neutral            16.0 3  3.00 Not Depressed Neutral             8.00 4  4.00 Depressed     Neutral            17.0 5  5.00 Depressed     Neutral            15.0 6  6.00 Depressed     Neutral            10.0 7  1.00 Not Depressed Positive           21.0 8  2.00 Not Depressed Positive           18.0 9  3.00 Not Depressed Positive            7.00 10  4.00 Depressed     Positive           15.0 11  5.00 Depressed     Positive           10.0 12  6.00 Depressed     Positive            4.00 13  1.00 Not Depressed Negative           17.0 14  2.00 Not Depressed Negative           11.0 15  3.00 Not Depressed Negative            4.00 16  4.00 Depressed     Negative           18.0 17  5.00 Depressed     Negative           13.0 18  6.00 Depressed     Negative           10.0</code></td>
-</tr>
-<tr class="even">
-<td align="left">### One-Way RM ANOVA</td>
-</tr>
-<tr class="odd">
-<td align="left">First, let’s ignore the depression variable and just look at the repeated measures. We do this by using <code>afex::aov_4()</code> and then the <code>summary()</code> functions as shown below.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>r oneway &lt;- d %&gt;% afex::aov_4(words_recalled ~ 1 + (word_type|ID), data = .) summary(oneway)</code></td>
-</tr>
-<tr class="odd">
-<td align="left">```</td>
-</tr>
-<tr class="even">
-<td align="left">Univariate Type III Repeated-Measures ANOVA Assuming Sphericity</td>
-</tr>
-<tr class="odd">
-<td align="left">SS num Df Error SS den Df F Pr(&gt;F) (Intercept) 3042.00 1 381.33 5 39.8864 0.001466 ** word_type 16.33 2 68.33 10 1.1951 0.342453</td>
-</tr>
-</tbody>
-</table>
-<p>Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ‘’ 1</p>
-<p>Mauchly Tests for Sphericity</p>
-<pre><code>      Test statistic  p-value</code></pre>
-<p>word_type 0.2134 0.045538</p>
-<p>Greenhouse-Geisser and Huynh-Feldt Corrections for Departure from Sphericity</p>
-<pre><code>       GG eps Pr(&gt;F[GG])</code></pre>
-<p>word_type 0.55972 0.3282</p>
-<pre><code>         HF eps Pr(&gt;F[HF])</code></pre>
-<p>word_type 0.6077293 0.3309148 ```</p>
+<span class="kw">library</span>(afex)         <span class="co"># Analysis of Factorial Experiments</span></code></pre></div>
+<hr />
+<div id="words-recalled-data-example-chapter-16-section-a" class="section level2">
+<h2><span class="header-section-number">16.1</span> Words Recalled Data Example (Chapter 16, section A)</h2>
+<div id="data-prep-1" class="section level3">
+<h3><span class="header-section-number">16.1.1</span> Data Prep</h3>
+<p>I input the data as a <code>tribble</code> which saves it as a <code>data.frame</code> and then cleaned up a few of the important variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tribble</span>(
+  <span class="op">~</span>ID, <span class="op">~</span>depression, <span class="op">~</span>word_type, <span class="op">~</span>words_recalled,
+    <span class="dv">1</span>,           <span class="dv">0</span>,          <span class="dv">1</span>,              <span class="dv">20</span>,
+    <span class="dv">2</span>,           <span class="dv">0</span>,          <span class="dv">1</span>,              <span class="dv">16</span>,
+    <span class="dv">3</span>,           <span class="dv">0</span>,          <span class="dv">1</span>,               <span class="dv">8</span>,
+    <span class="dv">4</span>,           <span class="dv">1</span>,          <span class="dv">1</span>,              <span class="dv">17</span>,
+    <span class="dv">5</span>,           <span class="dv">1</span>,          <span class="dv">1</span>,              <span class="dv">15</span>,
+    <span class="dv">6</span>,           <span class="dv">1</span>,          <span class="dv">1</span>,              <span class="dv">10</span>,
+    <span class="dv">1</span>,           <span class="dv">0</span>,          <span class="dv">2</span>,              <span class="dv">21</span>,
+    <span class="dv">2</span>,           <span class="dv">0</span>,          <span class="dv">2</span>,              <span class="dv">18</span>,
+    <span class="dv">3</span>,           <span class="dv">0</span>,          <span class="dv">2</span>,               <span class="dv">7</span>,
+    <span class="dv">4</span>,           <span class="dv">1</span>,          <span class="dv">2</span>,              <span class="dv">15</span>,
+    <span class="dv">5</span>,           <span class="dv">1</span>,          <span class="dv">2</span>,              <span class="dv">10</span>,
+    <span class="dv">6</span>,           <span class="dv">1</span>,          <span class="dv">2</span>,               <span class="dv">4</span>,
+    <span class="dv">1</span>,           <span class="dv">0</span>,          <span class="dv">3</span>,              <span class="dv">17</span>,
+    <span class="dv">2</span>,           <span class="dv">0</span>,          <span class="dv">3</span>,              <span class="dv">11</span>,
+    <span class="dv">3</span>,           <span class="dv">0</span>,          <span class="dv">3</span>,               <span class="dv">4</span>,
+    <span class="dv">4</span>,           <span class="dv">1</span>,          <span class="dv">3</span>,              <span class="dv">18</span>,
+    <span class="dv">5</span>,           <span class="dv">1</span>,          <span class="dv">3</span>,              <span class="dv">13</span>,
+    <span class="dv">6</span>,           <span class="dv">1</span>,          <span class="dv">3</span>,              <span class="dv">10</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">depression =</span> <span class="kw">factor</span>(depression, 
+                             <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Not Depressed&quot;</span>,
+                                        <span class="st">&quot;Depressed&quot;</span>))) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word_type =</span> <span class="kw">factor</span>(word_type,
+                            <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Neutral&quot;</span>, <span class="st">&quot;Positive&quot;</span>, <span class="st">&quot;Negative&quot;</span>)))
+d</code></pre></div>
+<pre><code># A tibble: 18 x 4
+      ID depression    word_type words_recalled
+   &lt;dbl&gt; &lt;fct&gt;         &lt;fct&gt;              &lt;dbl&gt;
+ 1  1.00 Not Depressed Neutral            20.0 
+ 2  2.00 Not Depressed Neutral            16.0 
+ 3  3.00 Not Depressed Neutral             8.00
+ 4  4.00 Depressed     Neutral            17.0 
+ 5  5.00 Depressed     Neutral            15.0 
+ 6  6.00 Depressed     Neutral            10.0 
+ 7  1.00 Not Depressed Positive           21.0 
+ 8  2.00 Not Depressed Positive           18.0 
+ 9  3.00 Not Depressed Positive            7.00
+10  4.00 Depressed     Positive           15.0 
+11  5.00 Depressed     Positive           10.0 
+12  6.00 Depressed     Positive            4.00
+13  1.00 Not Depressed Negative           17.0 
+14  2.00 Not Depressed Negative           11.0 
+15  3.00 Not Depressed Negative            4.00
+16  4.00 Depressed     Negative           18.0 
+17  5.00 Depressed     Negative           13.0 
+18  6.00 Depressed     Negative           10.0 </code></pre>
+</div>
+<div id="one-way-rm-anova-1" class="section level3">
+<h3><span class="header-section-number">16.1.2</span> One-Way RM ANOVA</h3>
+<p>First, let’s ignore the depression variable and just look at the repeated measures. We do this by using <code>afex::aov_4()</code> and then the <code>summary()</code> functions as shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oneway &lt;-<span class="st"> </span>d <span class="op">%&gt;%</span>
+<span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(words_recalled <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(word_type<span class="op">|</span>ID),
+              <span class="dt">data =</span> .)
+<span class="kw">summary</span>(oneway)</code></pre></div>
+<pre><code>
+Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+
+                 SS num Df Error SS den Df       F   Pr(&gt;F)   
+(Intercept) 3042.00      1   381.33      5 39.8864 0.001466 **
+word_type     16.33      2    68.33     10  1.1951 0.342453   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+
+Mauchly Tests for Sphericity
+
+          Test statistic  p-value
+word_type         0.2134 0.045538
+
+
+Greenhouse-Geisser and Huynh-Feldt Corrections
+ for Departure from Sphericity
+
+           GG eps Pr(&gt;F[GG])
+word_type 0.55972     0.3282
+
+             HF eps Pr(&gt;F[HF])
+word_type 0.6077293  0.3309148</code></pre>
 <p>Here, we see a number of pieces of information, including the sums of squares, F-statistic, and p-value. The p-value suggests that there is not an effect of <code>word_type</code> here (p = .342).</p>
 <p>Let’s plot this using a spaghetti plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(word_type, words_recalled, <span class="dt">group =</span> ID)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="16-mixedANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="16-mixedANOVA_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>But we wonder if depression has an effect on the number of words recalled, and it may interact with word_type. Let’s see what that looks like.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(word_type, words_recalled, <span class="dt">group =</span> ID, 
@@ -378,10 +408,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>depression)</code></pre></div>
-<p><img src="16-mixedANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="16-mixedANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Definitely looks like the effect of word_type depends on whether the individual has depression or not. To add a between subjects factor to a repeated measures ANOVA, we are now doing mixed ANOVA (both between and within subjects factors).</p>
+</div>
 <div id="mixed-anova" class="section level3">
-<h3><span class="header-section-number">16.0.1</span> Mixed ANOVA</h3>
+<h3><span class="header-section-number">16.1.3</span> Mixed ANOVA</h3>
 <p>To run a mixed ANOVA, use <code>afex::aov_4()</code> and then the <code>summary()</code> functions again but this type with the between subjects factor included.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mixed_anova &lt;-<span class="st"> </span>d <span class="op">%&gt;%</span>
 <span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(words_recalled <span class="op">~</span><span class="st"> </span>depression <span class="op">+</span><span class="st"> </span>(word_type<span class="op">|</span>ID),
@@ -421,11 +452,12 @@ depression:word_type 1.396104 0.0008177732</code></pre>
 <p>The output provides us with a clear significant interaction shown in the first table. Our previous plot helps illustrate what this interaction is telling us about the patterns. However, it is often useful to show what the groups are doing, not the individuals (especially if your sample size is larger than 20). To do that, we can use:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mixed_anova <span class="op">%&gt;%</span>
 <span class="st">  </span>emmeans<span class="op">::</span><span class="kw">emmip</span>(depression <span class="op">~</span><span class="st"> </span>word_type)</code></pre></div>
-<p><img src="16-mixedANOVA_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="16-mixedANOVA_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>From this, we can tell that there is very little difference with neutral words, but large differences for positive and negative words. Specifically, depressed individuals struggle much more at recalling positive words than non-depressed individuals and depressed individuals do better at recalling negative words than non-depressed individuals.</p>
 </div>
+</div>
 <div id="conclusion" class="section level2">
-<h2><span class="header-section-number">16.1</span> Conclusion</h2>
+<h2><span class="header-section-number">16.2</span> Conclusion</h2>
 <p>Overall, this is a good approach to using mixed ANOVA:</p>
 <ol style="list-style-type: decimal">
 <li>Look at the repeated measures first, and then,</li>

@@ -27,29 +27,20 @@ Required Packages
 ```r
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
-library(car)          # Companion for Applied Regression (and ANOVA)
 library(afex)         # Analysis of Factorial Experiments
-library(emmeans)      # Estimated marginal means (Least-squares means)
-library(lsmeans)      # Least-Squares Means
-library(multcomp)     # Simultaneous Inference in General Parametric Models 
 ```
 
 
 
 ---------------------------------------------------
-## Words Recalled Data Example (Chapter 16a)
+
+
+
+## Words Recalled Data Example (Chapter 16, section A)
+
 
 ### Data Prep
 
-Let's start with an example of a situation where a mixed ANOVA helps us see patterns that we otherwise miss. To do so, let's start our `R` code the same way we usually do, with loading our libraries.
-
-
-```r
-library(tidyverse)
-library(furniture)
-library(haven)
-library(afex)
-```
 
 I input the data as a `tribble` which saves it as a `data.frame` and then cleaned up a few of the important variables.
 
@@ -157,7 +148,7 @@ d %>%
     geom_point()
 ```
 
-<img src="16-mixedANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="16-mixedANOVA_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 But we wonder if depression has an effect on the number of words recalled, and it may interact with word_type. Let's see what that looks like.
 
@@ -173,7 +164,7 @@ d %>%
     facet_wrap(~depression)
 ```
 
-<img src="16-mixedANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="16-mixedANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 Definitely looks like the effect of word_type depends on whether the individual has depression or not. To add a between subjects factor to a repeated measures ANOVA, we are now doing mixed ANOVA (both between and within subjects factors). 
 
@@ -231,7 +222,7 @@ mixed_anova %>%
   emmeans::emmip(depression ~ word_type)
 ```
 
-<img src="16-mixedANOVA_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="16-mixedANOVA_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 From this, we can tell that there is very little difference with neutral words, but large differences for positive and negative words. Specifically, depressed individuals struggle much more at recalling positive words than non-depressed individuals and depressed individuals do better at recalling negative words than non-depressed individuals.
 

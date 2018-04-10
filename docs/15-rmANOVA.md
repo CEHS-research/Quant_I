@@ -26,11 +26,7 @@ Required Packages
 ```r
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
-library(car)          # Companion for Applied Regression (and ANOVA)
 library(afex)         # Analysis of Factorial Experiments
-library(emmeans)      # Estimated marginal means (Least-squares means)
-library(lsmeans)      # Least-Squares Means
-library(multcomp)     # Simultaneous Inference in General Parametric Models 
 ```
 
 
@@ -38,19 +34,10 @@ library(multcomp)     # Simultaneous Inference in General Parametric Models
 --------------------------------------
 
 
-## Words Recalled Data Example (Chapter 15a)
+## Words Recalled Data Example (Chapter 15, section A)
 
 ### Data Prep
 
-Let's start with an example of a situation where a mixed ANOVA helps us see patterns that we otherwise miss. To do so, let's start our `R` code the same way we usually do, with loading our libraries.
-
-
-```r
-library(tidyverse)
-library(furniture)
-library(haven)
-library(afex)
-```
 
 I input the data as a `tribble` which saves it as a `data.frame` and then cleaned up a few of the important variables.
 
@@ -199,7 +186,7 @@ d %>%
     geom_point()
 ```
 
-<img src="15-rmANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="15-rmANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 The output provides us with a bit of an understanding of why there is not a significant effect of `word_type`. In addition to a spaghetti plot, it is often useful to show what the overall repeated measure factor is doing, not the individuals (especially if your sample size is larger than 20). To do that, we can use:
 
@@ -209,7 +196,7 @@ oneway %>%
   emmeans::emmip(~ word_type)
 ```
 
-<img src="15-rmANOVA_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="15-rmANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 Although there is a pattern here, we need to consider the scale. Looking at the spaghetti plot, we have individuals that range from 5 to 20 so a difference of 2 or 3 is not large. However, it is clear that a pattern may exist and so we should probably investigate this further, possibly with a larger sample size.
 
