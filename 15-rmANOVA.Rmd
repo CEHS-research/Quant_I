@@ -33,7 +33,8 @@ Required Packages
 ```{r load_libraries}
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
-library(afex)         # Analysis of Factorial Experiments
+library(afex)         # needed for ANOVA, emmeans is loaded automatically.
+library(multcomp)     # for advanced control for multiple testing/Type 1 error
 ```
 
 
@@ -272,4 +273,164 @@ oneway %>%
 Although there is a pattern here, we need to consider the scale. Looking at the spaghetti plot, we have individuals that range from 5 to 20 so a difference of 2 or 3 is not large. However, it is clear that a pattern may exist and so we should probably investigate this further, possibly with a larger sample size.
 
 
+
+
+
+## Another Example - Weight Loss
+
+Contrived data on weight loss and self esteem over three months, for three groups of individuals: Control, Diet and Diet + Exercise. The data constitute a double-multivariate design
+
+
+### Restructure the data from wide to long format
+
+
+Wide format
+```{r}
+head(carData::WeightLoss, n = 6)
+```
+
+
+Restructure
+```{r}
+WeightLoss_long <- carData::WeightLoss %>% 
+  dplyr::mutate(id = row_number() %>% factor()) %>% 
+  tidyr::gather(key = var,
+                value = value,
+                starts_with("wl"), starts_with("se")) %>% 
+  tidyr::separate(var,
+                  sep = 2,
+                  into = c("measure", "month")) %>% 
+  tidyr::spread(key = measure,
+                value = value) %>% 
+  dplyr::select(id, group, month, wl, se) %>% 
+  dplyr::mutate_at(vars(id, month), factor) %>% 
+  dplyr::arrange(id, month) 
+```
+
+Long format
+```{r}
+head(WeightLoss_long, n = 20)
+```
+
+
+Summary table
+```{r}
+WeightLoss_long %>% 
+  dplyr::group_by(group, month) %>% 
+  furniture::table1(wl, se)
+```
+
+
+
+```{r}
+carData::WeightLoss %>% 
+  dplyr::group_by(group) %>% 
+  furniture::table1(wl1, wl2, wl3,
+                    se1, se2, se3)
+```
+
+
+
+Raw data plot (exploratory)
+
+```{r}
+WeightLoss_long %>% 
+  tidyr::gather(key = measure,
+                value = value,
+                wl, se) %>% 
+  dplyr::mutate(measure = fct_recode(measure,
+                                      "Weight Loss, lb" = "wl",
+                                      "Self Esteem Rating" = "se")) %>% 
+  ggplot(aes(x = month,
+             y = value %>% as.numeric %>% jitter,
+             group = id)) +
+  facet_grid(measure ~ group, 
+             scale = "free_y",
+             switch = "y") +
+  geom_line() +
+  theme_bw() +
+  labs(x = "Time, months",
+       y = "Measurement Value",
+       title = "Person Profile Plot",
+       subtitle = "Raw Data")
+```
+
+
+
+
+
+###  Does weght long change over time?
+
+Fit the model
+```{r}
+fit_wl <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .)
+```
+
+Brief output - uses the Greenhouse-Geisser correction for violations of sphericity (by default)
+```{r}
+fit_wl
+```
+
+
+Lots more output
+```{r}
+summary(fit_wl)
+```
+
+
+To force no GG correction:
+```{r}
+fit_wl_noGG <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .,
+              anova_table = list(correction = "none")) 
+
+fit_wl_noGG
+```
+
+To request BOTH effect sizes: partial eta squared and genderalized eta squared
+```{r}
+fit_wl_2es <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .,
+              anova_table = list(es = c("ges", "pes"))) 
+
+fit_wl_2es
+```
+
+
+
+To force no GG correction AND request BOTH effect sizes
+```{r}
+fit_wl_noGG <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .,
+              anova_table = list(correction = "none",
+                                 es = c("ges", "pes"))) 
+
+fit_wl_noGG
+```
+
+
+Estimated marginal means
+```{r}
+fit_wl %>% 
+  emmeans::emmeans(~ month)
+```
+
+pairwise post hoc
+```{r}
+fit_wl %>% 
+  emmeans::emmeans(~ month) %>% 
+  pairs(adjust = "none")
+```
+
+
+means plot
+```{r}
+fit_wl %>% 
+  emmeans::emmip( ~ month)
+```
 

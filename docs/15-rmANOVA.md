@@ -26,7 +26,8 @@ Required Packages
 ```r
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
-library(afex)         # Analysis of Factorial Experiments
+library(afex)         # needed for ANOVA, emmeans is loaded automatically.
+library(multcomp)     # for advanced control for multiple testing/Type 1 error
 ```
 
 
@@ -346,4 +347,346 @@ oneway %>%
 Although there is a pattern here, we need to consider the scale. Looking at the spaghetti plot, we have individuals that range from 5 to 20 so a difference of 2 or 3 is not large. However, it is clear that a pattern may exist and so we should probably investigate this further, possibly with a larger sample size.
 
 
+
+
+
+## Another Example - Weight Loss
+
+Contrived data on weight loss and self esteem over three months, for three groups of individuals: Control, Diet and Diet + Exercise. The data constitute a double-multivariate design
+
+
+### Restructure the data from wide to long format
+
+
+Wide format
+
+```r
+head(carData::WeightLoss, n = 6)
+```
+
+```
+    group wl1 wl2 wl3 se1 se2 se3
+1 Control   4   3   3  14  13  15
+2 Control   4   4   3  13  14  17
+3 Control   4   3   1  17  12  16
+4 Control   3   2   1  11  11  12
+5 Control   5   3   2  16  15  14
+6 Control   6   5   4  17  18  18
+```
+
+
+Restructure
+
+```r
+WeightLoss_long <- carData::WeightLoss %>% 
+  dplyr::mutate(id = row_number() %>% factor()) %>% 
+  tidyr::gather(key = var,
+                value = value,
+                starts_with("wl"), starts_with("se")) %>% 
+  tidyr::separate(var,
+                  sep = 2,
+                  into = c("measure", "month")) %>% 
+  tidyr::spread(key = measure,
+                value = value) %>% 
+  dplyr::select(id, group, month, wl, se) %>% 
+  dplyr::mutate_at(vars(id, month), factor) %>% 
+  dplyr::arrange(id, month) 
+```
+
+Long format
+
+```r
+head(WeightLoss_long, n = 20)
+```
+
+```
+   id   group month wl se
+1   1 Control     1  4 14
+2   1 Control     2  3 13
+3   1 Control     3  3 15
+4   2 Control     1  4 13
+5   2 Control     2  4 14
+6   2 Control     3  3 17
+7   3 Control     1  4 17
+8   3 Control     2  3 12
+9   3 Control     3  1 16
+10  4 Control     1  3 11
+11  4 Control     2  2 11
+12  4 Control     3  1 12
+13  5 Control     1  5 16
+14  5 Control     2  3 15
+15  5 Control     3  2 14
+16  6 Control     1  6 17
+17  6 Control     2  5 18
+18  6 Control     3  4 18
+19  7 Control     1  6 17
+20  7 Control     2  5 16
+```
+
+
+Summary table
+
+```r
+WeightLoss_long %>% 
+  dplyr::group_by(group, month) %>% 
+  furniture::table1(wl, se)
+```
+
+```
+
+-------------------------------------------------------------------------------------------------------
+                                             group, month 
+    Control_1  Diet_1     DietEx_1   Control_2  Diet_2     DietEx_2  
+    n = 12     n = 12     n = 10     n = 12     n = 12     n = 10    
+ wl                                                                  
+    4.5 (1.0)  5.3 (1.4)  6.2 (2.3)  3.3 (1.1)  3.9 (1.4)  6.1 (1.4) 
+ se                                                                  
+    14.8 (1.9) 14.8 (2.4) 15.2 (1.3) 14.3 (1.9) 13.8 (2.8) 13.3 (1.9)
+ Control_3  Diet_3     DietEx_3  
+ n = 12     n = 12     n = 10    
+                                 
+ 2.1 (1.2)  2.2 (1.1)  2.2 (1.2) 
+                                 
+ 15.1 (2.4) 16.2 (2.5) 17.6 (1.0)
+-------------------------------------------------------------------------------------------------------
+```
+
+
+
+
+```r
+carData::WeightLoss %>% 
+  dplyr::group_by(group) %>% 
+  furniture::table1(wl1, wl2, wl3,
+                    se1, se2, se3)
+```
+
+```
+
+--------------------------------------
+                group 
+     Control    Diet       DietEx    
+     n = 12     n = 12     n = 10    
+ wl1                                 
+     4.5 (1.0)  5.3 (1.4)  6.2 (2.3) 
+ wl2                                 
+     3.3 (1.1)  3.9 (1.4)  6.1 (1.4) 
+ wl3                                 
+     2.1 (1.2)  2.2 (1.1)  2.2 (1.2) 
+ se1                                 
+     14.8 (1.9) 14.8 (2.4) 15.2 (1.3)
+ se2                                 
+     14.3 (1.9) 13.8 (2.8) 13.3 (1.9)
+ se3                                 
+     15.1 (2.4) 16.2 (2.5) 17.6 (1.0)
+--------------------------------------
+```
+
+
+
+Raw data plot (exploratory)
+
+
+```r
+WeightLoss_long %>% 
+  tidyr::gather(key = measure,
+                value = value,
+                wl, se) %>% 
+  dplyr::mutate(measure = fct_recode(measure,
+                                      "Weight Loss, lb" = "wl",
+                                      "Self Esteem Rating" = "se")) %>% 
+  ggplot(aes(x = month,
+             y = value %>% as.numeric %>% jitter,
+             group = id)) +
+  facet_grid(measure ~ group, 
+             scale = "free_y",
+             switch = "y") +
+  geom_line() +
+  theme_bw() +
+  labs(x = "Time, months",
+       y = "Measurement Value",
+       title = "Person Profile Plot",
+       subtitle = "Raw Data")
+```
+
+<img src="15-rmANOVA_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+
+
+
+
+
+###  Does weght long change over time?
+
+Fit the model
+
+```r
+fit_wl <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .)
+```
+
+Brief output - uses the Greenhouse-Geisser correction for violations of sphericity (by default)
+
+```r
+fit_wl
+```
+
+```
+Anova Table (Type 3 tests)
+
+Response: wl
+  Effect          df  MSE         F ges p.value
+1  month 2.00, 65.94 1.08 80.31 *** .43  <.0001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+
+Sphericity correction method: GG 
+```
+
+
+Lots more output
+
+```r
+summary(fit_wl)
+```
+
+```
+
+Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+
+                 SS num Df Error SS den Df       F    Pr(>F)    
+(Intercept) 1584.35      1  162.314     33 322.115 < 2.2e-16 ***
+month        173.88      2   71.451     66  80.308 < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Mauchly Tests for Sphericity
+
+      Test statistic p-value
+month        0.99908 0.98539
+
+
+Greenhouse-Geisser and Huynh-Feldt Corrections
+ for Departure from Sphericity
+
+       GG eps Pr(>F[GG])    
+month 0.99908  < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+        HF eps   Pr(>F[HF])
+month 1.063446 2.090759e-18
+```
+
+
+To force no GG correction:
+
+```r
+fit_wl_noGG <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .,
+              anova_table = list(correction = "none")) 
+
+fit_wl_noGG
+```
+
+```
+Anova Table (Type 3 tests)
+
+Response: wl
+  Effect    df  MSE         F ges p.value
+1  month 2, 66 1.08 80.31 *** .43  <.0001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+```
+
+To request BOTH effect sizes: partial eta squared and genderalized eta squared
+
+```r
+fit_wl_2es <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .,
+              anova_table = list(es = c("ges", "pes"))) 
+
+fit_wl_2es
+```
+
+```
+Anova Table (Type 3 tests)
+
+Response: wl
+  Effect          df  MSE         F ges pes p.value
+1  month 2.00, 65.94 1.08 80.31 *** .43 .71  <.0001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+
+Sphericity correction method: GG 
+```
+
+
+
+To force no GG correction AND request BOTH effect sizes
+
+```r
+fit_wl_noGG <- WeightLoss_long %>% 
+  afex::aov_4(wl ~ 1 + (month|id),
+            data = .,
+              anova_table = list(correction = "none",
+                                 es = c("ges", "pes"))) 
+
+fit_wl_noGG
+```
+
+```
+Anova Table (Type 3 tests)
+
+Response: wl
+  Effect    df  MSE         F ges pes p.value
+1  month 2, 66 1.08 80.31 *** .43 .71  <.0001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+```
+
+
+Estimated marginal means
+
+```r
+fit_wl %>% 
+  emmeans::emmeans(~ month)
+```
+
+```
+ month   emmean        SE   df lower.CL upper.CL
+ X1    5.294118 0.2635314 62.4 4.767393 5.820842
+ X2    4.352941 0.2635314 62.4 3.826217 4.879665
+ X3    2.176471 0.2635314 62.4 1.649746 2.703195
+
+Confidence level used: 0.95 
+```
+
+pairwise post hoc
+
+```r
+fit_wl %>% 
+  emmeans::emmeans(~ month) %>% 
+  pairs(adjust = "none")
+```
+
+```
+ contrast  estimate        SE df t.ratio p.value
+ X1 - X2  0.9411765 0.2523525 66   3.730  0.0004
+ X1 - X3  3.1176471 0.2523525 66  12.354  <.0001
+ X2 - X3  2.1764706 0.2523525 66   8.625  <.0001
+```
+
+
+means plot
+
+```r
+fit_wl %>% 
+  emmeans::emmip( ~ month)
+```
+
+<img src="15-rmANOVA_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 

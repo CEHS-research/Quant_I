@@ -260,6 +260,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-independent-anova"><i class="fa fa-check"></i><b>15.2.2</b> One-Way Independent ANOVA</a></li>
 <li class="chapter" data-level="15.2.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-rm-anova"><i class="fa fa-check"></i><b>15.2.3</b> One-Way RM ANOVA</a></li>
 </ul></li>
+<li class="chapter" data-level="15.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#another-example---weight-loss"><i class="fa fa-check"></i><b>15.3</b> Another Example - Weight Loss</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#restructure-the-data-from-wide-to-long-format"><i class="fa fa-check"></i><b>15.3.1</b> Restructure the data from wide to long format</a></li>
+<li class="chapter" data-level="15.3.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#does-weght-long-change-over-time"><i class="fa fa-check"></i><b>15.3.2</b> Does weght long change over time?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html"><i class="fa fa-check"></i><b>16</b> Repeated Measures ANOVA</a><ul>
 <li class="chapter" data-level="16.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#tutorial---fitting-mixed-design-anova-models-with-afexaov_4"><i class="fa fa-check"></i><b>16.1</b> Tutorial - Fitting Mixed Design ANOVA Models with <code>afex::aov_4()</code></a></li>
@@ -308,7 +312,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Required Packages</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
 <span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span>
-<span class="kw">library</span>(afex)         <span class="co"># Analysis of Factorial Experiments</span></code></pre></div>
+<span class="kw">library</span>(afex)         <span class="co"># needed for ANOVA, emmeans is loaded automatically.</span>
+<span class="kw">library</span>(multcomp)     <span class="co"># for advanced control for multiple testing/Type 1 error</span></code></pre></div>
 <hr />
 <div id="tutorial---fitting-rm-anova-models-with-afexaov_4" class="section level2">
 <h2><span class="header-section-number">15.1</span> Tutorial - Fitting RM ANOVA Models with <code>afex::aov_4()</code></h2>
@@ -505,6 +510,234 @@ word_type 0.6077293  0.3309148</code></pre>
 <span class="st">  </span>emmeans<span class="op">::</span><span class="kw">emmip</span>(<span class="op">~</span><span class="st"> </span>word_type)</code></pre></div>
 <p><img src="15-rmANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Although there is a pattern here, we need to consider the scale. Looking at the spaghetti plot, we have individuals that range from 5 to 20 so a difference of 2 or 3 is not large. However, it is clear that a pattern may exist and so we should probably investigate this further, possibly with a larger sample size.</p>
+</div>
+</div>
+<div id="another-example---weight-loss" class="section level2">
+<h2><span class="header-section-number">15.3</span> Another Example - Weight Loss</h2>
+<p>Contrived data on weight loss and self esteem over three months, for three groups of individuals: Control, Diet and Diet + Exercise. The data constitute a double-multivariate design</p>
+<div id="restructure-the-data-from-wide-to-long-format" class="section level3">
+<h3><span class="header-section-number">15.3.1</span> Restructure the data from wide to long format</h3>
+<p>Wide format</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(carData<span class="op">::</span>WeightLoss, <span class="dt">n =</span> <span class="dv">6</span>)</code></pre></div>
+<pre><code>    group wl1 wl2 wl3 se1 se2 se3
+1 Control   4   3   3  14  13  15
+2 Control   4   4   3  13  14  17
+3 Control   4   3   1  17  12  16
+4 Control   3   2   1  11  11  12
+5 Control   5   3   2  16  15  14
+6 Control   6   5   4  17  18  18</code></pre>
+<p>Restructure</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">WeightLoss_long &lt;-<span class="st"> </span>carData<span class="op">::</span>WeightLoss <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">row_number</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">factor</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> var,
+                <span class="dt">value =</span> value,
+                <span class="kw">starts_with</span>(<span class="st">&quot;wl&quot;</span>), <span class="kw">starts_with</span>(<span class="st">&quot;se&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">separate</span>(var,
+                  <span class="dt">sep =</span> <span class="dv">2</span>,
+                  <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;measure&quot;</span>, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">spread</span>(<span class="dt">key =</span> measure,
+                <span class="dt">value =</span> value) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(id, group, month, wl, se) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(id, month), factor) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(id, month) </code></pre></div>
+<p>Long format</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(WeightLoss_long, <span class="dt">n =</span> <span class="dv">20</span>)</code></pre></div>
+<pre><code>   id   group month wl se
+1   1 Control     1  4 14
+2   1 Control     2  3 13
+3   1 Control     3  3 15
+4   2 Control     1  4 13
+5   2 Control     2  4 14
+6   2 Control     3  3 17
+7   3 Control     1  4 17
+8   3 Control     2  3 12
+9   3 Control     3  1 16
+10  4 Control     1  3 11
+11  4 Control     2  2 11
+12  4 Control     3  1 12
+13  5 Control     1  5 16
+14  5 Control     2  3 15
+15  5 Control     3  2 14
+16  6 Control     1  6 17
+17  6 Control     2  5 18
+18  6 Control     3  4 18
+19  7 Control     1  6 17
+20  7 Control     2  5 16</code></pre>
+<p>Summary table</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">WeightLoss_long <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(group, month) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">table1</span>(wl, se)</code></pre></div>
+<pre><code>
+-------------------------------------------------------------------------------------------------------
+                                             group, month 
+    Control_1  Diet_1     DietEx_1   Control_2  Diet_2     DietEx_2  
+    n = 12     n = 12     n = 10     n = 12     n = 12     n = 10    
+ wl                                                                  
+    4.5 (1.0)  5.3 (1.4)  6.2 (2.3)  3.3 (1.1)  3.9 (1.4)  6.1 (1.4) 
+ se                                                                  
+    14.8 (1.9) 14.8 (2.4) 15.2 (1.3) 14.3 (1.9) 13.8 (2.8) 13.3 (1.9)
+ Control_3  Diet_3     DietEx_3  
+ n = 12     n = 12     n = 10    
+                                 
+ 2.1 (1.2)  2.2 (1.1)  2.2 (1.2) 
+                                 
+ 15.1 (2.4) 16.2 (2.5) 17.6 (1.0)
+-------------------------------------------------------------------------------------------------------</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carData<span class="op">::</span>WeightLoss <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>furniture<span class="op">::</span><span class="kw">table1</span>(wl1, wl2, wl3,
+                    se1, se2, se3)</code></pre></div>
+<pre><code>
+--------------------------------------
+                group 
+     Control    Diet       DietEx    
+     n = 12     n = 12     n = 10    
+ wl1                                 
+     4.5 (1.0)  5.3 (1.4)  6.2 (2.3) 
+ wl2                                 
+     3.3 (1.1)  3.9 (1.4)  6.1 (1.4) 
+ wl3                                 
+     2.1 (1.2)  2.2 (1.1)  2.2 (1.2) 
+ se1                                 
+     14.8 (1.9) 14.8 (2.4) 15.2 (1.3)
+ se2                                 
+     14.3 (1.9) 13.8 (2.8) 13.3 (1.9)
+ se3                                 
+     15.1 (2.4) 16.2 (2.5) 17.6 (1.0)
+--------------------------------------</code></pre>
+<p>Raw data plot (exploratory)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">WeightLoss_long <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> measure,
+                <span class="dt">value =</span> value,
+                wl, se) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">measure =</span> <span class="kw">fct_recode</span>(measure,
+                                      <span class="st">&quot;Weight Loss, lb&quot;</span> =<span class="st"> &quot;wl&quot;</span>,
+                                      <span class="st">&quot;Self Esteem Rating&quot;</span> =<span class="st"> &quot;se&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> month,
+             <span class="dt">y =</span> value <span class="op">%&gt;%</span><span class="st"> </span>as.numeric <span class="op">%&gt;%</span><span class="st"> </span>jitter,
+             <span class="dt">group =</span> id)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(measure <span class="op">~</span><span class="st"> </span>group, 
+             <span class="dt">scale =</span> <span class="st">&quot;free_y&quot;</span>,
+             <span class="dt">switch =</span> <span class="st">&quot;y&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Time, months&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;Measurement Value&quot;</span>,
+       <span class="dt">title =</span> <span class="st">&quot;Person Profile Plot&quot;</span>,
+       <span class="dt">subtitle =</span> <span class="st">&quot;Raw Data&quot;</span>)</code></pre></div>
+<p><img src="15-rmANOVA_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="does-weght-long-change-over-time" class="section level3">
+<h3><span class="header-section-number">15.3.2</span> Does weght long change over time?</h3>
+<p>Fit the model</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl &lt;-<span class="st"> </span>WeightLoss_long <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(wl <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(month<span class="op">|</span>id),
+            <span class="dt">data =</span> .)</code></pre></div>
+<p>Brief output - uses the Greenhouse-Geisser correction for violations of sphericity (by default)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl</code></pre></div>
+<pre><code>Anova Table (Type 3 tests)
+
+Response: wl
+  Effect          df  MSE         F ges p.value
+1  month 2.00, 65.94 1.08 80.31 *** .43  &lt;.0001
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1
+
+Sphericity correction method: GG </code></pre>
+<p>Lots more output</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(fit_wl)</code></pre></div>
+<pre><code>
+Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+
+                 SS num Df Error SS den Df       F    Pr(&gt;F)    
+(Intercept) 1584.35      1  162.314     33 322.115 &lt; 2.2e-16 ***
+month        173.88      2   71.451     66  80.308 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+
+Mauchly Tests for Sphericity
+
+      Test statistic p-value
+month        0.99908 0.98539
+
+
+Greenhouse-Geisser and Huynh-Feldt Corrections
+ for Departure from Sphericity
+
+       GG eps Pr(&gt;F[GG])    
+month 0.99908  &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+        HF eps   Pr(&gt;F[HF])
+month 1.063446 2.090759e-18</code></pre>
+<p>To force no GG correction:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl_noGG &lt;-<span class="st"> </span>WeightLoss_long <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(wl <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(month<span class="op">|</span>id),
+            <span class="dt">data =</span> .,
+              <span class="dt">anova_table =</span> <span class="kw">list</span>(<span class="dt">correction =</span> <span class="st">&quot;none&quot;</span>)) 
+
+fit_wl_noGG</code></pre></div>
+<pre><code>Anova Table (Type 3 tests)
+
+Response: wl
+  Effect    df  MSE         F ges p.value
+1  month 2, 66 1.08 80.31 *** .43  &lt;.0001
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>To request BOTH effect sizes: partial eta squared and genderalized eta squared</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl_2es &lt;-<span class="st"> </span>WeightLoss_long <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(wl <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(month<span class="op">|</span>id),
+            <span class="dt">data =</span> .,
+              <span class="dt">anova_table =</span> <span class="kw">list</span>(<span class="dt">es =</span> <span class="kw">c</span>(<span class="st">&quot;ges&quot;</span>, <span class="st">&quot;pes&quot;</span>))) 
+
+fit_wl_2es</code></pre></div>
+<pre><code>Anova Table (Type 3 tests)
+
+Response: wl
+  Effect          df  MSE         F ges pes p.value
+1  month 2.00, 65.94 1.08 80.31 *** .43 .71  &lt;.0001
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1
+
+Sphericity correction method: GG </code></pre>
+<p>To force no GG correction AND request BOTH effect sizes</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl_noGG &lt;-<span class="st"> </span>WeightLoss_long <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>afex<span class="op">::</span><span class="kw">aov_4</span>(wl <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(month<span class="op">|</span>id),
+            <span class="dt">data =</span> .,
+              <span class="dt">anova_table =</span> <span class="kw">list</span>(<span class="dt">correction =</span> <span class="st">&quot;none&quot;</span>,
+                                 <span class="dt">es =</span> <span class="kw">c</span>(<span class="st">&quot;ges&quot;</span>, <span class="st">&quot;pes&quot;</span>))) 
+
+fit_wl_noGG</code></pre></div>
+<pre><code>Anova Table (Type 3 tests)
+
+Response: wl
+  Effect    df  MSE         F ges pes p.value
+1  month 2, 66 1.08 80.31 *** .43 .71  &lt;.0001
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Estimated marginal means</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>emmeans<span class="op">::</span><span class="kw">emmeans</span>(<span class="op">~</span><span class="st"> </span>month)</code></pre></div>
+<pre><code> month   emmean        SE   df lower.CL upper.CL
+ X1    5.294118 0.2635314 62.4 4.767393 5.820842
+ X2    4.352941 0.2635314 62.4 3.826217 4.879665
+ X3    2.176471 0.2635314 62.4 1.649746 2.703195
+
+Confidence level used: 0.95 </code></pre>
+<p>pairwise post hoc</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>emmeans<span class="op">::</span><span class="kw">emmeans</span>(<span class="op">~</span><span class="st"> </span>month) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">pairs</span>(<span class="dt">adjust =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code> contrast  estimate        SE df t.ratio p.value
+ X1 - X2  0.9411765 0.2523525 66   3.730  0.0004
+ X1 - X3  3.1176471 0.2523525 66  12.354  &lt;.0001
+ X2 - X3  2.1764706 0.2523525 66   8.625  &lt;.0001</code></pre>
+<p>means plot</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_wl <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>emmeans<span class="op">::</span><span class="kw">emmip</span>( <span class="op">~</span><span class="st"> </span>month)</code></pre></div>
+<p><img src="15-rmANOVA_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 
 </div>
 </div>

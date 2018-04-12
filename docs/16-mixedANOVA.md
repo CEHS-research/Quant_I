@@ -27,7 +27,8 @@ Required Packages
 ```r
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
-library(afex)         # Analysis of Factorial Experiments
+library(afex)         # needed for ANOVA, emmeans is loaded automatically.
+library(multcomp)     # for advanced control for multiple testing/Type 1 error
 ```
 
 
