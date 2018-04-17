@@ -12,7 +12,7 @@
 
 * Unit 5 R Part: [Directions - pdf](https://usu.box.com/s/boe99auezv2s86lxcrbvtiicrz7yzj7c) and [Skeleton - Rmd](https://usu.box.com/s/k6l1pjyzrt7tqhjq2ptdi2aw8561y1qv)
 
-* Unit 5 Reading to Summarize: [Article - pdf](https://usu.box.com/s/cz8geza9lt1eh77evt28m6u4oy877nbl)
+* Unit 5 Reading to Summarize: [Article - pdf](https://usu.box.com/s/9jazgd17mn5bnib4jrdg6zb5jtlze3wi)
 
 * Inho's Dataset: [Excel](https://usu.box.com/s/9jazgd17mn5bnib4jrdg6zb5jtlze3wi)
 
