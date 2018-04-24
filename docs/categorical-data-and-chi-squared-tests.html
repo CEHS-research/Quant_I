@@ -275,9 +275,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.3" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#conclusion"><i class="fa fa-check"></i><b>16.3</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html"><i class="fa fa-check"></i><b>17</b> Categorical Data and Chi Squared Tests</a><ul>
-<li class="chapter" data-level="17.1" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#goodenss-of-fit-1-way---equally-likely"><i class="fa fa-check"></i><b>17.1</b> Goodenss of Fit (1-way) - Equally Likely</a></li>
-<li class="chapter" data-level="17.2" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#goodenss-of-fit-1-way---hypothesised-probabilities"><i class="fa fa-check"></i><b>17.2</b> Goodenss of Fit (1-way) - Hypothesised Probabilities</a></li>
-<li class="chapter" data-level="17.3" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#test-for-independence-2-way---vs.association"><i class="fa fa-check"></i><b>17.3</b> Test for Independence (2-way) - vs. Association</a></li>
+<li class="chapter" data-level="17.1" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#goodenss-of-fit-1-way"><i class="fa fa-check"></i><b>17.1</b> Goodenss of Fit (1-way)</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#observed-counts-vs.equally-likely-hypothesis"><i class="fa fa-check"></i><b>17.1.1</b> Observed Counts vs. Equally Likely Hypothesis</a></li>
+<li class="chapter" data-level="17.1.2" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#observed-counts-vs.hypothesised-probabilities"><i class="fa fa-check"></i><b>17.1.2</b> Observed counts vs. Hypothesised Probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#test-for-independence-2-way---vs.association"><i class="fa fa-check"></i><b>17.2</b> Test for Independence (2-way) - vs. Association</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
 <li class="divider"></li>
@@ -315,21 +317,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Required Packages</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
-<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span></code></pre></div>
+<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span>
+<span class="kw">library</span>(pander)       <span class="co"># Nice tables in genderal</span></code></pre></div>
 <hr />
-<div id="goodenss-of-fit-1-way---equally-likely" class="section level2">
-<h2><span class="header-section-number">17.1</span> Goodenss of Fit (1-way) - Equally Likely</h2>
+<div id="goodenss-of-fit-1-way" class="section level2">
+<h2><span class="header-section-number">17.1</span> Goodenss of Fit (1-way)</h2>
+<div id="observed-counts-vs.equally-likely-hypothesis" class="section level3">
+<h3><span class="header-section-number">17.1.1</span> Observed Counts vs. Equally Likely Hypothesis</h3>
 <p><strong>TEXTBOOK Example:</strong> <em>Often, especially in an experimental context, the expected frequencies are based on more abstract theoretical considerations. For instance, imagine that a developmental psychologist is studying color preference in toddlers. Each child is told that he or she can take one toy out of four that are offered. All four toys are identical except for color: red, blue, yellow, or green. Forty children are run in the experiment, and their color preferences are as follows: red, 13; blue, 9; yellow, 15; and green, 3. These are the obtained frequencies. The expected frequencies depend on the null hypothesis. If the null hypothesis is that toddlers in general have no preference for color, we would expect the choices of colors to be equally divided among the entire population of toddlers. Hence, the expected frequencies would be 10 for each color.</em></p>
-<hr />
 <p>Use the <code>chisq.test()</code> function to perform a Goodnes-of-Fit or one-way Chi-Squared test to see if the observed counts are significantly different from being equally distributed.</p>
 <blockquote>
 <p><strong>NOTE:</strong> You do not need to declare any options inside the <code>chisq.test()</code> function, as the default is to use equally likely probabilities.</p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the 1-way chi-square test for equally likely</span>
-chisq_toy_color &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">red    =</span> <span class="dv">13</span>, <span class="dt">blue   =</span> <span class="dv">9</span>, 
-                     <span class="dt">yellow =</span> <span class="dv">15</span>, <span class="dt">green  =</span> <span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+chisq_toy_color &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">red    =</span> <span class="dv">13</span>, 
+                     <span class="dt">blue   =</span> <span class="dv">9</span>, 
+                     <span class="dt">yellow =</span> <span class="dv">15</span>, 
+                     <span class="dt">green  =</span> <span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">chisq.test</span>()                             <span class="co"># defaults to Equally likely</span></code></pre></div>
-<hr />
 <p>The following code chunk shows how to create and display a table of the observed and expected counts for any 1-way Chi-squated test.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Request the observed and expected counts</span>
 <span class="kw">rbind</span>(<span class="dt">Observed =</span> chisq_toy_color<span class="op">$</span>observed,
@@ -369,7 +374,6 @@ chisq_toy_color &lt;-<span class="st"> </span><span class="kw">c</span>(<span cl
 </tr>
 </tbody>
 </table>
-<hr />
 <p>To display the full output, type and run the name the model is save as.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Diplay the full output</span>
 chisq_toy_color</code></pre></div>
@@ -378,12 +382,11 @@ chisq_toy_color</code></pre></div>
 
 data:  .
 X-squared = 8.4, df = 3, p-value = 0.03843</code></pre>
-
-</div>
-<div id="goodenss-of-fit-1-way---hypothesised-probabilities" class="section level2">
-<h2><span class="header-section-number">17.2</span> Goodenss of Fit (1-way) - Hypothesised Probabilities</h2>
-<p><strong>TEXTBOOK Example:</strong> <em>Imagine that the population of a city is made up of three ethnic groups, which I will label A, B, and C. The obtained frequencies were 28, 18, and 2. You could test the null hypothesis that sample is representatve of a population proportions which is half group A and a third group B.</em></p>
 <hr />
+</div>
+<div id="observed-counts-vs.hypothesised-probabilities" class="section level3">
+<h3><span class="header-section-number">17.1.2</span> Observed counts vs. Hypothesised Probabilities</h3>
+<p><strong>TEXTBOOK Example:</strong> <em>Imagine that the population of a city is made up of three ethnic groups, which I will label A, B, and C. The obtained frequencies were 28, 18, and 2. You could test the null hypothesis that sample is representatve of a population proportions which is half group A and a third group B.</em></p>
 <p>The <code>chisq.test()</code> function may also be used to perform a Goodnes-of-Fit or one-way Chi-Squared test to see if the observed counts are significantly different from thoes expected from a set of hypothesised probabilies.</p>
 <blockquote>
 <p><strong>NOTE:</strong> You <strong>DO</strong> need to declare the probabilities, as the default is to use equally likely probabilities. You may do this by including <code>p = c(</code><span class="math inline">\(p_1\)</span><code>,</code><span class="math inline">\(p_2\)</span><code>, ...,</code><span class="math inline">\(p_k\)</span><code>)</code> within the <code>chisq.test()</code> function. The <span class="math inline">\(p_i\)</span>’s maybe typed as decimals or fractions, but make suer they add up to exactly <span class="math inline">\(1\)</span>!</p>
@@ -393,7 +396,6 @@ chisq_ethnic &lt;-<span class="st"> </span><span class="kw">c</span>(<span class
                   <span class="dt">B =</span> <span class="dv">18</span>,
                   <span class="dt">C =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">chisq.test</span>(<span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>))      <span class="co"># declare the probabilities</span></code></pre></div>
-<hr />
 <p>Use the same code chunk to display a table of the observed and expected counts for any 1-way Chi-squated test.</p>
 <blockquote>
 <p><strong>HINT</strong> You may <em>copy-and-paste</em> this code for the rest of the assignment, but make sure to change the name of the model (<code>chisq_ethnic</code> appears twice before the $-sign).</p>
@@ -432,7 +434,6 @@ chisq_ethnic &lt;-<span class="st"> </span><span class="kw">c</span>(<span class
 </tr>
 </tbody>
 </table>
-<hr />
 <p>To display the full output, type and run the name the model is save as.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Diplay the full output</span>
 chisq_ethnic</code></pre></div>
@@ -441,10 +442,11 @@ chisq_ethnic</code></pre></div>
 
 data:  .
 X-squared = 5.4167, df = 2, p-value = 0.06665</code></pre>
-
+<hr />
+</div>
 </div>
 <div id="test-for-independence-2-way---vs.association" class="section level2">
-<h2><span class="header-section-number">17.3</span> Test for Independence (2-way) - vs. Association</h2>
+<h2><span class="header-section-number">17.2</span> Test for Independence (2-way) - vs. Association</h2>
 <p><strong>TEXTBOOK Example:</strong> <em>Suppose that the researcher has interviewed 30 women who have been married: 10 whose parents were divorced and 20 whose parents were married. Half of the 30 women in this hypothetical study have gone through their own divorce; the other half are still married for the first time. To know whether the divorce of a person’s parents makes the person more likely to divorce, we need to see the breakdown in each category- that is, how many currently divorced women come from “broken” homes and how many do not, and similarly for those still married. These frequency data are generally presented in a contingency (or cross-classification) table:</em></p>
 <p>The dataset needs to be declared a table before you can run a Chi-Squared Test</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Store the data as a table</span>
@@ -493,12 +495,10 @@ woman_parents <span class="op">%&gt;%</span><span class="st"> </span>
 </tr>
 </tbody>
 </table>
-<hr />
 <p>The <code>chisq.test()</code> function may also be used to perform a two-way Chi-Squared test for independence. In this case, the observed counts are compared to thoes expected if there is no association between the two factors.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the 2-way chi-square test for independence</span>
 chisq_divorces &lt;-<span class="st"> </span>woman_parents <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">chisq.test</span>(<span class="dt">correct =</span> <span class="ot">FALSE</span>)     <span class="co">#IF 2x2, add correct = FALSE</span></code></pre></div>
-<hr />
 <p>To display the counts expected if the variables are independent, start with the model name and add <code>$expected</code> at the end. Then pipe on both the <code>addmargins()</code> and <code>pander::pander()</code> functions to print the counts.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Request the expected counts based on &quot;no association&quot;</span>
 chisq_divorces<span class="op">$</span>expected <span class="op">%&gt;%</span><span class="st"> </span>
@@ -529,7 +529,6 @@ chisq_divorces<span class="op">$</span>expected <span class="op">%&gt;%</span><s
 </tr>
 </tbody>
 </table>
-<hr />
 <p>To display the full output, type and run the name the model is save as.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Diplay the full output</span>
 chisq_divorces</code></pre></div>

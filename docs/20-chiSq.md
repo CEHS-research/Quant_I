@@ -29,6 +29,7 @@ Required Packages
 ```r
 library(tidyverse)    # Loads several very helpful 'tidy' packages
 library(furniture)    # Nice tables (by our own Tyson Barrett)
+library(pander)       # Nice tables in genderal
 ```
 
 
@@ -36,11 +37,13 @@ library(furniture)    # Nice tables (by our own Tyson Barrett)
 -----------------------------------------------------
 
 
-## Goodenss of Fit (1-way) - Equally Likely
+## Goodenss of Fit (1-way) 
+
+### Observed Counts vs. Equally Likely Hypothesis
 
 **TEXTBOOK Example:** *Often, especially in an experimental context, the expected frequencies are based on more abstract theoretical considerations. For instance, imagine that a developmental psychologist is studying color preference in toddlers. Each child is told that he or she can take one toy out of four that are offered. All four toys are identical except for color: red, blue, yellow, or green. Forty children are run in the experiment, and their color preferences are as follows: red, 13; blue, 9; yellow, 15; and green, 3. These are the obtained frequencies. The expected frequencies depend on the null hypothesis. If the null hypothesis is that toddlers in general have no preference for color, we would expect the choices of colors to be equally divided among the entire population of toddlers. Hence, the expected frequencies would be 10 for each color.*
 
---------------------
+
 
 Use the `chisq.test()` function to perform a Goodnes-of-Fit or one-way Chi-Squared test to see if the observed counts are significantly different from being equally distributed. 
 
@@ -49,12 +52,14 @@ Use the `chisq.test()` function to perform a Goodnes-of-Fit or one-way Chi-Squar
 
 ```r
 # Run the 1-way chi-square test for equally likely
-chisq_toy_color <- c(red    = 13, blue   = 9, 
-                     yellow = 15, green  = 3) %>% 
+chisq_toy_color <- c(red    = 13, 
+                     blue   = 9, 
+                     yellow = 15, 
+                     green  = 3) %>% 
   chisq.test()                             # defaults to Equally likely
 ```
 
--------------------
+
 
 The following code chunk shows how to create and display a table of the observed and expected counts for any 1-way Chi-squated test.
 
@@ -75,7 +80,7 @@ rbind(Observed = chisq_toy_color$observed,
  **Expected**   10     10      10      10   
 --------------------------------------------
 
--------------------
+
 
 To display the full output, type and run the name the model is save as.
 
@@ -93,13 +98,17 @@ data:  .
 X-squared = 8.4, df = 3, p-value = 0.03843
 ```
 
-\clearpage
 
-## Goodenss of Fit (1-way) - Hypothesised Probabilities
+
+-----------------------------------------------------
+
+
+
+### Observed counts vs. Hypothesised Probabilities
 
 **TEXTBOOK Example:** *Imagine that the population of a city is made up of three ethnic groups, which I will label A, B, and C.  The obtained frequencies were 28, 18, and 2. You could test the null hypothesis that sample is representatve of a population proportions which is half group A and a third group B.*
 
---------------------
+
 
 The `chisq.test()` function may also be used to perform a Goodnes-of-Fit or one-way Chi-Squared test to see if the observed counts are significantly different from thoes expected from a set of hypothesised probabilies. 
 
@@ -114,7 +123,7 @@ chisq_ethnic <- c(A = 28,
   chisq.test(p = c(1/2, 1/3, 1/6))      # declare the probabilities
 ```
 
--------------------
+
 
 Use the same code chunk to display a table of the observed and expected counts for any 1-way Chi-squated test.
 
@@ -137,7 +146,6 @@ rbind(Observed = chisq_ethnic$observed,
  **Expected**   24   16   8 
 ----------------------------
 
--------------------
 
 To display the full output, type and run the name the model is save as.
 
@@ -156,7 +164,7 @@ X-squared = 5.4167, df = 2, p-value = 0.06665
 ```
 
 
-\clearpage
+-----------------------------------------------------
 
 ## Test for Independence (2-way) - vs. Association
 
@@ -196,7 +204,7 @@ woman_parents %>%
       **Sum**            10             20         30  
 -------------------------------------------------------
 
------------------
+
 
 The `chisq.test()` function may also be used to perform a two-way Chi-Squared test for independence.  In this case, the observed counts are compared to thoes expected if there is no association between the two factors.  
 
@@ -207,7 +215,7 @@ chisq_divorces <- woman_parents %>%
   chisq.test(correct = FALSE)     #IF 2x2, add correct = FALSE
 ```
 
--------------------
+
 
 To display the counts expected if the variables are independent, start with the model name  and add `$expected` at the end.  Then pipe on both the `addmargins()` and `pander::pander()` functions to print the counts. 
 
@@ -227,7 +235,7 @@ chisq_divorces$expected %>%
  **self_married**         5             10       
 -------------------------------------------------
 
--------------------
+
 
 To display the full output, type and run the name the model is save as.
 
