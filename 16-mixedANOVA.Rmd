@@ -27,6 +27,7 @@ knitr::opts_chunk$set(comment     = NA,
                       message     = FALSE)
 ```
 
+-----------------------------------------------------
 
 
 Required Packages 
