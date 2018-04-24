@@ -35,9 +35,8 @@ library(furniture)    # Nice tables (by our own Tyson Barrett)
 
 -----------------------------------------------------
 
-## Tutorials: Chi-squared Test
 
-### Goodenss of Fit (1-way) - Equally Likely
+## Goodenss of Fit (1-way) - Equally Likely
 
 **TEXTBOOK Example:** *Often, especially in an experimental context, the expected frequencies are based on more abstract theoretical considerations. For instance, imagine that a developmental psychologist is studying color preference in toddlers. Each child is told that he or she can take one toy out of four that are offered. All four toys are identical except for color: red, blue, yellow, or green. Forty children are run in the experiment, and their color preferences are as follows: red, 13; blue, 9; yellow, 15; and green, 3. These are the obtained frequencies. The expected frequencies depend on the null hypothesis. If the null hypothesis is that toddlers in general have no preference for color, we would expect the choices of colors to be equally divided among the entire population of toddlers. Hence, the expected frequencies would be 10 for each color.*
 
@@ -96,7 +95,7 @@ X-squared = 8.4, df = 3, p-value = 0.03843
 
 \clearpage
 
-### Goodenss of Fit (1-way) - Hypothesised Probabilities
+## Goodenss of Fit (1-way) - Hypothesised Probabilities
 
 **TEXTBOOK Example:** *Imagine that the population of a city is made up of three ethnic groups, which I will label A, B, and C.  The obtained frequencies were 28, 18, and 2. You could test the null hypothesis that sample is representatve of a population proportions which is half group A and a third group B.*
 
@@ -159,7 +158,7 @@ X-squared = 5.4167, df = 2, p-value = 0.06665
 
 \clearpage
 
-### Test for Independence (2-way) - vs. Association
+## Test for Independence (2-way) - vs. Association
 
 **TEXTBOOK Example:** *Suppose that the researcher has interviewed 30 women who have been married: 10 whose parents were divorced and 20 whose parents were married. Half of the 30 women in this hypothetical study have gone through their own divorce; the other half are still married for the first time. To know whether the divorce of a person's parents makes the person more likely to divorce, we need to see the breakdown in each category- that is, how many currently divorced women come from "broken" homes and how many do not, and similarly for those still married. These frequency data are generally presented in a contingency (or cross-classification) table:*
 
