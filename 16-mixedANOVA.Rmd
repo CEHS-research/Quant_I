@@ -44,6 +44,8 @@ library(multcomp)     # for advanced control for multiple testing/Type 1 error
 
 ## Tutorial - Fitting Mixed Design ANOVA Models with `afex::aov_4()`
 
+
+
 The `aov_4()` function from the `afex` package fits ANOVA models (oneway, two-way, repeated measures, and mixed design). It needs at least two arguments:
 
 1. formula:  `continuous_var ~ group_var + (RM_var|id_var)`  *one observation per subject for each level of the `RMvar`, so each `id_var` has multiple lines for each subject, each subject can only belong to exactly one group./*
@@ -53,7 +55,8 @@ The `aov_4()` function from the `afex` package fits ANOVA models (oneway, two-wa
 
 Here is an outline of what your syntax should look like when you **fit and save a Mixed ANOVA**.  Of course you will replace the dataset name and the variable names, as well as the name you are saving it as.
 
-> **NOTE:** The `aov_4()` function works on data in LONG format only.  Each observation needs to be on its one line or row with seperate variables for the group membership (categorical factor or `fct`) and the continuous measurement (numberic or `dbl`).
+>**NOTE:** The `aov_4()` function works on data in LONG format only.  Each observation needs to be on its one line or row with seperate variables for the group membership (categorical factor or `fct`) and the continuous measurement (numberic or `dbl`).
+
 
 ```{r EX_Mixaov_4, eval=FALSE}
 # RM ANOVA: fit and save

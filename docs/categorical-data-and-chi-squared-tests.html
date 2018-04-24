@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Explaining Psychological Statistcs</title>
+  <meta name="description" content="This book covers R code for the Cohen Textbook">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Explaining Psychological Statistcs" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="img/Cohen_4ed.jpg" />
+  <meta property="og:description" content="This book covers R code for the Cohen Textbook" />
+  <meta name="github-repo" content="SarBearSchwartz/Quant_I" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Explaining Psychological Statistcs" />
+  
+  <meta name="twitter:description" content="This book covers R code for the Cohen Textbook" />
+  <meta name="twitter:image" content="img/Cohen_4ed.jpg" />
+
+<meta name="author" content="Dr. Sarah Schwartz and Dr. Tyson Barrett">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="repeated-measures-anova-1.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Research Design and Analysis I</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html"><i class="fa fa-check"></i>USU: PSY 6600 -or- EDUC 6600</a><ul>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#software-programs"><i class="fa fa-check"></i>Software Programs</a><ul>
+<li><a href="usu-psy-6600-or-educ-6600.html#r-from-www.r-project.org">1. <code>R</code> from <a href="http://www.r-project.org">www.r-project.org</a></a></li>
+<li><a href="usu-psy-6600-or-educ-6600.html#r-studio-from-www.rstudio.com">2 <code>R Studio</code> from <a href="http://www.rstudio.com">www.rstudio.com</a></a></li>
+<li><a href="usu-psy-6600-or-educ-6600.html#latex-depends-on-your-operating-system">3. <code>LaTeX</code> depends on your operating system</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#r-packages"><i class="fa fa-check"></i>R Packages</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#packages-you-need"><i class="fa fa-check"></i><b>0.0.1</b> Packages You Need!</a></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#installing-packages-via-the-user-interface"><i class="fa fa-check"></i>Installing Packages (via the user interface)</a></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#load-packages-via-code"><i class="fa fa-check"></i>Load Packages (via code)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#kniting-notebooks"><i class="fa fa-check"></i>Kniting Notebooks</a><ul>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#storing-all-associated-files"><i class="fa fa-check"></i>Storing all associated files</a></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#setting-the-working-directory"><i class="fa fa-check"></i>Setting the working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="usu-psy-6600-or-educ-6600.html"><a href="usu-psy-6600-or-educ-6600.html#helpful-websites"><i class="fa fa-check"></i>Helpful Websites</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="data-prepartion.html"><a href="data-prepartion.html"><i class="fa fa-check"></i><b>1</b> DATA PREPARTION</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-prepartion.html"><a href="data-prepartion.html#preparing-the-environment"><i class="fa fa-check"></i><b>1.1</b> Preparing the Environment</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="data-prepartion.html"><a href="data-prepartion.html#the-library-function-load-a-package"><i class="fa fa-check"></i><b>1.1.1</b> The <code>library()</code> Function: Load a Package</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-prepartion.html"><a href="data-prepartion.html#the-readxlread_excel-function-read-in-excel-data-files"><i class="fa fa-check"></i><b>1.1.2</b> The <code>readxl::read_excel()</code> Function: Read in Excel Data Files</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-prepartion.html"><a href="data-prepartion.html#opperators-and-helpful-functions"><i class="fa fa-check"></i><b>1.2</b> Opperators and Helpful Functions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="data-prepartion.html"><a href="data-prepartion.html#the-assignment-opperator---save-things-to-a-name"><i class="fa fa-check"></i><b>1.2.1</b> The Assignment Opperator <code>&lt;-</code>: Save things to a name</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-prepartion.html"><a href="data-prepartion.html#the-pipe-opperator-link-steps-togehter"><i class="fa fa-check"></i><b>1.2.2</b> The Pipe <code>%&gt;%</code> Opperator: Link Steps Togehter</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-prepartion.html"><a href="data-prepartion.html#the-head-function-print-the-first-few-rows"><i class="fa fa-check"></i><b>1.2.3</b> The <code>head()</code> Function: Print the First Few Rows</a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-prepartion.html"><a href="data-prepartion.html#the-names-function-list-the-variable-names"><i class="fa fa-check"></i><b>1.2.4</b> The <code>names()</code> Function: List the Variable Names</a></li>
+<li class="chapter" data-level="1.2.5" data-path="data-prepartion.html"><a href="data-prepartion.html#the-dim-function-list-the-dimentions"><i class="fa fa-check"></i><b>1.2.5</b> The <code>dim()</code> Function: List the Dimentions</a></li>
+<li class="chapter" data-level="1.2.6" data-path="data-prepartion.html"><a href="data-prepartion.html#the-tibbleglimpse-function-gives-an-overview-of-variables"><i class="fa fa-check"></i><b>1.2.6</b> The <code>tibble::glimpse()</code> Function: Gives an Overview of Variables</a></li>
+<li class="chapter" data-level="1.2.7" data-path="data-prepartion.html"><a href="data-prepartion.html#the-dplyrselect-function-specify-variables-to-includekeep"><i class="fa fa-check"></i><b>1.2.7</b> The <code>dplyr::select()</code> Function: Specify VARIABLES to include/keep</a></li>
+<li class="chapter" data-level="1.2.8" data-path="data-prepartion.html"><a href="data-prepartion.html#the-dplyrfilter-function-specify-observations-to-includekeep"><i class="fa fa-check"></i><b>1.2.8</b> The <code>dplyr::filter()</code> Function: Specify OBSERVATIONS to include/keep</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-prepartion.html"><a href="data-prepartion.html#data-wrangling"><i class="fa fa-check"></i><b>1.3</b> Data Wrangling</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="data-prepartion.html"><a href="data-prepartion.html#the-dplyrmutate-function-create-a-new-variable"><i class="fa fa-check"></i><b>1.3.1</b> The <code>dplyr::mutate()</code> Function: Create a New Variable</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-prepartion.html"><a href="data-prepartion.html#the-factor-function-define-categorical-variables"><i class="fa fa-check"></i><b>1.3.2</b> The <code>factor()</code> Function: Define Categorical Variables</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-prepartion.html"><a href="data-prepartion.html#question-2-create-a-new-variable-mathquiz-50"><i class="fa fa-check"></i><b>1.3.3</b> Question 2: Create a new variable = <code>mathquiz</code> + 50</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-prepartion.html"><a href="data-prepartion.html#question-3-create-a-new-variable-hr_base-60"><i class="fa fa-check"></i><b>1.3.4</b> Question 3: Create a new variable = <code>Hr_base</code> / 60</a></li>
+<li class="chapter" data-level="1.3.5" data-path="data-prepartion.html"><a href="data-prepartion.html#question-4a-create-a-new-variable-statquiz-2-then-10"><i class="fa fa-check"></i><b>1.3.5</b> Question 4a: Create a new variable = <code>Statquiz</code> + 2, then * 10</a></li>
+<li class="chapter" data-level="1.3.6" data-path="data-prepartion.html"><a href="data-prepartion.html#question-4b-create-a-new-variable-statquiz-10-then-2"><i class="fa fa-check"></i><b>1.3.6</b> Question 4b: Create a new variable = <code>Statquiz</code> * 10, then + 2</a></li>
+<li class="chapter" data-level="1.3.7" data-path="data-prepartion.html"><a href="data-prepartion.html#question-5a-create-a-new-variable-sum-of-the-3-anxiety-measures"><i class="fa fa-check"></i><b>1.3.7</b> Question 5a: Create a new variable = <code>sum</code> of the 3 anxiety measures</a></li>
+<li class="chapter" data-level="1.3.8" data-path="data-prepartion.html"><a href="data-prepartion.html#question-5b-create-a-new-variable-average-of-the-3-heart-rates"><i class="fa fa-check"></i><b>1.3.8</b> Question 5b: Create a new variable = <code>average</code> of the 3 heart rates</a></li>
+<li class="chapter" data-level="1.3.9" data-path="data-prepartion.html"><a href="data-prepartion.html#question-6-create-a-new-variable-statquiz-minus-exp_sqz"><i class="fa fa-check"></i><b>1.3.9</b> Question 6: Create a new variable = <code>Statquiz</code> minus <code>Exp_sqz</code></a></li>
+<li class="chapter" data-level="1.3.10" data-path="data-prepartion.html"><a href="data-prepartion.html#putting-it-all-together"><i class="fa fa-check"></i><b>1.3.10</b> Putting it all together</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html"><i class="fa fa-check"></i><b>2</b> EXAMINING A DISTRIBUTION</a><ul>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#example-ihnos-experiment"><i class="fa fa-check"></i>Example: Ihno’s Experiment</a><ul>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#required-packages"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#data-import-and-wrangling"><i class="fa fa-check"></i>Data Import and Wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#frequency-tables"><i class="fa fa-check"></i><b>2.1</b> Frequency Tables</a></li>
+<li class="chapter" data-level="2.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#bar-charts"><i class="fa fa-check"></i><b>2.2</b> Bar Charts</a></li>
+<li class="chapter" data-level="2.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#histograms"><i class="fa fa-check"></i><b>2.3</b> Histograms</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#change-the-number-of-bins"><i class="fa fa-check"></i><b>2.3.1</b> Change the Number of Bins</a></li>
+<li class="chapter" data-level="2.3.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#change-the-bin-width"><i class="fa fa-check"></i><b>2.3.2</b> Change the Bin Width</a></li>
+<li class="chapter" data-level="2.3.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#make-seperate-panels--by--a-factor"><i class="fa fa-check"></i><b>2.3.3</b> Make Seperate Panels -by- a Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#percentiles"><i class="fa fa-check"></i><b>2.4</b> Percentiles</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#deciles"><i class="fa fa-check"></i><b>2.4.1</b> Deciles</a></li>
+<li class="chapter" data-level="2.4.2" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#quartiles"><i class="fa fa-check"></i><b>2.4.2</b> Quartiles</a></li>
+<li class="chapter" data-level="2.4.3" data-path="examining-a-distribution.html"><a href="examining-a-distribution.html#other-percentiles"><i class="fa fa-check"></i><b>2.4.3</b> Other Percentiles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>3</b> SUMMARY STATISTICS</a><ul>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#example-cancer-experiment"><i class="fa fa-check"></i>Example: Cancer Experiment</a><ul>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#required-packages-1"><i class="fa fa-check"></i>Required Packages</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#data-import"><i class="fa fa-check"></i>Data Import</a></li>
+<li class="chapter" data-level="" data-path="summary-statistics.html"><a href="summary-statistics.html#data-wrangling-1"><i class="fa fa-check"></i>Data Wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1" data-path="summary-statistics.html"><a href="summary-statistics.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.1</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="summary-statistics.html"><a href="summary-statistics.html#extensive-set"><i class="fa fa-check"></i><b>3.1.1</b> Extensive Set</a></li>
+<li class="chapter" data-level="3.1.2" data-path="summary-statistics.html"><a href="summary-statistics.html#simple-set"><i class="fa fa-check"></i><b>3.1.2</b> Simple Set</a></li>
+<li class="chapter" data-level="3.1.3" data-path="summary-statistics.html"><a href="summary-statistics.html#simple-set--by--a-factor"><i class="fa fa-check"></i><b>3.1.3</b> Simple Set, -by- a Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="summary-statistics.html"><a href="summary-statistics.html#boxplots"><i class="fa fa-check"></i><b>3.2</b> Boxplots</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#single-box"><i class="fa fa-check"></i><b>3.2.1</b> Single Box</a></li>
+<li class="chapter" data-level="3.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#single-box--for--a-subset"><i class="fa fa-check"></i><b>3.2.2</b> Single Box -for- a Subset</a></li>
+<li class="chapter" data-level="3.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--by--a-factor"><i class="fa fa-check"></i><b>3.2.3</b> Multiple Boxes -by- a Factor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--by--2-factors"><i class="fa fa-check"></i><b>3.2.4</b> Multiple Boxes -by- 2 Factors</a></li>
+<li class="chapter" data-level="3.2.5" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--for--a-subset-and--by--2-factors"><i class="fa fa-check"></i><b>3.2.5</b> Multiple Boxes -for- a Subset AND -by- 2 Factors</a></li>
+<li class="chapter" data-level="3.2.6" data-path="summary-statistics.html"><a href="summary-statistics.html#multiple-boxes--for--repeated-measurements"><i class="fa fa-check"></i><b>3.2.6</b> Multiple Boxes -for- Repeated Measurements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="standardizing-scores.html"><a href="standardizing-scores.html"><i class="fa fa-check"></i><b>4</b> STANDARDIZING SCORES</a><ul>
+<li class="chapter" data-level="4.1" data-path="standardizing-scores.html"><a href="standardizing-scores.html#standardize-variables---manually"><i class="fa fa-check"></i><b>4.1</b> Standardize Variables - Manually</a></li>
+<li class="chapter" data-level="4.2" data-path="standardizing-scores.html"><a href="standardizing-scores.html#standardize-variables---with-the-scale-funciton"><i class="fa fa-check"></i><b>4.2</b> Standardize Variables - with the <code>scale()</code> funciton</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="testing-normality.html"><a href="testing-normality.html"><i class="fa fa-check"></i><b>5</b> TESTING NORMALITY</a><ul>
+<li class="chapter" data-level="5.1" data-path="testing-normality.html"><a href="testing-normality.html#skewness-kurtosis"><i class="fa fa-check"></i><b>5.1</b> Skewness &amp; Kurtosis</a></li>
+<li class="chapter" data-level="5.2" data-path="testing-normality.html"><a href="testing-normality.html#shapiro-wilks-test"><i class="fa fa-check"></i><b>5.2</b> Shapiro-Wilk’s Test</a></li>
+<li class="chapter" data-level="5.3" data-path="testing-normality.html"><a href="testing-normality.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="testing-normality.html"><a href="testing-normality.html#q-q-plot"><i class="fa fa-check"></i><b>5.4</b> Q-Q Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="t-test-for-the-mean-of-1-sample.html"><a href="t-test-for-the-mean-of-1-sample.html"><i class="fa fa-check"></i><b>6</b> t TEST FOR THE MEAN OF 1 SAMPLE</a><ul>
+<li class="chapter" data-level="6.1" data-path="t-test-for-the-mean-of-1-sample.html"><a href="t-test-for-the-mean-of-1-sample.html#sample-mean-vs.historic-control"><i class="fa fa-check"></i><b>6.1</b> 1 Sample Mean vs. historic control</a></li>
+<li class="chapter" data-level="6.2" data-path="t-test-for-the-mean-of-1-sample.html"><a href="t-test-for-the-mean-of-1-sample.html#change-the-confidence-level"><i class="fa fa-check"></i><b>6.2</b> Change the Confidence Level</a></li>
+<li class="chapter" data-level="6.3" data-path="t-test-for-the-mean-of-1-sample.html"><a href="t-test-for-the-mean-of-1-sample.html#restrict-to-a-subsample"><i class="fa fa-check"></i><b>6.3</b> Restrict to a Subsample</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="t-test-for-the-difference-in-2-means-independent-samples.html"><a href="t-test-for-the-difference-in-2-means-independent-samples.html"><i class="fa fa-check"></i><b>7</b> t TEST FOR THE DIFFERENCE IN 2 MEANS, INDEPENDENT SAMPLES</a><ul>
+<li class="chapter" data-level="7.1" data-path="t-test-for-the-difference-in-2-means-independent-samples.html"><a href="t-test-for-the-difference-in-2-means-independent-samples.html#assumtion-check-eyeball-method"><i class="fa fa-check"></i><b>7.1</b> Assumtion Check: Eyeball method</a></li>
+<li class="chapter" data-level="7.2" data-path="t-test-for-the-difference-in-2-means-independent-samples.html"><a href="t-test-for-the-difference-in-2-means-independent-samples.html#assumtion-check-homogeneity-of-variance"><i class="fa fa-check"></i><b>7.2</b> Assumtion Check: Homogeneity of Variance</a></li>
+<li class="chapter" data-level="7.3" data-path="t-test-for-the-difference-in-2-means-independent-samples.html"><a href="t-test-for-the-difference-in-2-means-independent-samples.html#independent-sample-means"><i class="fa fa-check"></i><b>7.3</b> 2 independent Sample Means</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="power-and-effect-size.html"><a href="power-and-effect-size.html"><i class="fa fa-check"></i><b>8</b> Power and Effect Size</a><ul>
+<li class="chapter" data-level="8.1" data-path="power-and-effect-size.html"><a href="power-and-effect-size.html#power-analysis"><i class="fa fa-check"></i><b>8.1</b> Power Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="linear-correlation.html"><a href="linear-correlation.html"><i class="fa fa-check"></i><b>9</b> Linear Correlation</a><ul>
+<li class="chapter" data-level="9.1" data-path="linear-correlation.html"><a href="linear-correlation.html#visualize-the-raw-data"><i class="fa fa-check"></i><b>9.1</b> Visualize the Raw Data</a></li>
+<li class="chapter" data-level="9.2" data-path="linear-correlation.html"><a href="linear-correlation.html#pearsons-correlation-coefficient"><i class="fa fa-check"></i><b>9.2</b> Pearson’s Correlation Coefficient</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="linear-correlation.html"><a href="linear-correlation.html#additional-arguments"><i class="fa fa-check"></i><b>9.2.1</b> Additional Arguments</a></li>
+<li class="chapter" data-level="9.2.2" data-path="linear-correlation.html"><a href="linear-correlation.html#statistical-significance"><i class="fa fa-check"></i><b>9.2.2</b> Statistical Significance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="linear-correlation.html"><a href="linear-correlation.html#correlation-tables"><i class="fa fa-check"></i><b>9.3</b> Correlation Tables</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="linear-correlation.html"><a href="linear-correlation.html#missing-values---default"><i class="fa fa-check"></i><b>9.3.1</b> Missing Values - Default</a></li>
+<li class="chapter" data-level="9.3.2" data-path="linear-correlation.html"><a href="linear-correlation.html#missing-values---listwise-deletion"><i class="fa fa-check"></i><b>9.3.2</b> Missing Values - Listwise Deletion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="linear-correlation.html"><a href="linear-correlation.html#pairs-plots"><i class="fa fa-check"></i><b>9.4</b> Pairs Plots</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="linear-correlation.html"><a href="linear-correlation.html#base-r"><i class="fa fa-check"></i><b>9.4.1</b> Base R</a></li>
+<li class="chapter" data-level="9.4.2" data-path="linear-correlation.html"><a href="linear-correlation.html#psych-package"><i class="fa fa-check"></i><b>9.4.2</b> <code>psych</code> package</a></li>
+<li class="chapter" data-level="9.4.3" data-path="linear-correlation.html"><a href="linear-correlation.html#ggplot2-and-ggally-packages"><i class="fa fa-check"></i><b>9.4.3</b> <code>ggplot2</code> and <code>GGally</code> packages</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="linear-correlation.html"><a href="linear-correlation.html#correlation-plots-corrolagrams"><i class="fa fa-check"></i><b>9.5</b> Correlation Plots: Corrolagrams</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>10</b> Linear Regression</a><ul>
+<li class="chapter" data-level="10.1" data-path="linear-regression.html"><a href="linear-regression.html#visualize-the-raw-data-1"><i class="fa fa-check"></i><b>10.1</b> Visualize the Raw Data</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-regression.html"><a href="linear-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>10.2</b> Fitting a Simple Regression Model</a></li>
+<li class="chapter" data-level="10.3" data-path="linear-regression.html"><a href="linear-regression.html#extracting-information-from-the-model"><i class="fa fa-check"></i><b>10.3</b> Extracting Information From the Model</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="linear-regression.html"><a href="linear-regression.html#model-overview"><i class="fa fa-check"></i><b>10.3.1</b> Model Overview</a></li>
+<li class="chapter" data-level="10.3.2" data-path="linear-regression.html"><a href="linear-regression.html#model-fit-or-accuracy"><i class="fa fa-check"></i><b>10.3.2</b> Model Fit or Accuracy</a></li>
+<li class="chapter" data-level="10.3.3" data-path="linear-regression.html"><a href="linear-regression.html#beta-estimates"><i class="fa fa-check"></i><b>10.3.3</b> Beta Estimates</a></li>
+<li class="chapter" data-level="10.3.4" data-path="linear-regression.html"><a href="linear-regression.html#confidence-intervals"><i class="fa fa-check"></i><b>10.3.4</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="10.3.5" data-path="linear-regression.html"><a href="linear-regression.html#predictions-residuals-ect."><i class="fa fa-check"></i><b>10.3.5</b> Predictions, Residuals, ect.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="linear-regression.html"><a href="linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>10.4</b> Model Diagnostics</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="linear-regression.html"><a href="linear-regression.html#base-r-graphics"><i class="fa fa-check"></i><b>10.4.1</b> Base R Graphics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html"><i class="fa fa-check"></i><b>11</b> t TEST FOR THE DIFFERENCE IN 2 PAIRED MEANS</a><ul>
+<li class="chapter" data-level="11.1" data-path="t-test-for-the-difference-in-2-paired-means.html"><a href="t-test-for-the-difference-in-2-paired-means.html#restructure-the-data-and-run-the-test"><i class="fa fa-check"></i><b>11.1</b> Restructure the Data and Run the Test</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>12</b> One-Way ANOVA</a><ul>
+<li class="chapter" data-level="12.1" data-path="one-way-anova.html"><a href="one-way-anova.html#prepare-for-modeling"><i class="fa fa-check"></i><b>12.1</b> Prepare for Modeling</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="one-way-anova.html"><a href="one-way-anova.html#ensure-the-data-is-in-long-format"><i class="fa fa-check"></i><b>12.1.1</b> Ensure the Data is in “long” Format</a></li>
+<li class="chapter" data-level="12.1.2" data-path="one-way-anova.html"><a href="one-way-anova.html#compute-summary-statistics"><i class="fa fa-check"></i><b>12.1.2</b> Compute Summary Statistics</a></li>
+<li class="chapter" data-level="12.1.3" data-path="one-way-anova.html"><a href="one-way-anova.html#plot-the-raw-data"><i class="fa fa-check"></i><b>12.1.3</b> Plot the Raw Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="one-way-anova.html"><a href="one-way-anova.html#fitting-one-way-anova-model"><i class="fa fa-check"></i><b>12.2</b> Fitting One-way ANOVA Model</a></li>
+<li class="chapter" data-level="12.3" data-path="one-way-anova.html"><a href="one-way-anova.html#anova-output"><i class="fa fa-check"></i><b>12.3</b> ANOVA Output</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>13</b> Multiple Comparisons</a></li>
+<li class="chapter" data-level="14" data-path="two-way-anova.html"><a href="two-way-anova.html"><i class="fa fa-check"></i><b>14</b> Two Way ANOVA</a></li>
+<li class="chapter" data-level="15" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>15</b> Repeated Measures ANOVA</a><ul>
+<li class="chapter" data-level="15.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#tutorial---fitting-rm-anova-models-with-afexaov_4"><i class="fa fa-check"></i><b>15.1</b> Tutorial - Fitting RM ANOVA Models with <code>afex::aov_4()</code></a></li>
+<li class="chapter" data-level="15.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#words-recalled-data-example-chapter-15-section-a"><i class="fa fa-check"></i><b>15.2</b> Words Recalled Data Example (Chapter 15, section A)</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#data-prep"><i class="fa fa-check"></i><b>15.2.1</b> Data Prep</a></li>
+<li class="chapter" data-level="15.2.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-independent-anova"><i class="fa fa-check"></i><b>15.2.2</b> One-Way Independent ANOVA</a></li>
+<li class="chapter" data-level="15.2.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#one-way-rm-anova"><i class="fa fa-check"></i><b>15.2.3</b> One-Way RM ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#another-example---weight-loss"><i class="fa fa-check"></i><b>15.3</b> Another Example - Weight Loss</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#restructure-the-data-from-wide-to-long-format"><i class="fa fa-check"></i><b>15.3.1</b> Restructure the data from wide to long format</a></li>
+<li class="chapter" data-level="15.3.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#does-weght-long-change-over-time"><i class="fa fa-check"></i><b>15.3.2</b> Does weght long change over time?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html"><i class="fa fa-check"></i><b>16</b> Repeated Measures ANOVA</a><ul>
+<li class="chapter" data-level="16.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#tutorial---fitting-mixed-design-anova-models-with-afexaov_4"><i class="fa fa-check"></i><b>16.1</b> Tutorial - Fitting Mixed Design ANOVA Models with <code>afex::aov_4()</code></a></li>
+<li class="chapter" data-level="16.2" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#words-recalled-data-example-chapter-16-section-a"><i class="fa fa-check"></i><b>16.2</b> Words Recalled Data Example (Chapter 16, section A)</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#data-prep-1"><i class="fa fa-check"></i><b>16.2.1</b> Data Prep</a></li>
+<li class="chapter" data-level="16.2.2" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#one-way-rm-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> One-Way RM ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#mixed-anova"><i class="fa fa-check"></i><b>16.2.3</b> Mixed ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="repeated-measures-anova-1.html"><a href="repeated-measures-anova-1.html#conclusion"><i class="fa fa-check"></i><b>16.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html"><i class="fa fa-check"></i><b>17</b> Categorical Data and Chi Squared Tests</a><ul>
+<li class="chapter" data-level="17.1" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#tutorials-chi-squared-test"><i class="fa fa-check"></i><b>17.1</b> Tutorials: Chi-squared Test</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#goodenss-of-fit-1-way---equally-likely"><i class="fa fa-check"></i><b>17.1.1</b> Goodenss of Fit (1-way) - Equally Likely</a></li>
+<li class="chapter" data-level="17.1.2" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#goodenss-of-fit-1-way---hypothesised-probabilities"><i class="fa fa-check"></i><b>17.1.2</b> Goodenss of Fit (1-way) - Hypothesised Probabilities</a></li>
+<li class="chapter" data-level="17.1.3" data-path="categorical-data-and-chi-squared-tests.html"><a href="categorical-data-and-chi-squared-tests.html#test-for-independence-2-way---vs.association"><i class="fa fa-check"></i><b>17.1.3</b> Test for Independence (2-way) - vs. Association</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
+<li class="divider"></li>
+<li><a href="./">Psy/Educ 6600</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Explaining Psychological Statistcs</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="categorical-data-and-chi-squared-tests" class="section level1">
+<h1><span class="header-section-number">Chapter 17</span> Categorical Data and Chi Squared Tests</h1>
+<p><strong>Chapter Links</strong></p>
+<ul>
+<li>Chapter 19-20 Slides: <a href="http://tysonbarrett.com/EDUC-6600/Slides/u06_Ch19-20_categorical.pdf">pdf</a> or <a href="http://tysonbarrett.com/EDUC-6600/Slides/u06_Ch19-20_categorical.pptx">power point</a></li>
+</ul>
+<p><strong>Unit Assignment Links</strong></p>
+<ul>
+<li><p>Unit 6 Writen Part: <a href="https://usu.box.com/s/rk3cojw85xecankrgeo5fx6pvyc7k5tw">Skeleton - pdf</a></p></li>
+<li><p>Unit 6 R Part: <a href="https://usu.box.com/s/p2c9052g86ijhgowap2t45nm0ndq1po6">Directions - pdf</a> and <a href="https://usu.box.com/s/h4kyfov5hjsif7bmqousumfyew6t5sfl">Skeleton - Rmd</a></p></li>
+<li><p>Unit 6 Reading to Summarize: <span class="citation">(Le Marchand et al. <a href="references.html#ref-Marchand2011">2013</a>)</span> <a href="https://usu.box.com/s/ab2nobh4u2412eqhdb3llpb17gz5lhk2">pdf on BOX</a> or <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3762448/">online</a></p></li>
+<li><p>Inho’s Dataset: <a href="https://usu.box.com/s/9jazgd17mn5bnib4jrdg6zb5jtlze3wi">Excel</a></p></li>
+</ul>
+<p>Required Packages</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)    <span class="co"># Loads several very helpful &#39;tidy&#39; packages</span>
+<span class="kw">library</span>(furniture)    <span class="co"># Nice tables (by our own Tyson Barrett)</span></code></pre></div>
+<hr />
+<div id="tutorials-chi-squared-test" class="section level2">
+<h2><span class="header-section-number">17.1</span> Tutorials: Chi-squared Test</h2>
+<div id="goodenss-of-fit-1-way---equally-likely" class="section level3">
+<h3><span class="header-section-number">17.1.1</span> Goodenss of Fit (1-way) - Equally Likely</h3>
+<p><strong>TEXTBOOK Example:</strong> <em>Often, especially in an experimental context, the expected frequencies are based on more abstract theoretical considerations. For instance, imagine that a developmental psychologist is studying color preference in toddlers. Each child is told that he or she can take one toy out of four that are offered. All four toys are identical except for color: red, blue, yellow, or green. Forty children are run in the experiment, and their color preferences are as follows: red, 13; blue, 9; yellow, 15; and green, 3. These are the obtained frequencies. The expected frequencies depend on the null hypothesis. If the null hypothesis is that toddlers in general have no preference for color, we would expect the choices of colors to be equally divided among the entire population of toddlers. Hence, the expected frequencies would be 10 for each color.</em></p>
+<hr />
+<p>Use the <code>chisq.test()</code> function to perform a Goodnes-of-Fit or one-way Chi-Squared test to see if the observed counts are significantly different from being equally distributed.</p>
+<blockquote>
+<p><strong>NOTE:</strong> You do not need to declare any options inside the <code>chisq.test()</code> function, as the default is to use equally likely probabilities.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the 1-way chi-square test for equally likely</span>
+chisq_toy_color &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">red    =</span> <span class="dv">13</span>, <span class="dt">blue   =</span> <span class="dv">9</span>, 
+                     <span class="dt">yellow =</span> <span class="dv">15</span>, <span class="dt">green  =</span> <span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">chisq.test</span>()                             <span class="co"># defaults to Equally likely</span></code></pre></div>
+<hr />
+<p>The following code chunk shows how to create and display a table of the observed and expected counts for any 1-way Chi-squated test.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Request the observed and expected counts</span>
+<span class="kw">rbind</span>(<span class="dt">Observed =</span> chisq_toy_color<span class="op">$</span>observed,
+      <span class="dt">Expected =</span> chisq_toy_color<span class="op">$</span>expected) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</code></pre></div>
+<table style="width:64%;">
+<colgroup>
+<col width="20%" />
+<col width="8%" />
+<col width="9%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">red</th>
+<th align="center">blue</th>
+<th align="center">yellow</th>
+<th align="center">green</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Observed</strong></td>
+<td align="center">13</td>
+<td align="center">9</td>
+<td align="center">15</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Expected</strong></td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>To display the full output, type and run the name the model is save as.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Diplay the full output</span>
+chisq_toy_color</code></pre></div>
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  .
+X-squared = 8.4, df = 3, p-value = 0.03843</code></pre>
+
+</div>
+<div id="goodenss-of-fit-1-way---hypothesised-probabilities" class="section level3">
+<h3><span class="header-section-number">17.1.2</span> Goodenss of Fit (1-way) - Hypothesised Probabilities</h3>
+<p><strong>TEXTBOOK Example:</strong> <em>Imagine that the population of a city is made up of three ethnic groups, which I will label A, B, and C. The obtained frequencies were 28, 18, and 2. You could test the null hypothesis that sample is representatve of a population proportions which is half group A and a third group B.</em></p>
+<hr />
+<p>The <code>chisq.test()</code> function may also be used to perform a Goodnes-of-Fit or one-way Chi-Squared test to see if the observed counts are significantly different from thoes expected from a set of hypothesised probabilies.</p>
+<blockquote>
+<p><strong>NOTE:</strong> You <strong>DO</strong> need to declare the probabilities, as the default is to use equally likely probabilities. You may do this by including <code>p = c(</code><span class="math inline">\(p_1\)</span><code>,</code><span class="math inline">\(p_2\)</span><code>, ...,</code><span class="math inline">\(p_k\)</span><code>)</code> within the <code>chisq.test()</code> function. The <span class="math inline">\(p_i\)</span>’s maybe typed as decimals or fractions, but make suer they add up to exactly <span class="math inline">\(1\)</span>!</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the 1-way chi-square test for hypothesised probabilityes</span>
+chisq_ethnic &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">A =</span> <span class="dv">28</span>,
+                  <span class="dt">B =</span> <span class="dv">18</span>,
+                  <span class="dt">C =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">chisq.test</span>(<span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>))      <span class="co"># declare the probabilities</span></code></pre></div>
+<hr />
+<p>Use the same code chunk to display a table of the observed and expected counts for any 1-way Chi-squated test.</p>
+<blockquote>
+<p><strong>HINT</strong> You may <em>copy-and-paste</em> this code for the rest of the assignment, but make sure to change the name of the model (<code>chisq_ethnic</code> appears twice before the $-sign).</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Request the observed and expected counts</span>
+<span class="kw">rbind</span>(<span class="dt">Observed =</span> chisq_ethnic<span class="op">$</span>observed,
+      <span class="dt">Expected =</span> chisq_ethnic<span class="op">$</span>expected) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</code></pre></div>
+<table style="width:42%;">
+<colgroup>
+<col width="20%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Observed</strong></td>
+<td align="center">28</td>
+<td align="center">18</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Expected</strong></td>
+<td align="center">24</td>
+<td align="center">16</td>
+<td align="center">8</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>To display the full output, type and run the name the model is save as.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Diplay the full output</span>
+chisq_ethnic</code></pre></div>
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  .
+X-squared = 5.4167, df = 2, p-value = 0.06665</code></pre>
+
+</div>
+<div id="test-for-independence-2-way---vs.association" class="section level3">
+<h3><span class="header-section-number">17.1.3</span> Test for Independence (2-way) - vs. Association</h3>
+<p><strong>TEXTBOOK Example:</strong> <em>Suppose that the researcher has interviewed 30 women who have been married: 10 whose parents were divorced and 20 whose parents were married. Half of the 30 women in this hypothetical study have gone through their own divorce; the other half are still married for the first time. To know whether the divorce of a person’s parents makes the person more likely to divorce, we need to see the breakdown in each category- that is, how many currently divorced women come from “broken” homes and how many do not, and similarly for those still married. These frequency data are generally presented in a contingency (or cross-classification) table:</em></p>
+<p>The dataset needs to be declared a table before you can run a Chi-Squared Test</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Store the data as a table</span>
+woman_parents &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">home_broken    =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">3</span>),
+                            <span class="dt">home_complete  =</span> <span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">12</span>),
+                            <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="st">&quot;self_divorced&quot;</span>, <span class="st">&quot;self_married&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as.matrix</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as.table</span>() </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Display the observed counts</span>
+woman_parents <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">addmargins</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</code></pre></div>
+<table style="width:76%;">
+<colgroup>
+<col width="27%" />
+<col width="19%" />
+<col width="22%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">home_broken</th>
+<th align="center">home_complete</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>self_divorced</strong></td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>self_married</strong></td>
+<td align="center">3</td>
+<td align="center">12</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Sum</strong></td>
+<td align="center">10</td>
+<td align="center">20</td>
+<td align="center">30</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>The <code>chisq.test()</code> function may also be used to perform a two-way Chi-Squared test for independence. In this case, the observed counts are compared to thoes expected if there is no association between the two factors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the 2-way chi-square test for independence</span>
+chisq_divorces &lt;-<span class="st"> </span>woman_parents <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">chisq.test</span>(<span class="dt">correct =</span> <span class="ot">FALSE</span>)     <span class="co">#IF 2x2, add correct = FALSE</span></code></pre></div>
+<hr />
+<p>To display the counts expected if the variables are independent, start with the model name and add <code>$expected</code> at the end. Then pipe on both the <code>addmargins()</code> and <code>pander::pander()</code> functions to print the counts.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Request the expected counts based on &quot;no association&quot;</span>
+chisq_divorces<span class="op">$</span>expected <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</code></pre></div>
+<table style="width:68%;">
+<colgroup>
+<col width="27%" />
+<col width="19%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">home_broken</th>
+<th align="center">home_complete</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>self_divorced</strong></td>
+<td align="center">5</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>self_married</strong></td>
+<td align="center">5</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>To display the full output, type and run the name the model is save as.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Diplay the full output</span>
+chisq_divorces</code></pre></div>
+<pre><code>
+    Pearson&#39;s Chi-squared test
+
+data:  .
+X-squared = 2.4, df = 1, p-value = 0.1213</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="repeated-measures-anova-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
